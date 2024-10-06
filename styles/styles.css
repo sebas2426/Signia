@@ -320,9 +320,9 @@ input:focus{
     justify-content: flex-start;
     align-items: center;
     padding: 1rem;
-    text-align: center;
     background-color: rgb(240, 235, 235);
     border-radius: 5px;
+    margin-bottom: 1rem;
 }
 
 .lecciones:hover{
