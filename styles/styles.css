@@ -34,7 +34,7 @@
     color:rgb(31 41 55) ;
   }
 body{
-    line-height: 1.5;
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
     display: flex;
     min-height: 100vh;
@@ -73,8 +73,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 p{
-    --tw-text-opacity: 1;
-    color: rgb(110 115 126 / var(--tw-text-opacity));
+    color:#374151;
     font-size: 1.2rem;
     font-weight: 400;
 }
@@ -83,17 +82,15 @@ p{
     font-size: 1.25rem;
 }
 
-
-
-
+/*index.html*/
 header{
     align-self: stretch;
     display: flex;
     justify-content:space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0.80rem;
     background-color: rgb(250, 250, 248);
-    margin-bottom: 18vh;
+    margin-bottom: 17vh;
 }
 
 .logo{
@@ -224,7 +221,7 @@ footer{
 }
 
 
-/*LOGIN*/
+/*login.html*/
 
 .contenedorLoginRegistro{
     margin: 0 auto;
@@ -235,7 +232,7 @@ footer{
     gap:1rem;
     padding: 2rem;
     width: 450px;
-    height: 450px;
+    height: 500px;
     border-radius: 5px;
     margin-bottom: 1rem;
     border:2px solid rgb(240, 240, 240);
@@ -272,7 +269,7 @@ input:focus{
     border:2px solid rgb(57, 57, 145);
 }
 
-/*PÁGINA PARA ACCEDER*/
+/*acceder.html*/
 
 .contenedorLoginAcceder{
     margin: 0 auto;
@@ -291,8 +288,78 @@ input:focus{
     margin-bottom: 4rem;
 }
 
+
+/*leccionesLista.html*/
+
+.bodyLecciones{
+    background-color: #e2e1e1;
+}
+.tituloLecciones{
+    margin-bottom: 2rem;
+}
+
+.contenedorLecciones{
+    margin: 0 auto;
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+    border-radius: 5px;
+
+}
+
+.lecciones{
+    flex: 1 1 calc(30%-20px);
+    max-width: 250px; 
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+    background-color: rgb(240, 235, 235);
+    border-radius: 5px;
+}
+
+.lecciones:hover{
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.tituloLecciones,
+.lecciones{
+    text-align: center;
+}
+
+.lecciones h3{
+    min-height: 2rem;
+    font-size: 1.1rem;
+}
+
+.lecciones img{
+    display: block; 
+    width: 100%; 
+    height: auto; 
+    object-fit: cover;
+    max-width: 200px;
+    margin-bottom: 15px; 
+}
+
+
+
 /*RESPONSIVE*/
 @media screen and (max-width: 650px) {
+    /*header*/
+
+    header{
+        margin-bottom: 10vh;
+    }
+
     .abrirMenu,
     .cerrarMenu{
         display: block;
@@ -335,6 +402,8 @@ input:focus{
         flex-direction: column;
         align-items: end;
     }
+
+    /*body*/
     .contenedorBody{
         display: flex;
         flex-direction: column;
@@ -344,9 +413,6 @@ input:focus{
         padding: 20px;
     }
 
-    header{
-        margin-bottom: 10vh;
-    }
     .tituloBody h1{
         font-size: clamp(1.5rem,7vw,3rem);
         margin-bottom: 20px;
@@ -398,7 +464,7 @@ input:focus{
     }
 
     .descripcionImagenes img{
-        width: 60%;
+        width: 50%;
         height: auto;
         margin-bottom: 10px;
     }
@@ -419,7 +485,7 @@ input:focus{
     }
 
 
-    /*LOGIN*/
+    /*login.html*/
 
     .contenedorLoginRegistro{
         width: 90%;

@@ -1,0 +1,133 @@
+/*
+  Reset de estilos para CSS
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  * {
+    margin: 0;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  #root, #__next {
+    isolation: isolate;
+  }
+
+  a,
+  a:link,
+  a:hover,
+  a:active{
+    text-decoration: none;
+    color:rgb(31 41 55) ;
+  }
+body{
+    line-height: 1.80;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+button{
+    border-radius: 5px;
+    background:none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover{
+    --tw-border-opacity: 1;
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity));
+    border: 1px solid rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.crearCuenta a{
+    color: white;
+}
+ .crearCuenta:hover{
+    background-color:  rgb(56, 82, 99);
+    --tw-bg-opacity: 1;
+      border:1px solid rgb(200 150 200 / var(--tw-bg-opacity));
+}
+div+div{
+    margin-bottom:4.5vh;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color:rgb(31 41 55) ;
+}
+
+p{
+    color:#374151;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+header{
+    margin-bottom: 10vh;
+}
+
+
+
+.tituloLeccion{
+    text-align: center;
+    margin-bottom: 6vh;
+}
+
+.subTitulo{
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+}
+
+.contenedorLeccion{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 55%;
+    margin: 0 6vw;
+    /*background-color: rgb(64, 115, 146);*/
+}
+
+.contenedorVideo{
+    margin: 2rem 0;
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 650px) {
+    .contenedorLeccion,
+     p{
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
+    .contenedorVideo {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+    }
+    
+    .contenedorVideo iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    }
+}
