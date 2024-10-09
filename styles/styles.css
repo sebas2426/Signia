@@ -104,6 +104,11 @@ header{
     gap: 1rem;
 }
 
+.headerDerecha img{
+    width: 60px;
+    height: auto;
+}
+
 .navList{
     list-style-type: none;
     display: flex;
