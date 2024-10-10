@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../images/icono-web.svg">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/lecciones.css">
-    <script src="../scripts/index.js" defer ></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="../images/icono-web.svg">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="stylesheet" href="../styles/lecciones.css">
+        <script src="../scripts/index.js" defer ></script>
+        <script src="../scripts/test.js" defer></script>
     <title>Abecedario</title>
 </head>
 <body>
     <header>
         <a href="../index.html">
-        <div class="headerDerecha">
-            <img  class=".logo" src="../images/icono-web.svg" alt="Logo de Signia">
+            <div class="headerDerecha">
+                <img  class=".logo" src="../images/icono-web.svg" alt="Logo de Signia">
             <h2>Signia</h2>
         </div>
         </a>
         <button class="abrirMenu" id="abrir" ><i class="bi bi-list"></i></button>
-            <nav class="navHeader" id="nav" >
-                <ul class="navList">
-                    <button class="cerrarMenu" id="cerrar"><i class="bi bi-x"></i></button>
-                    <li><button><a href="../leccionesLista.html">Lecciones</button></a></li>
-                    <li><button><a href="../acceder.html">Acceder</button></a></li>
-                    <li><button class="crearCuenta"><a href="../login.html">Crear Cuenta</button></a></li>
-                </ul>
-            </nav>
+        <nav class="navHeader" id="nav" >
+            <ul class="navList">
+                <button class="cerrarMenu" id="cerrar"><i class="bi bi-x"></i></button>
+                <li><button><a href="../leccionesLista.html">Lecciones</button></a></li>
+                <li><button><a href="../acceder.html">Acceder</button></a></li>
+                <li><button class="crearCuenta"><a href="../login.html">Crear Cuenta</button></a></li>
+            </ul>
+        </nav>
     </header>
-
+    
     <h1 class="tituloLeccion">El Abecedario</h1>
-
+    
     <div class="contenedorLeccion">
         <h2 class="subTitulo">Introducción</h2>
         <p>En esta lección aprenderás el abecedario dactilológico. Este alfabeto se compone de gestos específicos que se hacen con las manos para representar cada letra. Su uso principal es el de representar nombres propios, palabras o frases que no tienen un gesto específico en el lenguaje de señas. 
@@ -104,7 +105,7 @@
                 </div>
             </div>
 
-           <!-- Fila de señas - Nivel 2 -->
+            <!-- Fila de señas - Nivel 2 -->
             <div class="fila-senas nivel-2" style="display: none;">
                 <div class="tarjeta tarjeta-senas" data-pareja="M">
                     <div class="cara delante">
@@ -129,7 +130,7 @@
                     <div class="cara atras">
                         <p>¿?</p>
                     </div>
-                
+                    
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="Y">
                     <div class="cara delante">
@@ -140,7 +141,7 @@
                     </div>
                 </div>
             </div>
-        
+            
             <!-- Fila de letras -->
             <div class="fila-letras nivel-2" style="display: none;">
                 <div class="tarjeta" data-pareja="M">
@@ -169,7 +170,7 @@
                     <div class="cara atras"></div>
                 </div>
             </div>
-
+            
             <!-- Fila de señas - Nivel 3 -->
             <div class="fila-senas nivel-3" style="display: none;">
                 <div class="tarjeta tarjeta-senas" data-pareja="B">
@@ -195,7 +196,7 @@
                     <div class="cara atras">
                         <p>¿?</p>
                     </div>
-                
+                    
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="N">
                     <div class="cara delante">
@@ -214,7 +215,7 @@
                     </div>
                 </div>
             </div>
-        
+            
             <!-- Fila de letras -->
             <div class="fila-letras nivel-3" style="display: none;">
                 <div class="tarjeta" data-pareja="B">
@@ -251,47 +252,42 @@
             </div>
     <p id="resultado"></p>
     <button id="nivelSiguiente">Siguiente nivel</button>
-
-    </div>
+    
+</div>
 <h2 class="subTitulo">Evaluación de la lección</h2>
 <p>Hora de reforzar los conocimientos aprendidos en esta lección. Tienes que responder a las siguientes 10 preguntas:</p>
 
-    <div class="contenedorEvaluacion">
-        <div class="encabezado">
-            <div class="leccionNumero">
-            </div>
-            <div class="pregunta">
-            </div>
-            <img src=""  class="imagen" alt="Imagen de la pregunta">
+<div class="contenedorEvaluacion">
+    <div class="encabezado">
+        <div class="leccionNumero">
+            <!-- Aquí puedes agregar un número de lección si es necesario -->
         </div>
-        <div class="botoneS">
-            <div class="btn" id="btn1">
-            Opcion 1
+        <div class="pregunta" id="pregunta">
+            <!-- La pregunta se mostrará aquí -->
         </div>
-        <div class="btn" id="btn2">
-            Opcion 2
-        </div>
-        <div class="btn" id="btn3">
-            Opcion 3
-        </div>
-        <div class="btn" id="btn4">
-            Opcion 4
-        </div>
+        <img src="" class="imagen" id="imagenPregunta" alt="Imagen de la pregunta">
+    </div>
+    <div class="botoneS">
+        <div class="btn" id="btn1">Opción 1</div>
+        <div class="btn" id="btn2">Opción 2</div>
+        <div class="btn" id="btn3">Opción 3</div>
+        <div class="btn" id="btn4">Opción 4</div>
     </div>
     <div class="contenedorBotonesFinales">
         <div class="botones">
             <button class="botonFinal Atras">
                 <a href="../leccionesLista.html">Ver Lecciones</a>
             </button>
-            <button class="botonFinal Completado" id="botonCompletado" disabled >
+            <button class="botonFinal Completado" id="botonCompletado" disabled>
                 <a href="">Lección Completada</a>
             </button>
             <button class="botonFinal SiguienteLeccion">
                 <a href="./leccion2.html">Siguiente Lección</a>
             </button>
-            </div>
         </div>
     </div>
+</div>
+
     
 </body>
 

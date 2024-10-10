@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/lecciones.css">
     <script src="../scripts/index.js" defer ></script>
+    <script src="../scripts/test.js"></script>
     <title>Números del 1 al 20</title>
 </head>
 <body>
@@ -30,7 +31,7 @@
     </header>
 
     <h1 class="tituloLeccion">Números del 1 al 20</h1>
-    div class="contenedorLeccion">
+    <div class="contenedorLeccion">
         <h2 class="subTitulo">Introducción</h2>
         <p>En esta lección aprenderás a cómo expresar los números del 1 al 20 en lenguaje de señas. Es importante dominar estos números, ya que se utilizan con frecuencia en la vida diaria para contar, expresar edades, números telefónicos, etc. Al finalizar esta lección, serás capaz de comprender y comunicarte utilizando estos números.</p> 
         <br>
@@ -39,17 +40,50 @@
         
         <p>A continuación te presentamos un video en el que podrás observar cómo se realizan los signos de los números del 1 al 20. Míralo las veces que sean necesarias.:</p>
         <div class="contenedorVideo">
-            <!--iframe-->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/CuF2YwUd1Yk?si=S4hZBXogxme4CYWJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
         <h2>Guía Visual de los números del 1 al 20</h2>
-        <p>Aquí tienes una imagen con la que guiarte. Puedes usarla como referencia visual para repasar las señas. ¡Recuerda que la práctica hace al maestro!:</p>
-        <!--<img src="../images/abecedario/abecedarioCompleto.png" class="imagenAbecedario" alt="Números del 1 al 20"> -->
+        <p>Aquí tienes una imagen en la que se muestran números más grandes. Puedes usarla como referencia visual para repasar las señas. ¡Recuerda que la práctica hace al maestro!:</p>
+        <img src="../images/numeros.png" class="imagenAbecedario" alt="Números del 1 al 20">
         <h2 class="subTitulo">Juego Interactivo</h2>
         <p>¡Aprende jugando! En esta ocasión tendrás que unir cada signo con su número.</p>
         <!--Juego a continuación-->
+        <img src="../images/UNO.png" style="width: 150px; height: auto;" alt="">
 
         <h2 class="subTitulo">Evaluación de la lección</h2>
         <p>Hora de reforzar los conocimientos aprendidos en esta lección. Tienes que responder a las siguientes 10 preguntas:</p>
+
+        <div class="contenedorEvaluacion">
+            <div class="encabezado">
+                <div class="leccionNumero">
+                    <!-- Aquí puedes agregar un número de lección si es necesario -->
+                </div>
+                <div class="pregunta" id="pregunta">
+                    <!-- La pregunta se mostrará aquí -->
+                </div>
+                <img data-src="" class="imagen" id="imagenPregunta" alt="Imagen de la pregunta">
+            </div>
+            <div class="botoneS">
+                <div class="btn" id="btn1">Opción 1</div>
+                <div class="btn" id="btn2">Opción 2</div>
+                <div class="btn" id="btn3">Opción 3</div>
+                <div class="btn" id="btn4">Opción 4</div>
+            </div>
+            <div class="contenedorBotonesFinales">
+                <div class="botones">
+                    <button class="botonFinal Atras">
+                        <a href="../leccionesLista.html">Ver Lecciones</a>
+                    </button>
+                    <button class="botonFinal Completado" id="botonCompletado" disabled>
+                        <a href="">Lección Completada</a>
+                    </button>
+                    <button class="botonFinal SiguienteLeccion">
+                        <a href="./leccion2.html">Siguiente Lección</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
 </body>
 </html>
