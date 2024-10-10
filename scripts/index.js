@@ -151,38 +151,38 @@ const preguntas = [
     {
         pregunta: "¿A qué letra del abecedario corresponde este signo?",
         opciones: ["T", "X", "A", "M"],
-        respuestaCorrecta: 0,
+        respuestaCorrecta: 2,
         imagen: "../images/abecedario/A.png"
     },
     {
         pregunta: "¿A qué letra del abecedario corresponde este signo?",
-        opciones: ["T", "X", "A", "M"],
-        respuestaCorrecta: 0,
-        imagen: "../images/abecedario/A.png" 
+        opciones: ["W", "K", "P", "E"],
+        respuestaCorrecta: 3,
+        imagen: "../images/abecedario/E.png" 
     },
     {
         pregunta: "¿A qué letra del abecedario corresponde este signo?",
-        opciones: ["T", "X", "A", "M"],
-        respuestaCorrecta: 0,
-        imagen: "../images/abecedario/A.png" 
+        opciones: ["I", "C", "F", "D"],
+        respuestaCorrecta: 2,
+        imagen: "../images/abecedario/F.png" 
     },
     {
         pregunta: "¿A qué letra del abecedario corresponde este signo?",
-        opciones: ["T", "X", "A", "M"],
+        opciones: ["U", "G", "N", "L"],
         respuestaCorrecta: 0,
-        imagen: "../images/abecedario/A.png"
+        imagen: "../images/abecedario/U.png"
     },
     {
         pregunta: "¿A qué letra del abecedario corresponde este signo?",
-        opciones: ["T", "X", "A", "M"],
-        respuestaCorrecta: 0,
-        imagen: "../images/abecedario/A.png"
+        opciones: ["Q", "F", "T", "L"],
+        respuestaCorrecta: 3,
+        imagen: "../images/abecedario/L.png"
     },
     {
         pregunta: "¿A qué letra del abecedario corresponde este signo?",
-        opciones: ["T", "X", "A", "M"],
+        opciones: ["Z", "R", "O", "E"],
         respuestaCorrecta: 0,
-        imagen: "../images/abecedario/A.png" 
+        imagen: "../images/abecedario/R.png" 
     }
 ];
 
@@ -319,7 +319,14 @@ function seleccionarOpcion(opcionSeleccionada) {
             cargarPregunta();
         }, 2000); // Esperar 2 segundos antes de cargar la siguiente pregunta
     } else {
-        document.querySelector('.contenedorEvaluacion').innerHTML = '<h2>¡Has completado las preguntas!</h2>';
+        // Crear el mensaje final
+        const contenedorEvaluacion = document.querySelector('.contenedorEvaluacion');
+        const mensajeFinal = document.createElement('h2');
+        mensajeFinal.textContent = '¡Has completado las preguntas!';
+    
+        // Insertar el mensaje antes de los botones finales
+        const botonFinal= document.querySelector('.contenedorBotonesFinales'); // Asegúrate de tener una clase o identificador específico para los botones
+        contenedorEvaluacion.insertBefore(mensajeFinal, botonFinal);
     }
 }
 
