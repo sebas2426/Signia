@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/lecciones.css">
+    <link rel="stylesheet" href="../styles/parejas.css">
+    <script src="../scripts/unirParejas.js" defer></script>
     <script src="../scripts/index.js" defer ></script>
     <script src="../scripts/test.js"></script>
     <title>Números del 1 al 20</title>
@@ -48,8 +50,33 @@
         <img src="../images/numeros.png" class="imagenAbecedario" alt="Números del 1 al 20">
         <h2 class="subTitulo">Juego Interactivo</h2>
         <p>¡Aprende jugando! En esta ocasión tendrás que unir cada signo con su número.</p>
+
         <!--Juego a continuación-->
-        <img src="../images/UNO.png" style="width: 150px; height: auto;" alt="">
+        <div class="contenedorParejas">
+            <div class="imagenesParejas">
+                <button class="botonParejas" data-pareja2="0"><img src="../images/numeros/CERO.png" alt=""></button>
+                <button class="botonParejas" data-pareja2="3"><img src="../images/numeros/TRES.png" alt=""></button>
+                <button class="botonParejas" data-pareja2="6"><img src="../images/numeros/SEIS.png" alt=""></button>
+            </div>
+
+            <div class="textoParejas">
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="3">#</div>
+                    <div class="divParejas tres">3</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="0"="">#</div>
+                    <div class="divParejas cero">0</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="6">#</div>
+                    <div class="divParejas seis">6</div>
+                </div>
+        </div>
+        </div>
+
+        
+        
 
         <h2 class="subTitulo">Evaluación de la lección</h2>
         <p>Hora de reforzar los conocimientos aprendidos en esta lección. Tienes que responder a las siguientes 10 preguntas:</p>
@@ -57,7 +84,6 @@
         <div class="contenedorEvaluacion">
             <div class="encabezado">
                 <div class="leccionNumero">
-                    <!-- Aquí puedes agregar un número de lección si es necesario -->
                 </div>
                 <div class="pregunta" id="pregunta">
                     <!-- La pregunta se mostrará aquí -->

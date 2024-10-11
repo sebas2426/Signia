@@ -1,0 +1,79 @@
+/*UNE LAS PAREJAS*/
+.contenedorParejas{
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 20px;
+    gap: 1.5rem;
+    width: 400px;
+    height: auto;
+    background-color: lightblue;
+  }
+  .imagenesParejas{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .textoParejas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: flex-end;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+    padding: 10px;
+    background-color: lightgreen;
+  }
+
+  .opcionesParejas{
+    display: flex;
+    text-align: center;
+  }
+
+  .divBlanco{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 110px;
+    margin-right: 20px;
+    background-color: rgb(211, 153, 76);
+    border: 2px solid white;
+  }
+
+  .divParejas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 110px;
+    background-color: brown;
+  }
+.botonParejas{
+    border: 2px solid rgb(212, 82, 82);
+    border-radius: 5px;
+    width: 100px;
+    height: 110px;
+    background-color: rgb(244, 250, 250);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.botonParejas img{
+    width: 100%;
+    height: auto;
+}
+
+.botonParejas.dragging {
+    /* Cuando esté en modo de arrastre, lo hacemos más grande y añadimos efectos */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+    opacity: 0.8; /* Le damos un poco de transparencia */
+    cursor: grabbing; /* Cambiamos el cursor para indicar que está agarrado */
+}
+
+.botonParejas.returning {
+    transition: transform 0.5s ease-in-out; /* Animación suave de regreso */
+}
