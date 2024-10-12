@@ -129,3 +129,4 @@ function seleccionarOpcion(opcionSeleccionada) {
 
 // Inicia el test cargando las preguntas desde el archivo JSON
 cargarPreguntasDesdeJSON();
+
