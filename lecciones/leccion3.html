@@ -3,9 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="../images/icono-web.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/lecciones.css">
+    <script src="../scripts/index.js" defer></script>
+    <script src="../scripts/test.js" defer></script>
+    <title>Saludos</title>
 </head>
 <body>
-    <h1>hola</h1>
+    <header>
+        <a href="../index.html">
+        <div class="headerDerecha">
+            <img  class=".logo" src="../images/icono-web.svg" alt="Logo de Signia">
+            <h2>Signia</h2>
+        </div>
+        </a>
+        <button class="abrirMenu" id="abrir" ><i class="bi bi-list"></i></button>
+            <nav class="navHeader" id="nav" >
+                <ul class="navList">
+                    <button class="cerrarMenu" id="cerrar"><i class="bi bi-x"></i></button>
+                    <li><button><a href="../leccionesLista.html">Lecciones</button></a></li>
+                    <li><button><a href="../acceder.html">Acceder</button></a></li>
+                    <li><button class="crearCuenta"><a href="../login.html">Crear Cuenta</button></a></li>
+                </ul>
+            </nav>
+    </header>
+
+    <h1 class="tituloLeccion">Saludos</h1>
+    <div class="contenedorLeccion">
+        <h2 class="subTitulo">Introducción</h2>
+        <p>¡Bienvenido/a a la lección 3! En esta sección, aprenderás sobre los saludos básicos en el lenguaje de señas. Los saludos son esenciales para iniciar conversaciones y establecer conexiones con los demás. A través de videos instructivos y juegos interactivos, descubrirás diferentes formas de saludar. ¡Empezarás a llevar tus habilidades de comunicación a otro nivel!.</p> 
+        <br>
+        <br>
+        <h2 class="subTitulo">¡Comencemos!</h2>
+        
+        <p>Te presentamos un vídeo en el que podrás ver algunos de los saludos más utilizados en lenguaje de señas. Míralo las veces que sean necesarias.:</p>
+        <div class="contenedorVideo">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/CuF2YwUd1Yk?si=S4hZBXogxme4CYWJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+
+
+
+
+    <!--EVALUACION-->
+    <h2 class="subTitulo">Evaluación de la lección</h2>
+        <p>Hora de reforzar los conocimientos aprendidos en esta lección. Tienes que responder a las siguientes 10 preguntas:</p>
+
+        <div class="contenedorEvaluacion">
+            <div class="encabezado">
+                <div class="leccionNumero">
+                </div>
+                <div class="pregunta" id="pregunta">
+                    <!-- La pregunta se mostrará aquí -->
+                </div>
+                <img data-src="" class="imagen" id="imagenPregunta" alt="Imagen de la pregunta">
+            </div>
+            <div class="botoneS">
+                <div class="btn" id="btn1">Opción 1</div>
+                <div class="btn" id="btn2">Opción 2</div>
+                <div class="btn" id="btn3">Opción 3</div>
+                <div class="btn" id="btn4">Opción 4</div>
+            </div>
+            <div class="contenedorBotonesFinales">
+                <div class="botones">
+                    <button class="botonFinal Atras">
+                        <a href="../leccionesLista.html">Ver Lecciones</a>
+                    </button>
+                    <button class="botonFinal Completado" id="botonCompletado" disabled>
+                        <a href="">Lección Completada</a>
+                    </button>
+                    <button class="botonFinal SiguienteLeccion">
+                        <a href="./leccion4.html">Siguiente Lección</a>
+                    </button>
+                </div>
+            </div>
+        </div>
 </body>
 </html>

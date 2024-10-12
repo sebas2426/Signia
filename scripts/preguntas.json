@@ -199,6 +199,98 @@
                     "imagen": null
                 }
             ]
+        },
+
+        {
+            "id": 3,
+            "titulo": "Lección 3: Saludos",
+            "preguntas": [
+                {
+                    "pregunta": "¿Weyyyyyy?",
+                    "opciones": [
+                        "Un sistema para representar números",
+                        "Un sistema de escritura visual",
+                        "Un sistema de signos manuales para representar letras del abecedario",
+                        "Un sistema de signos para expresar emociones"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": null
+                },
+                {
+                    "pregunta": "¿Cuál es la principal función del abecedario dactilológico?",
+                    "opciones": [
+                        "Expresar palabras completas en lenguaje de señas",
+                        "Deletrear nombres y palabras que no tienen un signo específico",
+                        "Hacer gestos con las manos",
+                        "Contar números"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": null
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": ["T", "X", "A", "M"],
+                    "respuestaCorrecta": 0,
+                    "imagen": "../images/abecedario/T.png"
+                },
+                {
+                    "pregunta": "¿Todas las letras del abecedario dactilológico se pueden hacer con una mano?",
+                    "opciones": [
+                        "No",
+                        "La F y la H usan las dos manos",
+                        "Sí",
+                        "Todas las letras usan las dos manos"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": null
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": ["T", "X", "A", "M"],
+                    "respuestaCorrecta": 2,
+                    "imagen": "../images/abecedario/A.png"
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "W","K","P","E"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "../images/abecedario/E.png"
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "I","C","F","D"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "../images/abecedario/F.png"
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "U","G","N","L"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "../images/abecedario/U.png"
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "Q","F","T","L"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "../images/abecedario/L.png"
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "Z","R","O","E"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "../images/abecedario/Z.png"
+                }
+            ]
         }
     ]
 }
