@@ -21,45 +21,11 @@ const manejarBoton = (boton) => {
     boton.addEventListener('dragstart', (event) => {
         event.dataTransfer.setData('pareja', boton.getAttribute('data-pareja2'));
         boton.classList.add('dragging');
-        event.dataTransfer.effectAllowed = 'move'; // Permitir movimiento
     });
 
     // Evento que se dispara cuando el arrastre termina
     boton.addEventListener('dragend', (event) => {
         boton.classList.remove('dragging');
-    });
-
-    // Manejo de eventos táctiles para dispositivos móviles
-    boton.addEventListener('touchstart', (event) => {
-        event.preventDefault(); // Evita el scroll de la página
-        const touch = event.touches[0];
-        const pareja = boton.getAttribute('data-pareja2');
-
-        // Inicializa el arrastre manual
-        boton.classList.add('dragging');
-
-        // Guarda la posición inicial
-        const initialX = touch.clientX - rect.left;
-        const initialY = touch.clientY - rect.top;
-
-        const handleTouchMove = (moveEvent) => {
-            moveEvent.preventDefault(); // Evita el scroll de la página
-            const touchMove = moveEvent.touches[0];
-            boton.style.transform = `translate(${touchMove.clientX - initialX}px, ${touchMove.clientY - initialY}px)`;
-        };
-
-        const handleTouchEnd = () => {
-            boton.classList.remove('dragging');
-            boton.style.transform = ''; // Resetea el estilo después del arrastre
-
-            // Aquí puedes agregar la lógica de verificación de drop si es necesario
-            // Por ejemplo, puedes comprobar si el botón está sobre un espacio en blanco
-            document.removeEventListener('touchmove', handleTouchMove);
-            document.removeEventListener('touchend', handleTouchEnd);
-        };
-
-        document.addEventListener('touchmove', handleTouchMove);
-        document.addEventListener('touchend', handleTouchEnd);
     });
 };
 
@@ -113,9 +79,10 @@ const manejarArrastre = (espacio, nivel) => {
                 // Después de 1 segundo, el botón regresa a su posición original
                 setTimeout(() => {
                     const originalPosition = posicionesOriginales.get(boton);
-                    
+
                     // Creamos una transición suave de regreso
                     boton.classList.add('returning');
+                    boton.style.transition = 'transform 0.5s ease'; // Añadir transición para suavizar el movimiento
                     boton.style.transform = `translate(${originalPosition.left - boton.getBoundingClientRect().left}px, ${originalPosition.top - boton.getBoundingClientRect().top}px)`;
 
                     // Después de la transición, movemos el botón de vuelta a la fila original
@@ -124,8 +91,8 @@ const manejarArrastre = (espacio, nivel) => {
                         boton.classList.remove('returning');
 
                         // Volvemos a colocar el botón en su contenedor original (la fila de botones)
-                        const imagenesParejas = espacio.closest('.nivel1') ? espacio.closest('.nivel1').querySelector('.imagenesParejas') : 
-                            espacio.closest('.nivel2') ? espacio.closest('.nivel2').querySelector('.imagenesParejas') : 
+                        const imagenesParejas = espacio.closest('.nivel1') ? espacio.closest('.nivel1').querySelector('.imagenesParejas') :
+                            espacio.closest('.nivel2') ? espacio.closest('.nivel2').querySelector('.imagenesParejas') :
                             espacio.closest('.nivel3').querySelector('.imagenesParejas');
                         imagenesParejas.appendChild(boton); // Movemos el botón de vuelta a la fila
 
@@ -171,5 +138,3 @@ siguienteNivelBtn.forEach(btn => {
         }
     });
 });
-
-
