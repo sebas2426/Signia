@@ -1,4 +1,4 @@
-/*UNE LAS PAREJAS*/
+/* UNE LAS PAREJAS */
 .contenedorParejas {
   display: flex;
   justify-content: center;
@@ -61,6 +61,16 @@
   margin-right: 20px;
   background-color: blue;
   flex-shrink: 0;
+  border: 2px dashed #ccc; /* Borde inicial */
+  transition: border 0.5s ease; /* Transición para el borde */
+}
+
+.divBlanco.correcto {
+  border: 2px solid green; /* Borde verde si es correcto */
+}
+
+.divBlanco.incorrecto {
+  border: 2px solid red; /* Borde rojo si es incorrecto */
 }
 
 .divParejas {
@@ -80,6 +90,7 @@
   height: 110px;
   background-color: rgb(244, 250, 250);
   transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
 }
 
 .botonParejas img {
@@ -87,14 +98,27 @@
   height: auto;
 }
 
+/* Al seleccionar el botón (toque en móvil o clic en desktop) */
+.botonParejas.selected {
+  border: 2px solid blue; /* Resalta el botón seleccionado */
+  background-color: rgba(0, 0, 255, 0.2); /* Fondo azul para indicar selección */
+}
+
+.botonParejas.returning {
+  transition: transform 1s ease-in-out;
+}
+
+/* Nueva clase para la animación de desplazamiento al soltar en un div blanco */
+.botonParejas.moving {
+  transition: transform 1s ease-in-out;
+  transform: translate(0, 0); /* Se ajustará dinámicamente en JS para el movimiento */
+}
+
+/* Borde de arrastre activo en desktop (visualización cuando se está arrastrando) */
 .botonParejas.dragging {
   transform: scale(1.1);
   opacity: 0.8;
   cursor: grabbing;
-}
-
-.botonParejas.returning {
-  transition: transform 0.5s ease-in-out;
 }
 
 @media screen and (max-width:650px){
