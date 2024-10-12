@@ -101,6 +101,7 @@
   .contenedorParejas {
     width: 100%; /* Aumenta el ancho en pantallas pequeñas */
     padding: 0.5rem;
+    margin: 0;
 }
 
 .imagenesParejas, .opcionesParejas {
