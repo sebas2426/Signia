@@ -2,16 +2,25 @@
 .contenedorParejas{
     display: flex;
     justify-content: center;
-    align-items: space-between;
+    align-items: center;
     flex-wrap: wrap;
     padding: 10px;
     margin: 20px;
     gap: 1.5rem;
-    width: 400px;
+    width: 550px;
     height: auto;
-    background-color: lightblue;
+    border: 2px solid #f1f1f1;
+    border-radius: 5px;
+    position: relative;
+  }
+  .contenedorParejas h2{
+    position: absolute; /* Para posicionar el título dentro del contenedor */
+    top: 10px; /* Al inicio del contenedor (parte superior) */
+    left: 50%; /* Centrado en el eje X */
+    transform: translateX(-50%); /* Compensa el ancho del elemento para centrarlo */
   }
   .imagenesParejas{
+    margin-top: 50px;
     display: flex;
     flex-grow: 1;
     justify-content: center;
@@ -19,19 +28,23 @@
   }
 
   .textoParejas{
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     align-self: flex-end;
     width: 100%;
     height: auto;
-    gap: 20px;
+    gap: 10px;
     padding: 10px;
-    background-color: lightgreen;
+    border: 2px solid whitesmoke;
+    border-radius: 2px;
   }
 
   .opcionesParejas{
     display: flex;
+    margin: 0;
     text-align: center;
   }
 
@@ -42,8 +55,7 @@
     width: 100px;
     height: 110px;
     margin-right: 20px;
-    background-color: rgb(211, 153, 76);
-    border: 2px solid white;
+    background-color: #f0d2d2;
   }
 
   .divParejas{
@@ -52,11 +64,12 @@
     align-items: center;
     width: 100px;
     height: 110px;
-    background-color: brown;
+    background-color: rgb(245, 247, 245);
+    border: 2px solid rgb(34, 22, 85);
+    border-radius: 2px;
+    font-size: 1.5rem;
   }
 .botonParejas{
-    border: 2px solid rgb(212, 82, 82);
-    border-radius: 5px;
     width: 100px;
     height: 110px;
     background-color: rgb(244, 250, 250);
