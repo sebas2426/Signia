@@ -127,26 +127,5 @@ function seleccionarOpcion(opcionSeleccionada) {
     }
 }
 
-// Prevenir el desplazamiento de la pantalla al arrastrar imágenes
-let arrastrando = false;
-
-document.querySelectorAll('.botoneS .btn').forEach(btn => {
-    btn.addEventListener('touchstart', (e) => {
-        arrastrando = true; // Cambia el estado de arrastrando
-    });
-
-    btn.addEventListener('touchend', (e) => {
-        arrastrando = false; // Cambia el estado de arrastrando
-    });
-});
-
-// Añadir un listener global para evitar el desplazamiento
-window.addEventListener('touchmove', function (e) {
-    if (arrastrando) {
-        e.preventDefault(); // Prevenir el comportamiento de desplazamiento
-    }
-});
-
 // Inicia el test cargando las preguntas desde el archivo JSON
 cargarPreguntasDesdeJSON();
-
