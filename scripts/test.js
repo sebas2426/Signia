@@ -42,7 +42,7 @@ function cargarPregunta() {
         document.getElementById('btn3'),
         document.getElementById('btn4')
     ];
-    
+
     // Reiniciar los colores de fondo de los botones
     opcionesBotones.forEach(btn => {
         btn.style.backgroundColor = ''; // Resetea el color de fondo
@@ -63,7 +63,7 @@ function cargarPregunta() {
             }, 50); // Retraso de 0 para que el cambio de opacidad se aplique
         } else {
             imagenPregunta.style.opacity = '0'; // Desvanecer
-                imagenPregunta.style.display = 'none'; // Ocultar después de la transición
+            imagenPregunta.style.display = 'none'; // Ocultar después de la transición
         }
 
         // Limpia las opciones anteriores
@@ -71,9 +71,16 @@ function cargarPregunta() {
         opcionesContainer.forEach((btn, index) => {
             if (preguntaActual.opciones[index]) {
                 btn.innerText = preguntaActual.opciones[index];
+                // Añadir evento tanto para click como para touch
                 btn.onclick = () => {
                     seleccionarOpcion(index); // Llama a la función con el índice de la opción seleccionada
                 };
+
+                // Agregar eventos táctiles para compatibilidad móvil
+                btn.addEventListener('touchstart', (e) => {
+                    e.preventDefault(); // Evitar el comportamiento predeterminado
+                    seleccionarOpcion(index); // Llama a la función con el índice de la opción seleccionada
+                });
             } else {
                 btn.innerText = ''; // Limpia si no hay más opciones
                 btn.onclick = null; // Limpia el evento click
