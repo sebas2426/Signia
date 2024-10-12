@@ -121,7 +121,7 @@
                     "imagen": null
                 },
                 {
-                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "pregunta": "¿FUNCIONA?",
                     "opciones": ["T", "X", "A", "M"],
                     "respuestaCorrecta": 0,
                     "imagen": "../images/abecedario/T.png"
