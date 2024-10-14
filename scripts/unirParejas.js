@@ -35,6 +35,9 @@ const manejarToques = () => {
                 const parejaCorrecta = espacio.getAttribute('data-pareja2');
                 const parejaArrastrada = botonSeleccionado.getAttribute('data-pareja2');
 
+                // Quitamos el fondo azul (la clase 'selected') antes de mover la imagen
+                botonSeleccionado.classList.remove('selected');
+
                 // Verificamos si la pareja es correcta
                 if (parejaArrastrada === parejaCorrecta) {
                     // Creamos la animación para mover el botón
@@ -55,7 +58,7 @@ const manejarToques = () => {
                         espacio.appendChild(botonSeleccionado); // Añadimos el botón al espacio
                         botonSeleccionado.style.transform = ''; // Reseteamos la transformación
                         botonSeleccionado.setAttribute('draggable', false); // Deshabilitamos el arrastre
-                        espacio.style.border = '2px solid green'; // Borde verde para indicar éxito
+                        botonSeleccionado.style.border = '2px solid green'; // Borde verde para indicar éxito
 
                         // Verificamos el nivel y sumamos al contador de parejas correctas
                         if (botonSeleccionado.closest('.nivel1')) {
@@ -76,9 +79,6 @@ const manejarToques = () => {
                     }, 500); // Tiempo de la transición (0.5 segundos)
 
                 } else {
-                    // Si es incorrecto, borde rojo
-                    espacio.style.border = '2px solid red';
-
                     // Mover el botón a la posición del espacio blanco incorrecto
                     const espacioRect = espacio.getBoundingClientRect();
                     const botonRect = botonSeleccionado.getBoundingClientRect();
@@ -89,33 +89,38 @@ const manejarToques = () => {
                     botonSeleccionado.style.transition = 'transform 0.5s ease';
                     botonSeleccionado.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 
-                    // Después de 1 segundo, el botón regresa a su posición original
+                    // Después de la animación, aplicamos el borde rojo
                     setTimeout(() => {
-                        const originalPosition = posicionesOriginales.get(botonSeleccionado);
+                        botonSeleccionado.style.border = '2px solid red'; // Borde rojo para indicar error
 
-                        // Animación para el regreso
-                        botonSeleccionado.classList.add('returning');
-                        botonSeleccionado.style.transition = 'transform 0.5s ease'; // Añadimos transición
-                        botonSeleccionado.style.transform = `translate(${originalPosition.left - botonSeleccionado.getBoundingClientRect().left}px, ${originalPosition.top - botonSeleccionado.getBoundingClientRect().top}px)`;
+                        // Después de 1 segundo, el botón regresa a su posición original
+                        setTimeout(() => {
+                            const originalPosition = posicionesOriginales.get(botonSeleccionado);
 
-                        // Después de la transición, regresamos el botón a su lugar original
-                        botonSeleccionado.addEventListener('transitionend', () => {
-                            botonSeleccionado.style.transform = ''; // Reseteamos el estilo
-                            botonSeleccionado.classList.remove('returning');
+                            // Animación para el regreso
+                            botonSeleccionado.classList.add('returning');
+                            botonSeleccionado.style.transition = 'transform 0.5s ease'; // Añadimos transición
+                            botonSeleccionado.style.transform = `translate(${originalPosition.left - botonSeleccionado.getBoundingClientRect().left}px, ${originalPosition.top - botonSeleccionado.getBoundingClientRect().top}px)`;
 
-                            // Lo devolvemos a su contenedor original (fila de botones)
-                            const imagenesParejas = botonSeleccionado.closest('.nivel1') ? botonSeleccionado.closest('.nivel1').querySelector('.imagenesParejas') :
-                                botonSeleccionado.closest('.nivel2') ? botonSeleccionado.closest('.nivel2').querySelector('.imagenesParejas') :
-                                botonSeleccionado.closest('.nivel3').querySelector('.imagenesParejas');
-                            imagenesParejas.appendChild(botonSeleccionado); // Movemos el botón de vuelta a la fila
+                            // Después de la transición, regresamos el botón a su lugar original
+                            botonSeleccionado.addEventListener('transitionend', () => {
+                                botonSeleccionado.style.transform = ''; // Reseteamos el estilo
+                                botonSeleccionado.classList.remove('returning');
 
-                            // Limpiamos el borde del espacio en blanco después de regresar
-                            espacio.style.border = '';
+                                // Lo devolvemos a su contenedor original (fila de botones)
+                                const imagenesParejas = botonSeleccionado.closest('.nivel1') ? botonSeleccionado.closest('.nivel1').querySelector('.imagenesParejas') :
+                                    botonSeleccionado.closest('.nivel2') ? botonSeleccionado.closest('.nivel2').querySelector('.imagenesParejas') :
+                                    botonSeleccionado.closest('.nivel3').querySelector('.imagenesParejas');
+                                imagenesParejas.appendChild(botonSeleccionado); // Movemos el botón de vuelta a la fila
 
-                            // Reiniciamos la selección
-                            botonSeleccionado = null;
-                        }, { once: true });
-                    }, 1000); // Esperamos 1 segundo antes de que vuelva
+                                // Limpiamos el borde rojo del botón después de regresar
+                                botonSeleccionado.style.border = '';
+
+                                // Reiniciamos la selección
+                                botonSeleccionado = null;
+                            }, { once: true });
+                        }, 1000); // Esperamos 1 segundo antes de que vuelva
+                    }, 500); // Aplicar el borde rojo después de que llegue al div blanco
                 }
             }
         });
