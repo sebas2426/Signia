@@ -80,6 +80,7 @@
     .contenedor {
         width: 100%;
         padding: 0.5rem; 
+        text-align: center;
     }
   
     .fila-senas, .fila-letras {
@@ -101,7 +102,7 @@
     }
   
     #nivelSiguiente {
-      width: 100%; 
+      width: 80%; 
       padding: 1rem; 
   }
   
