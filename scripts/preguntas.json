@@ -99,7 +99,7 @@
             "titulo": "Lección 2: Números del 1 al 20",
             "preguntas": [
                 {
-                    "pregunta": "¿Qué es un número?",
+                    "pregunta": "¿Esta es una pregunta de la lección 2?",
                     "opciones": [
                         "Un sistema para representar números",
                         "Un sistema de escritura visual",
@@ -110,7 +110,7 @@
                     "imagen": null
                 },
                 {
-                    "pregunta": "¿SKELEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE?",
+                    "pregunta": "¿qwerty?",
                     "opciones": [
                         "Expresar palabras completas en lenguaje de señas",
                         "Deletrear nombres y palabras que no tienen un signo específico",
@@ -206,7 +206,7 @@
             "titulo": "Lección 3: Saludos",
             "preguntas": [
                 {
-                    "pregunta": "¿Weyyyyyy?",
+                    "pregunta": "¿Lección 3?",
                     "opciones": [
                         "Un sistema para representar números",
                         "Un sistema de escritura visual",

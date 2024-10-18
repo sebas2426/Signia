@@ -205,6 +205,11 @@ header{
     margin: 10px 0; 
 }
 
+iframe{
+    border: 2px solid #e7e5e5;
+    border-radius: 2px;
+}
+
 .descripcionImagenes p {
     font-size: 1em; 
     line-height: 1.5; 
