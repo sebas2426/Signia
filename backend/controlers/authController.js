@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken')
 const bcryptjs = require('bcryptjs')
 const conexion = require('../database/db')
 const {promisify} = require('util')
+const cookieParser = require('cookie-parser')
+
 
 //procedimiento para registrarse
 exports.login = async (req,res)=>{
@@ -12,7 +14,6 @@ exports.login = async (req,res)=>{
         const pass = req.body.pass
 
         let passHash = await bcryptjs.hash(pass, 8)
-        //console.log(passHash)
         conexion.query('INSERT INTO users SET ?', {user:user, name:name, pass:passHash}, (error, results)=>{
             if(error){console.log(error)}
             res.redirect('/')
@@ -22,4 +23,67 @@ exports.login = async (req,res)=>{
     }
 
     
+}
+
+exports.acceder = async (req, res)=>{
+    try {
+       const user = req.body.user
+        const pass = req.body.pass
+        
+        if(!user || !pass){
+            res.render('acceder', {
+                alert:true,
+                alertTitle: "Advertencia",
+                alertMessage: "Ingrese un usuario y contraseña",
+                alertIcon: "Info",
+                showConfirmButton: true,
+                timer:false,
+                ruta: 'acceder'
+            })
+        }else{
+            conexion.query('SELECT * FROM users WHERE user = ?', [user], async (error, results) =>{
+                if(results.length == 0 || ! (await bcryptjs.compare(pass,results[0].pass))){
+                    res.render('acceder', {
+                        alert:true,
+                        alertTitle: "Error",
+                        alertMessage: "Usuario y/o contraseña incorrectos",
+                        alertIcon: "error",
+                        showConfirmButton: true,
+                        timer:false,
+                        ruta: 'acceder'
+                    })
+                }else{
+                    //inicio de sesión OK
+                    const id = results[0].id
+                    const token = jwt.sign({id:id}, process.env.JWT_SECRETO,{
+                        expiresIn: process.env.JWT_TIEMPO_EXPIRA
+                    })
+                    
+                    console.log(`TOKEN ${token} para el usuario ${user}`)
+                    const cookiesOptions = {
+                        expires: new Date(Date.now()+ process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 1000),
+                        httpOnly: true
+                    }
+                    res.cookie('jwt', token, cookiesOptions)
+                    req.user = results[0]
+                    /*res.render('acceder',res.render('acceder', {
+                        alert:true,
+                        alertTitle: "Conexión Exitosa",
+                        alertMessage: "ACCESO CORRECTO",
+                        alertIcon: "succes",
+                        showConfirmButton: false,
+                        timer:1000
+                    }))*/
+                    res.redirect('/') 
+                }
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.logout = (req,res)=>{
+    res.clearCookie('jwt')
+    return res.redirect('/')
 }
