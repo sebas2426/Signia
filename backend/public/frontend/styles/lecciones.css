@@ -1,0 +1,352 @@
+/*
+  Reset de estilos para CSS
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  * {
+    margin: 0;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  #root, #__next {
+    isolation: isolate;
+  }
+
+  a,
+  a:link,
+  a:hover,
+  a:active{
+    text-decoration: none;
+    color:rgb(31 41 55) ;
+  }
+body{
+    line-height: 1.80;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: white;
+}
+button{
+    border-radius: 5px;
+    background:none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover{
+    --tw-border-opacity: 1;
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity));
+    border: 1px solid rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+
+
+.crearCuenta a{
+    color: white;
+}
+ .crearCuenta:hover{
+    background-color:  rgb(56, 82, 99);
+    --tw-bg-opacity: 1;
+      border:1px solid rgb(200 150 200 / var(--tw-bg-opacity));
+}
+div+div{
+    margin-bottom:4.5vh;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color:rgb(31 41 55) ;
+}
+
+p{
+    color:#374151;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+header{
+    margin-bottom: 10vh;
+}
+
+footer{
+  margin-top: auto;
+}
+
+.tituloLeccion{
+    text-align: center;
+    margin-bottom: 6vh;
+}
+
+.subTitulo{
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+}
+
+.contenedorLeccion{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 55%;
+    margin: 0 10vw;
+}
+
+.contenedorVideo{
+    margin: 2rem 0;
+}
+
+/*LECCION 1*/
+
+.imagenAbecedario{
+  margin-top: 4.5vh;
+}
+
+
+
+/*EVALUACION*/
+.contenedorEvaluacion{
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  gap: 2rem;
+  width: 600px;
+  min-height: 400px;
+  transition: height 0.5s ease;
+}
+.sinImagen{
+  height: 400px;
+}
+.conImagen{
+  height: 600px;
+  margin-bottom: 20px;
+}
+
+.encabezado{
+  background-color:#ffffff ;
+  min-width: 500px;
+  width: 70%;
+  padding: 10px;
+  border: 2px solid rgb(236, 230, 230);
+  border-radius: 2px;
+}
+.leccionNumero{
+  opacity: 0.3;
+  text-align: left;
+}
+
+.botoneS{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: auto;
+
+}
+.imagen{
+ margin: 0 auto;
+  height: auto;
+  width: 220px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.btn{
+  background-color: rgb(253, 253, 253);
+  width: 90%;
+  padding: 10px;
+  margin: 5px;
+  transition: background-color 0.3s;
+  border: 3px solid #f1f1f1;
+  border-radius: 5px;
+}
+.btn:hover{
+  background-color: rgb(233, 238, 241);
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+
+.contenedorBotonesFinales {
+  margin-top: auto;
+  width: 100%; 
+  display: flex; 
+  justify-content: space-between; 
+  padding: 10px; 
+  padding-left: 15px;
+}
+
+.botones {
+  display: flex;
+  gap: 4rem;
+  justify-content: center; 
+  align-items: center;
+  width: 400px;
+  height: auto;
+}
+
+.botonFinal {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  background-color: white;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  flex: 1; 
+  text-align: center; 
+}
+
+.botonFinal a {
+  text-decoration: none;
+  color: inherit; /* Mantiene el color del texto */
+}
+
+.Atras {
+  background-color: white;
+  border: 1px solid #cccccc;
+}
+
+.Completado {
+  background-color: rgb(69, 100, 121);
+  color: white;
+}
+
+.SiguienteLeccion {
+  background-color: white;
+  border: 1px solid #cccccc;
+}
+
+.botonFinal:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.Completado[disabled] a {
+  pointer-events: none; /* Deshabilita la interacción con el enlace */
+  color: grey; /* Cambia el color para mostrar que está deshabilitado */
+}
+
+
+.Completado:not([disabled]) a {
+  pointer-events: auto; /* Reactiva la interacción cuando el botón esté habilitado */
+  color: white; /* Color del texto cuando está habilitado */
+}
+
+.Completado:hover {
+  background-color: rgb(54, 78, 95);
+  color: white;
+}
+
+.SiguienteLeccion:hover {
+  background-color: #e0e0e0;
+}
+
+
+  
+  /*RESPONSIVE*/
+  @media screen and (max-width: 650px) {
+      .contenedorLeccion,
+      p{
+        width: 100%;
+        margin: 0;
+          padding: 10px;
+      }
+      .contenedorVideo {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+        width: 90%;
+        height: 90%;
+        background-color: #000;
+      }
+      
+      .contenedorVideo iframe{
+      width: 100%;
+      height: 100%;
+      
+    }
+
+    /*EVALUACION*/
+
+  .contenedorEvaluacion {
+    width: 100%; 
+    padding: 0.5rem; 
+    gap: 1.5rem; 
+}
+
+.sinImagen {
+    height: 300px; 
+}
+
+.conImagen {
+    height: 400px; 
+    margin-bottom: 15px;
+}
+
+.encabezado {
+    min-width: 100%; 
+    width: 100%; 
+    padding: 10px;
+    font-size: 0.9rem; 
+}
+
+.botoneS {
+    width: 100%; 
+    gap: 1rem; 
+}
+
+.imagen {
+    width: 80%;
+    height: auto; 
+}
+
+.btn {
+  cursor: pointer;
+    width: 100%; 
+    padding: 0.75rem; 
+    font-size: 0.9rem; 
+}
+
+.contenedorBotonesFinales {
+    flex-direction: column; 
+    align-items: center; 
+    gap: 1rem; 
+}
+
+.botones {
+    width: 100%; 
+    flex-direction: column; 
+    gap: 1rem; 
+}
+
+.botonFinal {
+    width: 100%; 
+    padding: 0.75rem; 
+    font-size: 0.9rem; 
+}
+}

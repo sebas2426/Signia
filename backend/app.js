@@ -4,13 +4,13 @@ const cookieParser= require('cookie-parser')
 const path= require('path')
 
 
-const app= express()
+const app = express()
 
 //setear el motor de plantillas
 app.set('view engine', 'ejs')
 
 //setear el front
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //para procesar datos enviados desde forms
 app.use(express.urlencoded({extended:true}))

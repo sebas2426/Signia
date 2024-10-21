@@ -1,7 +1,7 @@
 <header>
     <a href="/">
     <div class="headerDerecha">
-        <img  class=".logo" src="./images/icono-web.svg" alt="Logo de Signia">
+        <img  class=".logo" src="/frontend/images/icono-web.svg" alt="Logo de Signia">
         <h2>Signia</h2>
     </div>
     </a>
@@ -10,8 +10,15 @@
             <ul class="navList">
                 <button class="cerrarMenu" id="cerrar"><i class="bi bi-x"></i></button>
                 <li><button><a href="/lista_lecciones">Lecciones</button></a></li>
-                <li><button><a href="/acceder">Acceder</button></a></li>
-                <li><button class="crearCuenta"><a href="/login">Crear Cuenta</button></a></li>
+                <% if (user) { %>
+                    <li><button class="salirCuenta" ><a href="logout">Salir</a></button></li>
+                <% } else { %>
+                    <li><button><a href="/acceder">Acceder</a></button></li>
+                    <li><button class="crearCuenta"><a href="/login">Crear Cuenta</a></button></li>
+                <% } %>
+
+                <!--<li><button><a href="/acceder">Acceder</button></a></li>
+                <li><button class="crearCuenta"><a href="/login">Crear Cuenta</button></a></li>-->
             </ul>
         </nav>
 </header>

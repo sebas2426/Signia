@@ -38,6 +38,7 @@ exports.acceder = async (req, res)=>{
                 alertIcon: "Info",
                 showConfirmButton: true,
                 timer:false,
+                user: req.user || null,
                 ruta: 'acceder'
             })
         }else{
@@ -50,6 +51,7 @@ exports.acceder = async (req, res)=>{
                         alertIcon: "error",
                         showConfirmButton: true,
                         timer:false,
+                        user: req.user || null,
                         ruta: 'acceder'
                     })
                 }else{
@@ -66,15 +68,7 @@ exports.acceder = async (req, res)=>{
                     }
                     res.cookie('jwt', token, cookiesOptions)
                     req.user = results[0]
-                    /*res.render('acceder',res.render('acceder', {
-                        alert:true,
-                        alertTitle: "Conexión Exitosa",
-                        alertMessage: "ACCESO CORRECTO",
-                        alertIcon: "succes",
-                        showConfirmButton: false,
-                        timer:1000
-                    }))*/
-                    res.redirect('/') 
+                    return res.redirect('/lista_lecciones') 
                 }
             })
         }

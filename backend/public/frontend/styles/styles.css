@@ -1,0 +1,521 @@
+/*
+  Reset de estilos para CSS
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  * {
+    margin: 0;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  #root, #__next {
+    isolation: isolate;
+  }
+
+  a,
+  a:link,
+  a:hover,
+  a:active{
+    text-decoration: none;
+    color:rgb(31 41 55) ;
+  }
+body{
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+button{
+    border-radius: 5px;
+    background:none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover{
+    --tw-border-opacity: 1;
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity));
+    border: 1px solid rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+ .crearCuenta:hover{
+    background-color:  rgb(56, 82, 99);
+    --tw-bg-opacity: 1;
+      border:1px solid rgb(200 150 200 / var(--tw-bg-opacity));
+}
+
+div+div{
+    margin-bottom:4.5vh;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color:rgb(31 41 55) ;
+}
+
+p{
+    color:#374151;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.parrafoTitulo{
+    font-size: 1.25rem;
+}
+
+/*index.html*/
+header{
+    align-self: stretch;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 0.80rem;
+    background-color: rgb(250, 250, 248);
+    margin-bottom: 17vh;
+}
+
+.logo{
+    max-width: 5rem;
+}
+
+.headerDerecha{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.headerDerecha img{
+    width: 60px;
+    height: auto;
+}
+
+.navList{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    gap: 1rem;
+}
+
+.abrirMenu,
+.cerrarMenu{
+    display: none;
+}
+
+
+.navHeader .crearCuenta{
+    color: white;
+    background-color:  rgb(69, 100, 121)
+}
+
+.salirCuenta{
+    background-color: #da5050;
+}
+
+.crearCuenta a{
+    color:white;
+}
+
+.contenedorBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.tituloBody{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 50%;
+}
+.tituloBody>h1{
+    font-size: 2.75rem;
+}
+
+.tituloBodyColor{
+    color:rgb(207, 60, 60)
+}
+
+.imagenBody{
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+}
+
+.imagenBody>img{
+    width: 80%;
+    height: auto;
+}
+
+.descripcionBody{
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    margin:4rem 0 4rem 0;
+}
+
+.descripcionPartesBody {
+    margin: 0 auto 5rem auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.descripcionImagenes {
+    flex: 1;
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    max-width: 250px; 
+}
+
+.descripcionImagenes img {
+    width: 100px; 
+    height: auto; 
+    margin-bottom: 15px; 
+    margin: 0 auto 15px auto; 
+    display: block; 
+}
+
+.descripcionImagenes h3 {
+    font-size: 1.5em; 
+    margin: 10px 0; 
+}
+
+iframe{
+    border: 2px solid #e7e5e5;
+    border-radius: 2px;
+}
+
+.descripcionImagenes p {
+    font-size: 1em; 
+    line-height: 1.5; 
+}
+
+footer{
+    border-top: 1px solid gray;
+    margin: 20px;
+}
+.derechos{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+}
+
+.derechos p{
+    font-size: 1rem;
+    margin: 0 2%;
+}
+
+
+/*login.html*/
+
+.contenedorLoginRegistro{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap:1rem;
+    padding: 2rem;
+    width: 450px;
+    height: 500px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border:2px solid rgb(240, 240, 240);
+    background-color: rgb(252, 246, 246);
+    margin-bottom: 4rem;
+}
+
+.contenedorLoginRegistro button,
+.contenedorLoginAcceder button{
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: white;
+    background-color:  rgb(69, 100, 121)
+}
+
+.tituloLoginRegistro{
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.contenedorLoginRegistro button:hover,
+.contenedorLoginAcceder button:hover{
+    background-color:  rgb(56, 60, 99);
+    --tw-bg-opacity: 1;
+      border:1px solid rgb(200 150 200 / var(--tw-bg-opacity));
+}
+
+input{
+    border: 1px solid rgb(187, 186, 184);
+    border-radius: 5px;
+    outline: none;
+}
+input:focus{
+    border:2px solid rgb(57, 57, 145);
+}
+
+/*acceder.html*/
+
+.contenedorLoginAcceder{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap:1rem;
+    padding: 2rem;
+    width: 450px;
+    height: 350px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border:2px solid rgb(240, 240, 240);
+    background-color: rgb(252, 246, 246);
+    margin-bottom: 4rem;
+}
+
+
+/*leccionesLista.html*/
+
+.bodyLecciones{
+    background-color: #e2e1e1;
+}
+.tituloLecciones{
+    margin-bottom: 2rem;
+}
+
+.contenedorLecciones{
+    margin: 0 auto;
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+    border-radius: 5px;
+
+}
+
+.lecciones{
+    flex: 1 1 calc(30%-20px);
+    max-width: 250px; 
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgb(240, 235, 235);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.lecciones:hover{
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.tituloLecciones,
+.lecciones{
+    text-align: center;
+}
+
+.lecciones h3{
+    min-height: 2rem;
+    font-size: 1.1rem;
+}
+
+.lecciones img{
+    display: block; 
+    width: 100%; 
+    height: auto; 
+    object-fit: cover;
+    max-width: 200px;
+    margin-bottom: 15px; 
+}
+
+.leccion-completada {
+    border: 3px solid green; /* Cambia el grosor y color del borde */
+    border-radius: 5px; /* Opcional: Añade un borde redondeado */
+  }
+
+
+/*RESPONSIVE*/
+@media screen and (max-width: 650px) {
+    /*header*/
+
+    header{
+        margin-bottom: 10vh;
+    }
+
+    .abrirMenu,
+    .cerrarMenu{
+        display: block;
+        border: 0;
+        font-size: 1.25rem;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .abrirMenu{
+        color: #1c1c1c;
+    }
+
+    .cerrarMenu{
+        color: #1c1c1c;
+    }
+
+    .navHeader{
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 1rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        padding: 1rem;
+        background-color: white;
+        box-shadow: 0 0 0 100vmax rgba(0,0,0, .5);
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .navHeader.visible{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .navList{
+        flex-direction: column;
+        align-items: end;
+    }
+
+    /*body*/
+    .contenedorBody{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding: 20px;
+    }
+    .tituloBody{
+        width: 100%;
+    }
+
+    .tituloBody h1{
+        font-size: clamp(1.5rem,7vw,3rem);
+        margin-bottom: 20px;
+    }
+
+    .tituloBody p{
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+
+    .imagenBody img{
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        margin: 20px 0;
+    }
+
+
+
+    .descripcionBody{
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .descripcionBody h2{
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .descripcionBody p{
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .descripcionPartesBody{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .descripcionImagenes{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .descripcionImagenes img{
+        width: 50%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .descripcionImagenes h3{
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .descripcionImagenes p{
+        font-size: 1rem;
+    }
+
+    footer{
+        text-align: center;
+        padding: 10px;
+        color: white;
+    }
+
+
+    /*login.html*/
+
+    .contenedorLoginRegistro{
+        width: 90%;
+    }
+
+    .contenedorLoginAcceder{
+        width: 90%;
+    }
+}
