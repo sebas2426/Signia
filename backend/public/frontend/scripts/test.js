@@ -1,14 +1,19 @@
 let indicePregunta = 0;
 let puntaje = 10; // Inicializa el puntaje en 10
 let preguntas = [];
+document.addEventListener('DOMContentLoaded', function () {
 
 const botonCompletado = document.getElementById('botonCompletado');
+
+});
 const enlaceCompletado = document.getElementById('enlaceCompletado');
 const mensajeEvaluacion = document.getElementById('mensajeEvaluacion');
 
 // Obtener el nombre del archivo actual y extraer el número de la lección
 const nombreArchivo = window.location.pathname.split('/').pop(); // Obtiene el nombre del archivo
 const idLeccion = parseInt(nombreArchivo.replace('leccion', '')); // Extrae el número de lección
+
+console.log('ID de la lección:', idLeccion);
 
 // Función para cargar el archivo JSON con las preguntas
 function cargarPreguntasDesdeJSON() {
@@ -37,16 +42,15 @@ function cargarPreguntasDesdeJSON() {
 function verificarPuntaje() {
     // Deshabilita el botón de completado y el enlace de completado al inicio
     botonCompletado.disabled = true; // Deshabilita el botón
-    enlaceCompletado.href = "#"; // Deshabilita el enlace
 
     // Limpia el contenido anterior
     mensajeEvaluacion.innerHTML = ''; // Limpia cualquier mensaje anterior
 
     // Verifica el puntaje
     if (puntaje >= 5) {
+        console.log('Puntaje actual:', puntaje);
         // Habilitar el botón de completado
         botonCompletado.disabled = false; // Habilita el botón
-        enlaceCompletado.href = `/lista_lecciones?completada=true`; // Agrega un parámetro de consulta
 
         // Mostrar mensaje de completado en el lugar correcto
         const mensajeFinal = document.createElement('h2');
@@ -55,6 +59,35 @@ function verificarPuntaje() {
         // Coloca el mensaje justo después del contenedor del test
         const contenedorTest = document.querySelector('.contenedorTest'); // Asegúrate de que esta clase apunte al contenedor del test
         mensajeEvaluacion.appendChild(mensajeFinal);
+
+    // Obtener el ID de la lección
+const pathSegments = window.location.pathname.split('/');
+const leccionId = pathSegments[pathSegments.length - 1]; // Suponiendo que el ID es el último segmento
+
+
+    // Agregar un evento al botón de completado
+    botonCompletado.addEventListener('click', function() {
+        // Enviar la solicitud POST a la base de datos
+        fetch('/completar-leccion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ leccionId }),
+        })
+        .then(response => {
+            if (response.ok) {
+                // Redirigir a la página de lista de lecciones con el parámetro de consulta
+                window.location.href = `/lista_lecciones?completada=true`;
+            } else {
+                alert('Error al guardar la lección completada');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un problema con la conexión al servidor.');
+        });
+    });
 
     } else {
         // Mostrar el mensaje de que se necesita volver a intentar

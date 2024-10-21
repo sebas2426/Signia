@@ -1,0 +1,35 @@
+<!--EVALUACION-->
+<h2 class="subTitulo">Evaluación de la lección</h2>
+<p>Hora de reforzar los conocimientos aprendidos en esta lección. Tienes que responder a las siguientes 10 preguntas:</p>
+
+<div class="contenedorEvaluacion">
+    <div class="encabezado">
+        <div class="leccionNumero">
+            <!-- Aquí puedes agregar un número de lección si es necesario -->
+        </div>
+        <div class="pregunta" id="pregunta">
+            <!-- La pregunta se mostrará aquí -->
+        </div>
+        <img src="" class="imagen" id="imagenPregunta" alt="Imagen de la pregunta">
+    </div>
+    <div class="botoneS">
+        <div class="btn" id="btn1">Opción 1</div>
+        <div class="btn" id="btn2">Opción 2</div>
+        <div class="btn" id="btn3">Opción 3</div>
+        <div class="btn" id="btn4">Opción 4</div>
+    </div>
+    <div id="mensajeEvaluacion"></div>
+    <div class="contenedorBotonesFinales">
+        <div class="botones">
+            <button class="botonFinal Atras">
+                <a href="/lista_lecciones">Ver Lecciones</a>
+            </button>
+            <button class="botonFinal Completado" id="botonCompletado" disabled>
+                <a href="" id="enlaceCompletado">Lección Completada</a>
+            </button>
+            <button class="botonFinal SiguienteLeccion">
+                <a href="/leccion/<%= siguienteLeccion %>">Siguiente Lección</a>
+            </button>
+        </div>
+    </div>
+</div>

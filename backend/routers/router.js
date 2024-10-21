@@ -41,13 +41,58 @@ router.get('/acceder', (req, res) => {
 });
 
 router.get('/lista_lecciones', (req, res) => {
-    res.render('lista_lecciones', { user: req.user || null, completada: req.query.completada === 'true'});
+    const userId = req.user ? req.user.id : null; // Obtener el ID del usuario
+
+    // Si hay un usuario autenticado, obtener las lecciones completadas
+    if (userId) {
+        const sql = 'SELECT leccion_id FROM niveles_completados WHERE user_id = ?';
+        conexion.query(sql, [userId], (error, results) => {
+            if (error) {
+                return res.status(500).send('Error al obtener las lecciones completadas');
+            }
+
+            const leccionesCompletadas = results.map(row => row.leccion_id);
+            // Renderizar la vista con lecciones completadas
+            res.render('lista_lecciones', { user: req.user, leccionesCompletadas });
+        });
+    } else {
+        // Si no hay usuario autenticado, renderizar la vista sin lecciones completadas
+        res.render('lista_lecciones', { user: null, leccionesCompletadas: [] });
+    }
 });
 
+
+
 // Ruta para lecciones
-router.get('/leccion/1', (req,res)=>{
-    res.render('lecciones/leccion1', {user:req.user || null})
-})
+
+
+router.get('/leccion/:id', (req, res) => {
+    const leccionId = parseInt(req.params.id);
+    const siguienteLeccionId = leccionId + 1;
+
+    // Renderiza la lección actual y pasa la siguiente lección
+    res.render(`lecciones/leccion${leccionId}`, { siguienteLeccion: siguienteLeccionId, user:req.user || null });
+});
+
+
+router.post('/completar-leccion', (req, res) => {
+    const { leccionId } = req.body; // Obtener el ID de la lección del cuerpo de la solicitud
+    const userId = req.user ? req.user.id : null; // Asegúrate de que el usuario esté autenticado
+
+    if (!userId) {
+        return res.status(401).json({ error: 'Usuario no autenticado' });
+    }
+
+    // Realiza la consulta a la base de datos para guardar la lección completada
+    conexion.query('INSERT INTO niveles_completados (user_id, leccion_id) VALUES (?, ?)', [userId, leccionId], (error, results) => {
+        if (error) {
+            console.error('Error al completar la lección:', error); // Muestra el error en la consola
+            return res.status(500).json({ error: 'Error al completar la lección' });
+        }
+        res.status(200).json({ message: 'Lección completada' });
+    });
+});
+
 // Rutas para los métodos del controlador
 router.post('/login', authController.login);
 router.post('/acceder', authController.acceder);
