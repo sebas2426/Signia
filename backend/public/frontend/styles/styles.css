@@ -131,6 +131,11 @@ header{
 
 .salirCuenta{
     background-color: #da5050;
+    padding: 0.8rem 1rem;
+}
+
+.salirCuenta a{
+    color: rgb(240, 240, 240);
 }
 
 .crearCuenta a{
@@ -370,6 +375,14 @@ input:focus{
     border-radius: 5px; /* Opcional: Añade un borde redondeado */
   }
 
+  .informacionUsuario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
 
 /*RESPONSIVE*/
 @media screen and (max-width: 650px) {

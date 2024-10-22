@@ -1,11 +1,8 @@
 let indicePregunta = 0;
 let puntaje = 10; // Inicializa el puntaje en 10
 let preguntas = [];
-document.addEventListener('DOMContentLoaded', function () {
 
 const botonCompletado = document.getElementById('botonCompletado');
-
-});
 const enlaceCompletado = document.getElementById('enlaceCompletado');
 const mensajeEvaluacion = document.getElementById('mensajeEvaluacion');
 

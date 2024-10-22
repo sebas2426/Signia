@@ -264,6 +264,25 @@ footer{
   background-color: #e0e0e0;
 }
 
+#mensajeEvaluacion{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.botonReintentar{
+  background-color: rgb(207, 60, 60) ;
+}
+
+.botonReintentar:hover{
+  color: white;
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
 
   
   /*RESPONSIVE*/

@@ -14,10 +14,13 @@
    <%- include('partials/header') %>
 
     <% if(user){ %>
-        <h1 class="tituloLecciones">Bienvenido/a:
-            <br>
-            <span><%= user.name %></span>
-        </h1>
+        <div class="informacionUsuario">
+            <h1 class="tituloLecciones">Bienvenido/a:
+                <br>
+                <span><%= user.name %></span>
+            </h1>
+            <h2>Lecciones completadas: <%= leccionesCompletadas.length %></h2>
+        </div>
     <% }else{ %>
         <h1 class="tituloLecciones">Nuestras Lecciones</h1>
     <% } %>
@@ -28,14 +31,14 @@
                 <h3>Abecedario</h3>
             </a>
         </div>
-        <div class="lecciones leccion2">
+        <div class="lecciones leccion2 <%= leccionesCompletadas.includes(2) ? 'leccion-completada' : '' %>">
             <a href="/leccion/2">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmIVOqsYK3t8HxkQ_WjwPoP2cwJiV1xDyWIw&s" alt="">
                 <h3>Números del 1 al 20</h3>
             </a>
         </div>
-        <div class="lecciones leccion3">
-            <a href="./leccion3.html">
+        <div class="lecciones leccion3 <%= leccionesCompletadas.includes(3) ? 'leccion-completada' : '' %>">
+            <a href="/leccion/3">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmIVOqsYK3t8HxkQ_WjwPoP2cwJiV1xDyWIw&s" alt="">
                 <h3>Saludos</h3>
             </a>
