@@ -16,7 +16,17 @@ exports.login = async (req,res)=>{
         let passHash = await bcryptjs.hash(pass, 8)
         conexion.query('INSERT INTO users SET ?', {user:user, name:name, pass:passHash}, (error, results)=>{
             if(error){console.log(error)}
-            res.redirect('/')
+            //registro OK
+            res.render('login', {
+                alert:true,
+                alertTitle: "Operación exitosa",
+                alertMessage: "Cuenta creada exitosamente",
+                alertIcon: "success",
+                showConfirmButton: true,
+                timer:false,
+                user: req.user || null,
+                ruta: 'acceder'
+            })
         })
     } catch (error) {
         console.log(error)

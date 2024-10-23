@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    res.render('login', { user: req.user || null });
+    res.render('login', { alert:false, user: req.user || null });
 });
 
 router.get('/acceder', (req, res) => {
