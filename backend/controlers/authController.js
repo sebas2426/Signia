@@ -4,36 +4,88 @@ const conexion = require('../database/db')
 const {promisify} = require('util')
 const cookieParser = require('cookie-parser')
 
-
-//procedimiento para registrarse
-exports.login = async (req,res)=>{
-
+// Procedimiento para registrarse
+exports.login = async (req, res) => {
     try {
-        const name = req.body.name
-        const user = req.body.user
-        const pass = req.body.pass
+        const name = req.body.name;
+        const user = req.body.user;
+        const pass = req.body.pass;
+        let passHash = await bcryptjs.hash(pass, 8);
 
-        let passHash = await bcryptjs.hash(pass, 8)
-        conexion.query('INSERT INTO users SET ?', {user:user, name:name, pass:passHash}, (error, results)=>{
-            if(error){console.log(error)}
-            //registro OK
+        if (!user || !pass) {
             res.render('login', {
-                alert:true,
-                alertTitle: "Operación exitosa",
-                alertMessage: "Cuenta creada exitosamente",
-                alertIcon: "success",
+                alert: true,
+                alertTitle: "Advertencia",
+                alertMessage: "Ingrese un usuario y contraseña",
+                alertIcon: "info",
                 showConfirmButton: true,
-                timer:false,
+                timer: false,
                 user: req.user || null,
-                ruta: 'acceder'
-            })
-        })
+                ruta: 'login'
+            });
+        } else {
+            // Verificar si el usuario ya existe
+            conexion.query('SELECT * FROM users WHERE user = ?', [user], (error, results) => {
+                if (error) {
+                    console.log(error);
+                    res.render('login', {
+                        alert: true,
+                        alertTitle: "Error",
+                        alertMessage: "Error en la base de datos",
+                        alertIcon: "error",
+                        showConfirmButton: true,
+                        timer: false,
+                        user: req.user || null,
+                        ruta: 'login'
+                    });
+                } else if (results.length > 0) {
+                    // Si el usuario ya existe
+                    res.render('login', {
+                        alert: true,
+                        alertTitle: "Advertencia",
+                        alertMessage: "El nombre de usuario ya está en uso",
+                        alertIcon: "info",
+                        showConfirmButton: true,
+                        timer: false,
+                        user: req.user || null,
+                        ruta: 'login'
+                    });
+                } else {
+                    // Registro OK
+                    conexion.query('INSERT INTO users SET ?', { user: user, name: name, pass: passHash }, (error, results) => {
+                        if (error) {
+                            console.log(error);
+                            res.render('login', {
+                                alert: true,
+                                alertTitle: "Error",
+                                alertMessage: "Error al crear la cuenta",
+                                alertIcon: "error",
+                                showConfirmButton: true,
+                                timer: false,
+                                user: req.user || null,
+                                ruta: 'login'
+                            });
+                        } else {
+                            res.render('login', {
+                                alert: true,
+                                alertTitle: "Operación exitosa",
+                                alertMessage: "Cuenta creada exitosamente",
+                                alertIcon: "success",
+                                showConfirmButton: true,
+                                timer: false,
+                                user: req.user || null,
+                                ruta: 'acceder'
+                            });
+                        }
+                    });
+                }
+            });
+        }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
+};
 
-    
-}
 
 exports.acceder = async (req, res)=>{
     try {
@@ -45,7 +97,7 @@ exports.acceder = async (req, res)=>{
                 alert:true,
                 alertTitle: "Advertencia",
                 alertMessage: "Ingrese un usuario y contraseña",
-                alertIcon: "Info",
+                alertIcon: "info",
                 showConfirmButton: true,
                 timer:false,
                 user: req.user || null,

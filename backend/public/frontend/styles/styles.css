@@ -459,6 +459,27 @@ body.dark-mode {
     background-color: #222222;
     border-color: #121212;
 }
+.dark-mode .contenedorParejas{
+    border-color: #222222;
+}
+.dark-mode .textoParejas{
+    border-color: #222222;
+}
+.dark-mode .botonParejas{
+    background-color: rgb(229 231 235);
+}
+.dark-mode .divParejas{
+    background-color: rgb(240, 245, 255);
+}
+.dark-mode .botonParejas.selected{
+    background-color: rgba(237, 237, 255, 0.2);
+}
+.dark-mode button:hover{
+    --tw-border-opacity: 1;
+    --tw-text-opacity: 1;
+    color: rgb(255, 255, 255 / var(--tw-text-opacity));
+    border: 1px solid rgb(209 213 219 / var(--tw-border-opacity));
+}
 /*RESPONSIVE*/
 @media screen and (max-width: 650px) {
     /*header*/
