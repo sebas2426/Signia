@@ -1,0 +1,6 @@
+#Ignorar el archivo .env con las variables de entorno
+env/.env
+
+#Ignorar la carpeta node modules (para evitar subir dependencias de npm)
+node_modules/
+
