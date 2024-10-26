@@ -25,13 +25,13 @@ exports.login = async (req, res) => {
             });
         } else {
             // Verificar si el usuario ya existe
-            conexion.query('SELECT * FROM users WHERE "username = $1', [user], (error, results) => {
+            conexion.query('SELECT * FROM users WHERE username = $1', [user], (error, results) => {
                 if (error) {
-                    console.log(error);
+                    console.error(error);
                     res.render('login', {
                         alert: true,
                         alertTitle: "Error",
-                        alertMessage: "Error en la base de datos",
+                        alertMessage: "Error en la base de datos" + error.message,
                         alertIcon: "error",
                         showConfirmButton: true,
                         timer: false,
@@ -54,11 +54,11 @@ exports.login = async (req, res) => {
                     // Registro OK
                     conexion.query('INSERT INTO users (username, name, pass) VALUES ($1, $2, $3)', { user: user, name: name, pass: passHash }, (error, results) => {
                         if (error) {
-                            console.error(error);
+                            console.log(error);
                             res.render('login', {
                                 alert: true,
                                 alertTitle: "Error",
-                                alertMessage: "Error al crear la cuenta"+ error.message,
+                                alertMessage: "Error al crear la cuenta",
                                 alertIcon: "error",
                                 showConfirmButton: true,
                                 timer: false,
