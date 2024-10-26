@@ -25,7 +25,7 @@ exports.login = async (req, res) => {
             });
         } else {
             // Verificar si el usuario ya existe
-            conexion.query('SELECT * FROM users WHERE user = $1', [user], (error, results) => {
+            conexion.query('SELECT * FROM users WHERE "user" = $1', [user], (error, results) => {
                 if (error) {
                     console.log(error);
                     res.render('login', {
@@ -52,7 +52,7 @@ exports.login = async (req, res) => {
                     });
                 } else {
                     // Registro OK
-                    conexion.query('INSERT INTO users (user, name, pass) VALUES ($1, $2, $3)', { user: user, name: name, pass: passHash }, (error, results) => {
+                    conexion.query('INSERT INTO users ("user", name, pass) VALUES ($1, $2, $3)', { user: user, name: name, pass: passHash }, (error, results) => {
                         if (error) {
                             console.log(error);
                             res.render('login', {
@@ -104,7 +104,7 @@ exports.acceder = async (req, res)=>{
                 ruta: 'acceder'
             })
         }else{
-            conexion.query('SELECT * FROM users WHERE user = ?', [user], async (error, results) =>{
+            conexion.query('SELECT * FROM users WHERE "user" = ?', [user], async (error, results) =>{
                 if(results.length == 0 || ! (await bcryptjs.compare(pass,results[0].pass))){
                     res.render('acceder', {
                         alert:true,
