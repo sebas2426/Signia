@@ -7,6 +7,9 @@ const pool = new Pool({
     password: process.env.DB_PASS,
     database: process.env.DB_DATABASE,
     port: process.env.DB_PORT || 5432,
+    ssl: {
+        rejectUnauthorized: false // Configuración para aceptar el certificado auto-firmado
+    }
 });
 
 pool.connect((error) => {
