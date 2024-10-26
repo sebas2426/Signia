@@ -54,11 +54,11 @@ exports.login = async (req, res) => {
                     // Registro OK
                     conexion.query('INSERT INTO users (username, name, pass) VALUES ($1, $2, $3)', { user: user, name: name, pass: passHash }, (error, results) => {
                         if (error) {
-                            console.log(error);
+                            console.error(error);
                             res.render('login', {
                                 alert: true,
                                 alertTitle: "Error",
-                                alertMessage: "Error al crear la cuenta",
+                                alertMessage: "Error al crear la cuenta" + error.message,
                                 alertIcon: "error",
                                 showConfirmButton: true,
                                 timer: false,
