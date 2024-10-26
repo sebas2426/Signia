@@ -90,7 +90,7 @@ exports.login = async (req, res) => {
 exports.acceder = async (req, res)=>{
     try {
        const user = req.body.user
-        const pass = req.body.pass
+        const pass = req.body.passHash
         
         if(!user || !pass){
             res.render('acceder', {
