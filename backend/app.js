@@ -2,6 +2,7 @@ const express= require('express')
 const dotenv= require('dotenv')
 const cookieParser= require('cookie-parser')
 const path= require('path')
+const PORT = process.env.PORT || 3000
 
 
 const app = express()
@@ -33,6 +34,6 @@ app.use(function(req, res, next) {
 });
 
 
-app.listen(3000, ()=>{
+app.listen(PORT, ()=>{
     console.log("SERVER UP running in http://localhost:3000")
 })
