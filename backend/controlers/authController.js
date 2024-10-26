@@ -104,8 +104,8 @@ exports.acceder = async (req, res)=>{
                 ruta: 'acceder'
             })
         }else{
-            conexion.query('SELECT * FROM users WHERE username = ?', [user], async (error, results) =>{
-                if(results.length == 0 || ! (await bcryptjs.compare(pass,results[0].pass))){
+            conexion.query('SELECT * FROM users WHERE username = $1', [user], async (error, results) =>{
+                if(results.rows.length == 0 || ! (await bcryptjs.compare(pass,results[0].pass))){
                     res.render('acceder', {
                         alert:true,
                         alertTitle: "Error",
@@ -118,7 +118,7 @@ exports.acceder = async (req, res)=>{
                     })
                 }else{
                     //inicio de sesión OK
-                    const id = results[0].id
+                    const id = results.rows[0].id
                     const token = jwt.sign({id:id}, process.env.JWT_SECRETO,{
                         expiresIn: process.env.JWT_TIEMPO_EXPIRA
                     })
@@ -135,7 +135,7 @@ exports.acceder = async (req, res)=>{
             })
         }
     } catch (error) {
-        console.log(error)
+        console.error("Error en el acceso :"+ error)
     }
 }
 
