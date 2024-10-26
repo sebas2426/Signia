@@ -1,18 +1,21 @@
-const mysql=require('mysql')
+const { Pool } = require('pg');
 
+// Crea un nuevo pool de conexiones
+const pool = new Pool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT || 5432,
+});
 
-const conexion=mysql.createConnection({
-    host : process.env.DB_HOST,
-    user : process.env.DB_USER,
-    password : process.env.DB_PASS,
-    database : process.env.DB_DATABASE,
-})
-
-conexion.connect((error) =>{
-    if(error){
-        console.log("El error de conexión es: "+error)
+pool.connect((error) => {
+    if (error) {
+        console.log("El error de conexión es: " + error);
+    } else {
+        console.log("La conexión a la base de datos es exitosa :)");
     }
-    console.log("La conexión a la base de datos es exitosa :)")
-})
+});
 
-module.exports=conexion
+// Exportar el pool para usarlo en otras partes de la aplicación
+module.exports = pool;

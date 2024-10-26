@@ -25,7 +25,7 @@ exports.login = async (req, res) => {
             });
         } else {
             // Verificar si el usuario ya existe
-            conexion.query('SELECT * FROM users WHERE user = ?', [user], (error, results) => {
+            conexion.query('SELECT * FROM users WHERE user = $1', [user], (error, results) => {
                 if (error) {
                     console.log(error);
                     res.render('login', {
@@ -38,7 +38,7 @@ exports.login = async (req, res) => {
                         user: req.user || null,
                         ruta: 'login'
                     });
-                } else if (results.length > 0) {
+                } else if (results.rowCount > 0) {
                     // Si el usuario ya existe
                     res.render('login', {
                         alert: true,
@@ -52,7 +52,7 @@ exports.login = async (req, res) => {
                     });
                 } else {
                     // Registro OK
-                    conexion.query('INSERT INTO users SET ?', { user: user, name: name, pass: passHash }, (error, results) => {
+                    conexion.query('INSERT INTO users (user, name, pass) VALUES ($1, $2, $3)', { user: user, name: name, pass: passHash }, (error, results) => {
                         if (error) {
                             console.log(error);
                             res.render('login', {
