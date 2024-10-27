@@ -52,7 +52,7 @@ exports.login = async (req, res) => {
                     });
                 } else {
                     // Registro OK
-                    conexion.query('INSERT INTO users (username, name, pass) VALUES ($1, $2, $3)', [user, name, passHash], (error, results) => {
+                    conexion.query('INSERT INTO users (username, name, pass) VALUES ($1, $2, $3)', [user, name, pass], (error, results) => {
                         if (error) {
                             console.error(error);
                             res.render('login', {
