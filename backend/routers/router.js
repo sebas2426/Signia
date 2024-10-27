@@ -16,8 +16,12 @@ router.use((req, res, next) => {
 router.use((req, res, next) => {
     if (req.cookies.jwt) {
         const decoded = jwt.verify(req.cookies.jwt, process.env.JWT_SECRETO);
-        conexion.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error, results) => {
-            if (results.length > 0) {
+        conexion.query('SELECT * FROM users WHERE id = $1', [decoded.id], (error, results) => {
+            if (error) {
+                console.error('Error en la consulta:', error);
+                return res.status(500).send('Error en el servidor'); // Manejar el error apropiadamente
+            }            
+            if (results.rows.length > 0) {
                 req.user = results[0]; // Establecer el usuario en la petición
             }
             next();
