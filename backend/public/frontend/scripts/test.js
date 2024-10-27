@@ -64,6 +64,7 @@ const leccionId = pathSegments[pathSegments.length - 1]; // Suponiendo que el ID
 
     // Agregar un evento al botón de completado
     botonCompletado.addEventListener('click', function() {
+        console.log(leccionId)
         // Enviar la solicitud POST a la base de datos
         fetch('/completar-leccion', {
             method: 'POST',
