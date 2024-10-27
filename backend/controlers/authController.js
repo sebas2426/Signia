@@ -52,7 +52,7 @@ exports.login = async (req, res) => {
                     });
                 } else {
                     // Registro OK
-                    conexion.query('INSERT INTO users (username, name, pass) VALUES ($1, $2, $3)', [user, name, pass], (error, results) => {
+                    conexion.query('INSERT INTO users (username, name, pass) VALUES ($1, $2, $3)', [user, name, passHash], (error, results) => {
                         if (error) {
                             console.error(error);
                             res.render('login', {
@@ -91,6 +91,7 @@ exports.acceder = async (req, res)=>{
     try {
        const user = req.body.user
         const pass = req.body.passHash
+        console.log("La contraseña es "+ pass);
         
         if(!user || !pass){
             res.render('acceder', {
