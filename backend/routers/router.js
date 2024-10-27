@@ -91,7 +91,7 @@ router.post('/completar-leccion', (req, res) => {
     }
 
     // Realiza la consulta a la base de datos para guardar la lección completada
-    conexion.query('INSERT INTO niveles_completados (user_id, leccion_id) VALUES (?, ?)', [userId, leccionId], (error, results) => {
+    conexion.query('INSERT INTO niveles_completados (user_id, leccion_id) VALUES ($1, $2)', [userId, leccionId], (error, results) => {
         if (error) {
             console.error('Error al completar la lección:', error); // Muestra el error en la consola
             return res.status(500).json({ error: 'Error al completar la lección' });
