@@ -45,13 +45,14 @@ router.get('/lista_lecciones', (req, res) => {
 
     // Si hay un usuario autenticado, obtener las lecciones completadas
     if (userId) {
-        const sql = 'SELECT leccion_id FROM niveles_completados WHERE user_id = ?';
+        const sql = 'SELECT leccion_id FROM niveles_completados WHERE user_id = $1';
         conexion.query(sql, [userId], (error, results) => {
             if (error) {
+                console.error("Error en la consulta:", error); // Para depurar
                 return res.status(500).send('Error al obtener las lecciones completadas');
             }
 
-            const leccionesCompletadas = results.map(row => row.leccion_id);
+            const leccionesCompletadas = results.rows.map(row => row.leccion_id); // Cambiado a results.rows
             // Renderizar la vista con lecciones completadas
             res.render('lista_lecciones', { user: req.user, leccionesCompletadas });
         });
@@ -60,6 +61,7 @@ router.get('/lista_lecciones', (req, res) => {
         res.render('lista_lecciones', { user: null, leccionesCompletadas: [] });
     }
 });
+
 
 
 
