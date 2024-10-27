@@ -57,13 +57,13 @@ router.get('/lista_lecciones', (req, res) => {
             }
 
             const leccionesCompletadas = results.rows.map(row => row.leccion_id); // Cambiado a results.rows
-            // Renderizar la vista con lecciones completadas
+            const completada = req.query.completada === 'true'; // Manejar el parámetro
+
             console.log('Usuario:', req.user); 
-            res.render('lista_lecciones', { user: req.user, leccionesCompletadas });
+            res.render('lista_lecciones', { user: req.user, leccionesCompletadas, completada }); // Pasar completada a la vista
         });
     } else {
-        // Si no hay usuario autenticado, renderizar la vista sin lecciones completadas
-        res.render('lista_lecciones', { user: null, leccionesCompletadas: [] });
+        res.render('lista_lecciones', { user: null, leccionesCompletadas: [], completada: false });
     }
 });
 
@@ -83,20 +83,35 @@ router.get('/leccion/:id', (req, res) => {
 
 
 router.post('/completar-leccion', (req, res) => {
-    const { leccionId } = req.body; // Obtener el ID de la lección del cuerpo de la solicitud
-    const userId = req.user ? req.user.id : null; // Asegúrate de que el usuario esté autenticado
+    const { leccionId } = req.body;
+    const userId = req.user ? req.user.id : null;
+
+    console.log(`Usuario ID: ${userId}, Lección ID: ${leccionId}`); // Log para depuración
 
     if (!userId) {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
 
-    // Realiza la consulta a la base de datos para guardar la lección completada
-    conexion.query('INSERT INTO niveles_completados (user_id, leccion_id) VALUES ($1, $2)', [userId, leccionId], (error, results) => {
+    // Verificar si la lección ya ha sido completada
+    conexion.query('SELECT 1 FROM niveles_completados WHERE user_id = $1 AND leccion_id = $2', [userId, leccionId], (error, results) => {
         if (error) {
-            console.error('Error al completar la lección:', error); // Muestra el error en la consola
-            return res.status(500).json({ error: 'Error al completar la lección' });
+            console.error('Error al verificar la lección completada:', error);
+            return res.status(500).json({ error: 'Error al verificar la lección completada' });
         }
-        res.status(200).json({ message: 'Lección completada' });
+
+        // Si la lección ya ha sido completada, enviar un mensaje de error
+        if (results.rowCount > 0) {
+            return res.status(400).json({ error: 'Lección ya completada' });
+        }
+
+        // Guardar la lección completada
+        conexion.query('INSERT INTO niveles_completados (user_id, leccion_id) VALUES ($1, $2)', [userId, leccionId], (error) => {
+            if (error) {
+                console.error('Error al completar la lección:', error);
+                return res.status(500).json({ error: 'Error al completar la lección' });
+            }
+            res.status(200).json({ message: 'Lección completada' });
+        });
     });
 });
 

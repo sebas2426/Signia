@@ -10,7 +10,6 @@ const mensajeEvaluacion = document.getElementById('mensajeEvaluacion');
 const nombreArchivo = window.location.pathname.split('/').pop(); // Obtiene el nombre del archivo
 const idLeccion = parseInt(nombreArchivo.replace('leccion', '')); // Extrae el número de lección
 
-console.log('ID de la lección:', idLeccion);
 
 // Función para cargar el archivo JSON con las preguntas
 function cargarPreguntasDesdeJSON() {
