@@ -90,15 +90,37 @@ router.post('/completar-leccion', (req, res) => {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
 
-    // Realiza la consulta a la base de datos para guardar la lección completada
-    conexion.query('INSERT INTO niveles_completados (user_id, leccion_id) VALUES ($1, $2)', [userId, leccionId], (error, results) => {
-        if (error) {
-            console.error('Error al completar la lección:', error); // Muestra el error en la consola
-            return res.status(500).json({ error: 'Error al completar la lección' });
+    // Primero, verifica si el usuario ya ha completado esta lección
+    conexion.query(
+        'SELECT 1 FROM niveles_completados WHERE user_id = $1 AND leccion_id = $2',
+        [userId, leccionId],
+        (error, results) => {
+            if (error) {
+                console.error('Error al verificar lección completada:', error);
+                return res.status(500).json({ error: 'Error al verificar lección completada' });
+            }
+
+            // Si ya hay un resultado, el usuario ya completó esta lección
+            if (results.rows.length > 0) {
+                return res.status(400).json({ message: 'Esta lección ya fue completada.' });
+            }
+
+            // Si no, inserta el registro en niveles_completados
+            conexion.query(
+                'INSERT INTO niveles_completados (user_id, leccion_id) VALUES ($1, $2)',
+                [userId, leccionId],
+                (error, results) => {
+                    if (error) {
+                        console.error('Error al completar la lección:', error);
+                        return res.status(500).json({ error: 'Error al completar la lección' });
+                    }
+                    res.status(200).json({ message: 'Lección completada' });
+                }
+            );
         }
-        res.status(200).json({ message: 'Lección completada' });
-    });
+    );
 });
+
 
 // Rutas para los métodos del controlador
 router.post('/login', authController.login);
