@@ -91,8 +91,6 @@ exports.acceder = async (req, res) => {
     try {
         const user = req.body.user;
         const pass = req.body.pass; 
-        console.log("El usuario es " + user);
-        console.log("La contraseña es " + pass);
 
         if (!user || !pass) {
             res.render('acceder', {

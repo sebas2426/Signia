@@ -22,7 +22,7 @@ router.use((req, res, next) => {
                 return res.status(500).send('Error en el servidor'); // Manejar el error apropiadamente
             }            
             if (results.rows.length > 0) {
-                req.user = results[0]; // Establecer el usuario en la petición
+                req.user = results.rows[0]; // Establecer el usuario en la petición
             }
             next();
         });
@@ -58,6 +58,7 @@ router.get('/lista_lecciones', (req, res) => {
 
             const leccionesCompletadas = results.rows.map(row => row.leccion_id); // Cambiado a results.rows
             // Renderizar la vista con lecciones completadas
+            console.log('Usuario:', req.user); 
             res.render('lista_lecciones', { user: req.user, leccionesCompletadas });
         });
     } else {
