@@ -59,12 +59,10 @@ function verificarPuntaje() {
 
     // Obtener el ID de la lección
 const pathSegments = window.location.pathname.split('/');
-const leccionId = pathSegments[pathSegments.length - 1]; // Suponiendo que el ID es el último segmento
+const leccionId = pathSegments[pathSegments.length - 1];
 
-
-    // Agregar un evento al botón de completado
     botonCompletado.addEventListener('click', function() {
-        console.log(leccionId)
+        console.log("Id de la leccion "+leccionId)
         // Enviar la solicitud POST a la base de datos
         fetch('/completar-leccion', {
             method: 'POST',
@@ -74,6 +72,7 @@ const leccionId = pathSegments[pathSegments.length - 1]; // Suponiendo que el ID
             body: JSON.stringify({ leccionId }),
         })
         .then(response => {
+            console.log("Estado de la respuesta:", response.status)
             if (response.ok) {
                 // Redirigir a la página de lista de lecciones con el parámetro de consulta
                 window.location.href = `/lista_lecciones?completada=true`;
