@@ -52,7 +52,7 @@ exports.login = async (req, res) => {
                     });
                 } else {
                     // Registro OK
-                    conexion.query('INSERT INTO users (username, name, pass) VALUES ($1, $2, $3)', [user, name, passHash], (error, results) => {
+                    conexion.query('INSERT INTO users (username, name, user_pass) VALUES ($1, $2, $3)', [user, name, passHash], (error, results) => {
                         if (error) {
                             console.error(error);
                             res.render('login', {
@@ -87,58 +87,76 @@ exports.login = async (req, res) => {
 };
 
 
-exports.acceder = async (req, res)=>{
+exports.acceder = async (req, res) => {
     try {
-       const user = req.body.user
-        const pass = req.body.passHash
-        console.log("La contraseña es "+ pass);
-        
-        if(!user || !pass){
+        const user = req.body.user;
+        const pass = req.body.pass; 
+        console.log("El usuario es " + user);
+        console.log("La contraseña es " + pass);
+
+        if (!user || !pass) {
             res.render('acceder', {
-                alert:true,
+                alert: true,
                 alertTitle: "Advertencia",
                 alertMessage: "Ingrese un usuario y contraseña",
                 alertIcon: "info",
                 showConfirmButton: true,
-                timer:false,
+                timer: false,
                 user: req.user || null,
                 ruta: 'acceder'
-            })
-        }else{
-            conexion.query('SELECT * FROM users WHERE username = $1', [user], async (error, results) =>{
-                if(results.rows.length == 0 || ! (await bcryptjs.compare(pass,results[0].pass))){
+            });
+        } else {
+            // Realizar la consulta en la base de datos
+            conexion.query('SELECT * FROM users WHERE username = $1', [user], async (error, results) => {
+                if (error) {
+                    console.error("Error en la consulta de usuario:", error);
+                    return res.render('acceder', {
+                        alert: true,
+                        alertTitle: "Error",
+                        alertMessage: "Hubo un error al verificar el usuario",
+                        alertIcon: "error",
+                        showConfirmButton: true,
+                        timer: false,
+                        user: req.user || null,
+                        ruta: 'acceder'
+                    });
+                }
+                
+                // Validar si el usuario no existe o la contraseña es incorrecta
+                if (results.rows.length === 0 || !(await bcryptjs.compare(pass, results.rows[0].user_pass))) {
                     res.render('acceder', {
-                        alert:true,
+                        alert: true,
                         alertTitle: "Error",
                         alertMessage: "Usuario y/o contraseña incorrectos",
                         alertIcon: "error",
                         showConfirmButton: true,
-                        timer:false,
+                        timer: false,
                         user: req.user || null,
                         ruta: 'acceder'
-                    })
-                }else{
-                    //inicio de sesión OK
-                    const id = results.rows[0].id
-                    const token = jwt.sign({id:id}, process.env.JWT_SECRETO,{
+                    });
+                } else {
+                    // Inicio de sesión correcto
+                    const id = results.rows[0].id;
+                    const token = jwt.sign({ id: id }, process.env.JWT_SECRETO, {
                         expiresIn: process.env.JWT_TIEMPO_EXPIRA
-                    })
-                    
-                    console.log(`TOKEN ${token} para el usuario ${user}`)
+                    });
+
+                    console.log(`TOKEN ${token} para el usuario ${user}`);
                     const cookiesOptions = {
-                        expires: new Date(Date.now()+ process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 1000),
+                        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 1000),
                         httpOnly: true
-                    }
-                    res.cookie('jwt', token, cookiesOptions)
-                    req.user = results[0]
-                    return res.redirect('/lista_lecciones') 
+                    };
+                    res.cookie('jwt', token, cookiesOptions);
+                    req.user = results.rows[0];
+                    return res.redirect('/lista_lecciones');
                 }
-            })
+            });
         }
     } catch (error) {
-        console.error("Error en el acceso :"+ error)
+        console.error("Error en el acceso: " + error);
     }
-}
+};
+
 
 exports.logout = (req,res)=>{
     res.clearCookie('jwt')
