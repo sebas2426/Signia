@@ -63,6 +63,8 @@ botonCompletado.addEventListener('click', function() {
     const leccionId = pathSegments[pathSegments.length - 1];
     console.log("Leccion Id antes del fetch " + leccionId);
 
+    let leccionCompletada = false; // Variable para guardar el estado de la lección
+
     // Realizar el fetch para completar la lección
     fetch('/completar-leccion', {
         method: 'POST',
@@ -70,12 +72,15 @@ botonCompletado.addEventListener('click', function() {
         body: JSON.stringify({ leccionId }),
     })
     .then(response => {
-        // Procesar la respuesta como JSON
-        return response.json().then(data => ({ status: response.ok, data }));
+        return response.json().then(data => {
+            // Verificar el estado de la inserción
+            leccionCompletada = data.message === 'Lección completada'; // Guardar el estado de la lección
+            return { status: response.ok, data };
+        });
     })
-    .then(({ status }) => {
-        // Redirigir a lista_lecciones si la inserción fue exitosa o si la respuesta falló pero los datos se enviaron correctamente
-        if (status.ok) {
+    .then(({ status, data }) => {
+        // Redirigir a lista_lecciones si la inserción fue exitosa
+        if (status) {
             window.location.href = `/lista_lecciones?completada=true`;
         } else {
             alert('Error al guardar la lección completada');
@@ -83,12 +88,16 @@ botonCompletado.addEventListener('click', function() {
         }
     })
     .catch(error => {
-        if(data.message==='Lección completada'){
-            window.location.href = `/lista_lecciones?completada=true`;
-        }
         console.error('Error:', error);
+        // Verificar si la lección fue completada en la base de datos
+        if (leccionCompletada) {
+            window.location.href = `/lista_lecciones?completada=true`;
+        } else {
+            alert('Hubo un problema con la conexión al servidor.');
+        }
     });
 });
+
 
 
 
