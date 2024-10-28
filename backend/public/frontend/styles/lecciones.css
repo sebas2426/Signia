@@ -243,16 +243,10 @@ footer{
   background-color: #e0e0e0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
-
-.Completado[disabled] a {
-  pointer-events: none; /* Deshabilita la interacción con el enlace */
-  color: grey; /* Cambia el color para mostrar que está deshabilitado */
-}
-
-
-.Completado:not([disabled]) a {
-  pointer-events: auto; /* Reactiva la interacción cuando el botón esté habilitado */
-  color: white; /* Color del texto cuando está habilitado */
+.dark-mode .botonFinal:hover{
+  color: white;
+  background-color: #535353;
+  box-shadow: 0 0 10px rgba(61, 61, 61, 0.1); /* Sombra suave */
 }
 
 .Completado:hover {
@@ -281,6 +275,20 @@ footer{
   color: white;
   transform: scale(1.05);
   transition: 0.3s;
+}
+
+.dark-mode .botonFinal.Completado{
+  background-color: rgb(69, 100, 121);
+  color: white;
+}
+
+/* Estilos para el botón cuando está deshabilitado */
+#botonCompletado:disabled {
+  pointer-events: none; /* Desactiva los eventos de clic */
+  color: grey; /* Cambia el color del texto */
+  background-color: lightgrey; /* Cambia el color de fondo para dar apariencia de desactivado */
+  opacity: 0.6; /* Añade un efecto de transparencia */
+  cursor: not-allowed; /* Cambia el cursor para indicar que está desactivado */
 }
 
 
@@ -367,5 +375,8 @@ footer{
     width: 100%; 
     padding: 0.75rem; 
     font-size: 0.9rem; 
+}
+.botones form{
+  width: 100%;
 }
 }
