@@ -63,47 +63,32 @@ botonCompletado.addEventListener('click', function() {
     const leccionId = pathSegments[pathSegments.length - 1];
     console.log("Leccion Id antes del fetch " + leccionId);
 
-    // Función para hacer el fetch con reintentos
-    const fetchConReintentos = (url, options, reintentos = 3, delay = 1000) => {
-        return fetch(url, options)
-            .then(response => {
-                if (!response.ok) {
-                    if (reintentos > 0) {
-                        console.warn(`Error en la solicitud: Intentando de nuevo... (${3 - reintentos + 1})`);
-                        return new Promise((resolve) => {
-                            setTimeout(() => resolve(fetchConReintentos(url, options, reintentos - 1, delay)), delay);
-                        });
-                    } else {
-                        throw new Error('Error en la respuesta');
-                    }
-                }
-                return response;
-            });
-    };
-
-    // Realizar el fetch con reintentos
-    fetchConReintentos('/completar-leccion', {
+    // Realizar el fetch para completar la lección
+    fetch('/completar-leccion', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ leccionId }),
     })
-    .then(response => response.json()) // Procesar la respuesta como JSON
-    .then(data => {
-        // Verificar si la inserción fue exitosa en el servidor
-        if (data.message === 'Lección completada') {
-            // Redirigir solo si la respuesta indica éxito
+    .then(response => {
+        // Procesar la respuesta como JSON
+        return response.json().then(data => ({ status: response.ok, data }));
+    })
+    .then(({ status, data }) => {
+        // Redirigir a lista_lecciones si la inserción fue exitosa o si la respuesta falló pero los datos se enviaron correctamente
+        if (status || data.message === 'Lección completada') {
             window.location.href = `/lista_lecciones?completada=true`;
         } else {
             alert('Error al guardar la lección completada');
-            // No redirigir aquí porque no hubo inserción
+            // No redirigir aquí porque hubo un error en la respuesta
         }
     })
     .catch(error => {
         console.error('Error:', error);
         alert('Hubo un problema con la conexión al servidor.');
-        // No redirigir aquí porque no hubo inserción
+        // No redirigir aquí porque hubo un error en la conexión
     });
 });
+
 
 
 
