@@ -10,12 +10,12 @@ const mensajeEvaluacion = document.getElementById('mensajeEvaluacion');
 const esDispositivoMovil = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 // Obtener el nombre del archivo actual y extraer el número de la lección
-const nombreArchivo = window.location.pathname.split('/').pop(); // Obtiene el nombre del archivo
-const idLeccion = parseInt(nombreArchivo.replace('leccion', '')); // Extrae el número de lección
+const nombreArchivo = window.location.pathname.split('/').pop();
+const idLeccion = parseInt(nombreArchivo.replace('leccion', ''));
 
 // Función para cargar el archivo JSON con las preguntas
 function cargarPreguntasDesdeJSON() {
-    fetch('/frontend/scripts/preguntas.json') // Ruta del archivo JSON
+    fetch('/frontend/scripts/preguntas.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error("Network response was not ok " + response.statusText);
@@ -38,14 +38,15 @@ function cargarPreguntasDesdeJSON() {
 
 // Función para habilitar el botón o mostrar el botón de reintento según el puntaje
 function verificarPuntaje() {
-    botonCompletado.disabled = puntaje < 5;
     mensajeEvaluacion.innerHTML = ''; // Limpia cualquier mensaje anterior
 
     if (puntaje >= 5) {
+        botonCompletado.disabled = false; // Habilita el botón de completar
         const mensajeFinal = document.createElement('h2');
         mensajeFinal.innerText = "¡Has completado todas las preguntas!";
         mensajeEvaluacion.appendChild(mensajeFinal);
     } else {
+        botonCompletado.disabled = true; // Deshabilita el botón si el puntaje es bajo
         const mensajeIntenta = document.createElement('h2');
         mensajeIntenta.innerText = "Necesitas obtener al menos 5 puntos para completar la lección.";
         mensajeEvaluacion.appendChild(mensajeIntenta);
@@ -58,49 +59,20 @@ function verificarPuntaje() {
     }
 }
 
-botonCompletado.addEventListener('click', function() {
-    const pathSegments = window.location.pathname.split('/');
-    const leccionId = pathSegments[pathSegments.length - 1];
-    console.log("Leccion Id antes del fetch " + leccionId);
+document.getElementById('formCompletarLeccion').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evitar el envío por defecto del formulario
 
-    let leccionCompletada = false; // Variable para guardar el estado de la lección
+    // Solo se enviará si el puntaje es suficiente
+    if (puntaje >= 5) {
+        const leccionId = this.leccionId.value; // Obtener el valor del campo hidden
+        console.log("Lección Id antes de enviar el formulario: " + leccionId);
 
-    // Realizar el fetch para completar la lección
-    fetch('/completar-leccion', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ leccionId }),
-    })
-    .then(response => {
-        return response.json().then(data => {
-            // Verificar el estado de la inserción
-            leccionCompletada = data.message === 'Lección completada'; // Guardar el estado de la lección
-            return { status: response.ok, data };
-        });
-    })
-    .then(({ status, data }) => {
-        // Redirigir a lista_lecciones si la inserción fue exitosa
-        if (status) {
-            window.location.href = `/lista_lecciones?completada=true`;
-        } else {
-            alert('Error al guardar la lección completada');
-            // No redirigir aquí porque hubo un error en la respuesta
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // Verificar si la lección fue completada en la base de datos
-        if (leccionCompletada) {
-            window.location.href = `/lista_lecciones?completada=true`;
-        } else {
-            alert('Hubo un problema con la conexión al servidor.');
-        }
-    });
+        // Realizar el envío del formulario
+        this.submit(); // Esto enviará el formulario al servidor
+    } else {
+        console.log("El puntaje es insuficiente para completar la lección.");
+    }
 });
-
-
-
-
 
 // Función para reiniciar el test
 function reiniciarTest() {
@@ -199,3 +171,4 @@ function seleccionarOpcion(opcionSeleccionada) {
 
 // Inicia el test cargando las preguntas desde el archivo JSON
 cargarPreguntasDesdeJSON();
+

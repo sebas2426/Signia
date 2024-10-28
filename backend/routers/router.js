@@ -96,7 +96,7 @@ router.post('/completar-leccion', (req, res) => {
     conexion.query('SELECT 1 FROM niveles_completados WHERE user_id = $1 AND leccion_id = $2', [userId, leccionId], (error, results) => {
         if (error) {
             console.error('Error al verificar la lección completada:', error);
-            return res.sgtatus(500).json({ error: 'Error al verificar la lección completada' });
+            return res.status(500).json({ error: 'Error al verificar la lección completada' });
         }
 
         // Si la lección ya ha sido completada, enviar un mensaje de error

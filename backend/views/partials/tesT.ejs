@@ -24,9 +24,13 @@
             <button class="botonFinal Atras">
                 <a href="/lista_lecciones">Ver Lecciones</a>
             </button>
-            <button class="botonFinal Completado" id="botonCompletado" disabled>
+            <form id="formCompletarLeccion" action="/completar-leccion" method="POST">
+                <input type="hidden" name="leccionId" value="ID_DE_LA_LECCION">
+                <button type="submit" id="botonCompletado" class="botonFinal Completado" disabled>Completar Lección</button>
+            </form>
+            <!--<button class="botonFinal Completado" id="botonCompletado" disabled>
                 <a href="" id="enlaceCompletado" type="button">Lección Completada</a>
-            </button>
+            </button>-->
             <button class="botonFinal SiguienteLeccion">
                 <a href="/leccion/<%= siguienteLeccion %>">Siguiente Lección</a>
             </button>
