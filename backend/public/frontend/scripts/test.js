@@ -66,19 +66,21 @@ botonCompletado.addEventListener('click', function() {
     const fetchConReintentos = (url, options, reintentos = 3, delay = 1000) => {
         return fetch(url, options)
             .then(response => {
-                if (!response.ok) throw new Error('Error en la respuesta');
-                return response;
-            })
-            .catch(error => {
-                if (reintentos > 0) {
-                    console.warn(`Error en la solicitud: ${error.message}. Reintentando en ${delay / 1000} segundos...`);
-                    return new Promise((resolve) => setTimeout(resolve, delay))
-                        .then(() => fetchConReintentos(url, options, reintentos - 1, delay));
+                if (!response.ok) {
+                    if (reintentos > 0) {
+                        console.warn(`Error en la solicitud: Intentando de nuevo... (${3 - reintentos + 1})`);
+                        return new Promise((resolve) => {
+                            setTimeout(() => resolve(fetchConReintentos(url, options, reintentos - 1, delay)), delay);
+                        });
+                    } else {
+                        throw new Error('Error en la respuesta');
+                    }
                 }
-                throw error; // Lanza el error si se acabaron los reintentos
+                return response;
             });
     };
 
+    // Realizar el fetch con reintentos
     fetchConReintentos('/completar-leccion', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -86,17 +88,22 @@ botonCompletado.addEventListener('click', function() {
     })
     .then(response => {
         if (response.ok) {
+            // Si la respuesta es exitosa, redirigir
             window.location.href = `/lista_lecciones?completada=true`;
         } else {
+            // Si la respuesta no es exitosa, mostrar un mensaje
             alert('Error al guardar la lección completada');
+            // Redirigir de todos modos, asumiendo que se guardó en la base de datos
+            window.location.href = `/lista_lecciones?completada=true`;
         }
     })
     .catch(error => {
         console.error('Error:', error);
         alert('Hubo un problema con la conexión al servidor.');
+        // Redirigir de todos modos, asumiendo que se guardó en la base de datos
+        window.location.href = `/lista_lecciones?completada=true`;
     });
 });
-
 
 
 // Función para reiniciar el test
