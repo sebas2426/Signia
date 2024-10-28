@@ -38,37 +38,13 @@ function cargarPreguntasDesdeJSON() {
 
 // Función para habilitar el botón o mostrar el botón de reintento según el puntaje
 function verificarPuntaje() {
-    botonCompletado.disabled = true;
+    botonCompletado.disabled = puntaje < 5;
     mensajeEvaluacion.innerHTML = ''; // Limpia cualquier mensaje anterior
 
     if (puntaje >= 5) {
-        botonCompletado.disabled = false;
-        
         const mensajeFinal = document.createElement('h2');
         mensajeFinal.innerText = "¡Has completado todas las preguntas!";
         mensajeEvaluacion.appendChild(mensajeFinal);
-
-        const pathSegments = window.location.pathname.split('/');
-        const leccionId = pathSegments[pathSegments.length - 1];
-
-        botonCompletado.addEventListener('click', function() {
-            fetch('/completar-leccion', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ leccionId }),
-            })
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = `/lista_lecciones?completada=true`;
-                } else {
-                    alert('Error al guardar la lección completada');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Hubo un problema con la conexión al servidor.');
-            });
-        });
     } else {
         const mensajeIntenta = document.createElement('h2');
         mensajeIntenta.innerText = "Necesitas obtener al menos 5 puntos para completar la lección.";
@@ -81,6 +57,27 @@ function verificarPuntaje() {
         mensajeEvaluacion.appendChild(botonReintentar);
     }
 }
+botonCompletado.addEventListener('click', function() {
+    const pathSegments = window.location.pathname.split('/');
+    const leccionId = pathSegments[pathSegments.length - 1];
+    console.log("Leccion Id antes del fetch "+leccionId);
+        fetch('/completar-leccion', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ leccionId }),
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = `/lista_lecciones?completada=true`;
+            } else {
+                alert('Error al guardar la lección completada');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un problema con la conexión al servidor.');
+        });
+    });
 
 // Función para reiniciar el test
 function reiniciarTest() {
