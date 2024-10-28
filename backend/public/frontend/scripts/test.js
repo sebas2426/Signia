@@ -12,6 +12,9 @@ const esDispositivoMovil = 'ontouchstart' in window || navigator.maxTouchPoints 
 // Obtener el nombre del archivo actual y extraer el número de la lección
 const nombreArchivo = window.location.pathname.split('/').pop();
 const idLeccion = parseInt(nombreArchivo.replace('leccion', ''));
+// Establece el valor del campo oculto en el formulario
+document.getElementById('leccionId').value = idLeccion;
+
 
 // Función para cargar el archivo JSON con las preguntas
 function cargarPreguntasDesdeJSON() {
@@ -62,17 +65,34 @@ function verificarPuntaje() {
 document.getElementById('formCompletarLeccion').addEventListener('submit', function(event) {
     event.preventDefault(); // Evitar el envío por defecto del formulario
 
-    // Solo se enviará si el puntaje es suficiente
-    if (puntaje >= 5) {
-        const leccionId = this.leccionId.value; // Obtener el valor del campo hidden
-        console.log("Lección Id antes de enviar el formulario: " + leccionId);
+    // Obtener el valor del campo hidden que ahora debe contener el idLeccion
+    const leccionId = this.leccionId.value; 
+    console.log("Lección Id antes de enviar el formulario: " + leccionId);
 
-        // Realizar el envío del formulario
-        this.submit(); // Esto enviará el formulario al servidor
-    } else {
-        console.log("El puntaje es insuficiente para completar la lección.");
-    }
+    // Aquí puedes realizar el envío de los datos al servidor usando fetch o axios
+    fetch('/completar-leccion', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            leccionId: leccionId,
+            puntaje: puntaje // Envía el puntaje junto con el ID de la lección
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert(data.error); // Mostrar error si lo hay
+        } else {
+            window.location.href = '/lista_lecciones?completada=true'; // Redirigir si fue exitoso
+        }
+    })
+    .catch(error => {
+        console.error("Error al enviar la lección completada:", error);
+    });
 });
+
 
 // Función para reiniciar el test
 function reiniciarTest() {
