@@ -480,6 +480,18 @@ body.dark-mode {
     color: rgb(255, 255, 255 / var(--tw-text-opacity));
     border: 1px solid rgb(209 213 219 / var(--tw-border-opacity));
 }
+.dark-mode #abrir{
+    color: #fff;
+}
+.dark-mode .navHeader.visible{
+    background-color: #121212;
+}
+.dark-mode .navHeader.visible button:hover a{
+    color: rgb(207, 207, 207);
+}
+.dark-mode i{
+    color: #fff;
+}
 /*RESPONSIVE*/
 @media screen and (max-width: 650px) {
     /*header*/
