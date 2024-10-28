@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="/frontend/styles/styles.css">
     <script src="/frontend/scripts/index.js" defer ></script>
     <title>Lecciones</title>
+    <script>
+        if (localStorage.getItem('darkMode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+        }
+      </script>
 </head>
 <body class="bodyLecciones">
 
