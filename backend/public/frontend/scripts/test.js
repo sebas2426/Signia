@@ -73,9 +73,9 @@ botonCompletado.addEventListener('click', function() {
         // Procesar la respuesta como JSON
         return response.json().then(data => ({ status: response.ok, data }));
     })
-    .then(({ status, data }) => {
+    .then(({ status }) => {
         // Redirigir a lista_lecciones si la inserción fue exitosa o si la respuesta falló pero los datos se enviaron correctamente
-        if (status || data.message === 'Lección completada') {
+        if (status.ok) {
             window.location.href = `/lista_lecciones?completada=true`;
         } else {
             alert('Error al guardar la lección completada');
@@ -83,9 +83,10 @@ botonCompletado.addEventListener('click', function() {
         }
     })
     .catch(error => {
+        if(data.message==='Lección completada'){
+            window.location.href = `/lista_lecciones?completada=true`;
+        }
         console.error('Error:', error);
-        alert('Hubo un problema con la conexión al servidor.');
-        // No redirigir aquí porque hubo un error en la conexión
     });
 });
 
