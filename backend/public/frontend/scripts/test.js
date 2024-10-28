@@ -62,17 +62,20 @@ botonCompletado.addEventListener('click', function() {
     const leccionId = pathSegments[pathSegments.length - 1];
     console.log("Leccion Id antes del fetch " + leccionId);
 
-    // Función para hacer el fetch
-    const fetchConReintentos = (url, options) => {
+    // Función para hacer el fetch con reintentos
+    const fetchConReintentos = (url, options, reintentos = 3, delay = 1000) => {
         return fetch(url, options)
             .then(response => {
                 if (!response.ok) throw new Error('Error en la respuesta');
                 return response;
             })
             .catch(error => {
-                console.warn(`Error en la solicitud: ${error.message}. Reintentando...`);
-                // Realiza el reintento inmediatamente
-                return fetch(url, options);
+                if (reintentos > 0) {
+                    console.warn(`Error en la solicitud: ${error.message}. Reintentando en ${delay / 1000} segundos...`);
+                    return new Promise((resolve) => setTimeout(resolve, delay))
+                        .then(() => fetchConReintentos(url, options, reintentos - 1, delay));
+                }
+                throw error; // Lanza el error si se acabaron los reintentos
             });
     };
 
@@ -93,6 +96,7 @@ botonCompletado.addEventListener('click', function() {
         alert('Hubo un problema con la conexión al servidor.');
     });
 });
+
 
 
 // Función para reiniciar el test
