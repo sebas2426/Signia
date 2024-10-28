@@ -57,6 +57,7 @@ function verificarPuntaje() {
         mensajeEvaluacion.appendChild(botonReintentar);
     }
 }
+
 botonCompletado.addEventListener('click', function() {
     const pathSegments = window.location.pathname.split('/');
     const leccionId = pathSegments[pathSegments.length - 1];
@@ -86,24 +87,24 @@ botonCompletado.addEventListener('click', function() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ leccionId }),
     })
-    .then(response => {
-        if (response.ok) {
-            // Si la respuesta es exitosa, redirigir
+    .then(response => response.json()) // Procesar la respuesta como JSON
+    .then(data => {
+        // Verificar si la inserción fue exitosa en el servidor
+        if (data.message === 'Lección completada') {
+            // Redirigir solo si la respuesta indica éxito
             window.location.href = `/lista_lecciones?completada=true`;
         } else {
-            // Si la respuesta no es exitosa, mostrar un mensaje
             alert('Error al guardar la lección completada');
-            // Redirigir de todos modos, asumiendo que se guardó en la base de datos
-            window.location.href = `/lista_lecciones?completada=true`;
+            // No redirigir aquí porque no hubo inserción
         }
     })
     .catch(error => {
         console.error('Error:', error);
         alert('Hubo un problema con la conexión al servidor.');
-        // Redirigir de todos modos, asumiendo que se guardó en la base de datos
-        window.location.href = `/lista_lecciones?completada=true`;
+        // No redirigir aquí porque no hubo inserción
     });
 });
+
 
 
 // Función para reiniciar el test
