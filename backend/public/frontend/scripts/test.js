@@ -60,24 +60,40 @@ function verificarPuntaje() {
 botonCompletado.addEventListener('click', function() {
     const pathSegments = window.location.pathname.split('/');
     const leccionId = pathSegments[pathSegments.length - 1];
-    console.log("Leccion Id antes del fetch "+leccionId);
-        fetch('/completar-leccion', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ leccionId }),
-        })
-        .then(response => {
-            if (response.ok) {
-                window.location.href = `/lista_lecciones?completada=true`;
-            } else {
-                alert('Error al guardar la lección completada');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Hubo un problema con la conexión al servidor.');
-        });
+    console.log("Leccion Id antes del fetch " + leccionId);
+
+    // Función para hacer el fetch con reintentos
+    const fetchConReintentos = (url, options, intentos = 3) => {
+        return fetch(url, options)
+            .then(response => {
+                if (!response.ok) throw new Error('Error en la respuesta');
+                return response;
+            })
+            .catch(error => {
+                if (intentos <= 1) throw error; // Sin reintentos restantes, lanza el error
+                console.warn(`Intento fallido, reintentando... (${intentos - 1} intentos restantes)`);
+                return new Promise(resolve => setTimeout(resolve, 1000)) // Espera 1 segundo antes de reintentar
+                    .then(() => fetchConReintentos(url, options, intentos - 1));
+            });
+    };
+
+    fetchConReintentos('/completar-leccion', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ leccionId }),
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = `/lista_lecciones?completada=true`;
+        } else {
+            alert('Error al guardar la lección completada');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Hubo un problema con la conexión al servidor.');
     });
+});
 
 // Función para reiniciar el test
 function reiniciarTest() {
