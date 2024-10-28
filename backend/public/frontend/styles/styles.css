@@ -137,6 +137,9 @@ header{
 .salirCuenta a{
     color: rgb(240, 240, 240);
 }
+.dark-mode .salirCuenta a{
+    color: rgb(240, 240, 240);
+}
 
 .crearCuenta a{
     color:white;
