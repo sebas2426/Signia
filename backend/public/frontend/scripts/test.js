@@ -154,7 +154,7 @@ function cargarPregunta() {
             imagenPregunta.style.display = 'block';
             setTimeout(() => {
                 imagenPregunta.style.opacity = '1';
-            }, 50);
+            }, 30);
         } else {
             imagenPregunta.style.opacity = '0';
             imagenPregunta.style.display = 'none';
