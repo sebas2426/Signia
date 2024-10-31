@@ -107,7 +107,7 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         // Si llegamos aquí, es porque no hubo errores
         if (data.message) {
             // Mostrar la alerta de éxito
-             mostrarAlerta('Exito',data.message,'success').then(() => {
+             mostrarAlerta('Éxito',data.message,'success').then(() => {
              window.location.href = '/lista_lecciones?completada=true';
             });
         }
