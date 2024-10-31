@@ -64,8 +64,7 @@ function verificarPuntaje() {
 
 function mostrarAlerta(titulo, texto, icono) {
     const isDarkMode = document.body.classList.contains('dark-mode'); // Verifica el modo actual
-
-    Swal.fire({
+    return Swal.fire({
         title: titulo,
         text: texto,
         icon: icono,
@@ -104,19 +103,20 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         });
     })
     .then(data => {
-        // Si llegamos aquí, es porque no hubo errores
+        console.log(data); // Log de la respuesta del servidor
         if (data.message) {
-            // Mostrar la alerta de éxito
-             mostrarAlerta('Éxito',data.message,'success').then(() => {
-             window.location.href = '/lista_lecciones?completada=true';
+            console.log('Mensaje de éxito:', data.message); // Log del mensaje de éxito
+            mostrarAlerta('Éxito', data.message, 'success').then(() => {
+                window.location.href = '/lista_lecciones?completada=true';
             });
+        } else {
+            console.error('No se recibió un mensaje de éxito'); // Log si no hay mensaje
         }
     })
     .catch(error => {
-        // Mostrar el error en la consola y en SweetAlert
         console.error("Error al enviar la lección completada:", error.message);
-        mostrarAlerta('Error',error.message,'error');
-    });
+        mostrarAlerta('Error', error.message, 'error');
+    });    
 });
 
 
