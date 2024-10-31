@@ -282,13 +282,12 @@ footer{
   color: white;
 }
 
-/* Estilos para el botón cuando está deshabilitado */
 #botonCompletado:disabled {
-  pointer-events: none; /* Desactiva los eventos de clic */
-  color: grey; /* Cambia el color del texto */
-  background-color: lightgrey; /* Cambia el color de fondo para dar apariencia de desactivado */
-  opacity: 0.6; /* Añade un efecto de transparencia */
-  cursor: not-allowed; /* Cambia el cursor para indicar que está desactivado */
+  pointer-events: none;
+  color: grey;
+  background-color: lightgrey;
+  opacity: 0.6; 
+  cursor: not-allowed; 
 }
 
 

@@ -62,6 +62,22 @@ function verificarPuntaje() {
     }
 }
 
+function mostrarAlerta(titulo, texto, icono) {
+    const isDarkMode = document.body.classList.contains('dark-mode'); // Verifica el modo actual
+
+    Swal.fire({
+        title: titulo,
+        text: texto,
+        icon: icono,
+        confirmButtonText: 'Aceptar',
+        background: isDarkMode ? '#2b2b2b' : '#fff',
+        color: isDarkMode ? '#fff' : 'hsl(0,0%,33%)',
+        confirmButtonColor: isDarkMode ? 'rgb(69, 100, 121)' : '#7066e0',
+        iconColor: isDarkMode ? '#f8bb86' : '#3085d6',
+        backdrop: isDarkMode ? 'rgba(0, 0, 0, 0.4)' : ''
+    });
+}
+
 document.getElementById('formCompletarLeccion').addEventListener('submit', function(event) {
     event.preventDefault(); // Evitar el envío por defecto del formulario
 
@@ -91,26 +107,15 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         // Si llegamos aquí, es porque no hubo errores
         if (data.message) {
             // Mostrar la alerta de éxito
-            Swal.fire({
-                title: 'Éxito',
-                text: data.message,
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            }).then(() => {
-                // Redirigir después de que el usuario cierre la alerta
-                window.location.href = '/lista_lecciones?completada=true';
+             mostrarAlerta('Exito',data.message,'succes').then(() => {
+             window.location.href = '/lista_lecciones?completada=true';
             });
         }
     })
     .catch(error => {
         // Mostrar el error en la consola y en SweetAlert
         console.error("Error al enviar la lección completada:", error.message);
-        Swal.fire({
-            title: 'Error',
-            text: error.message,
-            icon: 'error',
-            confirmButtonText: 'Aceptar'
-        });
+        mostrarAlerta('Error',error.message,'error');
     });
 });
 
