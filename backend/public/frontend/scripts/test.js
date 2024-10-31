@@ -79,31 +79,41 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         })
     })
     .then(response => {
-        if (response.status === 401) { // Verifica si es 401 y muestra alerta
-            return response.json().then(data => {
-                Swal.fire({
-                    title: 'Acceso Denegado',
-                    text: data.error || 'Debes iniciar sesión para completar la lección.',
-                    icon: 'warning',
-                    confirmButtonText: 'Aceptar'
-                });
-                throw new Error('Usuario no autenticado'); // Previene que continúe con .then
-            });
-        } else if (!response.ok) {
-            throw new Error('Error inesperado en el servidor'); // Otro error en la respuesta
+        // Manejamos el estado de la respuesta
+        if (response.ok) {
+            return response.json(); // Si es un 200, parsea a JSON
         }
-        return response.json(); // Continúa normalmente si la respuesta es ok
+        return response.json().then(data => {
+            throw new Error(data.error || 'Error inesperado en el servidor'); // Manejo de errores
+        });
     })
     .then(data => {
-        if (data.success) {
-            window.location.href = '/lista_lecciones?completada=true'; // Redirige en caso de éxito
+        // Si llegamos aquí, es porque no hubo errores
+        if (data.message) {
+            // Mostrar la alerta de éxito
+            Swal.fire({
+                title: 'Éxito',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                // Redirigir después de que el usuario cierre la alerta
+                window.location.href = '/lista_lecciones?completada=true';
+            });
         }
     })
     .catch(error => {
-        // Captura cualquier otro error, solo lo muestra en la consola si es necesario
+        // Mostrar el error en la consola y en SweetAlert
         console.error("Error al enviar la lección completada:", error.message);
+        Swal.fire({
+            title: 'Error',
+            text: error.message,
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
     });
 });
+
 
 
 // Función para reiniciar el test
