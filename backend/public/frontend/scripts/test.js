@@ -107,7 +107,7 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         // Si llegamos aquí, es porque no hubo errores
         if (data.message) {
             // Mostrar la alerta de éxito
-             mostrarAlerta('Exito',data.message,'succes').then(() => {
+             mostrarAlerta('Exito',data.message,'success').then(() => {
              window.location.href = '/lista_lecciones?completada=true';
             });
         }
@@ -154,7 +154,7 @@ function cargarPregunta() {
             imagenPregunta.style.display = 'block';
             setTimeout(() => {
                 imagenPregunta.style.opacity = '1';
-            }, 30);
+            }, 20);
         } else {
             imagenPregunta.style.opacity = '0';
             imagenPregunta.style.display = 'none';
