@@ -65,11 +65,9 @@ function verificarPuntaje() {
 document.getElementById('formCompletarLeccion').addEventListener('submit', function(event) {
     event.preventDefault(); // Evitar el envío por defecto del formulario
 
-    // Obtener el valor del campo hidden que ahora debe contener el idLeccion
-    const leccionId = this.leccionId.value; 
+    const leccionId = this.leccionId.value;
     console.log("Lección Id antes de enviar el formulario: " + leccionId);
 
-    // Aquí puedes realizar el envío de los datos al servidor usando fetch o axios
     fetch('/completar-leccion', {
         method: 'POST',
         headers: {
@@ -77,21 +75,40 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         },
         body: JSON.stringify({
             leccionId: leccionId,
-            puntaje: puntaje // Envía el puntaje junto con el ID de la lección
+            puntaje: puntaje // Asegúrate de que puntaje esté definido
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) { 
+            // Detecta errores fuera del rango 200-299
+            if (response.status === 401) {
+                return response.json().then(data => {
+                    throw new Error(data.error || 'Usuario no autenticado'); // Lanzar el error
+                });
+            } else {
+                throw new Error('Error inesperado en el servidor'); // Otro error
+            }
+        }
+        return response.json();
+    })
     .then(data => {
-        if (data.error) {
-            alert(data.error); // Mostrar error si lo hay
-        } else {
-            window.location.href = '/lista_lecciones?completada=true'; // Redirigir si fue exitoso
+        if (data.success) {
+            window.location.href = '/lista_lecciones?completada=true'; // Redirige en caso de éxito
         }
     })
     .catch(error => {
-        console.error("Error al enviar la lección completada:", error);
+        console.error("Error al enviar la lección completada:", error.message); // Verifica el error en consola
+        Swal.fire({
+            title: 'Acceso Denegado',
+            text: error.message,
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
     });
 });
+
+
+
 
 
 // Función para reiniciar el test

@@ -139,7 +139,6 @@ exports.acceder = async (req, res) => {
                         expiresIn: process.env.JWT_TIEMPO_EXPIRA
                     });
 
-                    console.log(`TOKEN ${token} para el usuario ${user}`);
                     const cookiesOptions = {
                         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 1000),
                         httpOnly: true

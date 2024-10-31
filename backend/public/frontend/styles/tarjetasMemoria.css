@@ -41,10 +41,15 @@
   .tarjeta .delante {
     background-color: rgb(238, 234, 231);
   }
+  .cara.delante p{
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
   
   .tarjeta .atras {
-    background-color: #4caf50;
+    background-color: #a3f8a6;
     transform: rotateY(180deg);
+
   }
   
   .tarjeta.volteada .delante {
@@ -57,6 +62,10 @@
   
   .tarjeta img {
     width: 90%;
+    height: auto;
+  }
+  .cara.atras img{
+    width: 80%;
     height: auto;
   }
   #resultado{
