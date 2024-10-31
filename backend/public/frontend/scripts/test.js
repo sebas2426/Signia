@@ -75,21 +75,24 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         },
         body: JSON.stringify({
             leccionId: leccionId,
-            puntaje: puntaje // Asegúrate de que puntaje esté definido
+            puntaje: puntaje // Envía el puntaje junto con el ID de la lección
         })
     })
     .then(response => {
-        if (!response.ok) { 
-            // Detecta errores fuera del rango 200-299
-            if (response.status === 401) {
-                return response.json().then(data => {
-                    throw new Error(data.error || 'Usuario no autenticado'); // Lanzar el error
+        if (response.status === 401) { // Verifica si es 401 y muestra alerta
+            return response.json().then(data => {
+                Swal.fire({
+                    title: 'Acceso Denegado',
+                    text: data.error || 'Debes iniciar sesión para completar la lección.',
+                    icon: 'warning',
+                    confirmButtonText: 'Aceptar'
                 });
-            } else {
-                throw new Error('Error inesperado en el servidor'); // Otro error
-            }
+                throw new Error('Usuario no autenticado'); // Previene que continúe con .then
+            });
+        } else if (!response.ok) {
+            throw new Error('Error inesperado en el servidor'); // Otro error en la respuesta
         }
-        return response.json();
+        return response.json(); // Continúa normalmente si la respuesta es ok
     })
     .then(data => {
         if (data.success) {
@@ -97,18 +100,10 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         }
     })
     .catch(error => {
-        console.error("Error al enviar la lección completada:", error.message); // Verifica el error en consola
-        Swal.fire({
-            title: 'Acceso Denegado',
-            text: error.message,
-            icon: 'warning',
-            confirmButtonText: 'Aceptar'
-        });
+        // Captura cualquier otro error, solo lo muestra en la consola si es necesario
+        console.error("Error al enviar la lección completada:", error.message);
     });
 });
-
-
-
 
 
 // Función para reiniciar el test
