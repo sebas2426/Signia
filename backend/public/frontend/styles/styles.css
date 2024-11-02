@@ -432,7 +432,7 @@ body.dark-mode {
     background-color: rgb(55, 58, 65);
     color: #ffff;
 }
-.headerEnlaces:hover{
+.dark-mode .headerEnlaces:hover{
     border: 1px solid rgb(209 213 219);
     color: white;
 }
