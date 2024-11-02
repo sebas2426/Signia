@@ -21,16 +21,12 @@
     <div id="mensajeEvaluacion"></div>
     <div class="contenedorBotonesFinales">
         <div class="botones">
-            <button class="botonFinal Atras">
-                <a href="/lista_lecciones">Ver Lecciones</a>
-            </button>
+                <a href="/lista_lecciones" class="botonFinal Atras">Ver Lecciones</a>
             <form id="formCompletarLeccion" action="/completar-leccion" method="POST">
                 <input type="hidden" id="leccionId" name="leccionId" value="ID_DE_LA_LECCION">
                 <button type="submit" id="botonCompletado" class="botonFinal Completado" disabled>Completar Lección</button>
             </form>
-            <button class="botonFinal SiguienteLeccion">
-                <a href="/leccion/<%= siguienteLeccion %>">Siguiente Lección</a>
-            </button>
+                <a href="/leccion/<%= siguienteLeccion %>"  class="botonFinal SiguienteLeccion">Siguiente Lección</a>
         </div>
     </div>
 </div>

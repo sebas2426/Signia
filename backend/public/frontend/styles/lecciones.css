@@ -58,16 +58,6 @@ button:hover{
     border: 1px solid rgb(209 213 219 / var(--tw-border-opacity));
 }
 
-
-
-.crearCuenta a{
-    color: white;
-}
- .crearCuenta:hover{
-    background-color:  rgb(56, 82, 99);
-    --tw-bg-opacity: 1;
-      border:1px solid rgb(200 150 200 / var(--tw-bg-opacity));
-}
 div+div{
     margin-bottom:4.5vh;
 }
@@ -275,6 +265,9 @@ footer{
   color: white;
   transform: scale(1.05);
   transition: 0.3s;
+}
+.dark-mode .botonFinal{
+  background-color: #121212;
 }
 
 .dark-mode .botonFinal.Completado{

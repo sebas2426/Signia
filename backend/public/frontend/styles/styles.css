@@ -58,12 +58,6 @@ button:hover{
     border: 1px solid rgb(209 213 219 / var(--tw-border-opacity));
 }
 
- .crearCuenta:hover{
-    background-color:  rgb(56, 82, 99);
-    --tw-bg-opacity: 1;
-      border:1px solid rgb(200 150 200 / var(--tw-bg-opacity));
-}
-
 div+div{
     margin-bottom:4.5vh;
 }
@@ -129,6 +123,19 @@ header{
     background-color:  rgb(69, 100, 121);
 }
 
+.headerEnlaces{
+    padding: 15px 10px;
+    border-radius: 5px;
+}
+.headerEnlaces:hover{
+    border: 1px solid rgb(209 213 219);
+}
+.crearCuenta:hover{
+    background-color:  rgb(56, 82, 99);
+    --tw-bg-opacity: 1;
+      border:1px solid rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
 .salirCuenta{
     background-color: #da5050;
     padding: 0.8rem 1rem;
@@ -139,10 +146,6 @@ header{
 }
 .dark-mode .salirCuenta a{
     color: rgb(240, 240, 240);
-}
-
-.crearCuenta a{
-    color:white;
 }
 
 .contenedorBody{
@@ -428,6 +431,10 @@ body.dark-mode {
 .dark-mode input{
     background-color: rgb(55, 58, 65);
     color: #ffff;
+}
+.headerEnlaces:hover{
+    border: 1px solid rgb(209 213 219);
+    color: white;
 }
 /* lecciones dark mode */
 .dark-mode .contenedor{
