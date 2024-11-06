@@ -1,15 +1,15 @@
 [
-    {"letra": "Hola", "imagenUrl": "/frontend/images/saludos/saludos-media/Hola.png", "videoUrl": "/frontend/images/saludos/videos/Hola.mov", "descripcion": "Se usa como saludo." },
+    {"letra": "Hola", "imagenUrl": "/frontend/images/saludos/saludos-media/Hola.png", "videoUrl": "/frontend/images/saludos/videos/Hola.mp4", "descripcion": "Se usa como saludo." },
 
-    {"letra": "Adiós", "imagenUrl": "/frontend/images/saludos/saludos-media/Adios.png", "videoUrl": "/frontend/images/saludos/videos/Adios.mov", "descripcion": " Despedida al término de una conversación, misiva, etc." },
+    {"letra": "Adiós", "imagenUrl": "/frontend/images/saludos/saludos-media/Adios.png", "videoUrl": "/frontend/images/saludos/videos/Adios.mp4", "descripcion": " Despedida al término de una conversación, misiva, etc." },
 
-    {"letra": "Buenos días", "imagenUrl": "/frontend/images/saludos/saludos-media/Buen-dia.png", "videoUrl": "/frontend/images/saludos/videos/Buenos_dias.mov", "descripcion": "Se usa como fórmula de saludo por la mañana." },
+    {"letra": "Buenos días", "imagenUrl": "/frontend/images/saludos/saludos-media/Buen-dia.png", "videoUrl": "/frontend/images/saludos/videos/Buenos_dias.mp4", "descripcion": "Se usa como fórmula de saludo por la mañana." },
 
-    {"letra": "Buenas Tardes", "imagenUrl": "/frontend/images/saludos/saludos-media/Buenas-tardes.png", "videoUrl": "/frontend/images/saludos/videos/Buenas_tardes.mov", "descripcion": "Como fórmula de cortesía o para saludar durante la tarde." },
+    {"letra": "Buenas Tardes", "imagenUrl": "/frontend/images/saludos/saludos-media/Buenas-tardes.png", "videoUrl": "/frontend/images/saludos/videos/Buenas_tardes.mp4", "descripcion": "Como fórmula de cortesía o para saludar durante la tarde." },
 
-    {"letra": "Buenas Noches", "imagenUrl": "/frontend/images/saludos/saludos-media/Buenas-noches.png", "videoUrl": "/frontend/images/saludos/videos/Buenas_noches.mov", "descripcion": "Como fórmula de cortesía o para saludar durante la noche o al irse a acostar." },
+    {"letra": "Buenas Noches", "imagenUrl": "/frontend/images/saludos/saludos-media/Buenas-noches.png", "videoUrl": "/frontend/images/saludos/videos/Buenas_noches.mp4", "descripcion": "Como fórmula de cortesía o para saludar durante la noche o al irse a acostar." },
 
-    {"letra": "Por Favor", "imagenUrl": "/frontend/images/saludos/saludos-media/Por-favor.png", "videoUrl": "/frontend/images/saludos/videos/Por-favor.mov", "descripcion": "Para formular una petición cortés." },
+    {"letra": "Por Favor", "imagenUrl": "/frontend/images/saludos/saludos-media/Por-favor.png", "videoUrl": "/frontend/images/saludos/videos/Por-favor.mp4", "descripcion": "Para formular una petición cortés." },
 
-    {"letra": "Gracias", "imagenUrl": "/frontend/images/saludos/saludos-media/Gracias.png", "videoUrl": "/frontend/images/saludos/videos/gracias_dar.mov", "descripcion": "Como fórmula de cortesía para manifestar agradecimiento." }
+    {"letra": "Gracias", "imagenUrl": "/frontend/images/saludos/saludos-media/Gracias.png", "videoUrl": "/frontend/images/saludos/videos/gracias_dar.mp4", "descripcion": "Como fórmula de cortesía para manifestar agradecimiento." }
 ]

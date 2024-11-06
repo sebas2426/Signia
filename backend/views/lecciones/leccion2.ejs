@@ -50,9 +50,10 @@
             <img id="media-image" src="<%= leccionData[0].imagenUrl %>" alt="Imagen de <%= leccionData[0].letra %>">
         </div>
         <div class="media-video">
-            <iframe id="media-video" src="" title="Video de <%= leccionData[0].letra %>"
-                    frameborder="0" allowfullscreen>
-            </iframe>
+            <video id="media-video" title="Video de <%= leccionData[0].letra %>" controls>
+                <source src="<%= leccionData[0].videoUrl %>" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>            
         </div>
         <button id="next"><i class="bi bi-arrow-right flecha"></i></button>
         </div>
