@@ -42,10 +42,19 @@ toggleButton.addEventListener('click', () => {
 });
 
 
-//MEDIA PARA CADA LECCION   
 document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let showingImage = true; // Indica si se está mostrando una imagen
+    let preloadedImages = []; // Array para almacenar las imágenes precargadas
+
+    // Función para precargar imágenes
+    function preloadImages() {
+        leccionData.forEach(media => {
+            const img = new Image(); // Crea un nuevo objeto de imagen
+            img.src = media.imagenUrl; // Asigna la URL de la imagen
+            preloadedImages.push(img); // Guarda la imagen en el array
+        });
+    }
 
     // Función para actualizar el contenido
     function updateMedia() {
@@ -60,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Oculta o muestra los elementos según el tipo
         if (showingImage) {
             // Desplaza la vista hacia el contenedor
-            mediaImageElement.src = currentMedia.imagenUrl;
+            mediaImageElement.src = preloadedImages[currentIndex].src; // Usa la imagen precargada
             mediaImageElement.alt = `Imagen de ${currentMedia.letra}`;
             mediaImageElement.style.display = 'block'; // Muestra la imagen
             mediaVideoElement.style.display = 'none'; // Oculta el video
@@ -111,5 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Inicializa la vista con el primer elemento (imagen de la letra A)
+    preloadImages(); // Pre-cargamos las imágenes antes de inicializar
     updateMedia();
 });
