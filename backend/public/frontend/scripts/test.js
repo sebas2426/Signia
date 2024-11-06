@@ -15,7 +15,6 @@ const idLeccion = parseInt(nombreArchivo.replace('leccion', ''));
 // Establece el valor del campo oculto en el formulario
 document.getElementById('leccionId').value = idLeccion;
 
-
 // Función para cargar el archivo JSON con las preguntas
 function cargarPreguntasDesdeJSON() {
     fetch('/frontend/scripts/preguntas.json')
@@ -29,7 +28,7 @@ function cargarPreguntasDesdeJSON() {
             const leccion = data.lecciones.find(leccion => leccion.id === idLeccion);
             if (leccion) {
                 preguntas = leccion.preguntas;
-                cargarPregunta(); // Inicia con la primera pregunta
+                preCargarImagenes(); // Pre-carga las imágenes antes de iniciar las preguntas
             } else {
                 console.error("Lección no encontrada.");
             }
@@ -37,6 +36,34 @@ function cargarPreguntasDesdeJSON() {
         .catch(error => {
             console.error("Error al cargar las preguntas:", error);
         });
+}
+
+// Función para pre-cargar las imágenes
+function preCargarImagenes() {
+    const imagenesParaCargar = preguntas.map(pregunta => pregunta.imagen).filter(imagen => imagen);
+    let imagenesCargadas = 0;
+
+    if (imagenesParaCargar.length === 0) {
+        cargarPregunta(); // Si no hay imágenes, cargamos la primera pregunta directamente
+    }
+
+    imagenesParaCargar.forEach(imagenUrl => {
+        const img = new Image();
+        img.src = imagenUrl;
+        img.onload = () => {
+            imagenesCargadas++;
+            if (imagenesCargadas === imagenesParaCargar.length) {
+                cargarPregunta(); // Una vez que todas las imágenes estén cargadas, mostramos la primera pregunta
+            }
+        };
+        img.onerror = () => {
+            console.error("Error al cargar la imagen: " + imagenUrl);
+            imagenesCargadas++;
+            if (imagenesCargadas === imagenesParaCargar.length) {
+                cargarPregunta(); // Si alguna imagen no se carga, seguimos cargando las preguntas
+            }
+        };
+    });
 }
 
 // Función para habilitar el botón o mostrar el botón de reintento según el puntaje
@@ -118,7 +145,6 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         mostrarAlerta('Error', error.message, 'error');
     });    
 });
-
 
 
 // Función para reiniciar el test
@@ -206,16 +232,16 @@ function seleccionarOpcion(opcionSeleccionada) {
         puntaje--;
     }
 
-    document.querySelector('.leccionNumero').textContent = `Pregunta ${indicePregunta + 1}/${preguntas.length} | Puntaje: ${puntaje}`;
-
-    indicePregunta++;
-    if (indicePregunta < preguntas.length) {
-        setTimeout(() => cargarPregunta(), 2000);
-    } else {
-        verificarPuntaje();
-    }
+    setTimeout(() => {
+        indicePregunta++;
+        if (indicePregunta < preguntas.length) {
+            document.querySelector('.leccionNumero').textContent = `Pregunta ${indicePregunta + 1}/${preguntas.length} | Puntaje: ${puntaje}`;
+            cargarPregunta();
+        } else {
+            verificarPuntaje();
+        }
+    }, 1000);
 }
 
-// Inicia el test cargando las preguntas desde el archivo JSON
+// Llamamos a la función que carga las preguntas al iniciar
 cargarPreguntasDesdeJSON();
-

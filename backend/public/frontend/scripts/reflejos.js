@@ -35,8 +35,15 @@ class JuegoReflejos {
     const palabras = botonesSenas.map(boton => boton.dataset.palabra);
 
     const palabrasFiltradas = palabras.filter(palabra => {
+      // Si estamos en el nivel 3, no limitamos la cantidad de veces que puede aparecer una palabra
+      if (this.nivelActual === 3) {
+        return true;  // No filtramos por cantidad de aciertos, dejamos todas las palabras disponibles
+      }
+    
+      // En niveles anteriores, limitamos a 2 veces
       return !this.contadorAciertosPorPalabra[palabra] || this.contadorAciertosPorPalabra[palabra] < 2;
     });
+    
 
     let index = 0;
     const intervalo = setInterval(() => {
@@ -78,15 +85,22 @@ class JuegoReflejos {
           }
           this.mostrarResultado("¡Correcto!", "green");
 
-          if (this.aciertos === this.totalPreguntasPorNivel) {
+          if (this.aciertos === 3) {
             if (this.nivelActual === 3) {
-              this.mostrarResultado("¡Felicidades, completaste todos los niveles!", "blue");
+              // Mostrar el mensaje de victoria y agregar la clase exclusiva
+              this.mostrarResultado("¡Felicidades, completaste todos los niveles!");
+          
+              // Añadir la clase 'mensaje-victoria' y la clase 'aparecer' para activar la transición
+              this.resultadoElemento.classList.add("mensaje-victoria", "aparecer");
+              
               this.botonSiguienteNivel.style.display = 'none';
               return;  // Evitamos limpiar el mensaje final de victoria
             } else {
               this.mostrarBotonSiguienteNivel();
             }
           }
+          
+          
         } else {
           this.mostrarResultado("Incorrecto, intenta de nuevo.", "red");
         }
