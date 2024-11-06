@@ -167,7 +167,7 @@ header{
 }
 
 .tituloBodyColor{
-    color:rgb(207, 60, 60)
+    color:rgb(207, 60, 60);
 }
 
 .imagenBody{
@@ -271,7 +271,7 @@ footer{
     margin-top: 1rem;
     font-size: 1.2rem;
     color: white;
-    background-color:  rgb(69, 100, 121)
+    background-color:  rgb(69, 100, 121);
 }
 
 .tituloLoginRegistro{
@@ -503,6 +503,35 @@ body.dark-mode {
 }
 .dark-mode i{
     color: #fff;
+}
+
+.lecciones.noDisponible {
+    position: relative;
+    pointer-events: none; /* Desactiva la interacción */
+    opacity: 0.5; /* Reduce la opacidad general */
+}
+.lecciones.noDisponible a {
+    filter: blur(4px); /* Difumina los elementos internos */
+}
+.lecciones.noDisponible::after {
+    content: "Lección no disponible";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.2em;
+    background-color: rgba(0, 0, 0, 1);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Asegura que el contenido de adentro esté debajo del overlay */
+.lecciones.noDisponible a {
+    position: relative;
+    z-index: -1;
 }
 /*RESPONSIVE*/
 @media screen and (max-width: 650px) {

@@ -39,6 +39,26 @@
         <h2>Guía Visual de los números del 1 al 20</h2>
         <p>Aquí tienes una imagen en la que se muestran números más grandes. Puedes usarla como referencia visual para repasar las señas. ¡Recuerda que la práctica hace al maestro!:</p>
         <img src="/frontend/images/numeros.png" class="imagenAbecedario" alt="Números del 1 al 20">
+        <h2 class="guiaVisual">Guía Visual del Abecedario</h2>
+        <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada letra del abecedario individualmente. Familiarizate con cada gesto</p>
+    
+    <div class="media-contenedor">
+        <h3><%= leccionData[0].letra %></h3>
+        <div class="contenedorFlechasImagenes">
+            <button id="prev" disabled><i class="bi bi-arrow-left flecha"></i></button>
+        <div class="media-imagen">
+            <img id="media-image" src="<%= leccionData[0].imagenUrl %>" alt="Imagen de <%= leccionData[0].letra %>">
+        </div>
+        <div class="media-video">
+            <iframe id="media-video" src="" title="Video de <%= leccionData[0].letra %>"
+                    frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+        <button id="next"><i class="bi bi-arrow-right flecha"></i></button>
+        </div>
+        <p> <%= leccionData[0].descripcion %></p>
+    </div>
+
         <h2 class="subTitulo">Juego Interactivo</h2>
         <p>¡Aprende jugando! En esta ocasión tendrás que unir cada signo con su número.</p>
 
@@ -48,9 +68,9 @@
             <div class="nivel1" >
 
                 <div class="imagenesParejas">
-                    <button class="botonParejas" data-pareja2="2"><img src="/frontend/images/numeros/DOS.png" alt=""></button>
-                    <button class="botonParejas" data-pareja2="1"><img src="/frontend/images/numeros/UNO.png" alt=""></button>
-                    <button class="botonParejas" data-pareja2="8"><img src="/frontend/images/numeros/OCHO.png" alt=""></button>
+                    <button class="botonParejas" data-pareja2="2"><img src="/frontend/images/numeros/numeros-media/Dos.png" alt=""></button>
+                    <button class="botonParejas" data-pareja2="1"><img src="/frontend/images/numeros/numeros-media/Uno.png" alt=""></button>
+                    <button class="botonParejas" data-pareja2="8"><img src="/frontend/images/numeros/numeros-media/Ocho.png" alt=""></button>
                 </div>
     
                 <div class="textoParejas">
@@ -73,9 +93,9 @@
 
         <div class="nivel2" style="display: none;">
         <div class="imagenesParejas">
-            <button class="botonParejas" data-pareja2="0"><img src="/frontend/images/numeros/CERO.png" alt=""></button>
-            <button class="botonParejas" data-pareja2="3"><img src="/frontend/images/numeros/TRES.png" alt=""></button>
-            <button class="botonParejas" data-pareja2="6"><img src="/frontend/images/numeros/SEIS.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="14"><img src="/frontend/images/numeros/numeros-media/Catorce.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="3"><img src="/frontend/images/numeros/numeros-media/Tres.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="20"><img src="/frontend/images/numeros/numeros-media/Veinte.png" alt=""></button>
         </div>
             <div class="textoParejas">
                 <div class="opcionesParejas">
@@ -83,12 +103,12 @@
                     <div class="divParejas tres">3</div>
                 </div>
                 <div class="opcionesParejas">
-                    <div class="divBlanco" data-pareja2="0"></div>
-                    <div class="divParejas cero">0</div>
+                    <div class="divBlanco" data-pareja2="14"></div>
+                    <div class="divParejas cero">14</div>
                 </div>
                 <div class="opcionesParejas">
-                    <div class="divBlanco" data-pareja2="6"></div>
-                    <div class="divParejas seis">6</div>
+                    <div class="divBlanco" data-pareja2="20"></div>
+                    <div class="divParejas seis">20</div>
                 </div>
                 <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
             </div>
@@ -97,33 +117,36 @@
 
    <div class="nivel3" style="display: none;">
         <div class="imagenesParejas">
-            <button class="botonParejas" data-pareja2="17"><img src="/frontend/images/numeros/DIESYCIETE.png" alt=""></button>
-            <button class="botonParejas" data-pareja2="14"><img src="/frontend/images/numeros/CATORCE.png" alt=""></button>
-            <button class="botonParejas" data-pareja2="5"><img src="/frontend/images/numeros/CINCO.png" alt=""></button>
-           <button class="botonParejas" data-pareja2="18"><img src="/frontend/images/numeros/DIESYOCHO.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="17"><img src="/frontend/images/numeros/numeros-media/Diecisiete.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="9"><img src="/frontend/images/numeros/numeros-media/Nueve.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="15"><img src="/frontend/images/numeros/numeros-media/Quince.png" alt=""></button>
+           <button class="botonParejas" data-pareja2="10"><img src="/frontend/images/numeros/numeros-media/Diez.png" alt=""></button>
         </div>
             <div class="textoParejas">
                 <div class="opcionesParejas">
-                    <div class="divBlanco" data-pareja2="5"></div>
-                    <div class="divParejas cinco">5</div>
+                    <div class="divBlanco" data-pareja2="15"></div>
+                    <div class="divParejas cinco">15</div>
                 </div>
                 <div class="opcionesParejas">
                     <div class="divBlanco" data-pareja2="17"></div>
                     <div class="divParejas diesyciete">17</div>
                 </div>
                 <div class="opcionesParejas">
-                    <div class="divBlanco" data-pareja2="14"></div>
-                    <div class="divParejas catorce">14</div>
+                    <div class="divBlanco" data-pareja2="9"></div>
+                    <div class="divParejas catorce">9</div>
                 </div>
                 <div class="opcionesParejas">
-                    <div class="divBlanco" data-pareja2="18"></div>
-                    <div class="divParejas diesyocho">18</div>
+                    <div class="divBlanco" data-pareja2="10"></div>
+                    <div class="divParejas diesyocho">10</div>
                 </div>
             </div>
         </div>
     </div>
 
     <%- include('../partials/tesT') %>
-        
+
+    <script>
+        const leccionData = <%- JSON.stringify(leccionData) %>;
+    </script>
 </body>
 </html>

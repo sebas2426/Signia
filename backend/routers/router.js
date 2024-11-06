@@ -71,15 +71,32 @@ router.get('/lista_lecciones', (req, res) => {
 
 
 // Ruta para lecciones
-
-
 router.get('/leccion/:id', (req, res) => {
     const leccionId = parseInt(req.params.id);
     const siguienteLeccionId = leccionId + 1;
 
-    // Renderiza la lección actual y pasa la siguiente lección
-    res.render(`lecciones/leccion${leccionId}`, { siguienteLeccion: siguienteLeccionId, user:req.user || null });
+    // Ruta del archivo JSON para la lección actual
+    const dataPath = path.join(__dirname, `../data/lecciones/leccion${leccionId}.json`);
+
+    // Lee el archivo JSON
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(`Error al cargar los datos de la lección ${leccionId}:`, err);
+            return res.status(500).send("Error al cargar la lección.");
+        }
+
+        // Convierte los datos de JSON a un objeto
+        const leccionData = JSON.parse(data);
+
+        // Renderiza la vista de la lección actual, pasando los datos y la siguiente lección
+        res.render(`lecciones/leccion${leccionId}`, { 
+            leccionData: leccionData, 
+            siguienteLeccion: siguienteLeccionId, 
+            user: req.user || null 
+        });
+    });
 });
+
 
 
 router.post('/completar-leccion', (req, res) => {

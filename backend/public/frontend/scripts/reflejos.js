@@ -6,21 +6,19 @@ class JuegoReflejos {
     this.contenedorSenasNivel3 = document.getElementById(contenedorSenasNivel3);
     this.resultadoElemento = document.getElementById(resultadoReflejos);
     this.botonSiguienteNivel = document.getElementById('boton-siguiente-nivel-reflejos');
-    
+
     this.palabraCorrecta = "";
-    this.tiempoMostrarPalabras = 300; // Tiempo en milisegundos para mostrar cada palabra
-    this.aciertos = 0; // Contador de respuestas correctas
-    this.palabrasAciertas = []; // Array para almacenar palabras acertadas
-    this.contadorAciertosPorPalabra = {}; // Objeto para contar aciertos por palabra
-    this.nivelActual = 1; // Inicializar nivel
-    this.totalPreguntasPorNivel = 3; // Total de preguntas por nivel
-    this.cargarNuevaPalabra(); // Cargar la primera palabra
-    
-    // Evento para el botón de siguiente nivel
-    this.botonSiguienteNivel.style.display = 'none'; // Ocultarlo inicialmente
+    this.tiempoMostrarPalabras = 300;
+    this.aciertos = 0;
+    this.palabrasAciertas = [];
+    this.contadorAciertosPorPalabra = {};
+    this.nivelActual = 1;
+    this.totalPreguntasPorNivel = 3;
+    this.cargarNuevaPalabra();
+
+    this.botonSiguienteNivel.style.display = 'none';
     this.botonSiguienteNivel.addEventListener('click', () => this.siguienteNivel());
 
-    // Inicializa el juego mostrando solo el nivel 1
     this.mostrarNivel();
   }
 
@@ -35,13 +33,11 @@ class JuegoReflejos {
                                     this.nivelActual === 2 ? this.contenedorSenasNivel2.children :
                                     this.contenedorSenasNivel3.children);
     const palabras = botonesSenas.map(boton => boton.dataset.palabra);
-    
-    // Filtrar palabras que ya han sido acertadas más de dos veces
+
     const palabrasFiltradas = palabras.filter(palabra => {
       return !this.contadorAciertosPorPalabra[palabra] || this.contadorAciertosPorPalabra[palabra] < 2;
     });
 
-    // Mostrar palabras aleatoriamente
     let index = 0;
     const intervalo = setInterval(() => {
       this.contenedorPalabra.textContent = palabrasFiltradas[index];
@@ -51,20 +47,17 @@ class JuegoReflejos {
       }
     }, this.tiempoMostrarPalabras);
 
-    // Seleccionar una nueva palabra después de un tiempo
     setTimeout(() => {
-      clearInterval(intervalo); // Detener el intervalo
+      clearInterval(intervalo);
       const indiceAleatorio = Math.floor(Math.random() * palabrasFiltradas.length);
       this.palabraCorrecta = palabrasFiltradas[indiceAleatorio];
       this.contenedorPalabra.textContent = this.palabraCorrecta;
 
-      // Agregar eventos a los botones
       this.agregarEventos(botonesSenas);
-    }, this.tiempoMostrarPalabras * palabrasFiltradas.length + 500); // Tiempo total antes de elegir la palabra correcta
+    }, this.tiempoMostrarPalabras * palabrasFiltradas.length + 500);
   }
 
   agregarEventos(botonesSenas) {
-    // Eliminar los event listeners anteriores
     botonesSenas.forEach(boton => {
       boton.removeEventListener('click', this.verificarRespuesta);
     });
@@ -73,31 +66,31 @@ class JuegoReflejos {
       boton.addEventListener("click", (evento) => {
         const palabraSeleccionada = evento.currentTarget.dataset.palabra;
 
-        // Verificar si la palabra seleccionada es la correcta
         if (palabraSeleccionada === this.palabraCorrecta) {
-          // Aumentar el contador de aciertos para esta palabra
           if (!this.contadorAciertosPorPalabra[palabraSeleccionada]) {
             this.contadorAciertosPorPalabra[palabraSeleccionada] = 0;
           }
-          this.contadorAciertosPorPalabra[palabraSeleccionada]++; // Incrementar el acierto para esta palabra
+          this.contadorAciertosPorPalabra[palabraSeleccionada]++;
 
-          // Agregar palabra a las acertadas si no está ya en el array
           if (!this.palabrasAciertas.includes(palabraSeleccionada)) {
-            this.palabrasAciertas.push(palabraSeleccionada); // Aumentar contador de aciertos
-            this.aciertos++; // Aumentar el contador de aciertos
+            this.palabrasAciertas.push(palabraSeleccionada);
+            this.aciertos++;
           }
           this.mostrarResultado("¡Correcto!", "green");
 
-          // Verificar si se han acertado todas las palabras
-          const totalPalabras = this.nivelActual === 1 || this.nivelActual === 2 ? 3 : 3; // Cambia el total de palabras según el nivel
-          if (this.aciertos === totalPalabras) {
-            this.mostrarBotonSiguienteNivel(); // Mostrar el botón de siguiente nivel
+          if (this.aciertos === this.totalPreguntasPorNivel) {
+            if (this.nivelActual === 3) {
+              this.mostrarResultado("¡Felicidades, completaste todos los niveles!", "blue");
+              this.botonSiguienteNivel.style.display = 'none';
+              return;  // Evitamos limpiar el mensaje final de victoria
+            } else {
+              this.mostrarBotonSiguienteNivel();
+            }
           }
         } else {
           this.mostrarResultado("Incorrecto, intenta de nuevo.", "red");
         }
 
-        // Después de 1.5 segundos, cargar una nueva palabra
         setTimeout(() => {
           this.cargarNuevaPalabra();
           this.limpiarResultado();
@@ -111,20 +104,17 @@ class JuegoReflejos {
   }
 
   siguienteNivel() {
-    this.aciertos = 0; // Reiniciar el contador de aciertos
-    this.palabrasAciertas = []; // Reiniciar el array de palabras acertadas
+    this.aciertos = 0;
+    this.palabrasAciertas = [];
 
-    // Verificar si el jugador ha completado el último nivel
     if (this.nivelActual === 3) {
-      this.mostrarResultado("¡Felicidades, completaste todos los niveles!", "blue");
-      this.botonSiguienteNivel.style.display = 'none'; // Eliminar el botón de siguiente nivel
-      return; // Salir de la función, ya no se cargan más niveles
+      return;
     }
 
-    this.botonSiguienteNivel.style.display = 'none'; // Ocultar el botón
-    this.nivelActual++; // Aumentar el nivel actual
-    this.mostrarNivel(); // Mostrar el contenedor del nuevo nivel
-    this.cargarNuevaPalabra(); // Cargar una nueva palabra para el nuevo nivel
+    this.botonSiguienteNivel.style.display = 'none';
+    this.nivelActual++;
+    this.mostrarNivel();
+    this.cargarNuevaPalabra();
   }
 
   mostrarResultado(mensaje, color) {
@@ -137,7 +127,6 @@ class JuegoReflejos {
   }
 }
 
-// Crear una nueva instancia del juego
 const juegoReflejos = new JuegoReflejos(
   'palabra-a-identificar-reflejos',
   'contenedor-senas-reflejos-nivel-1',

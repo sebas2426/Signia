@@ -40,19 +40,39 @@
             <iframe width="560" height="315" src="https://www.youtube.com/embed/g1Yxx1PzSjg?si=ibOGDYy8zv0jKyZz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         
-        <h2>Guía Visual del Abecedario</h2>
-        <p>Aquí tienes una imagen completa en la que se muestra el abecedario con todas sus letras:</p>
+        <h2 class>Abecedario Completo</h2>
+        <p class="guiaVisualp">Aquí tienes una imagen completa en la que se muestra el abecedario con todas sus letras:</p>
         <img src="/frontend/images/abecedario/abecedarioCompleto.png" class="imagenAbecedario" alt="Abecedario Completo">
-        <h2 class="subTitulo">Juego Interactivo</h2>
+
+            <h2 class="guiaVisual">Guía Visual del Abecedario</h2>
+            <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada letra del abecedario individualmente. Familiarizate con cada gesto</p>
+        
+        <div class="media-contenedor">
+            <h3>Letra <%= leccionData[0].letra %></h3>
+            <div class="contenedorFlechasImagenes">
+                <button id="prev" disabled><i class="bi bi-arrow-left flecha"></i></button>
+            <div class="media-imagen">
+                <img id="media-image" src="<%= leccionData[0].imagenUrl %>" alt="Imagen de <%= leccionData[0].letra %>">
+            </div>
+            <div class="media-video">
+                <iframe id="media-video" src="" title="Video de <%= leccionData[0].letra %>"
+                        frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+            <button id="next"><i class="bi bi-arrow-right flecha"></i></button>
+            </div>
+            <p> <%= leccionData[0].descripcion %></p>
+    </div>
         
         <!--JUEGO-->
+        <h2 class="subTitulo">Juego Interactivo</h2>
         <p>¡Aprende jugando! En este juego tendrás que recordar a que letra del abecedario dactilológico corresponde cada signo indicado.</p>
         <div class="contenedor">
             <!-- Fila de señas -->
             <div class="fila-senas nivel-1">
                 <div class="tarjeta tarjeta-senas" data-pareja="A">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/A.png" alt="Seña A">
+                        <img src="/frontend/images/abecedario/imagenes-media/A-transformed.png" alt="Seña A">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -60,7 +80,7 @@
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="B">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/B.png" alt="Seña B">
+                        <img src="/frontend/images/abecedario/imagenes-media/B-transformed.png" alt="Seña B">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -68,7 +88,7 @@
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="C">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/C.png" alt="Seña C">
+                        <img src="/frontend/images/abecedario/imagenes-media/C-transformed.png" alt="Seña C">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -103,7 +123,7 @@
             <div class="fila-senas nivel-2" style="display: none;">
                 <div class="tarjeta tarjeta-senas" data-pareja="M">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/M.png" alt="Seña M">
+                        <img src="/frontend/images/abecedario/imagenes-media/M-transformed.png" alt="Seña M">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -111,7 +131,7 @@
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="Z">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/Z.png" alt="Seña Z">
+                        <img src="/frontend/images/abecedario/imagenes-media/Z-transformed.png" alt="Seña Z">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -119,7 +139,7 @@
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="D">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/D.png" alt="Seña D">
+                        <img src="/frontend/images/abecedario/imagenes-media/D-transformed.png" alt="Seña D">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -128,7 +148,7 @@
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="Y">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/Y.png" alt="Seña Y">
+                        <img src="/frontend/images/abecedario/imagenes-media/Y-transformed.png" alt="Seña Y">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -169,7 +189,7 @@
             <div class="fila-senas nivel-3" style="display: none;">
                 <div class="tarjeta tarjeta-senas" data-pareja="B">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/B.png" alt="Seña B">
+                        <img src="/frontend/images/abecedario/imagenes-media/B-transformed.png" alt="Seña B">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -177,7 +197,7 @@
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="X">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/X.png" alt="Seña X">
+                        <img src="/frontend/images/abecedario/imagenes-media/X-transformed.png" alt="Seña X">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -185,7 +205,7 @@
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="M">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/M.png" alt="Seña M">
+                        <img src="/frontend/images/abecedario/imagenes-media/M-transformed.png" alt="Seña M">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -194,7 +214,7 @@
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="N">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/N.png" alt="Seña N">
+                        <img src="/frontend/images/abecedario/imagenes-media/N-transformed.png" alt="Seña N">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -202,7 +222,7 @@
                 </div>
                 <div class="tarjeta tarjeta-senas" data-pareja="A">
                     <div class="cara delante">
-                        <img src="/frontend/images/abecedario/A.png" alt="Seña A">
+                        <img src="/frontend/images/abecedario/imagenes-media/A-transformed.png" alt="Seña A">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -251,6 +271,9 @@
 
 <%- include('../partials/tesT') %>
 
+<script>
+    const leccionData = <%- JSON.stringify(leccionData) %>; // Pasa el array de letras como JSON
+</script>
 </body>
 
 </html>

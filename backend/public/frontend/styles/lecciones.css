@@ -51,6 +51,10 @@ button{
     cursor: pointer;
 }
 
+iframe{
+  border: none;
+}
+
 button:hover{
     --tw-border-opacity: 1;
     --tw-text-opacity: 1;
@@ -102,13 +106,83 @@ footer{
     margin: 2rem 0;
 }
 
-/*LECCION 1*/
-
 .imagenAbecedario{
-  margin-top: 4.5vh;
+  margin-top: 20px;
 }
 
+/*MEDIA PARA CADA LECCIÓN*/
+/* Estilo para el contenedor de la letra */
+.media-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-align: center;
+  width: 600px;
+  height: auto;
+  margin: 20px;
+  margin-left: 0;
+  padding: 2rem;
+  border: 2px solid rgb(236, 230, 230);
+  border-radius: 5px;
+}
 
+.contenedorFlechasImagenes{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* Estilo para la imagen */
+.media-imagen img {
+  width: 400px;
+  height: 400px; 
+  border: 2px solid rgb(236, 230, 230); 
+  border-radius: 8px;
+  height: auto;
+}
+
+/* Estilo para el video */
+.media-video {
+  margin: 20px 0; 
+}
+
+.media-video iframe {
+  width: 400px;
+  height: 400px; 
+  border: none;
+}
+
+.media-contenedor button {
+  background-color: rgb(89, 130, 155); 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  margin: 5px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  font-size: 16px; 
+}
+
+.media-contenedor button:hover {
+  background-color: rgb(69, 100, 121); 
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+.flecha{
+  font-size: 1.2rem;
+  color: #121212;
+}
+
+.guiaVisual{
+  margin-top: 4.5vh;
+  margin-bottom: 1rem;
+}
+.guiaVisualp{
+  margin-bottom: 1rem;
+}
 
 /*EVALUACION*/
 .contenedorEvaluacion{
@@ -159,6 +233,10 @@ footer{
   width: 220px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+}
+
+.media-contenedor h3{
+  font-size: 1.5rem;
 }
 
 .btn{
@@ -242,6 +320,17 @@ footer{
   background-color:#2c2c2c;
 }
 
+.dark-mode .media-contenedor{
+  border-color: #222222;
+}
+
+.dark-mode .media-contenedor img{
+  border-color: #222222;
+}
+.dark-mode .flecha{
+  color: white;
+}
+
 .Completado:hover {
   background-color: rgb(54, 78, 95);
   color: white;
@@ -289,7 +378,6 @@ footer{
   cursor: not-allowed; 
 }
 
-
   
   /*RESPONSIVE*/
   @media screen and (max-width: 650px) {
@@ -316,8 +404,27 @@ footer{
       
     }
 
-    /*EVALUACION*/
+    /*MEDIA*/
+    .media-contenedor {
+      width: 100%;
+      height: auto;
+      margin: 10px; /* Reduce el margen en pantallas más pequeñas */
+      margin-left: 0;
+  }
+  .contenedorFlechasImagenes{
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .media-video{
+    margin: 0;
+    padding: 0;
+  }
 
+  .media-contenedor button {
+      width: 50%;
+      font-size: 14px; 
+  }
+    /*EVALUACION*/
   .contenedorEvaluacion {
     width: 100%; 
     padding: 0.5rem; 

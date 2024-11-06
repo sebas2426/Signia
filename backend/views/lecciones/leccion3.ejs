@@ -35,59 +35,77 @@
         
         <p>Te presentamos un vídeo en el que podrás ver algunos de los saludos más utilizados en lenguaje de señas. Míralo las veces que sean necesarias.:</p>
         <div class="contenedorVideo">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/CuF2YwUd1Yk?si=S4hZBXogxme4CYWJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/lWZtrf-xiPs?si=RXvv85-3qeloMgnM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+        
+        <h2 class="guiaVisual">Guía Visual del Abecedario</h2>
+        <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada letra del abecedario individualmente. Familiarizate con cada gesto</p>
     
+    <div class="media-contenedor">
+        <h3><%= leccionData[0].letra %></h3>
+        <div class="contenedorFlechasImagenes">
+            <button id="prev" disabled><i class="bi bi-arrow-left flecha"></i></button>
+        <div class="media-imagen">
+            <img id="media-image" src="<%= leccionData[0].imagenUrl %>" alt="Imagen de <%= leccionData[0].letra %>">
+        </div>
+        <div class="media-video">
+            <iframe id="media-video" src="" title="Video de <%= leccionData[0].letra %>"
+                    frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+        <button id="next"><i class="bi bi-arrow-right flecha"></i></button>
+        </div>
+        <p> <%= leccionData[0].descripcion %></p>
+    </div>
+
     <!--JUEGOS-->
-    <!--TARJETAS DE MEMORIA-->
-    <p>¡Aprende jugando! En este juego tendrás que recordar a que letra del abecedario dactilológico corresponde cada signo indicado.</p>
     <div class="contenedor">
         <!-- Fila de señas -->
         <div class="fila-senas nivel-1">
-            <div class="tarjeta tarjeta-senas" data-pareja="A">
+            <div class="tarjeta tarjeta-senas" data-pareja="Buen-dia">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/A.png" alt="Seña A">
+                    <img src="/frontend/images/saludos/saludos-media/Buen-dia.png" alt="Seña Buenos Días">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
             </div>
-            <div class="tarjeta tarjeta-senas" data-pareja="B">
+            <div class="tarjeta tarjeta-senas" data-pareja="Buenas-tardes">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/B.png" alt="Seña B">
+                    <img src="/frontend/images/saludos/saludos-media/Buenas-tardes.png" alt="Seña Buenas Tardes">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
             </div>
-            <div class="tarjeta tarjeta-senas" data-pareja="C">
+            <div class="tarjeta tarjeta-senas" data-pareja="Buenas-noches">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/C.png" alt="Seña C">
+                    <img src="/frontend/images/saludos/saludos-media/Buenas-noches.png" alt="Seña Buenas Noches">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
             </div>
         </div>
     
         <!-- Fila de letras -->
         <div class="fila-letras nivel-1">
-            <div class="tarjeta" data-pareja="A">
+            <div class="tarjeta" data-pareja="Buen-dia">
                 <div class="cara delante">
-                    <p>A</p>
+                    <p>Buen Día</p>
                 </div>
                 <div class="cara atras">
                 </div>
             </div>
-            <div class="tarjeta" data-pareja="B">
+            <div class="tarjeta" data-pareja="Buenas-tardes">
                 <div class="cara delante">
-                    <p>B</p>
+                    <p>Buenas Tardes</p>
                 </div>
                 <div class="cara atras"></div>
             </div>
-            <div class="tarjeta" data-pareja="C">
+            <div class="tarjeta" data-pareja="Buenas-noches">
                 <div class="cara delante">
-                    <p>C</p>
+                    <p>Buenas Noches</p>
                 </div>
                 <div class="cara atras"></div>
             </div>
@@ -95,65 +113,65 @@
 
         <!-- Fila de señas - Nivel 2 -->
         <div class="fila-senas nivel-2" style="display: none;">
-            <div class="tarjeta tarjeta-senas" data-pareja="M">
+            <div class="tarjeta tarjeta-senas" data-pareja="Buenas-noches">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/M.png" alt="Seña M">
+                    <img src="/frontend/images/saludos/saludos-media/Buenas-noches.png" alt="Seña Buenas Noches">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
             </div>
-            <div class="tarjeta tarjeta-senas" data-pareja="Z">
+            <div class="tarjeta tarjeta-senas" data-pareja="Por-favor">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/Z.png" alt="Seña Z">
+                    <img src="/frontend/images/saludos/saludos-media/Por-favor.png" alt="Seña Z">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
             </div>
-            <div class="tarjeta tarjeta-senas" data-pareja="D">
+            <div class="tarjeta tarjeta-senas" data-pareja="Gracias">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/D.png" alt="Seña D">
+                    <img src="/frontend/images/saludos/saludos-media/Gracias.png" alt="Seña Gracias">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
                 
             </div>
-            <div class="tarjeta tarjeta-senas" data-pareja="Y">
+            <div class="tarjeta tarjeta-senas" data-pareja="Buenas-tardes">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/Y.png" alt="Seña Y">
+                    <img src="/frontend/images/saludos/saludos-media/Buenas-tardes.png" alt="Seña Buenas Tardes">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
             </div>
         </div>
         
         <!-- Fila de letras -->
         <div class="fila-letras nivel-2" style="display: none;">
-            <div class="tarjeta" data-pareja="M">
+            <div class="tarjeta" data-pareja="Buenas-noches">
                 <div class="cara delante">
-                    <p>M</p>
+                    <p>Buenas Noches</p>
                 </div>
                 <div class="cara atras">
                 </div>
             </div>
-            <div class="tarjeta" data-pareja="Z">
+            <div class="tarjeta" data-pareja="Por-favor">
                 <div class="cara delante">
-                    <p>Z</p>
+                    <p>Por Favor</p>
                 </div>
                 <div class="cara atras"></div>
             </div>
-            <div class="tarjeta" data-pareja="D">
+            <div class="tarjeta" data-pareja="Gracias">
                 <div class="cara delante">
-                    <p>D</p>
+                    <p>Gracias</p>
                 </div>
                 <div class="cara atras"></div>
             </div>
-            <div class="tarjeta" data-pareja="Y">
+            <div class="tarjeta" data-pareja="Buenas-tardes">
                 <div class="cara delante">
-                    <p>Y</p>
+                    <p>Buenas Tardes</p>
                 </div>
                 <div class="cara atras"></div>
             </div>
@@ -161,86 +179,86 @@
         
         <!-- Fila de señas - Nivel 3 -->
         <div class="fila-senas nivel-3" style="display: none;">
-            <div class="tarjeta tarjeta-senas" data-pareja="B">
+            <div class="tarjeta tarjeta-senas" data-pareja="Buenos-dias">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/B.png" alt="Seña B">
+                    <img src="/frontend/images/saludos/saludos-media/Buen-dia.png" alt="Seña Buenos Días">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
             </div>
-            <div class="tarjeta tarjeta-senas" data-pareja="X">
+            <div class="tarjeta tarjeta-senas" data-pareja="Por-favor">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/X.png" alt="Seña X">
+                    <img src="/frontend/images/saludos/saludos-media/Por-favor.png" alt="Seña Por Favor">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
             </div>
-            <div class="tarjeta tarjeta-senas" data-pareja="M">
+            <div class="tarjeta tarjeta-senas" data-pareja="Buenas-noches">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/M.png" alt="Seña M">
+                    <img src="/frontend/images/saludos/saludos-media/Buenas-noches.png" alt="Seña Buenas Noches">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
                 
             </div>
-            <div class="tarjeta tarjeta-senas" data-pareja="N">
+            <div class="tarjeta tarjeta-senas" data-pareja="Buenas-tardes">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/N.png" alt="Seña N">
+                    <img src="/frontend/images/saludos/saludos-media/Buenas-tardes.png" alt="Seña Buenas Tardes">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
             </div>
-            <div class="tarjeta tarjeta-senas" data-pareja="A">
+            <div class="tarjeta tarjeta-senas" data-pareja="Hola">
                 <div class="cara delante">
-                    <img src="/frontend/images/abecedario/A.png" alt="Seña A">
+                    <img src="/frontend/images/saludos/saludos-media/Hola.png" alt="Seña Hola">
                 </div>
                 <div class="cara atras">
-                    <p>¿?</p>
+                    <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                 </div>
             </div>
         </div>
         
         <!-- Fila de letras -->
         <div class="fila-letras nivel-3" style="display: none;">
-            <div class="tarjeta" data-pareja="B">
+            <div class="tarjeta" data-pareja="Buenos-dias">
                 <div class="cara delante">
-                    <p>B</p>
+                    <p>Buenos Días</p>
                 </div>
                 <div class="cara atras">
                 </div>
             </div>
-            <div class="tarjeta" data-pareja="X">
+            <div class="tarjeta" data-pareja="Por-favor">
                 <div class="cara delante">
-                    <p>X</p>
+                    <p>Por Favor</p>
                 </div>
                 <div class="cara atras"></div>
             </div>
-            <div class="tarjeta" data-pareja="M">
+            <div class="tarjeta" data-pareja="Buenas-tardes">
                 <div class="cara delante">
-                    <p>M</p>
+                    <p>Buenas Tardes</p>
                 </div>
                 <div class="cara atras"></div>
             </div>
-            <div class="tarjeta" data-pareja="N">
+            <div class="tarjeta" data-pareja="Buenas-noches">
                 <div class="cara delante">
-                    <p>N</p>
+                    <p>Buenas Noches</p>
                 </div>
                 <div class="cara atras"></div>
             </div>
-            <div class="tarjeta" data-pareja="A">
+            <div class="tarjeta" data-pareja="Hola">
                 <div class="cara delante">
-                    <p>A</p>
+                    <p>Hola</p>
                 </div>
                 <div class="cara atras"></div>
             </div>
         </div>
 <p id="resultado"></p>
 <button id="nivelSiguiente">Siguiente nivel</button>
-</div>
+    </div>
 
 <!--REFLEJOS-->
 <h2>Juego 2</h2>
@@ -249,26 +267,26 @@
     <div id="palabra-a-identificar-reflejos">Palabra</div>
     <!-- Nivel 1 -->
     <div id="contenedor-senas-reflejos-nivel-1" class="contenedor-senas">
-      <button class="sena-reflejos" data-palabra="Hola"><img src="/frontend/images/abecedario/R.png" alt="Seña de Hola"></button>
-      <button class="sena-reflejos" data-palabra="Adiós"><img src="/frontend/images/abecedario/A.png" alt="Seña de Adiós"></button>
-      <button class="sena-reflejos" data-palabra="Gracias"><img src="/frontend/images/abecedario/T.png" alt="Seña de Gracias"></button>
+      <button class="sena-reflejos" data-palabra="Hola"><img src="/frontend/images/saludos/saludos-media/Hola.png" alt="Seña de Hola"></button>
+      <button class="sena-reflejos" data-palabra="Adiós"><img src="/frontend/images/saludos/saludos-media/Adios.png" alt="Seña de Adiós"></button>
+      <button class="sena-reflejos" data-palabra="Gracias"><img src="/frontend/images/saludos/saludos-media/Gracias.png" alt="Seña de Gracias"></button>
     </div>
     
     <!-- Nivel 2-->
     <div id="contenedor-senas-reflejos-nivel-2" class="contenedor-senas" style="display: none;">
-      <button class="sena-reflejos" data-palabra="Por favor"><img src="/frontend/images/abecedario/A.png" alt="Seña de Por Favor"></button>
-      <button class="sena-reflejos" data-palabra="Bienvenido"><img src="/frontend/images/abecedario/B.png" alt="Seña de Bienvenido"></button>
-      <button class="sena-reflejos" data-palabra="Perdón"><img src="/frontend/images/abecedario/D.png" alt="Seña de Perdón"></button>
-      <button class="sena-reflejos" data-palabra="Perdón"><img src="/frontend/images/abecedario/Y.png" alt="Seña de Perdón"></button>
+      <button class="sena-reflejos" data-palabra="Por favor"><img src="/frontend/images/saludos/saludos-media/Por-favor.png" alt="Seña de Por Favor"></button>
+      <button class="sena-reflejos" data-palabra="Buenas Noches"><img src="/frontend/images/saludos/saludos-media/Buenas-noches.png" alt="Seña de Buenas Noches"></button>
+      <button class="sena-reflejos" data-palabra="Buenas Tardes"><img src="/frontend/images/saludos/saludos-media/Buenas-tardes.png" alt="Seña de Buenas Tardes"></button>
+      <button class="sena-reflejos" data-palabra="Hola"><img src="/frontend/images/saludos/saludos-media/Hola.png" alt="Seña de Hola"></button>
     </div>
 
     <div id="contenedor-senas-reflejos-nivel-3" class="contenedor-senas" style="display: none;">
         <!-- Nivel 3-->
-        <button class="sena-reflejos" data-palabra="Feliz cumpleaños"><img src="/frontend/images/abecedario/A.png" alt="Seña de Feliz Cumpleaños"></button>
-        <button class="sena-reflejos" data-palabra="Te quiero"><img src="/frontend/images/abecedario/D.png" alt="Seña de Te Quiero"></button>
-        <button class="sena-reflejos" data-palabra="Hasta luego"><img src="/frontend/images/abecedario/Z.png" alt="Seña de Hasta Luego"></button>
-        <button class="sena-reflejos" data-palabra="Hasta luego"><img src="/frontend/images/abecedario/Z.png" alt="Seña de Hasta Luego"></button>
-        <button class="sena-reflejos" data-palabra="Hasta luego"><img src="/frontend/images/abecedario/Z.png" alt="Seña de Hasta Luego"></button>
+        <button class="sena-reflejos" data-palabra="Buenos Días"><img src="/frontend/images/saludos/saludos-media/Buen-dia.png" alt="Seña de Buenos Días"></button>
+        <button class="sena-reflejos" data-palabra="Por Favor"><img src="/frontend/images/saludos/saludos-media/Por-favor.png" alt="Seña de Por Favor"></button>
+        <button class="sena-reflejos" data-palabra="Buenas Noches"><img src="/frontend/images/saludos/saludos-media/Buenas-noches.png" alt="Seña de Buenas Noches"></button>
+        <button class="sena-reflejos" data-palabra="Buenas Tardes"><img src="/frontend/images/saludos/saludos-media/Buenas-tardes.png" alt="Seña de Buenas Tardes"></button>
+        <button class="sena-reflejos" data-palabra="Hola"><img src="/frontend/images/saludos/saludos-media/Hola.png" alt="Seña de Hola"></button>
       </div>
   
     <p id="resultado-reflejos"></p>
@@ -276,6 +294,8 @@
   </div>
   
   <%- include('../partials/tesT') %>
-
+  <script>
+    const leccionData = <%- JSON.stringify(leccionData) %>;
+</script>
 </body>
 </html>

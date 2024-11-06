@@ -1,0 +1,41 @@
+[
+    {"letra": "1", "imagenUrl": "/frontend/images/numeros/numeros-media/Uno.png", "videoUrl": "/frontend/images/numeros/videos/Uno.mov", "descripcion": " Expresa a la unidad. Es el primer número natural " },
+
+    {"letra": "2", "imagenUrl": "/frontend/images/numeros/numeros-media/Dos.png", "videoUrl": "/frontend/images/numeros/videos/Uno.mov", "descripcion": "Número natural que sigue al uno." },
+
+    {"letra": "3", "imagenUrl": "/frontend/images/numeros/numeros-media/Tres.png", "videoUrl": "/frontend/images/numeros/videos/Tres.mov", "descripcion": "Número natural que sigue al dos" },
+
+    {"letra": "4", "imagenUrl": "/frontend/images/numeros/numeros-media/Cuatro.png", "videoUrl": "/frontend/images/numeros/videos/Cuatro.mov", "descripcion": "Número natural que sigue al tres." },
+
+    {"letra": "5", "imagenUrl": "/frontend/images/numeros/numeros-media/Cinco.png", "videoUrl": "/frontend/images/numeros/videos/Cinco.mov", "descripcion": " Número natural que sigue al cuatro" },
+
+    {"letra": "6", "imagenUrl": "/frontend/images/numeros/numeros-media/Seis.png", "videoUrl": "/frontend/images/numeros/videos/Seis.mov", "descripcion": "Número natural que sigue al cinco" },
+
+    {"letra": "7", "imagenUrl": "/frontend/images/numeros/numeros-media/Siete.png", "videoUrl": "/frontend/images/numeros/videos/Siete.mov", "descripcion": " Número natural que sigue al seis" },
+
+    {"letra": "8", "imagenUrl": "/frontend/images/numeros/numeros-media/Ocho.png", "videoUrl": "/frontend/images/numeros/videos/Ocho.mov", "descripcion": "Número natural que sigue al siete" },
+
+    {"letra": "9", "imagenUrl": "/frontend/images/numeros/numeros-media/Nueve.png", "videoUrl": "/frontend/images/numeros/videos/Nueve.mov", "descripcion": "Número natural que sigue al ocho." },
+
+    {"letra": "10", "imagenUrl": "/frontend/images/numeros/numeros-media/Diez.png", "videoUrl": "/frontend/images/numeros/videos/Diez.mov", "descripcion": "Número natural que sigue al nueve" },
+
+    {"letra": "11", "imagenUrl": "/frontend/images/numeros/numeros-media/Once.png", "videoUrl": "/frontend/images/numeros/videos/Once.mov", "descripcion": "Número natural que sigue al diez." },
+
+    {"letra": "12", "imagenUrl": "/frontend/images/numeros/numeros-media/Doce.png", "videoUrl": "/frontend/images/numeros/videos/Doce.mov", "descripcion": "Número natural que sigue al once." },
+
+    {"letra": "13", "imagenUrl": "/frontend/images/numeros/numeros-media/Trece.png", "videoUrl": "/frontend/images/numeros/videos/Trece.mov", "descripcion": " Número natural que sigue al doce" },
+
+    {"letra": "14", "imagenUrl": "/frontend/images/numeros/numeros-media/Catorce.png", "videoUrl": "/frontend/images/numeros/videos/Catorce.mov", "descripcion": "Número natural que sigue al trece" },
+
+    {"letra": "15", "imagenUrl": "/frontend/images/numeros/numeros-media/Quince.png", "videoUrl": "/frontend/images/numeros/videos/Quince.mov", "descripcion": "Número natural que sigue al catorce" },
+
+    {"letra": "16", "imagenUrl": "/frontend/images/numeros/numeros-media/Dieciseis.png", "videoUrl": "/frontend/images/numeros/videos/Dieciseis.mov", "descripcion": "Número natural que sigue al quince" },
+
+    {"letra": "17", "imagenUrl": "/frontend/images/numeros/numeros-media/Diecisiete.png", "videoUrl": "/frontend/images/numeros/videos/Diecisiete.mov", "descripcion": "Número natural que sigue al dieciséis." },
+
+    {"letra": "18", "imagenUrl": "/frontend/images/numeros/numeros-media/Dieciocho.png", "videoUrl": "/frontend/images/numeros/videos/Dieciocho.mov", "descripcion": "Número natural que sigue al diecisiete. " },
+
+    {"letra": "19", "imagenUrl": "/frontend/images/numeros/numeros-media/Diecinueve.png", "videoUrl": "/frontend/images/numeros/videos/Diecinueve.mov", "descripcion": "Número natural que sigue al dieciocho. " },
+
+    {"letra": "20", "imagenUrl": "/frontend/images/numeros/numeros-media/Veinte.png", "videoUrl": "/frontend/images/numeros/videos/Veinte.mov", "descripcion": "Número natural que sigue al diecinueve. " }
+]
