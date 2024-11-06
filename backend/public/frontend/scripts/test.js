@@ -146,7 +146,6 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     });    
 });
 
-
 // Función para reiniciar el test
 function reiniciarTest() {
     indicePregunta = 0;
@@ -232,6 +231,7 @@ function seleccionarOpcion(opcionSeleccionada) {
         puntaje--;
     }
 
+    // Ajusta el tiempo de espera (por ejemplo, 1500 ms o 1.5 segundos)
     setTimeout(() => {
         indicePregunta++;
         if (indicePregunta < preguntas.length) {
@@ -240,8 +240,11 @@ function seleccionarOpcion(opcionSeleccionada) {
         } else {
             verificarPuntaje();
         }
-    }, 1000);
+    }, 1500);  // Retraso de 1.5 segundos antes de cargar la siguiente pregunta
 }
 
-// Llamamos a la función que carga las preguntas al iniciar
-cargarPreguntasDesdeJSON();
+// Inicia cargando las preguntas cuando la página se haya cargado
+window.onload = function () {
+    cargarPreguntasDesdeJSON();
+};
+
