@@ -259,6 +259,166 @@
                     "imagen": "/frontend/images/saludos/saludos-media/Adios.png"
                 }
             ]
+        },
+
+        {
+            "id": 4,
+            "titulo": "Lección 4: Días de la Semana",
+            "preguntas": [
+                {
+                    "pregunta": "¿A qué día de la semana corresponde este signo?",
+                    "opciones": [
+                        "Lunes",
+                        "Jueves",
+                        "Miércoles",
+                        "Sábado"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/dias_semana/Lunes.png"
+                },
+                {
+                    "pregunta": "¿A qué día de la semana corresponde este signo?",
+                    "opciones": [
+                        "Domingo",
+                        "Viernes",
+                        "Miércoles",
+                        "Martes"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/dias_semana/Miercoles.png"
+                },
+                {
+                    "pregunta": "¿A qué día de la semana corresponde este signo?",
+                    "opciones": ["Domingo", "Martes", "Jueves", "Viernes"],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/dias_semana/Viernes.png"
+                },
+                {
+                    "pregunta": "¿A qué día de la semana corresponde este signo?",
+                    "opciones": [
+                        "Lunes",
+                        "Domingo",
+                        "Martes",
+                        "Jueves"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/dias_semana/Martes.png"
+                },
+                {
+                    "pregunta": "¿A qué día de la semana corresponde este signo?",
+                    "opciones": ["Sábado", "Jueves", "Viernes", "Lunes"],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/dias_semana/Jueves.png"
+                },
+                {
+                    "pregunta": "¿A qué día de la semana corresponde este signo?",
+                    "opciones": [
+                        "Lunes","Miercoles","Viernes","Sábado"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/dias_semana/Sabado.png"
+                },
+                {
+                    "pregunta": "¿A qué día de la semana corresponde este signo?",
+                    "opciones": [
+                        "Martes","Miércoles","Domingo","Viernes"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/dias_semana/Domingo.png"
+                }
+            ]
+        },
+
+        {
+            "id": 5,
+            "titulo": "Lección 5: Meses del Año",
+            "preguntas": [
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": [
+                        "Octubre",
+                        "Febrero",
+                        "Marzo",
+                        "Mayo"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/meses_ano/Febrero.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": [
+                        "Marzo",
+                        "Noviembre",
+                        "Mayo",
+                        "Enero"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/meses_ano/Mayo.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": ["Mayo", "Octubre", "Diciembre", "Enero"],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/meses_ano/Enero.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": [
+                        "Junio",
+                        "Julio",
+                        "Septiembre",
+                        "Marzo"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/meses_ano/Junio.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": ["Enero", "Diciembre", "Mayo", "Agosto"],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/meses_ano/Diciembre.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": [
+                        "Noviembre","Octubre","Agosto","Abril"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/meses_ano/Abril.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": [
+                        "Enero","Marzo","Agosto","Diciembre"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/meses_ano/Agosto.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": [
+                        "Enero","Septiembre","Noviembre","Octubre"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/meses_ano/Octubre.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": [
+                        "Septiembre","Octubre","Febrero","Abril"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/meses_ano/Septiembre.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": [
+                        "Septiembre","Noviembre","Agosto","Enero"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/meses_ano/Noviembre.png"
+                }
+            ]
         }
     ]
 }

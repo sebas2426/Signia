@@ -1,0 +1,53 @@
+#contenedor-juego-cajas {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    border: 2px solid rgb(236, 230, 230);
+}
+#caja-cerrada-cajas, #caja-abierta-cajas {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+#opciones-cajas {
+    margin-top: 20px;
+    display:none;
+}
+#mes-cajas{
+    width: 200px;
+    height: auto;
+}
+#mensaje-cajas {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.opcion-cajas {
+    padding: 10px 20px;
+    margin-top: 1rem;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid rgb(236, 230, 230);
+}
+
+.dark-mode #contenedor-juego-cajas{
+    border-color: #222222;
+}
+.dark-mode .opcion-cajas{
+    color: white;
+    border-color: #222222;
+}
+.dark-mode .opcion-cajas:hover{
+    color: white;
+    border-color: rgb(236, 230, 230);
+}
+
+@media screen and (max-width:650px){
+    #contenedor-juego-cajas{
+        width: 100%;
+    }
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/frontend/images/icono-web.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/frontend/styles/styles.css">
+    <link rel="stylesheet" href="/frontend/styles/lecciones.css">
+    <link rel="stylesheet" href="/frontend/styles/parejas.css">
+    <link rel="stylesheet" href="/frontend/styles/cajas.css">
+    <script src="/frontend/scripts/unirParejas.js" defer></script>
+    <script src="/frontend/scripts/index.js" defer ></script>
+    <script src="/frontend/scripts/test.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="/frontend/scripts/cajas.js" defer></script>
+    <title>Meses del Año</title>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+        }
+      </script>
+</head>
+<body>
+
+    <%- include('../partials/header') %>
+
+    <h1 class="tituloLeccion">Meses del Año</h1>
+    <div class="contenedorLeccion">
+        <h2 class="subTitulo">Introducción</h2>
+        <p>En esta lección aprenderás a cómo expresar los números del 1 al 20 en lenguaje de señas. Es importante dominar estos números, ya que se utilizan con frecuencia en la vida diaria para contar, expresar edades, números telefónicos, etc. Al finalizar esta lección, serás capaz de comprender y comunicarte utilizando estos números.</p> 
+        <br>
+        <br>
+        <h2 class="subTitulo">¡Comencemos!</h2>
+        
+        <p>A continuación te presentamos un video en el que podrás observar cómo se realizan los signos de los números del 1 al 20. Míralo las veces que sean necesarias.:</p>
+        <div class="contenedorVideo">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/I0Py4Ow0-m0?si=WNKW63mtHddcW_Ij" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        
+        <h2 class="guiaVisual">Guía Visual de los meses del año</h2>
+        <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada mes del año individualmente. Familiarizate con cada gesto</p>
+    
+    <div class="media-contenedor">
+        <h3><%= leccionData[0].letra %></h3>
+        <div class="contenedorFlechasImagenes">
+            <button id="prev" disabled><i class="bi bi-arrow-left flecha"></i></button>
+        <div class="media-imagen">
+            <img id="media-image" src="<%= leccionData[0].imagenUrl %>" alt="Imagen de <%= leccionData[0].letra %>">
+        </div>
+        <div class="media-video">
+            <video id="media-video" title="Video de <%= leccionData[0].letra %>" controls>
+                <source src="<%= leccionData[0].videoUrl %>" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>            
+        </div>
+        <button id="next"><i class="bi bi-arrow-right flecha"></i></button>
+        </div>
+        <p> <%= leccionData[0].descripcion %></p>
+    </div>
+
+        <h2 class="subTitulo">Juego Interactivo "Une las Parejas"</h2>
+        <p>¡Aprende jugando! En esta ocasión tendrás que unir cada signo con su número.</p>
+
+        <!--Juego a continuación-->
+        <div class="contenedorParejas">
+            <h2>Une las parejas</h2>
+            <div class="nivel1" >
+
+                <div class="imagenesParejas">
+                    <button class="botonParejas" data-pareja2="Enero"><img src="/frontend/images/meses_ano/Enero.png" alt="" style="width: 120px; height: 120px;"></button>
+                    <button class="botonParejas" data-pareja2="Abril"><img src="/frontend/images/meses_ano/Abril.png" alt="" style="width: 120px; height: 120px;"></button>
+                    <button class="botonParejas" data-pareja2="Junio"><img src="/frontend/images/meses_ano/Junio.png" alt="" style="width: 120px; height: 120px;"></button>
+                </div>
+    
+                <div class="textoParejas">
+                    <div class="opcionesParejas">
+                        <div class="divBlanco" data-pareja2="Abril"></div>
+                        <div class="divParejas ocho">Abril</div>
+                    </div>
+                    <div class="opcionesParejas">
+                        <div class="divBlanco" data-pareja2="Junio"></div>
+                        <div class="divParejas uno">Junio</div>
+                    </div>
+                    <div class="opcionesParejas">
+                        <div class="divBlanco" data-pareja2="Enero"></div>
+                        <div class="divParejas dos">Enero</div>
+                    </div>
+                    <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
+            </div>
+        </div>
+
+
+        <div class="nivel2" style="display: none;">
+        <div class="imagenesParejas">
+            <button class="botonParejas" data-pareja2="Agosto"><img src="/frontend/images/meses_ano/Agosto.png" alt="" style="width: 120px; height: 120px;"></button>
+            <button class="botonParejas" data-pareja2="Febrero"><img src="/frontend/images/meses_ano/Febrero.png" alt="" style="width: 120px; height: 120px;"></button>
+            <button class="botonParejas" data-pareja2="Marzo"><img src="/frontend/images/meses_ano/Marzo.png" alt="" style="width: 120px; height: 120px;"></button>
+        </div>
+            <div class="textoParejas">
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Marzo"></div>
+                    <div class="divParejas tres">Marzo</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Agosto"></div>
+                    <div class="divParejas cero">Agosto</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Febrero"></div>
+                    <div class="divParejas seis">Febrero</div>
+                </div>
+                <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
+            </div>
+        </div>
+
+
+   <div class="nivel3" style="display: none;">
+        <div class="imagenesParejas">
+            <button class="botonParejas" data-pareja2="Octubre"><img src="/frontend/images/meses_ano/Octubre.png" alt="" style="width: 120px; height: 120px;"></button>
+            <button class="botonParejas" data-pareja2="Julio"><img src="/frontend/images/meses_ano/Julio.png" alt="" style="width: 120px; height: 120px;"></button>
+            <button class="botonParejas" data-pareja2="Diciembre"><img src="/frontend/images/meses_ano/Diciembre.png" alt="" style="width: 120px; height: 120px;"></button>
+           <button class="botonParejas" data-pareja2="Septiembre"><img src="/frontend/images/meses_ano/Septiembre.png" alt="" style="width: 120px; height: 120px;"></button>
+        </div>
+            <div class="textoParejas">
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Diciembre"></div>
+                    <div class="divParejas cinco">Diciembre</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Julio"></div>
+                    <div class="divParejas diesyciete">Julio</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Octubre"></div>
+                    <div class="divParejas catorce">Octubre</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Septiembre"></div>
+                    <div class="divParejas diesyocho">Septiembre</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="subTitulo">Juego Interactivo "Abre las cajas"</h2>
+    <p>Para el sigueinte juego deberás de abrir cada caja y seleccionar a que mes del año corresponde el signo contenido.</p>
+
+<!--JUEGO DE CAJAS-->
+<div id="contenedor-juego-cajas">
+    <!-- Caja cerrada inicialmente -->
+    <img id="caja-cerrada-cajas" src="/frontend/images/meses_ano/caja1.png" alt="Caja cerrada">
+    <img id="caja-abierta-cajas" src="/frontend/images/meses_ano/caja2.png" alt="Caja abierta" style="display: none;">
+    
+    <!-- Contenedores de los meses en lenguaje de señas -->
+    <div id="meses-cajas">
+        <!-- Contenedor para Enero -->
+        <div class="mes-caja" data-mes="Enero">
+            <img src="/frontend/images/meses_ano/Enero.png" alt="Mes de Enero en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Enero</button>
+                <button class="opcion-cajas">Febrero</button>
+                <button class="opcion-cajas">Marzo</button>
+            </div>
+        </div>
+        
+        <div class="mes-caja" data-mes="Febrero">
+            <img src="/frontend/images/meses_ano/Febrero.png" alt="Mes de Febrero en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Febrero</button>
+                <button class="opcion-cajas">Abril</button>
+                <button class="opcion-cajas">Mayo</button>
+            </div>
+        </div>
+        
+        <div class="mes-caja" data-mes="Marzo">
+            <img src="/frontend/images/meses_ano/Marzo.png" alt="Mes de Marzo en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Junio</button>
+                <button class="opcion-cajas">Marzo</button>
+                <button class="opcion-cajas">Diciembre</button>
+            </div>
+        </div>
+
+        <div class="mes-caja" data-mes="Mayo">
+            <img src="/frontend/images/meses_ano/Mayo.png" alt="Mes de Mayo en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Diciembre</button>
+                <button class="opcion-cajas">Mayo</button>
+                <button class="opcion-cajas">Junio</button>
+            </div>
+        </div>
+
+    <div class="mes-caja" data-mes="Junio">
+        <img src="/frontend/images/meses_ano/Junio.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Abril</button>
+            <button class="opcion-cajas">Septiembre</button>
+            <button class="opcion-cajas">Junio</button>
+        </div>
+    </div>
+    <div class="mes-caja" data-mes="Octubre">
+        <img src="/frontend/images/meses_ano/Octubre.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Octubre</button>
+            <button class="opcion-cajas">Noviembre</button>
+            <button class="opcion-cajas">Mayo</button>
+        </div>
+    </div>
+    
+    <div class="mes-caja" data-mes="Diciembre">
+        <img src="/frontend/images/meses_ano/Diciembre.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Abril</button>
+            <button class="opcion-cajas">Enero</button>
+            <button class="opcion-cajas">Diciembre</button>
+        </div>
+    </div>
+
+    <div class="mes-caja" data-mes="Septiembre">
+        <img src="/frontend/images/meses_ano/Septiembre.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Septiembre</button>
+            <button class="opcion-cajas">Julio</button>
+            <button class="opcion-cajas">Junio</button>
+        </div>
+    </div>
+</div>
+
+    <!-- Mensaje de acierto o error -->
+    <p id="mensaje-cajas"></p>
+</div>
+
+    <%- include('../partials/tesT') %>
+
+    <script>
+        const leccionData = <%- JSON.stringify(leccionData) %>;
+    </script>
+</body>
+</html>

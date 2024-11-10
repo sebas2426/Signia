@@ -1,0 +1,15 @@
+[
+    {"letra": "Domingo", "imagenUrl": "/frontend/images/dias_semana/Domingo.png", "videoUrl": "/frontend/images/dias_semana/videos/Domingo.mp4", "descripcion": "Primer día de la semana, que es festivo para el cristianismo y, en general, en el mundo occidental." },
+
+    {"letra": "Lunes", "imagenUrl": "/frontend/images/dias_semana/Lunes.png", "videoUrl": "/frontend/images/dias_semana/videos/Lunes.mp4", "descripcion": "Segundo día de la semana." },
+
+    {"letra": "Martes", "imagenUrl": "/frontend/images/dias_semana/Martes.png", "videoUrl": "/frontend/images/dias_semana/videos/Martes.mp4", "descripcion": "Tercer día de la semana" },
+
+    {"letra": "Miércoles", "imagenUrl": "/frontend/images/dias_semana/Miercoles.png", "videoUrl": "/frontend/images/dias_semana/videos/Miercoles.mp4", "descripcion": "Cuarto día de la semana" },
+
+    {"letra": "Jueves", "imagenUrl": "/frontend/images/dias_semana/Jueves.png", "videoUrl": "/frontend/images/dias_semana/videos/Jueves.mp4", "descripcion": "Quinto día de la semana" },
+
+    {"letra": "Viernes", "imagenUrl": "/frontend/images/dias_semana/Viernes.png", "videoUrl": "/frontend/images/dias_semana/videos/Viernes.mp4", "descripcion": "Sexto día de la semana" },
+
+    {"letra": "Sábado", "imagenUrl": "/frontend/images/dias_semana/Sabado.png", "videoUrl": "/frontend/images/dias_semana/videos/Sabado.mp4", "descripcion": "Séptimo día de la semana" }
+]

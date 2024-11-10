@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/frontend/images/icono-web.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/frontend/styles/styles.css">
+    <link rel="stylesheet" href="/frontend/styles/lecciones.css">
+    <link rel="stylesheet" href="/frontend/styles/parejas.css">
+    <link rel="stylesheet" href="/frontend/styles/ahorcado.css">
+    <script src="/frontend/scripts/unirParejas.js" defer></script>
+    <script src="/frontend/scripts/index.js" defer ></script>
+    <script src="/frontend/scripts/test.js" defer></script>
+    <script src="/frontend/scripts/ahorcado.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <title>Días de la semana</title>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+        }
+      </script>
+</head>
+<body>
+
+    <%- include('../partials/header') %>
+
+    <h1 class="tituloLeccion">Días de la Semana</h1>
+    <div class="contenedorLeccion">
+        <h2 class="subTitulo">Introducción</h2>
+        <p>En esta lección aprenderás a los días de la semana en lenguaje de señas. Es importante dominar estos números, ya que se utilizan con frecuencia en la vida diaria para contar, expresar edades, números telefónicos, etc. Al finalizar esta lección, serás capaz de comprender y comunicarte utilizando estos números.</p> 
+        <br>
+        <br>
+        <h2 class="subTitulo">¡Comencemos!</h2>
+        
+        <p>A continuación te presentamos un video en el que podrás observar cómo se realizan los signos de los números del 1 al 20. Míralo las veces que sean necesarias.:</p>
+        <div class="contenedorVideo">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/wO0FBjENxfk?si=gB-lAX65kg0C1Q8X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <h2>Números comunes en lenguaje de señas</h2>
+        <p>Aquí tienes una imagen en la que se muestran números más grandes. Puedes usarla como referencia visual para repasar las señas. ¡Recuerda que la práctica hace al maestro!:</p>
+        <img src="https://aprendelenguadesignos.com/wp-content/uploads/2013/05/Los-dias-de-la-semana.jpg" class="imagenAbecedario" style="width: 550px; height: 500px;" alt="Números del 1 al 20">
+        <h2 class="guiaVisual">Guía Visual de los números del 1 al 20</h2>
+        <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada número individualmente, hasta el 20. Familiarizate con cada gesto</p>
+    
+    <div class="media-contenedor">
+        <h3><%= leccionData[0].letra %></h3>
+        <div class="contenedorFlechasImagenes">
+            <button id="prev" disabled><i class="bi bi-arrow-left flecha"></i></button>
+        <div class="media-imagen">
+            <img id="media-image" src="<%= leccionData[0].imagenUrl %>" alt="Imagen de <%= leccionData[0].letra %>">
+        </div>
+        <div class="media-video">
+            <video id="media-video" title="Video de <%= leccionData[0].letra %>" controls>
+                <source src="<%= leccionData[0].videoUrl %>" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>            
+        </div>
+        <button id="next"><i class="bi bi-arrow-right flecha"></i></button>
+        </div>
+        <p> <%= leccionData[0].descripcion %></p>
+    </div> 
+    <h2 class="subTitulo">Juego Interactivo Une las parejas</h2>
+    <p>¡Aprende jugando! En esta ocasión tendrás que unir cada signo con su número.</p>
+        <!--Juego a continuación-->
+        <div class="contenedorParejas">
+            <h2>Une las parejas</h2>
+            <div class="nivel1" >
+
+                <div class="imagenesParejas">
+                    <button class="botonParejas" data-pareja2="Domingo"><img src="/frontend/images/dias_semana/Domingo.png" alt=""></button>
+                    <button class="botonParejas" data-pareja2="Martes"><img src="/frontend/images/dias_semana/Martes.png" alt=""></button>
+                    <button class="botonParejas" data-pareja2="Lunes"><img src="/frontend/images/dias_semana/Lunes.png" alt=""></button>
+                </div>
+    
+                <div class="textoParejas">
+                    <div class="opcionesParejas">
+                        <div class="divBlanco" data-pareja2="Lunes"></div>
+                        <div class="divParejas ocho">Lunes</div>
+                    </div>
+                    <div class="opcionesParejas">
+                        <div class="divBlanco" data-pareja2="Martes"></div>
+                        <div class="divParejas uno">Martes</div>
+                    </div>
+                    <div class="opcionesParejas">
+                        <div class="divBlanco" data-pareja2="Domingo"></div>
+                        <div class="divParejas dos">Domingo</div>
+                    </div>
+                    <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
+            </div>
+        </div>
+
+
+        <div class="nivel2" style="display: none;">
+        <div class="imagenesParejas">
+            <button class="botonParejas" data-pareja2="Lunes"><img src="/frontend/images/dias_semana/Lunes.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="Sabado"><img src="/frontend/images/dias_semana/Sabado.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="Miercoles"><img src="/frontend/images/dias_semana/Miercoles.png" alt=""></button>
+        </div>
+            <div class="textoParejas">
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Miercoles"></div>
+                    <div class="divParejas tres">Miércoles</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Lunes"></div>
+                    <div class="divParejas cero">Lunes</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Sabado"></div>
+                    <div class="divParejas seis">Sábado</div>
+                </div>
+                <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
+            </div>
+        </div>
+
+
+   <div class="nivel3" style="display: none;">
+        <div class="imagenesParejas">
+            <button class="botonParejas" data-pareja2="Jueves"><img src="/frontend/images/dias_semana/Jueves.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="Viernes"><img src="/frontend/images/dias_semana/Viernes.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="Domingo"><img src="/frontend/images/dias_semana/Domingo.png" alt=""></button>
+           <button class="botonParejas" data-pareja2="Martes"><img src="/frontend/images/dias_semana/Martes.png" alt=""></button>
+        </div>
+            <div class="textoParejas">
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Viernes"></div>
+                    <div class="divParejas cinco">Viernes</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Martes"></div>
+                    <div class="divParejas diesyciete">Martes</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Jueves"></div>
+                    <div class="divParejas catorce">Jueves</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Domingo"></div>
+                    <div class="divParejas diesyocho">Domingo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <h2 class="subTitulo">Juego Interactivo Ahorcado</h2>
+        <p>¡Aprende jugando! En esta ocasión tendrás que unir cada signo con su número.</p>
+    <!-- Contenedor para el juego AHORCADO -->
+  <div id="contenedor-juego-ahorcado" data-leccion="leccion4">
+    <img id="imagen-ahorcado" alt="Ahorcado" src="/frontend/images/dias_semana/ahorcado1.png"/>
+    <img id="imagen-seña-ahorcado" alt="Imagen de seña" src="" />
+    <p id="palabra-mostrada-ahorcado">_ _ _ _ _</p>
+    <div id="teclado-ahorcado">
+      <!-- Aquí se generarán botones de letras -->
+    </div>
+    <p>Intentos restantes: <span id="intentos-restantes-ahorcado">6</span></p>
+      <!-- Mensaje dinámico de fin de nivel o de juego -->
+  <div id="mensaje-ahorcado" style="display: none;">
+    <p id="texto-mensaje-ahorcado"></p>
+    <button id="boton-siguiente-nivel" style="display: none;">Siguiente Nivel</button>
+    <button id="boton-reintentar" style="display: none;">Reintentar</button>
+</div>
+<p id="mensaje-victoria" style="display: none;">¡Felicidades, has completado todos los niveles!</p>
+
+  </div>
+
+  <!-- Definición de datos de la lección en data-attributes -->
+  <div id="datos-leccion-ahorcado" style="display: none;">
+    <div data-palabra="DOMINGO" data-imagen-seña="/frontend/images/dias_semana/Domingo.png"></div>
+    <div data-palabra="LUNES" data-imagen-seña="/frontend/images/dias_semana/Lunes.png"></div>
+    <div data-palabra="MARTES" data-imagen-seña="/frontend/images/dias_semana/Martes.png"></div>
+    <div data-palabra="MIERCOLES" data-imagen-seña="/frontend/images/dias_semana/Miercoles.png"></div>
+    <div data-palabra="JUEVES" data-imagen-seña="/frontend/images/dias_semana/Jueves.png"></div>
+    <div data-palabra="VIERNES" data-imagen-seña="/frontend/images/dias_semana/Viernes.png"></div>
+    <div data-palabra="SABADO" data-imagen-seña="/frontend/images/dias_semana/Sabado.png"></div>
+    <!-- Otros días de la semana... -->
+  </div>
+
+    <%- include('../partials/tesT') %>
+
+    <script>
+        const leccionData = <%- JSON.stringify(leccionData) %>;
+    </script>
+</body>
+</html>

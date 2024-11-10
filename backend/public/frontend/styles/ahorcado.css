@@ -1,0 +1,155 @@
+/* Contenedor principal del juego */
+#contenedor-juego-ahorcado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  padding: 20px;
+  width: 500px;
+  margin: 1rem 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  gap: 1rem;
+  border: 2px solid rgb(236, 230, 230);
+}
+
+/* Imagen del ahorcado */
+#imagen-ahorcado {
+  width: 80%;
+  max-width: 200px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 2px solid rgb(236, 230, 230);
+  padding: 10px;
+}
+
+/* Imagen de la seña */
+#imagen-seña-ahorcado {
+  width: 60%;
+  max-width: 250px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 2px solid rgb(236, 230, 230);
+  padding: 5px;
+}
+
+/* Palabra mostrada */
+#palabra-mostrada-ahorcado {
+  font-size: 24px;
+  letter-spacing: 5px;
+  font-weight: bold;
+  color: #111827;
+}
+
+/* Teclado */
+#teclado-ahorcado {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 15px;
+}
+
+/* Botones de letras */
+#teclado-ahorcado button {
+  background-color: #6366f1;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#teclado-ahorcado button:hover {
+  background-color: #4f46e5;
+}
+
+#teclado-ahorcado button:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Texto de intentos restantes */
+#intentos-restantes-ahorcado {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ef4444;
+}
+
+/* Estilo del texto de "Intentos restantes" */
+#contenedor-juego-ahorcado p {
+  font-size: 16px;
+  color: #374151;
+}
+/* Estilos para el mensaje final */
+#mensaje-ahorcado{
+  display: flex;
+  flex-direction: column;
+ justify-content: center;
+ align-items: center; 
+  margin-top: 20px;
+  padding: 15px;
+  border: 2px solid #f1f1f1;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#mensaje-ahorcado p{
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#boton-siguiente-nivel{
+  background-color: rgb(86, 125, 151);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+}
+
+#boton-reintentar{
+  background-color: #ef4444;
+}
+#boton-siguiente-nivel:hover{
+  color: white;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+#boton-reintentar:hover{
+  color: white;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.dark-mode #contenedor-juego-ahorcado{
+  border-color: #222222;
+}
+.dark-mode #imagen-seña-ahorcado{
+  border-color: #222222;
+}
+.dark-mode #contenedor-juego-ahorcado p{
+  color: white;
+}
+.dark-mode #mensaje-ahorcado{
+  border-color: #222222;
+}
+.dark-mode #imagen-ahorcado{
+  border-color: #222222;
+  background-color: rgb(240, 245, 255);
+}
+
+#mensaje-victoria{
+  font-size: 1.5rem;
+}
+@media screen and (max-width:650px){
+  #contenedor-juego-ahorcado{
+    width: 100%;
+    text-align: center;
+  }
+}
