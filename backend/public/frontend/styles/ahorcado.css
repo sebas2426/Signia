@@ -92,7 +92,6 @@
  align-items: center; 
   margin-top: 20px;
   padding: 15px;
-  border: 2px solid #f1f1f1;
   border-radius: 10px;
   text-align: center;
 }
@@ -135,9 +134,6 @@
 }
 .dark-mode #contenedor-juego-ahorcado p{
   color: white;
-}
-.dark-mode #mensaje-ahorcado{
-  border-color: #222222;
 }
 .dark-mode #imagen-ahorcado{
   border-color: #222222;

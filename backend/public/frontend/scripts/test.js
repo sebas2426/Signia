@@ -228,10 +228,9 @@ function seleccionarOpcion(opcionSeleccionada) {
         opcionesBotones[opcionSeleccionada].style.backgroundColor = 'lightcoral';
         document.querySelector('.pregunta').textContent = 'Incorrecto.';
         opcionesBotones[preguntaActual.respuestaCorrecta].style.backgroundColor = 'lightgreen';
-        puntaje--;
+        puntaje = Math.max(0, puntaje - 1); // Evita que el puntaje sea negativo
     }
 
-    // Ajusta el tiempo de espera (por ejemplo, 1500 ms o 1.5 segundos)
     setTimeout(() => {
         indicePregunta++;
         if (indicePregunta < preguntas.length) {

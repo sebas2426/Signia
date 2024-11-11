@@ -73,8 +73,8 @@
 
   .sena-reflejos{
     background-color: rgb(238, 234, 231);
-    width: 25%;
-    height: auto;
+    width: 150px;
+    height: 150px;
   }
 
   .sena-reflejos:hover{

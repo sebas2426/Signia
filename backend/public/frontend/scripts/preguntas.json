@@ -419,6 +419,153 @@
                     "imagen": "/frontend/images/meses_ano/Noviembre.png"
                 }
             ]
+        },
+
+        {
+            "id": 6,
+            "titulo": "Lección 6: Retroalimentación",
+            "preguntas": [
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "T",
+                        "X",
+                        "A",
+                        "M"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/abecedario/imagenes-media/A-transformed.png"
+                },
+                {
+                    "pregunta": "¿A qué número corresponde este signo?",
+                    "opciones": [
+                        "2",
+                        "5",
+                        "9",
+                        "15"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/numeros/numeros-media/Cinco.png"
+                },
+                {
+                    "pregunta": "¿A qué saludo corresponde este signo?",
+                    "opciones": ["Buenas Tardes", "Gracias", "Adiós", "Buenas Noches"],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/saludos/saludos-media/Buenas-tardes.png"
+                },
+                {
+                    "pregunta": "¿A qué mes corresponde este signo?",
+                    "opciones": [
+                        "Enero",
+                        "Octubre",
+                        "Diciembre",
+                        "febrero"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/meses_ano/Diciembre.png"
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": ["J", "Z", "D", "X"],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/abecedario/imagenes-media/X-transformed.png"
+                },
+                {
+                    "pregunta": "¿A qué día de la semana corresponde este signo?",
+                    "opciones": [
+                        "Lunes","Sábado","Jueves","Viernes"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/dias_semana/Sabado.png"
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "I","C","F","D"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/abecedario/imagenes-media/F-transformed.png"
+                },
+                {
+                    "pregunta": "¿A qué número corresponde este signo?",
+                    "opciones": [
+                        "15","5","12","8"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/numeros/numeros-media/Quince.png"
+                },
+                {
+                    "pregunta": "¿A qué saludo corresponde este signo?",
+                    "opciones": [
+                        "Buenas Tardes","Adiós","Por Favor","Buenas Noches"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/saludos/saludos-media/Buenas-noches.png"
+                },
+                {
+                    "pregunta": "¿A qué día de la semana corresponde este signo?",
+                    "opciones": [
+                        "Domingo","Martes","Viernes","Miércoles"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/dias_semana/Viernes.png"
+                },
+                {
+                    "pregunta": "¿A qué mes corresponde este signo?",
+                    "opciones": [
+                        "Julio",
+                        "Agosto",
+                        "Junio",
+                        "Noviembre"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/meses_ano/Junio.png"
+                },
+                {
+                    "pregunta": "¿A qué mes corresponde este signo?",
+                    "opciones": [
+                        "Noviembre",
+                        "Enero",
+                        "Febrero",
+                        "Septiembre"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/meses_ano/Noviembre.png"
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "M",
+                        "Q",
+                        "U",
+                        "N"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/abecedario/imagenes-media/U-transformed.png"
+                },
+                {
+                    "pregunta": "¿A qué número corresponde este signo?",
+                    "opciones": [
+                        "18",
+                        "7",
+                        "4",
+                        "20"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/numeros/numeros-media/Veinte.png"
+                },
+                {
+                    "pregunta": "¿A qué saludo corresponde este signo?",
+                    "opciones": [
+                        "Gracias",
+                        "Por Favor",
+                        "Buenos Días",
+                        "Buenas Noches"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/saludos/saludos-media/Por-favor.png"
+                }
+            ]
         }
     ]
 }
