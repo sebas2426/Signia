@@ -6,10 +6,8 @@
   flex-wrap: wrap;
   padding: 10px;
   margin: 20px;
-  margin-left: 0;
   gap: 1.5rem;
   width: 90%; 
-  height: 90%;
   border: 2px solid #f1f1f1;
   border-radius: 5px;
   position: relative;
@@ -39,7 +37,6 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: auto;
   gap: 10px;
   padding: 10px;
   border: 2px solid whitesmoke;
@@ -48,9 +45,8 @@
 
 .opcionesParejas {
   display: flex;
-  margin: 0;
   text-align: center;
-  flex-wrap: wrap; /* Asegura que las opciones se ajusten en pantallas pequeñas */
+  flex-wrap: wrap;
 }
 
 .divBlanco {
@@ -62,16 +58,16 @@
   margin-right: 20px;
   background-color: rgb(198, 198, 241);
   flex-shrink: 0;
-  border: 2px dashed #ccc; /* Borde inicial */
-  transition: border 0.5s ease; /* Transición para el borde */
+  border: 2px dashed #ccc;
+  transition: border 0.5s ease;
 }
 
 .divBlanco.correcto {
-  border: 4px solid green; /* Borde verde si es correcto */
+  border: 4px solid green;
 }
 
 .divBlanco.incorrecto {
-  border: 4px solid red; /* Borde rojo si es incorrecto */
+  border: 4px solid red;
 }
 
 .divParejas {
@@ -99,68 +95,65 @@
   height: 80%;
 }
 
-/* Al seleccionar el botón (toque en móvil o clic en desktop) */
 .botonParejas.selected {
-  border: 2px solid blue; /* Resalta el botón seleccionado */
-  background-color: rgba(0, 0, 255, 0.2); /* Fondo azul para indicar selección */
+  border: 2px solid blue;
+  background-color: rgba(0, 0, 255, 0.2);
 }
 
-.botonParejas.returning {
+.botonParejas.returning, .botonParejas.moving {
   transition: transform 1s ease-in-out;
 }
 
-/* Nueva clase para la animación de desplazamiento al soltar en un div blanco */
-.botonParejas.moving {
-  transition: transform 1s ease-in-out;
-  transform: translate(0, 0); /* Se ajustará dinámicamente en JS para el movimiento */
-}
-
-/* Borde de arrastre activo en desktop (visualización cuando se está arrastrando) */
 .botonParejas.dragging {
   transform: scale(1.1);
   opacity: 0.8;
   cursor: grabbing;
 }
 
-.siguienteNivel2{
+.siguienteNivel2 {
   background-color: rgb(69, 100, 121);
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.siguienteNivel2:hover{
+.siguienteNivel2:hover {
   color: white;
   transform: scale(1.05);
   transition: 0.2s;
 }
 
-.dark-mode .botonParejas{
+.dark-mode .botonParejas {
   background-color: #5f5f5f;
 }
-.dark-mode .siguienteNivel2:hover{
+
+.dark-mode .siguienteNivel2:hover {
   color: white;
 }
 
-@media screen and (max-width:650px){
+/* Responsivo para pantallas móviles */
+@media screen and (max-width: 650px) {
   .contenedorParejas {
-    width: 100%; /* Aumenta el ancho en pantallas pequeñas */
+    width: 100%;
     padding: 0.5rem;
     margin: 0;
-}
+  }
 
-.imagenesParejas, .opcionesParejas {
+  .imagenesParejas, .opcionesParejas {
     gap: 0.5rem;
     justify-content: space-between;
-}
+  }
 
-.divBlanco, .divParejas, .botonParejas {
+  .divBlanco, .divParejas, .botonParejas {
     width: 80px;
     height: 90px;
-}
+  }
 
-.divParejas {
+  .divParejas {
     font-size: 1rem;
-}
-.siguienteNivel2{
-  padding: 1rem;
-}
+  }
 
+  .siguienteNivel2 {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
 }
