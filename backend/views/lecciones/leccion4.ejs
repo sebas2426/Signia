@@ -143,36 +143,42 @@
         <h2 class="subTitulo">Juego Interactivo "Ahorcado"</h2>
         <p>Para el sigueinte juego tendrás que adivinar las letras que forman una palabra relacionada con los días de la semana. Cada vez que falles al elegir una letra incorrecta, se dibujará una parte del ahorcado.</p>
 
-    <!-- Contenedor para el juego AHORCADO -->
-  <div id="contenedor-juego-ahorcado">
-    <img id="imagen-ahorcado" alt="Ahorcado" src="/frontend/images/dias_semana/ahorcado1.png"/>
-    <img id="imagen-seña-ahorcado" alt="Imagen de seña" src="" />
-    <p id="palabra-mostrada-ahorcado">_ _ _ _ _</p>
-    <div id="teclado-ahorcado">
-      <!-- Aquí se generarán botones de letras -->
+    <!-- JUEGO AHORCADO -->
+    <div id="contenedor-juego-ahorcado">
+        <!-- Mostrar la palabra escrita -->
+        <p id="palabra-a-adivinar">DOMINGO</p>
+    
+        <!-- Imagen del ahorcado que representa los intentos restantes -->
+        <img id="imagen-ahorcado" alt="Ahorcado" src="/frontend/images/dias_semana/ahorcado1.png"/>
+    
+        <!-- Sección para las imágenes de señas como opciones de respuesta -->
+        <div id="opciones-señas-ahorcado">
+            
+        </div>
+    
+        <!-- Intentos restantes -->
+        <p>Intentos restantes: <span id="intentos-restantes-ahorcado">6</span></p>
+    
+        <!-- Mensaje de victoria/derrota y botones de control -->
+        <div id="mensaje-ahorcado" style="display: none;">
+            <p id="texto-mensaje-ahorcado"></p>
+            <button id="boton-siguiente-nivel" style="display: none;">Siguiente Nivel</button>
+            <button id="boton-reintentar" style="display: none;">Reintentar</button>
+        </div>
+        <p id="mensaje-victoria" style="display: none;">¡Felicidades, has completado todos los niveles!</p>
+    
+        <!-- Datos de la lección con palabras y señas -->
+        <div id="datos-leccion-ahorcado" style="display: none;">
+            <div data-palabra="DOMINGO" data-imagen-seña="/frontend/images/dias_semana/Domingo.png"></div>
+            <div data-palabra="LUNES" data-imagen-seña="/frontend/images/dias_semana/Lunes.png"></div>
+            <div data-palabra="MARTES" data-imagen-seña="/frontend/images/dias_semana/Martes.png"></div>
+            <div data-palabra="MIÉRCOLES" data-imagen-seña="/frontend/images/dias_semana/Miercoles.png"></div>
+            <div data-palabra="JUEVES" data-imagen-seña="/frontend/images/dias_semana/Jueves.png"></div>
+            <div data-palabra="VIERNES" data-imagen-seña="/frontend/images/dias_semana/Viernes.png"></div>
+            <div data-palabra="SÁBADO" data-imagen-seña="/frontend/images/dias_semana/Sabado.png"></div>
+        </div>
     </div>
-    <p>Intentos restantes: <span id="intentos-restantes-ahorcado">6</span></p>
-      <!-- Mensaje dinámico de fin de nivel o de juego -->
-  <div id="mensaje-ahorcado" style="display: none;">
-    <p id="texto-mensaje-ahorcado"></p>
-    <button id="boton-siguiente-nivel" style="display: none;">Siguiente Nivel</button>
-    <button id="boton-reintentar" style="display: none;">Reintentar</button>
-</div>
-<p id="mensaje-victoria" style="display: none;">¡Felicidades, has completado todos los niveles!</p>
-
-  </div>
-
-  <!-- Definición de datos de la lección en data-attributes -->
-  <div id="datos-leccion-ahorcado" style="display: none;">
-    <div data-palabra="DOMINGO" data-imagen-seña="/frontend/images/dias_semana/Domingo.png"></div>
-    <div data-palabra="LUNES" data-imagen-seña="/frontend/images/dias_semana/Lunes.png"></div>
-    <div data-palabra="MARTES" data-imagen-seña="/frontend/images/dias_semana/Martes.png"></div>
-    <div data-palabra="MIERCOLES" data-imagen-seña="/frontend/images/dias_semana/Miercoles.png"></div>
-    <div data-palabra="JUEVES" data-imagen-seña="/frontend/images/dias_semana/Jueves.png"></div>
-    <div data-palabra="VIERNES" data-imagen-seña="/frontend/images/dias_semana/Viernes.png"></div>
-    <div data-palabra="SABADO" data-imagen-seña="/frontend/images/dias_semana/Sabado.png"></div>
-    <!-- Otros días de la semana... -->
-  </div>
+    
 
     <%- include('../partials/tesT') %>
 
