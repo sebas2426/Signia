@@ -1,93 +1,161 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const palabraElemento = document.getElementById("palabra-a-adivinar");
-    const imagenAhorcado = document.getElementById("imagen-ahorcado");
-    const intentosRestantesElemento = document.getElementById("intentos-restantes-ahorcado");
-    const opcionesSeñas = document.getElementById("opciones-señas-ahorcado");
-    const mensajeElemento = document.getElementById("mensaje-ahorcado");
-    const textoMensaje = document.getElementById("texto-mensaje-ahorcado");
-    const botonSiguienteNivel = document.getElementById("boton-siguiente-nivel");
-    const botonReintentar = document.getElementById("boton-reintentar");
+// Variables globales
+let datosLeccionAhorcado = [];
+let datosPalabraActualAhorcado;
+let letrasAdivinadasAhorcado = [];
+let erroresAhorcado = 0;
+const maxIntentosAhorcado = 6;
+const maxNivelesAhorcado = 4; // Límite de niveles
 
-    const datosLeccion = document.querySelectorAll("#datos-leccion-ahorcado div");
-    let intentosRestantes = 6;
-    let nivelActual = 0;
-    let juegoEnCurso = true;
+// Variable para seguir el nivel actual
+let nivelActualAhorcado = 1;
 
-    // Función para inicializar el nivel
-    function iniciarNivel() {
-        intentosRestantes = 6;
-        intentosRestantesElemento.textContent = intentosRestantes;
-        imagenAhorcado.src = `/frontend/images/dias_semana/ahorcado1.png`;
-        mensajeElemento.style.display = "none";
-        botonSiguienteNivel.style.display = "none";
-        botonReintentar.style.display = "none";
-        juegoEnCurso = true; // Reiniciar el estado del juego
+// Función para cargar la lección y comenzar el juego
+function cargarLeccionAhorcado() {
+    const contenedorLeccionAhorcado = document.getElementById("datos-leccion-ahorcado");
+    const elementosLeccionAhorcado = Array.from(contenedorLeccionAhorcado.children);
 
-        const datosActuales = datosLeccion[nivelActual];
-        const palabra = datosActuales.getAttribute("data-palabra");
-        palabraElemento.textContent = palabra;
+    datosLeccionAhorcado = elementosLeccionAhorcado.map(elemento => ({
+        palabra: elemento.getAttribute("data-palabra"),
+        imagenSeña: elemento.getAttribute("data-imagen-seña")
+    }));
 
-        // Limpiar opciones previas
-        opcionesSeñas.innerHTML = "";
+    iniciarJuegoAhorcado();
+}
 
-        // Generar opciones de señas (mezcladas aleatoriamente)
-        const opciones = Array.from(datosLeccion);
-        opciones.sort(() => Math.random() - 0.5);
-        opciones.forEach((opcion) => {
-            const img = document.createElement("img");
-            img.src = opcion.getAttribute("data-imagen-seña");
-            img.alt = opcion.getAttribute("data-palabra");
-            img.classList.add("opcion-seña");
-
-            if (opcion.getAttribute("data-palabra") === "VIERNES") {
-                img.classList.add("seña-viernes");
-            }
-
-            img.addEventListener("click", () => seleccionarOpcion(img.alt, palabra));
-            opcionesSeñas.appendChild(img);
-        });
+// Función para iniciar el juego con una nueva palabra
+function iniciarJuegoAhorcado() {
+    if (nivelActualAhorcado > maxNivelesAhorcado) {
+        mostrarMensajeVictoriaAhorcado();
+        return;
     }
 
-    // Función para manejar la selección de una opción
-    function seleccionarOpcion(seleccion, palabraCorrecta) {
-        if (!juegoEnCurso) return; // Detener si el juego no está en curso
+    datosPalabraActualAhorcado = datosLeccionAhorcado[Math.floor(Math.random() * datosLeccionAhorcado.length)];
+    letrasAdivinadasAhorcado = [];
+    erroresAhorcado = 0;
 
-        if (seleccion === palabraCorrecta) {
-            mostrarMensaje("¡Correcto!", true);
-            juegoEnCurso = false; // Detener el juego si se acierta
-        } else {
-            intentosRestantes--;
-            intentosRestantesElemento.textContent = intentosRestantes;
-            imagenAhorcado.src = `/frontend/images/dias_semana/ahorcado${7 - intentosRestantes}.png`;
-            if (intentosRestantes <= 0) {
-                mostrarMensaje("Inténtalo de nuevo. La palabra correcta era " + palabraCorrecta, false);
-                juegoEnCurso = false; // Detener el juego si el puntaje llega a cero
-            }
-        }
+    document.getElementById("imagen-seña-ahorcado").src = datosPalabraActualAhorcado.imagenSeña;
+    actualizarPantallaJuegoAhorcado();
+    ocultarMensajeAhorcado();
+}
+
+// Función para actualizar la pantalla del juego
+function actualizarPantallaJuegoAhorcado() {
+    const palabraMostradaAhorcado = datosPalabraActualAhorcado.palabra
+        .split("")
+        .map(letra => (letrasAdivinadasAhorcado.includes(letra) ? letra : "_"))
+        .join(" ");
+    
+    document.getElementById("palabra-mostrada-ahorcado").textContent = palabraMostradaAhorcado;
+    document.getElementById("imagen-ahorcado").src = `/frontend/images/dias_semana/ahorcado${erroresAhorcado + 1}.png`;
+    document.getElementById("intentos-restantes-ahorcado").textContent = maxIntentosAhorcado - erroresAhorcado;
+
+    if (palabraMostradaAhorcado.replace(/ /g, "") === datosPalabraActualAhorcado.palabra) {
+        mostrarMensajeAhorcado("¡Ganaste! Pasemos a la siguiente palabra.", true);
+    } else if (erroresAhorcado >= maxIntentosAhorcado) {
+        mostrarMensajeAhorcado(`Perdiste. La palabra era: ${datosPalabraActualAhorcado.palabra}`, false);
     }
+}
 
-    // Función para mostrar mensaje al ganar o perder
-    function mostrarMensaje(texto, esVictoria) {
-        textoMensaje.textContent = texto;
-        mensajeElemento.style.display = "block";
-        if (esVictoria) {
-            botonSiguienteNivel.style.display = "inline-block";
-        } else {
-            botonReintentar.style.display = "inline-block";
-        }
-    }
-
-    // Eventos para avanzar o reintentar
-    botonSiguienteNivel.addEventListener("click", () => {
-        nivelActual++;
-        if (nivelActual < datosLeccion.length) {
-            iniciarNivel();
-        } else {
-            document.getElementById("mensaje-victoria").style.display = "block";
-        }
+// Función para generar el teclado de letras con imágenes en lugar de texto
+function generarTecladoAhorcado() {
+    const contenedorTecladoAhorcado = document.getElementById("teclado-ahorcado");
+    contenedorTecladoAhorcado.innerHTML = "";
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(letra => {
+        const botonAhorcado = document.createElement("button");
+        botonAhorcado.classList.add("boton-letra");
+        
+        // Cambia el texto por la imagen de fondo correspondiente
+        botonAhorcado.style.backgroundImage = `url('/frontend/images/abecedario/imagenes-media/${letra}-transformed.png')`;
+        botonAhorcado.style.backgroundSize = "cover"; // Asegura que la imagen cubra el botón
+        botonAhorcado.style.width = "90px"; // Ajusta el tamaño del botón según sea necesario
+        botonAhorcado.style.height = "90px";
+        
+        // Añade el evento de click para adivinar la letra
+        botonAhorcado.addEventListener("click", () => adivinarLetraAhorcado(letra));
+        contenedorTecladoAhorcado.appendChild(botonAhorcado);
     });
-    botonReintentar.addEventListener("click", iniciarNivel);
+}
 
-    // Inicializar primer nivel
-    iniciarNivel();
+// Función para manejar el intento de adivinar una letra
+function adivinarLetraAhorcado(letra) {
+    if (erroresAhorcado >= maxIntentosAhorcado || letrasAdivinadasAhorcado.includes(letra)) {
+        return;
+    }
+
+    letrasAdivinadasAhorcado.push(letra);
+    
+    if (!datosPalabraActualAhorcado.palabra.includes(letra)) {
+        erroresAhorcado++;
+    }
+
+    actualizarPantallaJuegoAhorcado();
+}
+
+// Función para mostrar el mensaje personalizado en pantalla
+function mostrarMensajeAhorcado(mensaje, esVictoria) {
+    const mensajeElementoAhorcado = document.getElementById("mensaje-ahorcado");
+    const textoMensajeAhorcado = document.getElementById("texto-mensaje-ahorcado");
+    const botonSiguienteNivelAhorcado = document.getElementById("boton-siguiente-nivel");
+    const botonReintentarAhorcado = document.getElementById("boton-reintentar");
+
+    textoMensajeAhorcado.textContent = mensaje;
+    mensajeElementoAhorcado.style.display = "flex";
+
+    if (esVictoria) {
+        botonSiguienteNivelAhorcado.style.display = "inline-block";
+        botonReintentarAhorcado.style.display = "none";
+    } else {
+        botonSiguienteNivelAhorcado.style.display = "none";
+        botonReintentarAhorcado.style.display = "inline-block";
+    }
+}
+
+// Función para ocultar el mensaje de la pantalla
+function ocultarMensajeAhorcado() {
+    const mensajeElementoAhorcado = document.getElementById("mensaje-ahorcado");
+    mensajeElementoAhorcado.style.display = "none";
+}
+
+// Función para pasar a la siguiente palabra
+function siguientePalabraAhorcado() {
+    if (nivelActualAhorcado >= maxNivelesAhorcado) {
+        mostrarMensajeVictoriaAhorcado();
+        return;
+    }
+
+    nivelActualAhorcado++;  
+    iniciarJuegoAhorcado();
+}
+
+// Función para reiniciar el juego
+function reiniciarJuegoAhorcado() {
+    nivelActualAhorcado = 1;
+    iniciarJuegoAhorcado();
+}
+
+// Función para mostrar el mensaje de victoria
+function mostrarMensajeVictoriaAhorcado() {
+    const mensajeVictoriaAhorcado = document.getElementById("mensaje-victoria");
+    mensajeVictoriaAhorcado.style.display = "block";
+
+    document.getElementById("mensaje-ahorcado").style.display = "none";
+    document.getElementById("boton-siguiente-nivel").style.display = "none";
+    document.getElementById("boton-reintentar").style.display = "none";
+}
+
+// Eventos para los botones en el mensaje
+document.getElementById("boton-siguiente-nivel").addEventListener("click", () => {
+    siguientePalabraAhorcado();
+    ocultarMensajeAhorcado();
+});
+
+document.getElementById("boton-reintentar").addEventListener("click", () => {
+    reiniciarJuegoAhorcado();
+    ocultarMensajeAhorcado();
+});
+
+// Iniciar el juego al cargar la lección
+document.addEventListener("DOMContentLoaded", () => {
+    cargarLeccionAhorcado();
+    generarTecladoAhorcado();
 });

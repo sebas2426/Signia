@@ -3,159 +3,175 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 15px;
   padding: 20px;
-  max-width: 500px;
-  margin: 20px;
+  width: auto;
+  margin: 1rem 0;
   font-family: Arial, sans-serif;
-  text-align: center;
-  border: 2px solid #f1f1f1;
-}
-
-/* Palabra a adivinar */
-#palabra-a-adivinar {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 20px;
   color: #333;
+  gap: 1rem;
+  border: 2px solid rgb(236, 230, 230);
 }
 
 /* Imagen del ahorcado */
 #imagen-ahorcado {
-  width: 200px;
-  height: auto;
-  margin-bottom: 20px;
-}
-
-/* Opciones de señas */
-#opciones-señas-ahorcado {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-/* Estilo para las imágenes de señas */
-#opciones-señas-ahorcado img {
-  width: 125px;
-  height: 125px;
-  object-fit: cover;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-#opciones-señas-ahorcado .seña-viernes{
-  width: 210px;
-  height: 125px;
-}
-
-#opciones-señas-ahorcado.imagenViernes img{
   width: 80%;
-}
-#opciones-señas-ahorcado img:hover {
-  transform: scale(1.1);
-  border-color: #5c6bc0; /* Color al pasar el ratón por encima */
-}
-
-/* Intentos restantes */
-#intentos-restantes-ahorcado {
-  font-weight: bold;
-  color: #d32f2f;
-}
-
-/* Mensaje de fin de nivel */
-#mensaje-ahorcado {
-  padding: 15px;
-  background-color: #f8f8f8;
+  max-width: 250px;
+  margin-bottom: 15px;
   border-radius: 10px;
-  border: 1px solid #ccc;
-  max-width: 80%;
+  border: 2px solid rgb(236, 230, 230);
+  padding: 10px;
 }
 
-#mensaje-ahorcado p {
-  font-size: 1.2rem;
-  color: #333;
+/* Imagen de la seña */
+#imagen-seña-ahorcado {
+  width: 60%;
+  max-width: 250px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 2px solid rgb(236, 230, 230);
+  padding: 5px;
 }
 
-/* Botones para siguiente nivel y reintentar */
-#boton-siguiente-nivel,
-#boton-reintentar {
-  padding: 10px 20px;
-  font-size: 1rem;
+/* Palabra mostrada */
+#palabra-mostrada-ahorcado {
+  font-size: 24px;
+  letter-spacing: 5px;
+  font-weight: bold;
+  color: #111827;
+}
+
+#teclado-ahorcado {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
   margin-top: 15px;
+  width: fit-content;
+  text-align: center;
+  justify-content: center;
+  grid-auto-flow: dense; /* Llena espacios vacíos automáticamente */
+}
+
+
+#teclado-ahorcado button {
+  background-color: #6366f1;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-#boton-siguiente-nivel {
-  background-color: rgb(83, 119, 143);
+/* Botón hover */
+#teclado-ahorcado button:hover {
+  background-color: #4f46e5;
 }
 
-#mensaje-ahorcado{
-  margin: 1rem;
+/* Botón deshabilitado */
+#teclado-ahorcado button:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
 }
-#boton-siguiente-nivel:hover {
-  background-color: rgb(69, 100, 121);
+
+/* Texto de intentos restantes */
+#intentos-restantes-ahorcado {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ef4444;
+}
+
+/* Estilo del texto de "Intentos restantes" */
+#contenedor-juego-ahorcado p {
+  font-size: 16px;
+  color: #374151;
+}
+
+/* Estilos para el mensaje final */
+#mensaje-ahorcado {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#mensaje-ahorcado p {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#boton-siguiente-nivel,
+#boton-reintentar {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+}
+
+#boton-siguiente-nivel {
+  background-color: rgb(86, 125, 151);
+}
+
+#boton-reintentar {
+  background-color: #ef4444;
+}
+
+#boton-siguiente-nivel:hover,
+#boton-reintentar:hover {
   color: white;
   transform: scale(1.05);
   transition: 0.2s;
 }
 
-#boton-reintentar {
-  background-color: #f44336;
+.dark-mode #contenedor-juego-ahorcado {
+  border-color: #222222;
 }
 
-#boton-reintentar:hover {
-  transform: scale(1.05);
-  transition:0.2s;
+.dark-mode #imagen-seña-ahorcado {
+  border-color: #222222;
+}
+
+.dark-mode #contenedor-juego-ahorcado p {
   color: white;
 }
 
-#boton-reintentar:hover {
-  background-color: #d32f2f;
+.dark-mode #imagen-ahorcado {
+  border-color: #222222;
+  background-color: rgb(240, 245, 255);
 }
 
-/* Mensaje final de victoria */
 #mensaje-victoria {
   font-size: 1.5rem;
-  font-weight: bold;
-  color: #388e3c;
-  margin-top: 20px;
 }
 
-.dark-mode #palabra-a-adivinar{
-  color: white;
-}
-.dark-mode #imagen-ahorcado{
-  background-color: rgb(240, 245, 255);
-  border-radius: 5px;
-}
-.dark-mode #mensaje-ahorcado{
-  background-color: #121212;
-}
-.dark-mode #texto-mensaje-ahorcado{
-  color: white;
-}
+/* Media query para dispositivos móviles */
+@media screen and (max-width: 650px) {
+  #contenedor-juego-ahorcado {
+    width: 100%;
+    text-align: center;
+  }
 
-/* Estilos responsivos para pantallas pequeñas */
-@media (max-width: 480px) {
-  #palabra-a-adivinar {
-      font-size: 1.6rem;
+  /* Ajusta el teclado para móviles */
+  #teclado-ahorcado {
+    grid-template-columns: repeat(4, 1fr); /* Reduce a 4 columnas para que los botones no hagan overflow */
+    gap: 5px;
   }
-  
-  #opciones-señas-ahorcado img {
-      width: 120px;
-      height: 120px;
-  }
-  
-  #mensaje-ahorcado p {
-      font-size: 1rem;
-  }
-  #opciones-señas-ahorcado .seña-viernes{
-   max-width: 100%;
-   height: auto;
+
+  /* Ajusta el tamaño de los botones en pantallas pequeñas */
+  #teclado-ahorcado button {
+    padding: 8px;
+    font-size: 14px;
+    width: auto;
+    height: auto;
   }
 }
