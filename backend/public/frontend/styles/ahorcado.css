@@ -163,7 +163,7 @@
 
   /* Ajusta el teclado para móviles */
   #teclado-ahorcado {
-    grid-template-columns: repeat(4, 1fr); /* Reduce a 4 columnas para que los botones no hagan overflow */
+    grid-template-columns: repeat(3, 1fr); /* Reduce a 3 columnas para que los botones no hagan overflow */
     gap: 5px;
   }
 
