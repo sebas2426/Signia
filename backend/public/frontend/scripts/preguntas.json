@@ -566,6 +566,83 @@
                     "imagen": "/frontend/images/saludos/saludos-media/Por-favor.png"
                 }
             ]
+        },
+
+
+        {
+            "id": 7,
+            "titulo": "Lección 7: Meses del Año",
+            "preguntas": [
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": [
+                        "Verde",
+                        "Rojo",
+                        "Amarillo",
+                        "Azul"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/colores/Rojo.png"
+                },
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": [
+                        "Verde",
+                        "Azul",
+                        "Negro",
+                        "Gris"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/colores/Verde.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": ["Blanco", "Negro", "Celeste", "Rojo"],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/colores/Negro.png"
+                },
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": [
+                        "Rosa",
+                        "Amarillo",
+                        "Negro",
+                        "Blanco"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/colores/Blanco.png"
+                },
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": ["Gris", "Blanco", "Amarillo", "Rojo"],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/colores/Amarillo.png"
+                },
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": [
+                        "Celeste","Rojo","Negro","Azul"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/colores/Celeste.png"
+                },
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": [
+                        "Blanco","Gris","Negro","Verde"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/colores/Gris.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": [
+                        "Blanco","Verde","Azul","Rojo"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/colores/Azul.png"
+                }
+            ]
         }
     ]
 }

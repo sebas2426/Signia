@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/frontend/images/icono-web.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/frontend/styles/styles.css">
+    <link rel="stylesheet" href="/frontend/styles/lecciones.css">
+    <link rel="stylesheet" href="/frontend/styles/reflejos.css">
+    <link rel="stylesheet" href="/frontend/styles/parejas.css">
+    <script src="/frontend/scripts/index.js" defer></script>
+    <script src="/frontend/scripts/unirParejas.js" defer></script>
+    <script src="/frontend/scripts/reflejos.js" defer></script>
+    <script src="/frontend/scripts/test.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <title>Colores</title>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+        }
+      </script>
+</head>
+<body>
+    
+    <%- include('../partials/header') %>
+
+    <h1 class="tituloLeccion">Colores</h1>
+    <div class="contenedorLeccion">
+        <h2 class="subTitulo">Introducción</h2>
+        <p>En esta lección aprenderás a identificar y comunicar los colores básicos en lenguaje de señas. Los colores son una parte esencial del vocabulario visual, y conocer cómo expresarlos te permitirá describir objetos, ropa, paisajes y mucho más. A través de videos y juegos interactivos, aprenderás los signos para los colores más comunes, como el rojo, azul, verde, amarillo, negro y blanco, entre otros. </p>
+        <br>
+        <br>
+        <h2 class="subTitulo">¡Comencemos!</h2>
+        
+        <p>Te presentamos un vídeo en el que podrás ver algunos de los colores básicos y sus correspondientes signos en lenguaje de señas. Míralo las veces que sean necesarias.:</p>
+        <div class="contenedorVideo">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/0b90MgBa2u4?si=eGxUtR7AvPbXHYWr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        
+        <h2 class="guiaVisual">Guía Visual de los colores</h2>
+        <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada color básico utilizado en lenguaje de señas individualmente. Familiarizate con cada gesto</p>
+    
+    <div class="media-contenedor">
+        <h3><%= leccionData[0].letra %></h3>
+        <div class="contenedorFlechasImagenes">
+            <button id="prev" disabled><i class="bi bi-arrow-left flecha"></i></button>
+        <div class="media-imagen">
+            <img id="media-image" src="<%= leccionData[0].imagenUrl %>" alt="Imagen de <%= leccionData[0].letra %>">
+        </div>
+        <div class="media-video">
+            <video id="media-video" title="Video de <%= leccionData[0].letra %>" controls>
+                <source src="<%= leccionData[0].videoUrl %>" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>            
+        </div>
+        <button id="next"><i class="bi bi-arrow-right flecha"></i></button>
+        </div>
+        <p> <%= leccionData[0].descripcion %></p>
+    </div>
+
+    <h2 class="subTitulo">Juego Interactivo "Une las parejas"</h2>
+    <p>Para el primer juego tendrás que unir cada signo con su pareja correspondiente</p>
+
+    <!--JUEGO UNE LAS PAREJAS-->
+<div class="contenedorParejas">
+    <div class="nivel1" >
+
+        <div class="imagenesParejas">
+            <button class="botonParejas" data-pareja2="Rojo"><img src="/frontend/images/colores/Rojo.png" alt="" style="width: 100%; height: auto;"></button>
+            <button class="botonParejas" data-pareja2="Azul"><img src="/frontend/images/colores/Azul.png" alt="" style="width: 100%; height: auto;"></button>
+            <button class="botonParejas" data-pareja2="Verde"><img src="/frontend/images/colores/Verde.png" alt="" style="width: 100%; height: auto;"></button>
+        </div>
+
+        <div class="textoParejas">
+            <div class="opcionesParejas">
+                <div class="divBlanco" data-pareja2="Azul"></div>
+                <div class="divParejas ocho">Azul</div>
+            </div>
+            <div class="opcionesParejas">
+                <div class="divBlanco" data-pareja2="Rojo"></div>
+                <div class="divParejas uno">Rojo</div>
+            </div>
+            <div class="opcionesParejas">
+                <div class="divBlanco" data-pareja2="Verde"></div>
+                <div class="divParejas dos">Verde</div>
+            </div>
+            <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
+    </div>
+</div>
+
+
+<div class="nivel2" style="display: none;">
+<div class="imagenesParejas">
+    <button class="botonParejas" data-pareja2="Amarillo"><img src="/frontend/images/colores/Amarillo.png" alt="" style="width: 100%; height: auto;"></button>
+    <button class="botonParejas" data-pareja2="Celeste"><img src="/frontend/images/colores/Celeste.png" alt="" style="width: 100%; height: auto;"></button>
+    <button class="botonParejas" data-pareja2="Verde"><img src="/frontend/images/colores/Verde.png" alt="" style="width: 100%; height: auto;"></button>
+</div>
+    <div class="textoParejas">
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Amarillo"></div>
+            <div class="divParejas tres">Amarillo</div>
+        </div>
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Verde"></div>
+            <div class="divParejas cero">Verde</div>
+        </div>
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Celeste"></div>
+            <div class="divParejas seis">Celeste</div>
+        </div>
+        <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
+    </div>
+</div>
+
+
+<div class="nivel3" style="display: none;">
+<div class="imagenesParejas">
+    <button class="botonParejas" data-pareja2="Negro"><img src="/frontend/images/colores/Negro.png" alt="" style="width: 100%; height: auto;"></button>
+    <button class="botonParejas" data-pareja2="Blanco"><img src="/frontend/images/colores/Blanco.png" alt="" style="width: 100%; height: auto;"></button>
+    <button class="botonParejas" data-pareja2="Gris"><img src="/frontend/images/colores/Gris.png" alt="" style="width: 100%; height: auto;"></button>
+   <button class="botonParejas" data-pareja2="Rojo"><img src="/frontend/images/colores/Rojo.png" alt="" style="width: 100%; height: auto;"></button>
+</div>
+    <div class="textoParejas">
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Blanco"></div>
+            <div class="divParejas cinco">Blanco</div>
+        </div>
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Rojo"></div>
+            <div class="divParejas diesyciete">Rojo</div>
+        </div>
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Gris"></div>
+            <div class="divParejas catorce">Gris</div>
+        </div>
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Negro"></div>
+            <div class="divParejas diesyocho">Negro</div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!--REFLEJOS-->
+<h2>Juego interactivo "Reflejos"</h2>
+<p>Para este juego debes de tener reflejos rápidos. Aparecerán los nombres de los colores de manera aleatoria, y tendrás que indicar que signo representa cada color</p>
+<div id="juego-reflejos">
+    <div id="palabra-a-identificar-reflejos">Palabra</div>
+    <!-- Nivel 1 -->
+    <div id="contenedor-senas-reflejos-nivel-1" class="contenedor-senas">
+      <button class="sena-reflejos" data-palabra="Rojo"><img src="/frontend/images/colores/Rojo.png" alt="Seña de Rojo"></button>
+      <button class="sena-reflejos" data-palabra="Blanco"><img src="/frontend/images/colores/Blanco.png" alt="Seña de Blanco"></button>
+      <button class="sena-reflejos" data-palabra="Amarillo"><img src="/frontend/images/colores/Amarillo.png" alt="Seña de Amarillo"></button>
+    </div>
+    
+    <!-- Nivel 2-->
+    <div id="contenedor-senas-reflejos-nivel-2" class="contenedor-senas" style="display: none;">
+      <button class="sena-reflejos" data-palabra="Azul"><img src="/frontend/images/colores/Azul.png" alt="Seña de Azul"></button>
+      <button class="sena-reflejos" data-palabra="Celeste"><img src="/frontend/images/colores/Celeste.png" alt="Seña de Celeste"></button>
+      <button class="sena-reflejos" data-palabra="Rosa"><img src="/frontend/images/colores/Rosa.png" alt="Seña de Rosa"></button>
+      <button class="sena-reflejos" data-palabra="Verde"><img src="/frontend/images/colores/Verde.png" alt="Seña de Verde"></button>
+    </div>
+
+    <div id="contenedor-senas-reflejos-nivel-3" class="contenedor-senas" style="display: none;">
+        <!-- Nivel 3-->
+        <button class="sena-reflejos" data-palabra="Gris"><img src="/frontend/images/colores/Gris.png" alt="Seña de Gris"></button>
+        <button class="sena-reflejos" data-palabra="Negro"><img src="/frontend/images/colores/Negro.png" alt="Seña de Negro"></button>
+        <button class="sena-reflejos" data-palabra="Rojo"><img src="/frontend/images/colores/Rojo.png" alt="Seña de Rojo"></button>
+        <button class="sena-reflejos" data-palabra="Rosa"><img src="/frontend/images/colores/Rosa.png" alt="Seña de Rosa"></button>
+        <button class="sena-reflejos" data-palabra="Celeste"><img src="/frontend/images/colores/Celeste.png" alt="Seña de Celeste"></button>
+      </div>
+  
+    <p id="resultado-reflejos"></p>
+    <button id="boton-siguiente-nivel-reflejos" style="display: none;">Siguiente Nivel</button>
+  </div>
+  
+  <%- include('../partials/tesT') %>
+  <script>
+    const leccionData = <%- JSON.stringify(leccionData) %>;
+</script>
+</body>
+</html>

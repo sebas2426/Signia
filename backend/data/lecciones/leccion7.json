@@ -1,0 +1,19 @@
+[
+    {"letra": "Rojo", "imagenUrl": "/frontend/images/colores/Rojo.png", "videoUrl": "/frontend/images/colores/videos/Rojo.mp4", "descripcion": "Color semejante al de la sangre o al del tomate maduro." },
+
+    {"letra": "Azul", "imagenUrl": "/frontend/images/colores/Azul.png", "videoUrl": "/frontend/images/colores/videos/Azul.mp4", "descripcion": "Color semejante al del cielo sin nubes o el mar en un día soleado" },
+
+    {"letra": "Amarillo", "imagenUrl": "/frontend/images/colores/Amarillo.png", "videoUrl": "/frontend/images/colores/videos/Amarillo.mp4", "descripcion": "Color semejante al del oro o al de yema del huevo." },
+
+    {"letra": "Verde", "imagenUrl": "/frontend/images/colores/Verde.png", "videoUrl": "/frontend/images/colores/videos/Verde.mp4", "descripcion": "Color semejante al de la hierba fresca o al de la esmeralda." },
+
+    {"letra": "Rosa", "imagenUrl": "/frontend/images/colores/Rosa.png", "videoUrl": "/frontend/images/colores/videos/Rosa.mp4", "descripcion": "Rojo muy pálido, como el de la rosa común." },
+
+    {"letra": "Celeste", "imagenUrl": "/frontend/images/colores/Celeste.png", "videoUrl": "/frontend/images/colores/videos/Celeste.mp4", "descripcion": "Azul muy pálido." },
+
+    {"letra": "Negro", "imagenUrl": "/frontend/images/colores/Negro.png", "videoUrl": "/frontend/images/colores/videos/Negro.mp4", "descripcion": "Color semejante al del carbón o al de la oscuridad total" },
+
+    {"letra": "Blanco", "imagenUrl": "/frontend/images/colores/Blanco.png", "videoUrl": "/frontend/images/colores/videos/Blanco.mp4", "descripcion": "Color semejante al de la nieve o la leche." },
+
+    {"letra": "Gris", "imagenUrl": "/frontend/images/colores/Gris.png", "videoUrl": "/frontend/images/colores/videos/Gris.mp4", "descripcion": "Color semejante al de la ceniza o el acero, y que resulta de mezclar el blanco y el negro." }
+]
