@@ -568,7 +568,6 @@
             ]
         },
 
-
         {
             "id": 7,
             "titulo": "Lección 7: Meses del Año",
@@ -596,7 +595,7 @@
                     "imagen": "/frontend/images/colores/Verde.png"
                 },
                 {
-                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "pregunta": "¿A qué color corresponde este signo?",
                     "opciones": ["Blanco", "Negro", "Celeste", "Rojo"],
                     "respuestaCorrecta": 1,
                     "imagen": "/frontend/images/colores/Negro.png"
@@ -641,6 +640,82 @@
                     ],
                     "respuestaCorrecta": 2,
                     "imagen": "/frontend/images/colores/Azul.png"
+                }
+            ]
+        },
+
+        {
+            "id": 8,
+            "titulo": "Lección 8: Familia",
+            "preguntas": [
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Mamá",
+                        "Sobrino/a",
+                        "Papá",
+                        "Tío/a"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/familia/Mama.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Abuelo/a",
+                        "Bisabuelo/a",
+                        "Sobrino/a",
+                        "Papá"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/familia/Sobrino.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": ["Hermano/a", "Bisabuelo/a", "Mamá", "Tío/a"],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/familia/Tio.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Mamá",
+                        "Hermano/a",
+                        "Cuñado/a",
+                        "Sobrino/a"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/familia/Hermano.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": ["Abuelo/a", "Sobrino/a", "Primo/a", "Papá"],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/familia/Primo.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Papá","Cuñado/a","Bisabuelo/a","Tío/a"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/familia/Papa.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Tío/a","Primo/a","Mamá","Cuñado/a"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/familia/Cunado.png"
+                },
+                {
+                    "pregunta": "¿A qué mes del año corresponde este signo?",
+                    "opciones": [
+                        "Bisabuelo/a","Abuelo/a","Mamá","Tío/a"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/familia/Abuelo.png"
                 }
             ]
         }

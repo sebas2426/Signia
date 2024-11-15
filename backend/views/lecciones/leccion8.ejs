@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="/frontend/images/icono-web.svg">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="/frontend/styles/styles.css">
+        <link rel="stylesheet" href="/frontend/styles/lecciones.css">
+        <link rel="stylesheet" href="/frontend/styles/tarjetasMemoria.css">
+        <link rel="stylesheet" href="/frontend/styles/cajas.css">
+        <script src="/frontend/scripts/index.js" defer ></script>
+        <script src="/frontend/scripts/tarjetasMemoria.js"defer></script>
+        <script src="/frontend/scripts/cajas.js" defer></script>
+        <script src="/frontend/scripts/test.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <title>Familia</title>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+        }
+      </script>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    
+    <h1 class="tituloLeccion">Familia</h1>
+    
+    <div class="contenedorLeccion">
+        <h2 class="subTitulo">Introducción</h2>
+        <p>¡Bienvenido a la lección sobre la familia! En esta sección, aprenderás las señas para referirte a los miembros de la familia, como madre, padre, hermano, hermana, entre otros. Conocer estos signos te permitirá comunicarte sobre uno de los aspectos más importantes de la vida cotidiana: nuestras relaciones familiares.</p>
+        <br>
+        <br>
+        <h2 class="subTitulo">¡Comencemos!</h2>
+        
+        <p>Primero, te presentamos el siguiente vídeo donde se muestran algunos de los signos para describir a los miembros de la familia:</p>
+        
+        <div class="contenedorVideo">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/bUw4VoE1Ek0?si=7DBeeUiLB-OfIqi_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        
+
+            <h2 class="guiaVisual">Guía Visual de los miembros de la familia</h2>
+            <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada signo para los miembros de la familia más comunes individualmente. Familiarizate con cada gesto</p>
+        
+        <div class="media-contenedor">
+            <h3>Letra <%= leccionData[0].letra %></h3>
+            <div class="contenedorFlechasImagenes">
+                <button id="prev" disabled><i class="bi bi-arrow-left flecha"></i></button>
+            <div class="media-imagen">
+                <img id="media-image" src="<%= leccionData[0].imagenUrl %>" alt="Imagen de <%= leccionData[0].letra %>">
+            </div>
+            <div class="media-video">
+                <video id="media-video" title="Video de <%= leccionData[0].letra %>" controls>
+                    <source src="<%= leccionData[0].videoUrl %>" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>                
+            </div>
+            <button id="next"><i class="bi bi-arrow-right flecha"></i></button>
+            </div>
+            <p> <%= leccionData[0].descripcion %></p>
+    </div>
+        
+        <!--JUEGO-->
+        <h2 class="subTitulo">Juego Interactivo "Tarjetas de Memoria"</h2>
+        <p>¡Aprende jugando! En este juego tendrás que recordar a que letra del abecedario dactilológico corresponde cada signo indicado.</p>
+        <div class="contenedor">
+            <!-- Fila de señas -->
+            <div class="fila-senas nivel-1">
+                <div class="tarjeta tarjeta-senas" data-pareja="Mama">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Mama.png" alt="Seña Mamá">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Papa">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Papa.png" alt="Seña Papá">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Hermano">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Hermano.png" alt="Seña Hermano">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Fila de letras -->
+            <div class="fila-letras nivel-1">
+                <div class="tarjeta" data-pareja="Hermano">
+                    <div class="cara delante">
+                        <p>Hermano/a</p>
+                    </div>
+                    <div class="cara atras">
+                    </div>
+                </div>
+                <div class="tarjeta" data-pareja="Papa">
+                    <div class="cara delante">
+                        <p>Papá</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="Mama">
+                    <div class="cara delante">
+                        <p>Mamá</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+            </div>
+
+            <!-- Fila de señas - Nivel 2 -->
+            <div class="fila-senas nivel-2" style="display: none;">
+                <div class="tarjeta tarjeta-senas" data-pareja="Sobrino">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Sobrino.png" alt="Seña Sobrino">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Primo">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Primo.png" alt="Seña Z">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Tio">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Tio.png" alt="Seña Tío">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                    
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Mama">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Mama.png" alt="Seña Mamá">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fila de letras -->
+            <div class="fila-letras nivel-2" style="display: none;">
+                <div class="tarjeta" data-pareja="Sobrino">
+                    <div class="cara delante">
+                        <p>Sobrino/a</p>
+                    </div>
+                    <div class="cara atras">
+                    </div>
+                </div>
+                <div class="tarjeta" data-pareja="Tio">
+                    <div class="cara delante">
+                        <p>Tío/a</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="Mama">
+                    <div class="cara delante">
+                        <p>Mamá</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="Primo">
+                    <div class="cara delante">
+                        <p>Primo/a</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+            </div>
+            
+            <!-- Fila de señas - Nivel 3 -->
+            <div class="fila-senas nivel-3" style="display: none;">
+                <div class="tarjeta tarjeta-senas" data-pareja="Abuelo">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Abuelo.png" alt="Seña Abuelo">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Papa">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Papa.png" alt="Seña Papá">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Bisabuelo">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Bisabuelo.png" alt="Seña Bisabuelo/a">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                    
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Cuñado">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Cunado.png" alt="Seña Cuñado/a">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Primo">
+                    <div class="cara delante">
+                        <img src="/frontend/images/familia/Primo.png" alt="Seña Primo/a">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fila de letras -->
+            <div class="fila-letras nivel-3" style="display: none;">
+                <div class="tarjeta" data-pareja="Bisabuelo">
+                    <div class="cara delante">
+                        <p>Bisabuelo/a</p>
+                    </div>
+                    <div class="cara atras">
+                    </div>
+                </div>
+                <div class="tarjeta" data-pareja="Cuñado">
+                    <div class="cara delante">
+                        <p>Cuñado/a</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="Papa">
+                    <div class="cara delante">
+                        <p>Papá</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="Primo">
+                    <div class="cara delante">
+                        <p>Primo/a</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="Abuelo">
+                    <div class="cara delante">
+                        <p>Abuelo/a</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+            </div>
+    <p id="resultado"></p>
+    <button id="nivelSiguiente">Siguiente nivel</button>
+</div>
+
+<h2 class="subTitulo">Juego Interactivo "Abre las cajas"</h2>
+    <p>Para el siguiente juego deberás de abrir cada caja y seleccionar a que miembro de la familia corresponde el signo contenido.</p>
+
+<!--JUEGO DE CAJAS-->
+<div id="contenedor-juego-cajas">
+    <!-- Caja cerrada inicialmente -->
+    <img id="caja-cerrada-cajas" src="/frontend/images/meses_ano/caja1.png" alt="Caja cerrada">
+    <img id="caja-abierta-cajas" src="/frontend/images/meses_ano/caja2.png" alt="Caja abierta" style="display: none;">
+    
+    <!-- Contenedores de los meses en lenguaje de señas -->
+    <div id="meses-cajas">
+        <!-- Contenedor para Enero -->
+        <div class="mes-caja" data-mes="Mamá">
+            <img src="/frontend/images/familia/Mama.png" alt="Mes de Enero en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Mamá</button>
+                <button class="opcion-cajas">Abuelo/a</button>
+                <button class="opcion-cajas">Tío/a</button>
+            </div>
+        </div>
+        
+        <div class="mes-caja" data-mes="Hermano/a">
+            <img src="/frontend/images/familia/Hermano.png" alt="Mes de Febrero en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Hermano/a</button>
+                <button class="opcion-cajas">Bisabuelo</button>
+                <button class="opcion-cajas">Papá</button>
+            </div>
+        </div>
+        
+        <div class="mes-caja" data-mes="Primo/a">
+            <img src="/frontend/images/familia/Primo.png" alt="Mes de Marzo en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Sobrino/a</button>
+                <button class="opcion-cajas">Primo/a</button>
+                <button class="opcion-cajas">Hermano/a</button>
+            </div>
+        </div>
+
+        <div class="mes-caja" data-mes="Papá">
+            <img src="/frontend/images/familia/Papa.png" alt="Mes de Mayo en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Abuelo/a</button>
+                <button class="opcion-cajas">Mamá</button>
+                <button class="opcion-cajas">Papá</button>
+            </div>
+        </div>
+
+    <div class="mes-caja" data-mes="Abuelo/a">
+        <img src="/frontend/images/familia/Abuelo.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Abuelo/a</button>
+            <button class="opcion-cajas">Sobrino/a</button>
+            <button class="opcion-cajas">Cuñado/a</button>
+        </div>
+    </div>
+    <div class="mes-caja" data-mes="Cuñado/a">
+        <img src="/frontend/images/familia/Cunado.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Papá</button>
+            <button class="opcion-cajas">Cuñado/a</button>
+            <button class="opcion-cajas">Mamá</button>
+        </div>
+    </div>
+    
+    <div class="mes-caja" data-mes="Bisabuelo/a">
+        <img src="/frontend/images/familia/Bisabuelo.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Hermano/a</button>
+            <button class="opcion-cajas">Primo/a</button>
+            <button class="opcion-cajas">Bisabuelo/a</button>
+        </div>
+    </div>
+
+    <div class="mes-caja" data-mes="Sobrino/a">
+        <img src="/frontend/images/familia/Sobrino.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Sobrino/a</button>
+            <button class="opcion-cajas">Abuelo/a</button>
+            <button class="opcion-cajas">Cuñado/a</button>
+        </div>
+         </div>
+          <!-- Mensaje de acierto o error -->
+    <p id="mensaje-cajas"></p>
+    </div>
+</div>
+
+<%- include('../partials/tesT') %>
+
+<script>
+    const leccionData = <%- JSON.stringify(leccionData) %>; // Pasa el array de letras como JSON
+</script>
+</body>
+
+</html>

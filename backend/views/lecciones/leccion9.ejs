@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/frontend/images/icono-web.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/frontend/styles/styles.css">
+    <link rel="stylesheet" href="/frontend/styles/lecciones.css">
+    <link rel="stylesheet" href="/frontend/styles/reflejos.css">
+    <link rel="stylesheet" href="/frontend/styles/ahorcado.css">
+    <script src="/frontend/scripts/index.js" defer></script>
+    <script src="/frontend/scripts/ahorcado.js" defer></script>
+    <script src="/frontend/scripts/reflejos.js" defer></script>
+    <script src="/frontend/scripts/test.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <title>Partes del Cuerpo</title>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+        }
+      </script>
+</head>
+<body>
+    
+    <%- include('../partials/header') %>
+
+    <h1 class="tituloLeccion">Partes del Cuerpo</h1>
+    <div class="contenedorLeccion">
+        <h2 class="subTitulo">Introducción</h2>
+        <p>¡Bienvenido a la lección sobre las partes del cuerpo! En esta sección, aprenderás los signos básicos para referirte a las distintas partes del cuerpo humano, desde la cabeza hasta los pies. Conocer estos signos te ayudará a comunicarte sobre aspectos relacionados con la salud, descripciones físicas y mucho más.</p>
+        <br>
+        <br>
+        <h2 class="subTitulo">¡Comencemos!</h2>
+        <p>Te presentamos un vídeo en el que podrás ver las partes del cuerpo en general, y sus correspondientes signos en lenguaje de señas. Míralo las veces que sean necesarias.:</p>
+        <div class="contenedorVideo">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/MKRMkSCq6WU?si=LQhYR0AH3i9QbSQW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        
+        <h2 class="guiaVisual">Guía Visual de las partes del cuerpo</h2>
+        <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada parte del cuerpo en lenguaje de señas de manera especifica. Familiarizate con cada gesto</p>
+    
+    <div class="media-contenedor">
+        <h3><%= leccionData[0].letra %></h3>
+        <div class="contenedorFlechasImagenes">
+            <button id="prev" disabled><i class="bi bi-arrow-left flecha"></i></button>
+        <div class="media-imagen">
+            <img id="media-image" src="<%= leccionData[0].imagenUrl %>" alt="Imagen de <%= leccionData[0].letra %>">
+        </div>
+        <div class="media-video">
+            <video id="media-video" title="Video de <%= leccionData[0].letra %>" controls>
+                <source src="<%= leccionData[0].videoUrl %>" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>            
+        </div>
+        <button id="next"><i class="bi bi-arrow-right flecha"></i></button>
+        </div>
+        <p> <%= leccionData[0].descripcion %></p>
+    </div>
+
+    <h2 class="subTitulo">Juego Interactivo "Ahorcado"</h2>
+    <p>Para el sigueinte juego tendrás que adivinar las letras que forman una palabra relacionada con las partes del cuerpo. Cada vez que falles al elegir una letra incorrecta, se dibujará una parte del ahorcado.</p>
+<!-- JUEGO AHORCADO -->
+<div id="contenedor-juego-ahorcado">
+    <img id="imagen-ahorcado" alt="Ahorcado" src="/frontend/images/dias_semana/ahorcado1.png"/>
+    <img id="imagen-seña-ahorcado" alt="Imagen de seña" src="" />
+    <p id="palabra-mostrada-ahorcado">_ _ _ _ _</p>
+    <div id="teclado-ahorcado">
+            <button data-letra="A"></button>
+            <button data-letra="B"></button>
+            <button data-letra="C"></button>
+            <button data-letra="D"></button>
+            <button data-letra="E"></button>
+            <button data-letra="F"></button>
+            <button data-letra="G"></button>
+            <button data-letra="H"></button>
+            <button data-letra="I"></button>
+            <button data-letra="J"></button>
+            <button data-letra="K"></button>
+            <button data-letra="L"></button>
+            <button data-letra="M"></button>
+            <button data-letra="N"></button>
+            <button data-letra="Ñ"></button>
+            <button data-letra="O"></button>
+            <button data-letra="P"></button>
+            <button data-letra="Q"></button>
+            <button data-letra="R"></button>
+            <button data-letra="S"></button>
+            <button data-letra="T"></button>
+            <button data-letra="U"></button>
+            <button data-letra="V"></button>
+            <button data-letra="X"></button>
+            <button data-letra="Y"></button>
+            <button data-letra="Z"></button>
+    </div>
+    <p>Intentos restantes: <span id="intentos-restantes-ahorcado">6</span></p>
+      <!-- Mensaje dinámico de fin de nivel o de juego -->
+  <div id="mensaje-ahorcado" style="display: none;">
+    <p id="texto-mensaje-ahorcado"></p>
+    <button id="boton-siguiente-nivel" style="display: none;">Siguiente Nivel</button>
+    <button id="boton-reintentar" style="display: none;">Reintentar</button>
+</div>
+<p id="mensaje-victoria" style="display: none;">¡Felicidades, has completado todos los niveles!</p>
+
+  </div>
+
+  <!-- Definición de datos de la lección en data-attributes -->
+  <div id="datos-leccion-ahorcado" style="display: none;">
+    <div data-palabra="DOMINGO" data-imagen-seña="/frontend/images/dias_semana/Domingo.png"></div>
+    <div data-palabra="LUNES" data-imagen-seña="/frontend/images/dias_semana/Lunes.png"></div>
+    <div data-palabra="MARTES" data-imagen-seña="/frontend/images/dias_semana/Martes.png"></div>
+    <div data-palabra="MIERCOLES" data-imagen-seña="/frontend/images/dias_semana/Miercoles.png"></div>
+    <div data-palabra="JUEVES" data-imagen-seña="/frontend/images/dias_semana/Jueves.png"></div>
+    <div data-palabra="VIERNES" data-imagen-seña="/frontend/images/dias_semana/Viernes.png"></div>
+    <div data-palabra="SABADO" data-imagen-seña="/frontend/images/dias_semana/Sabado.png"></div>
+  </div>
+
+<!--REFLEJOS-->
+<h2>Juego interactivo "Reflejos"</h2>
+<p>Para este juego debes de tener reflejos rápidos. Aparecerán los nombres de las partes del cuerpo de manera aleatoria, y tendrás que indicar que signo representa cada color</p>
+<div id="juego-reflejos">
+    <div id="palabra-a-identificar-reflejos">Palabra</div>
+    <!-- Nivel 1 -->
+    <div id="contenedor-senas-reflejos-nivel-1" class="contenedor-senas">
+      <button class="sena-reflejos" data-palabra="Rojo"><img src="/frontend/images/colores/Rojo.png" alt="Seña de Rojo"></button>
+      <button class="sena-reflejos" data-palabra="Blanco"><img src="/frontend/images/colores/Blanco.png" alt="Seña de Blanco"></button>
+      <button class="sena-reflejos" data-palabra="Amarillo"><img src="/frontend/images/colores/Amarillo.png" alt="Seña de Amarillo"></button>
+    </div>
+    
+    <!-- Nivel 2-->
+    <div id="contenedor-senas-reflejos-nivel-2" class="contenedor-senas" style="display: none;">
+      <button class="sena-reflejos" data-palabra="Azul"><img src="/frontend/images/colores/Azul.png" alt="Seña de Azul"></button>
+      <button class="sena-reflejos" data-palabra="Celeste"><img src="/frontend/images/colores/Celeste.png" alt="Seña de Celeste"></button>
+      <button class="sena-reflejos" data-palabra="Rosa"><img src="/frontend/images/colores/Rosa.png" alt="Seña de Rosa"></button>
+      <button class="sena-reflejos" data-palabra="Verde"><img src="/frontend/images/colores/Verde.png" alt="Seña de Verde"></button>
+    </div>
+
+    <div id="contenedor-senas-reflejos-nivel-3" class="contenedor-senas" style="display: none;">
+        <!-- Nivel 3-->
+        <button class="sena-reflejos" data-palabra="Gris"><img src="/frontend/images/colores/Gris.png" alt="Seña de Gris"></button>
+        <button class="sena-reflejos" data-palabra="Negro"><img src="/frontend/images/colores/Negro.png" alt="Seña de Negro"></button>
+        <button class="sena-reflejos" data-palabra="Rojo"><img src="/frontend/images/colores/Rojo.png" alt="Seña de Rojo"></button>
+        <button class="sena-reflejos" data-palabra="Rosa"><img src="/frontend/images/colores/Rosa.png" alt="Seña de Rosa"></button>
+        <button class="sena-reflejos" data-palabra="Celeste"><img src="/frontend/images/colores/Celeste.png" alt="Seña de Celeste"></button>
+      </div>
+  
+    <p id="resultado-reflejos"></p>
+    <button id="boton-siguiente-nivel-reflejos" style="display: none;">Siguiente Nivel</button>
+  </div>
+  
+  <%- include('../partials/tesT') %>
+  <script>
+    const leccionData = <%- JSON.stringify(leccionData) %>;
+</script>
+</body>
+</html>

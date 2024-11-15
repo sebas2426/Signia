@@ -1,0 +1,19 @@
+[
+    {"letra": "Mamá", "imagenUrl": "/frontend/images/familia/Mama.png", "videoUrl": "/frontend/images/familia/videos/Mama.mp4", "descripcion": "Madre (mujer)." },
+
+    {"letra": "Papá", "imagenUrl": "/frontend/images/familia/Papa.png", "videoUrl": "/frontend/images/familia/videos/Papa.mp4", "descripcion": "Padre." },
+
+    {"letra": "Hermano/a", "imagenUrl": "/frontend/images/familia/Hermano.png", "videoUrl": "/frontend/images/familia/videos/Hermano.mp4", "descripcion": "Persona o animal que tiene en común con otra el mismo padre y la misma madre, o solo uno de ellos" },
+
+    {"letra": "Tío/a", "imagenUrl": "/frontend/images/familia/Tio.png", "videoUrl": "/frontend/images/familia/videos/Tio.mp4", "descripcion": "Hermano de uno de los padres de una persona. Cónyuge del tío de una persona. Hermano de uno de los padres de una persona, y su cónyuge." },
+
+    {"letra": "Sobrino/a", "imagenUrl": "/frontend/images/familia/Sobrino.png", "videoUrl": "/frontend/images/familia/videos/Sobrino.mp4", "descripcion": "Respecto de una persona, hijo o hija de su hermano o hermana." },
+
+    {"letra": "Primo/a", "imagenUrl": "/frontend/images/familia/Primo.png", "videoUrl": "/frontend/images/familia/videos/Primo.mp4", "descripcion": "Hijo o hija del tío o de la tía de una persona." },
+
+    {"letra": "Abuelo/a", "imagenUrl": "/frontend/images/familia/Abuelo.png", "videoUrl": "/frontend/images/familia/videos/Abuelo.mp4", "descripcion": "Padre o madre de uno de los padres de una persona." },
+
+    {"letra": "Cuñado/a", "imagenUrl": "/frontend/images/familia/Cunado.png", "videoUrl": "/frontend/images/familia/videos/Cunado.mp4", "descripcion": "Hermano/a del cónyuge de una persona. Cónyuge del hermano/a de una persona." },
+    
+    {"letra": "Bisabuelo/a", "imagenUrl": "/frontend/images/familia/Bisabuelo.png", "videoUrl": "/frontend/images/familia/videos/Bisabuelo.mp4", "descripcion": " Padre o madre de uno de los abuelos de una persona." }
+]

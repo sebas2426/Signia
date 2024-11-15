@@ -21,6 +21,11 @@
     width: 200px;
     height: auto;
 }
+.mes-caja img{
+    width: 300px;
+    height: auto;
+    margin: 0 auto;
+}
 #mensaje-cajas {
     margin-top: 20px;
     font-size: 18px;
