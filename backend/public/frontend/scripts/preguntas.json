@@ -835,6 +835,108 @@
                     "imagen": "/frontend/images/partes_cuerpo/Nariz.png"
                 }
             ]
+        },
+
+        {
+            "id": 10,
+            "titulo": "Lección 10: profesiones",
+            "preguntas": [
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Enfermero/a",
+                        "Profesor/a",
+                        "Doctor/a",
+                        "Dentista"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/profesiones/Profesor.png"
+                },
+                
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Arquitecto/a",
+                        "Dentista",
+                        "Administrador/a",
+                        "Doctor/a"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/profesiones/Doctor.png"
+                },
+
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Ingeniero/a",
+                        "Farmacéutico/a",
+                        "Periodista",
+                        "Abogado/a"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/profesiones/Periodista.png"
+                },
+
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Ingeniero/a",
+                        "Abogado/a",
+                        "Dentista",
+                        "Doctor/a"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/profesiones/Abogado.png"
+                },
+
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Administrador/a",
+                        "Enfermero/a",
+                        "Doctor/a",
+                        "Ingeniero/a"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/profesiones/Ingeniero.png"
+                },
+
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Farmacéutico/a",
+                        "Dentista",
+                        "Administrador/a",
+                        "Doctor/a"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/profesiones/Farmaceutico.png"
+                },
+
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Periodista",
+                        "Dentista",
+                        "Enfermero/a",
+                        "Abogado/a"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/profesiones/Enfermero.png"
+                },
+
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Farmacéutico/a",
+                        "Periodista",
+                        "Doctor/a",
+                        "Administrador/a"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/profesiones/Administrador.png"
+                }
+            ]
         }
     ]
 }

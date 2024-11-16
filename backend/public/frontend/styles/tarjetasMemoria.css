@@ -42,6 +42,9 @@
     background-color: rgb(238, 234, 231);
   }
   .cara.delante p{
+    text-align: center; /* Centra el texto */
+   overflow-wrap: break-word; /* Rompe las palabras largas */
+    word-break: break-word; /* Asegura que se rompan en palabras largas */
     font-size: 1.2rem;
     font-weight: 500;
     text-align: center;

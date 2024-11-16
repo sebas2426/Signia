@@ -80,7 +80,11 @@
   border: 2px solid rgb(34, 22, 85);
   border-radius: 2px;
   font-size: 1.5rem;
+  text-align: center; /* Centra el texto */
+  overflow-wrap: break-word; /* Rompe las palabras largas */
+  word-break: break-word; /* Asegura que se rompan en palabras largas */
 }
+
 
 .botonParejas {
   width: 140px;

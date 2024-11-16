@@ -8,13 +8,13 @@
         <link rel="stylesheet" href="/frontend/styles/styles.css">
         <link rel="stylesheet" href="/frontend/styles/lecciones.css">
         <link rel="stylesheet" href="/frontend/styles/tarjetasMemoria.css">
-        <link rel="stylesheet" href="/frontend/styles/cajas.css">
+        <link rel="stylesheet" href="/frontend/styles/parejas.css">
         <script src="/frontend/scripts/index.js" defer ></script>
         <script src="/frontend/scripts/tarjetasMemoria.js"defer></script>
-        <script src="/frontend/scripts/cajas.js" defer></script>
+        <script src="/frontend/scripts/unirParejas.js" defer></script>
         <script src="/frontend/scripts/test.js" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-    <title>Familia</title>
+    <title>Profesiones</title>
     <script>
         if (localStorage.getItem('dark-mode') === 'enabled') {
           document.body.classList.add('dark-mode');
@@ -24,24 +24,22 @@
 <body>
     <%- include('../partials/header') %>
     
-    <h1 class="tituloLeccion">Familia</h1>
+    <h1 class="tituloLeccion">Profesiones</h1>
     
     <div class="contenedorLeccion">
         <h2 class="subTitulo">Introducción</h2>
-        <p>¡Bienvenido a la lección sobre la familia! En esta sección, aprenderás las señas para referirte a los miembros de la familia, como madre, padre, hermano, hermana, entre otros. Conocer estos signos te permitirá comunicarte sobre uno de los aspectos más importantes de la vida cotidiana: nuestras relaciones familiares.</p>
+       <p>¡Bienvenido a la lección sobre profesiones! En esta sección, aprenderás las señas relacionadas con diferentes ocupaciones y trabajos, como médico, maestro, bombero, artista, entre otros. Este vocabulario es clave para hablar sobre el mundo laboral, aspiraciones y temas cotidianos.</p>
         <br>
         <br>
         <h2 class="subTitulo">¡Comencemos!</h2>
-        
-        <p>Primero, te presentamos el siguiente vídeo donde se muestran algunos de los signos para describir a los miembros de la familia:</p>
-        
+        <p>Primero, te presentamos el siguiente vídeo donde se muestran una lista de profesiones comunes:</p>
         <div class="contenedorVideo">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/bUw4VoE1Ek0?si=7DBeeUiLB-OfIqi_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/cqbYLi_nTIs?si=wyUiXE3tfSoWosSW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         
 
-            <h2 class="guiaVisual">Guía Visual de los miembros de la familia</h2>
-            <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada signo para los miembros de la familia más comunes individualmente. Familiarizate con cada gesto</p>
+            <h2 class="guiaVisual">Guía visual acerca de las profesiones</h2>
+            <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada signo para algunas de las profesiones comunes individualmente. Familiarizate con cada gesto</p>
         
         <div class="media-contenedor">
             <h3>Letra <%= leccionData[0].letra %></h3>
@@ -61,31 +59,32 @@
             <p> <%= leccionData[0].descripcion %></p>
     </div>
         
-        <!--JUEGO-->
+        <!--JUEGO TARJETAS DE MEMORIA-->
+
         <h2 class="subTitulo">Juego Interactivo "Tarjetas de Memoria"</h2>
-        <p>¡Aprende jugando! En este juego tendrás que recordar a que miembro de la familia corresponde cada signo indicado.</p>
+        <p>¡Aprende jugando! En este juego tendrás que recordar a que profesión corresponde cada signo indicado.</p>
         <div class="contenedor">
             <!-- Fila de señas -->
             <div class="fila-senas nivel-1">
-                <div class="tarjeta tarjeta-senas" data-pareja="Mama">
+                <div class="tarjeta tarjeta-senas" data-pareja="Profesor">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Mama.png" alt="Seña Mamá">
+                        <img src="/frontend/images/profesiones/Profesor.png" alt="Seña Profesor/a">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                     </div>
                 </div>
-                <div class="tarjeta tarjeta-senas" data-pareja="Papa">
+                <div class="tarjeta tarjeta-senas" data-pareja="Enfermero">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Papa.png" alt="Seña Papá">
+                        <img src="/frontend/images/profesiones/Enfermero.png" alt="Seña Enfermero/a">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                     </div>
                 </div>
-                <div class="tarjeta tarjeta-senas" data-pareja="Hermano">
+                <div class="tarjeta tarjeta-senas" data-pareja="Doctor">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Hermano.png" alt="Seña Hermano">
+                        <img src="/frontend/images/profesiones/Doctor.png" alt="Seña Doctor">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -95,22 +94,22 @@
         
             <!-- Fila de letras -->
             <div class="fila-letras nivel-1">
-                <div class="tarjeta" data-pareja="Hermano">
+                <div class="tarjeta" data-pareja="Doctor">
                     <div class="cara delante">
-                        <p>Hermano/a</p>
+                        <p>Doctor/a</p>
                     </div>
                     <div class="cara atras">
                     </div>
                 </div>
-                <div class="tarjeta" data-pareja="Papa">
+                <div class="tarjeta" data-pareja="Profesor">
                     <div class="cara delante">
-                        <p>Papá</p>
+                        <p>Profesor/a</p>
                     </div>
                     <div class="cara atras"></div>
                 </div>
-                <div class="tarjeta" data-pareja="Mama">
+                <div class="tarjeta" data-pareja="Enfermero">
                     <div class="cara delante">
-                        <p>Mamá</p>
+                        <p>Enfermero/a</p>
                     </div>
                     <div class="cara atras"></div>
                 </div>
@@ -118,34 +117,34 @@
 
             <!-- Fila de señas - Nivel 2 -->
             <div class="fila-senas nivel-2" style="display: none;">
-                <div class="tarjeta tarjeta-senas" data-pareja="Sobrino">
+                <div class="tarjeta tarjeta-senas" data-pareja="Dentista">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Sobrino.png" alt="Seña Sobrino">
+                        <img src="/frontend/images/profesiones/Dentista.png" alt="Seña Dentista">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                     </div>
                 </div>
-                <div class="tarjeta tarjeta-senas" data-pareja="Primo">
+                <div class="tarjeta tarjeta-senas" data-pareja="Ingeniero">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Primo.png" alt="Seña Z">
+                        <img src="/frontend/images/profesiones/Ingeniero.png" alt="Seña Ingeniero">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                     </div>
                 </div>
-                <div class="tarjeta tarjeta-senas" data-pareja="Tio">
+                <div class="tarjeta tarjeta-senas" data-pareja="Doctor">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Tio.png" alt="Seña Tío">
+                        <img src="/frontend/images/profesiones/Doctor.png" alt="Seña Doctor">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                     </div>
                     
                 </div>
-                <div class="tarjeta tarjeta-senas" data-pareja="Mama">
+                <div class="tarjeta tarjeta-senas" data-pareja="Abogado">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Mama.png" alt="Seña Mamá">
+                        <img src="/frontend/images/profesiones/Abogado.png" alt="Seña Abogado">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -155,28 +154,28 @@
             
             <!-- Fila de letras -->
             <div class="fila-letras nivel-2" style="display: none;">
-                <div class="tarjeta" data-pareja="Sobrino">
+                <div class="tarjeta" data-pareja="Ingeniero">
                     <div class="cara delante">
-                        <p>Sobrino/a</p>
+                        <p>Ingeniero/a</p>
                     </div>
                     <div class="cara atras">
                     </div>
                 </div>
-                <div class="tarjeta" data-pareja="Tio">
+                <div class="tarjeta" data-pareja="Dentista">
                     <div class="cara delante">
-                        <p>Tío/a</p>
+                        <p>Dentista</p>
                     </div>
                     <div class="cara atras"></div>
                 </div>
-                <div class="tarjeta" data-pareja="Mama">
+                <div class="tarjeta" data-pareja="Abogado">
                     <div class="cara delante">
-                        <p>Mamá</p>
+                        <p>Abogado/a</p>
                     </div>
                     <div class="cara atras"></div>
                 </div>
-                <div class="tarjeta" data-pareja="Primo">
+                <div class="tarjeta" data-pareja="Doctor">
                     <div class="cara delante">
-                        <p>Primo/a</p>
+                        <p>Doctor/a</p>
                     </div>
                     <div class="cara atras"></div>
                 </div>
@@ -184,42 +183,42 @@
             
             <!-- Fila de señas - Nivel 3 -->
             <div class="fila-senas nivel-3" style="display: none;">
-                <div class="tarjeta tarjeta-senas" data-pareja="Abuelo">
+                <div class="tarjeta tarjeta-senas" data-pareja="Farmaceutico">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Abuelo.png" alt="Seña Abuelo">
+                        <img src="/frontend/images/profesiones/Farmaceutico.png" alt="Seña Abuelo">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                     </div>
                 </div>
-                <div class="tarjeta tarjeta-senas" data-pareja="Papa">
+                <div class="tarjeta tarjeta-senas" data-pareja="Administrador">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Papa.png" alt="Seña Papá">
+                        <img src="/frontend/images/profesiones/Administrador.png" alt="Seña Papá">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                     </div>
                 </div>
-                <div class="tarjeta tarjeta-senas" data-pareja="Bisabuelo">
+                <div class="tarjeta tarjeta-senas" data-pareja="Periodista">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Bisabuelo.png" alt="Seña Bisabuelo/a">
+                        <img src="/frontend/images/profesiones/Periodista.png" alt="Seña Bisabuelo/a">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                     </div>
                     
                 </div>
-                <div class="tarjeta tarjeta-senas" data-pareja="Cuñado">
+                <div class="tarjeta tarjeta-senas" data-pareja="Profesor">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Cunado.png" alt="Seña Cuñado/a">
+                        <img src="/frontend/images/profesiones/Profesor.png" alt="Seña Cuñado/a">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
                     </div>
                 </div>
-                <div class="tarjeta tarjeta-senas" data-pareja="Primo">
+                <div class="tarjeta tarjeta-senas" data-pareja="Dentista">
                     <div class="cara delante">
-                        <img src="/frontend/images/familia/Primo.png" alt="Seña Primo/a">
+                        <img src="/frontend/images/profesiones/Dentista.png" alt="Seña Primo/a">
                     </div>
                     <div class="cara atras">
                         <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
@@ -229,34 +228,34 @@
             
             <!-- Fila de letras -->
             <div class="fila-letras nivel-3" style="display: none;">
-                <div class="tarjeta" data-pareja="Bisabuelo">
+                <div class="tarjeta" data-pareja="Farmaceutico">
                     <div class="cara delante">
-                        <p>Bisabuelo/a</p>
+                        <p>Farmacéutico/a</p>
                     </div>
                     <div class="cara atras">
                     </div>
                 </div>
-                <div class="tarjeta" data-pareja="Cuñado">
+                <div class="tarjeta" data-pareja="Administrador">
                     <div class="cara delante">
-                        <p>Cuñado/a</p>
+                        <p>Administrador/a</p>
                     </div>
                     <div class="cara atras"></div>
                 </div>
-                <div class="tarjeta" data-pareja="Papa">
+                <div class="tarjeta" data-pareja="Profesor">
                     <div class="cara delante">
-                        <p>Papá</p>
+                        <p>Profesor/a</p>
                     </div>
                     <div class="cara atras"></div>
                 </div>
-                <div class="tarjeta" data-pareja="Primo">
+                <div class="tarjeta" data-pareja="Periodista">
                     <div class="cara delante">
-                        <p>Primo/a</p>
+                        <p>Periodista</p>
                     </div>
                     <div class="cara atras"></div>
                 </div>
-                <div class="tarjeta" data-pareja="Abuelo">
+                <div class="tarjeta" data-pareja="Dentista">
                     <div class="cara delante">
-                        <p>Abuelo/a</p>
+                        <p>Dentista</p>
                     </div>
                     <div class="cara atras"></div>
                 </div>
@@ -265,91 +264,87 @@
     <button id="nivelSiguiente">Siguiente nivel</button>
 </div>
 
-<h2 class="subTitulo">Juego Interactivo "Abre las cajas"</h2>
-    <p>Para el siguiente juego deberás de abrir cada caja y seleccionar a que miembro de la familia corresponde el signo contenido.</p>
+<!--JUEGO UNE LAS PAREJAS-->
+<h2 class="subTitulo">Juego Interactivo "Une las Parejas"</h2>
+<p>Para el siguiente juego tendrás que unir las parejas de cada signo con su profesión.</p>
 
-<!--JUEGO DE CAJAS-->
-<div id="contenedor-juego-cajas">
-    <!-- Caja cerrada inicialmente -->
-    <img id="caja-cerrada-cajas" src="/frontend/images/meses_ano/caja1.png" alt="Caja cerrada">
-    <img id="caja-abierta-cajas" src="/frontend/images/meses_ano/caja2.png" alt="Caja abierta" style="display: none;">
-    
-    <!-- Contenedores de los meses en lenguaje de señas -->
-    <div id="meses-cajas">
-        <!-- Contenedor para Enero -->
-        <div class="mes-caja" data-mes="Mamá">
-            <img src="/frontend/images/familia/Mama.png" alt="Mes de Enero en lengua de señas">
-            <div class="opciones-cajas">
-                <button class="opcion-cajas">Mamá</button>
-                <button class="opcion-cajas">Abuelo/a</button>
-                <button class="opcion-cajas">Tío/a</button>
-            </div>
-        </div>
-        
-        <div class="mes-caja" data-mes="Hermano/a">
-            <img src="/frontend/images/familia/Hermano.png" alt="Mes de Febrero en lengua de señas">
-            <div class="opciones-cajas">
-                <button class="opcion-cajas">Hermano/a</button>
-                <button class="opcion-cajas">Bisabuelo</button>
-                <button class="opcion-cajas">Papá</button>
-            </div>
-        </div>
-        
-        <div class="mes-caja" data-mes="Primo/a">
-            <img src="/frontend/images/familia/Primo.png" alt="Mes de Marzo en lengua de señas">
-            <div class="opciones-cajas">
-                <button class="opcion-cajas">Sobrino/a</button>
-                <button class="opcion-cajas">Primo/a</button>
-                <button class="opcion-cajas">Hermano/a</button>
-            </div>
+<div class="contenedorParejas">
+    <div class="nivel1" >
+
+        <div class="imagenesParejas">
+            <button class="botonParejas" data-pareja2="Doctor"><img src="/frontend/images/profesiones/Doctor.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="Profesor"><img src="/frontend/images/profesiones/Profesor.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="Dentista"><img src="/frontend/images/profesiones/Dentista.png" alt=""></button>
         </div>
 
-        <div class="mes-caja" data-mes="Papá">
-            <img src="/frontend/images/familia/Papa.png" alt="Mes de Mayo en lengua de señas">
-            <div class="opciones-cajas">
-                <button class="opcion-cajas">Abuelo/a</button>
-                <button class="opcion-cajas">Mamá</button>
-                <button class="opcion-cajas">Papá</button>
+        <div class="textoParejas">
+            <div class="opcionesParejas">
+                <div class="divBlanco" data-pareja2="Dentista"></div>
+                <div class="divParejas ocho">Dentista</div>
             </div>
-        </div>
+            <div class="opcionesParejas">
+                <div class="divBlanco" data-pareja2="Doctor"></div>
+                <div class="divParejas uno">Doctor/a</div>
+            </div>
+            <div class="opcionesParejas">
+                <div class="divBlanco" data-pareja2="Profesor"></div>
+                <div class="divParejas dos">Profesor/a</div>
+            </div>
+            <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
+    </div>
+</div>
 
-    <div class="mes-caja" data-mes="Abuelo/a">
-        <img src="/frontend/images/familia/Abuelo.png" alt="Mes de Marzo en lengua de señas">
-        <div class="opciones-cajas">
-            <button class="opcion-cajas">Abuelo/a</button>
-            <button class="opcion-cajas">Sobrino/a</button>
-            <button class="opcion-cajas">Cuñado/a</button>
-        </div>
-    </div>
-    <div class="mes-caja" data-mes="Cuñado/a">
-        <img src="/frontend/images/familia/Cunado.png" alt="Mes de Marzo en lengua de señas">
-        <div class="opciones-cajas">
-            <button class="opcion-cajas">Papá</button>
-            <button class="opcion-cajas">Cuñado/a</button>
-            <button class="opcion-cajas">Mamá</button>
-        </div>
-    </div>
-    
-    <div class="mes-caja" data-mes="Bisabuelo/a">
-        <img src="/frontend/images/familia/Bisabuelo.png" alt="Mes de Marzo en lengua de señas">
-        <div class="opciones-cajas">
-            <button class="opcion-cajas">Hermano/a</button>
-            <button class="opcion-cajas">Primo/a</button>
-            <button class="opcion-cajas">Bisabuelo/a</button>
-        </div>
-    </div>
 
-    <div class="mes-caja" data-mes="Sobrino/a">
-        <img src="/frontend/images/familia/Sobrino.png" alt="Mes de Marzo en lengua de señas">
-        <div class="opciones-cajas">
-            <button class="opcion-cajas">Sobrino/a</button>
-            <button class="opcion-cajas">Abuelo/a</button>
-            <button class="opcion-cajas">Cuñado/a</button>
+<div class="nivel2" style="display: none;">
+<div class="imagenesParejas">
+    <button class="botonParejas" data-pareja2="Enfermero"><img src="/frontend/images/profesiones/Enfermero.png" alt=""></button>
+    <button class="botonParejas" data-pareja2="Ingeniero"><img src="/frontend/images/profesiones/Ingeniero.png" alt=""></button>
+    <button class="botonParejas" data-pareja2="Doctor"><img src="/frontend/images/profesiones/Doctor.png" alt=""></button>
+</div>
+    <div class="textoParejas">
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Enfermero"></div>
+            <div class="divParejas tres">Enfermero/a</div>
         </div>
-         </div>
-          <!-- Mensaje de acierto o error -->
-    <p id="mensaje-cajas"></p>
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Doctor"></div>
+            <div class="divParejas cero">Doctor/a</div>
+        </div>
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Ingeniero"></div>
+            <div class="divParejas seis">Ingeniero/a</div>
+        </div>
+        <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
     </div>
+</div>
+
+
+<div class="nivel3" style="display: none;">
+<div class="imagenesParejas">
+    <button class="botonParejas" data-pareja2="Arquitecto"><img src="/frontend/images/profesiones/Arquitecto.png" alt=""></button>
+    <button class="botonParejas" data-pareja2="Periodista"><img src="/frontend/images/profesiones/Periodista.png" alt=""></button>
+    <button class="botonParejas" data-pareja2="Profesor"><img src="/frontend/images/profesiones/Profesor.png" alt=""></button>
+   <button class="botonParejas" data-pareja2="Dentista"><img src="/frontend/images/profesiones/Dentista.png" alt=""></button>
+</div>
+    <div class="textoParejas">
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Periodista"></div>
+            <div class="divParejas cinco">Periodista</div>
+        </div>
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Profesor"></div>
+            <div class="divParejas diesyciete">Profesor/a</div>
+        </div>
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Dentista"></div>
+            <div class="divParejas catorce">Dentista</div>
+        </div>
+        <div class="opcionesParejas">
+            <div class="divBlanco" data-pareja2="Arquitecto"></div>
+            <div class="divParejas diesyocho">Arquitecto/a</div>
+        </div>
+    </div>
+</div>
 </div>
 
 <%- include('../partials/tesT') %>
