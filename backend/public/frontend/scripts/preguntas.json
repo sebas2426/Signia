@@ -718,6 +718,123 @@
                     "imagen": "/frontend/images/familia/Abuelo.png"
                 }
             ]
+        },
+
+        {
+            "id": 9,
+            "titulo": "Lección 9: partes del cuerpo",
+            "preguntas": [
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Rodilla",
+                        "Cabeza",
+                        "Pierna",
+                        "Brazo"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/partes_cuerpo/Cabeza.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Oreja",
+                        "Cabeza",
+                        "Mejilla",
+                        "Nariz"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/partes_cuerpo/Oreja.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Rodilla",
+                        "Muslo",
+                        "Mentón",
+                        "Ojo"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/partes_cuerpo/Ojo.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Muslo",
+                        "Pie",
+                        "Pierna",
+                        "Mano"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/partes_cuerpo/Pie.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Pierna",
+                        "Cabeza",
+                        "Tobillo",
+                        "Dedo"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/partes_cuerpo/Dedo.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Muslo",
+                        "Mano",
+                        "Pierna",
+                        "Cabeza"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/partes_cuerpo/Mano.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Rodilla",
+                        "Muslo",
+                        "Pierna",
+                        "Pies"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/partes_cuerpo/Rodilla.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Pies",
+                        "Cabeza",
+                        "Tobillo",
+                        "Boca"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/partes_cuerpo/Tobillo.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Nariz",
+                        "Oreja",
+                        "Mentón",
+                        "Mejilla"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/partes_cuerpo/Mejilla.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Ojo",
+                        "Boca",
+                        "Nariz",
+                        "Muslo"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/partes_cuerpo/Nariz.png"
+                }
+            ]
         }
     ]
 }

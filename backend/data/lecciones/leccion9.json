@@ -1,19 +1,31 @@
 [
-    {"letra": "Mamá", "imagenUrl": "/frontend/images/familia/Mama.png", "videoUrl": "/frontend/images/familia/videos/Mama.mp4", "descripcion": "Madre (mujer)." },
+    {"letra": "Cabeza", "imagenUrl": "/frontend/images/partes_cuerpo/Cabeza.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Cabeza.mp4", "descripcion": "Parte superior del cuerpo humano y superior o anterior de muchos animales, en la que están situados el cerebro y los principales órganos sensoriales." },
 
-    {"letra": "Papá", "imagenUrl": "/frontend/images/familia/Papa.png", "videoUrl": "/frontend/images/familia/videos/Papa.mp4", "descripcion": "Padre." },
+    {"letra": "Oreja", "imagenUrl": "/frontend/images/partes_cuerpo/Oreja.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Oreja.mp4", "descripcion": "Órgano externo de la audición." },
 
-    {"letra": "Hermano/a", "imagenUrl": "/frontend/images/familia/Hermano.png", "videoUrl": "/frontend/images/familia/videos/Hermano.mp4", "descripcion": "Persona o animal que tiene en común con otra el mismo padre y la misma madre, o solo uno de ellos" },
+    {"letra": "Ojos", "imagenUrl": "/frontend/images/partes_cuerpo/Ojo.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Ojo.mp4", "descripcion": "Órgano de la vista en el ser humano y en los animales." },
 
-    {"letra": "Tío/a", "imagenUrl": "/frontend/images/familia/Tio.png", "videoUrl": "/frontend/images/familia/videos/Tio.mp4", "descripcion": "Hermano de uno de los padres de una persona. Cónyuge del tío de una persona. Hermano de uno de los padres de una persona, y su cónyuge." },
+    {"letra": "Nariz", "imagenUrl": "/frontend/images/partes_cuerpo/Nariz.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Nariz.mp4", "descripcion": "Órgano prominente del rostro humano, entre la frente y la boca, con dos orificios, que forma parte del aparato respiratorio." },
 
-    {"letra": "Sobrino/a", "imagenUrl": "/frontend/images/familia/Sobrino.png", "videoUrl": "/frontend/images/familia/videos/Sobrino.mp4", "descripcion": "Respecto de una persona, hijo o hija de su hermano o hermana." },
+    {"letra": "Boca", "imagenUrl": "/frontend/images/partes_cuerpo/Boca.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Boca.mp4", "descripcion": "En una persona o en un animal: Abertura anterior del aparato digestivo, situada en la cabeza. Cavidad en la cual están colocados la lengua y los dientes." },
 
-    {"letra": "Primo/a", "imagenUrl": "/frontend/images/familia/Primo.png", "videoUrl": "/frontend/images/familia/videos/Primo.mp4", "descripcion": "Hijo o hija del tío o de la tía de una persona." },
+    {"letra": "Mentón", "imagenUrl": "/frontend/images/partes_cuerpo/Menton.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Menton.mp4", "descripcion": "Barbilla o prominencia de la mandíbula inferior." },
 
-    {"letra": "Abuelo/a", "imagenUrl": "/frontend/images/familia/Abuelo.png", "videoUrl": "/frontend/images/familia/videos/Abuelo.mp4", "descripcion": "Padre o madre de uno de los padres de una persona." },
+    {"letra": "Mejilla", "imagenUrl": "/frontend/images/partes_cuerpo/Mejilla.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Mejilla.mp4", "descripcion": "Cada una de las dos prominencias que hay en el rostro humano debajo de los ojos." },
 
-    {"letra": "Cuñado/a", "imagenUrl": "/frontend/images/familia/Cunado.png", "videoUrl": "/frontend/images/familia/videos/Cunado.mp4", "descripcion": "Hermano/a del cónyuge de una persona. Cónyuge del hermano/a de una persona." },
-    
-    {"letra": "Bisabuelo/a", "imagenUrl": "/frontend/images/familia/Bisabuelo.png", "videoUrl": "/frontend/images/familia/videos/Bisabuelo.mp4", "descripcion": " Padre o madre de uno de los abuelos de una persona." }
+    {"letra": "Brazo", "imagenUrl": "/frontend/images/partes_cuerpo/Brazo.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Brazo.mp4", "descripcion": " Miembro del cuerpo que comprende desde el hombro a la extremidad de la mano." },
+
+    {"letra": "Mano", "imagenUrl": "/frontend/images/partes_cuerpo/Mano.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Mano.mp4", "descripcion": "Parte del cuerpo humano unida a la extremidad del antebrazo y que comprende desde la muñeca inclusive hasta la punta de los dedos." },
+
+    {"letra": "Dedos", "imagenUrl": "/frontend/images/partes_cuerpo/Dedo.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Dedo.mp4", "descripcion": "Cada uno de los cinco apéndices articulados en que terminan la mano y el pie del hombre y, en el mismo o menor número, de muchos animales." },
+
+    {"letra": "Muslo", "imagenUrl": "/frontend/images/partes_cuerpo/Muslo.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Muslo.mp4", "descripcion": "Parte de las extremidades inferiores, desde la articulación de las caderas hasta la rodilla." },
+
+    {"letra": "Rodilla", "imagenUrl": "/frontend/images/partes_cuerpo/Rodilla.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Rodilla.mp4", "descripcion": "Zona donde se une el muslo con la parte inferior de la pierna." },
+
+    {"letra": "Pierna", "imagenUrl": "/frontend/images/partes_cuerpo/Pierna.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Pierna.mp4", "descripcion": "Extremidad inferior de las personas" },
+
+    {"letra": "Tobillo", "imagenUrl": "/frontend/images/partes_cuerpo/Tobillo.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Tobillo.mp4", "descripcion": "Parte del cuerpo humano en donde se articula el pie con la pierna. Protuberancia de la tibia y del peroné que sobresalen respectivamente en el lado interno y externo del tobillo." },
+
+    {"letra": "Pies", "imagenUrl": "/frontend/images/partes_cuerpo/Pies.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Pies.mp4", "descripcion": "Extremidad de cada uno de los dos miembros inferiores del cuerpo humano." }
 ]
