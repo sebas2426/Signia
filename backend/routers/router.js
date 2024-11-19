@@ -78,48 +78,22 @@ router.get('/lista_lecciones', (req, res) => {
 });
 
 // Ruta para lecciones
-
-router.get('/leccion/:id', async (req, res) => {
+router.get('/leccion/:id', (req, res) => {
     const leccionId = parseInt(req.params.id);
     const siguienteLeccionId = leccionId + 1;
-    const userId = req.user ? req.user.id : null; // Asegúrate de que el usuario esté autenticado
-
-    if (!userId) {
-        return res.status(401).send("Usuario no autenticado.");
-    }
 
     // Ruta del archivo JSON para la lección actual
     const dataPath = path.join(__dirname, `../data/lecciones/leccion${leccionId}.json`);
 
-    try {
-        // Leer el archivo JSON de la lección
-        const data = await fs.promises.readFile(dataPath, 'utf8');
-        const leccionData = JSON.parse(data);
-
-        // Verificar si ya existe un reporte para esta lección y usuario
-        const [reporte] = await conexion.query(
-            'SELECT * FROM leccion_reporte WHERE usuario_id = $1 AND leccion_id = $2',
-            [userId, leccionId]
-        );
-
-        if (!reporte) {
-            // Crear un nuevo registro si no existe
-            await conexion.query(
-                `INSERT INTO leccion_reporte (usuario_id, leccion_id, intentos, fecha_ultimo_intento)
-                 VALUES ($1, $2, $3, CURRENT_TIMESTAMP)`,
-                [userId, leccionId, 1]
-            );
-        } else {
-            // Actualizar la última fecha de intento si ya existe
-            await conexion.query(
-                `UPDATE leccion_reporte
-                 SET fecha_ultimo_intento = CURRENT_TIMESTAMP, intentos = intentos + 1
-                 WHERE usuario_id = $1 AND leccion_id = $2`,
-                [userId, leccionId]
-            );
+    // Lee el archivo JSON
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(`Error al cargar los datos de la lección ${leccionId}:`, err);
+            return res.status(500).send("Error al cargar la lección.");
         }
 
-        console.log(`Inicio registrado para el usuario ${userId}, lección ${leccionId}.`);
+        // Convierte los datos de JSON a un objeto
+        const leccionData = JSON.parse(data);
 
         // Renderiza la vista de la lección actual, pasando los datos y la siguiente lección
         res.render(`lecciones/leccion${leccionId}`, { 
@@ -127,16 +101,11 @@ router.get('/leccion/:id', async (req, res) => {
             siguienteLeccion: siguienteLeccionId, 
             user: req.user || null 
         });
-    } catch (err) {
-        console.error(`Error al cargar los datos de la lección ${leccionId}:`, err);
-        return res.status(500).send("Error al cargar la lección.");
-    }
+    });
 });
 
-
-
 // Ruta para marcar lecciones como completadas
-router.post('/completar-leccion', async (req, res) => {
+router.post('/completar-leccion', (req, res) => {
     const { leccionId } = req.body;
     const userId = req.user ? req.user.id : null;
 
@@ -146,54 +115,28 @@ router.post('/completar-leccion', async (req, res) => {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
 
-    try {
-        // Verificar si existe un reporte para la lección actual
-        const [reporte] = await conexion.query(
-            'SELECT * FROM leccion_reporte WHERE usuario_id = $1 AND leccion_id = $2',
-            [userId, leccionId]
-        );
-
-        if (!reporte) {
-            return res.status(400).json({ error: 'No se encontró un reporte para esta lección' });
+    // Verificar si la lección ya ha sido completada
+    conexion.query('SELECT 1 FROM niveles_completados WHERE user_id = $1 AND leccion_id = $2', [userId, leccionId], (error, results) => {
+        if (error) {
+            console.error('Error al verificar la lección completada:', error);
+            return res.status(500).json({ error: 'Error al verificar la lección completada' });
         }
 
-        // Calcular el tiempo total en segundos
-        const tiempoInicio = new Date(reporte.fecha_ultimo_intento).getTime();
-        const tiempoTotalSegundos = Math.floor((Date.now() - tiempoInicio) / 1000);
-
-        // Verificar si la lección ya ha sido completada
-        const [completada] = await conexion.query(
-            'SELECT 1 FROM niveles_completados WHERE user_id = $1 AND leccion_id = $2',
-            [userId, leccionId]
-        );
-
-        if (completada) {
+        // Si la lección ya ha sido completada, enviar un mensaje de error
+        if (results.rowCount > 0) {
             return res.status(400).json({ error: 'Lección ya completada' });
         }
 
-        // Guardar la lección completada con el tiempo total
-        await conexion.query(
-            'INSERT INTO niveles_completados (user_id, leccion_id, tiempo_total_segundos) VALUES ($1, $2, $3)',
-            [userId, leccionId, tiempoTotalSegundos]
-        );
-
-        // Actualizar el reporte para marcar la lección como completada
-        await conexion.query(
-            `UPDATE leccion_reporte
-             SET tiempo_total_segundos = tiempo_total_segundos + $1,
-                 repitio = TRUE,
-                 fecha_ultimo_intento = CURRENT_TIMESTAMP
-             WHERE usuario_id = $2 AND leccion_id = $3`,
-            [tiempoTotalSegundos, userId, leccionId]
-        );
-
-        res.status(200).json({ message: 'Lección completada', tiempoTotalSegundos });
-    } catch (error) {
-        console.error('Error al completar la lección:', error);
-        res.status(500).json({ error: 'Error al completar la lección' });
-    }
+        // Guardar la lección completada
+        conexion.query('INSERT INTO niveles_completados (user_id, leccion_id) VALUES ($1, $2)', [userId, leccionId], (error) => {
+            if (error) {
+                console.error('Error al completar la lección:', error);
+                return res.status(500).json({ error: 'Error al completar la lección' });
+            }
+            res.status(200).json({ message: 'Lección completada' });
+        });
+    });
 });
-
 
 // Rutas para los métodos del controlador
 router.post('/login', authController.login);
