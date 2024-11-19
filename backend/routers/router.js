@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const fs = require('fs'); // Importa el módulo fs
-const path = require('path'); // Importa path para manejar rutas de archivos
+const fs = require('fs');
+const path = require('path');
 const conexion = require('../database/db');
-
 const authController = require('../controlers/authController');
 
 // Middleware para verificar la sesión
@@ -15,19 +14,44 @@ router.use((req, res, next) => {
 // Middleware para establecer el usuario en cada solicitud
 router.use((req, res, next) => {
     if (req.cookies.jwt) {
-        const decoded = jwt.verify(req.cookies.jwt, process.env.JWT_SECRETO);
-        conexion.query('SELECT * FROM users WHERE id = $1', [decoded.id], (error, results) => {
+        try {
+            const decoded = jwt.verify(req.cookies.jwt, process.env.JWT_SECRETO);
+            conexion.query('SELECT * FROM users WHERE id = $1', [decoded.id], (error, results) => {
+                if (error) {
+                    console.error('Error en la consulta:', error);
+                    return res.status(500).send('Error en el servidor');
+                }
+                if (results.rows.length > 0) {
+                    req.user = results.rows[0]; // Establecer el usuario en req.user
+                }
+                next();
+            });
+        } catch (error) {
+            console.error('Error al verificar el token:', error);
+            next();
+        }
+    } else {
+        next(); // Continuar sin establecer req.user
+    }
+});
+
+// Middleware global para obtener las lecciones completadas
+router.use((req, res, next) => {
+    if (req.user) {
+        const userId = req.user.id;
+        const sql = 'SELECT leccion_id FROM niveles_completados WHERE user_id = $1';
+
+        conexion.query(sql, [userId], (error, results) => {
             if (error) {
-                console.error('Error en la consulta:', error);
-                return res.status(500).send('Error en el servidor'); // Manejar el error apropiadamente
-            }            
-            if (results.rows.length > 0) {
-                req.user = results.rows[0]; // Establecer el usuario en la petición
+                console.error("Error al obtener las lecciones completadas:", error);
+                return res.status(500).send("Error al obtener los datos del usuario.");
             }
+            res.locals.leccionesCompletadas = results.rows.map(row => row.leccion_id);
             next();
         });
     } else {
-        next(); // Continuar sin establecer req.user
+        res.locals.leccionesCompletadas = []; // Usuario no autenticado
+        next();
     }
 });
 
@@ -37,7 +61,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    res.render('login', { alert:false, user: req.user || null });
+    res.render('login', { alert: false, user: req.user || null });
 });
 
 router.get('/acceder', (req, res) => {
@@ -49,30 +73,9 @@ router.get('/curso_completado', (req, res) => {
 });
 
 router.get('/lista_lecciones', (req, res) => {
-    const userId = req.user ? req.user.id : null; // Obtener el ID del usuario
-
-    // Si hay un usuario autenticado, obtener las lecciones completadas
-    if (userId) {
-        const sql = 'SELECT leccion_id FROM niveles_completados WHERE user_id = $1';
-        conexion.query(sql, [userId], (error, results) => {
-            if (error) {
-                console.error("Error en la consulta:", error); // Para depurar
-                return res.status(500).send('Error al obtener las lecciones completadas');
-            }
-
-            const leccionesCompletadas = results.rows.map(row => row.leccion_id); // Cambiado a results.rows
-            const completada = req.query.completada === 'true'; // Manejar el parámetro
-
-            console.log('Usuario:', req.user); 
-            res.render('lista_lecciones', { user: req.user, leccionesCompletadas, completada }); // Pasar completada a la vista
-        });
-    } else {
-        res.render('lista_lecciones', { user: null, leccionesCompletadas: [], completada: false });
-    }
+    const completada = req.query.completada === 'true'; // Manejar el parámetro
+    res.render('lista_lecciones', { user: req.user, completada });
 });
-
-
-
 
 // Ruta para lecciones
 router.get('/leccion/:id', (req, res) => {
@@ -94,15 +97,14 @@ router.get('/leccion/:id', (req, res) => {
 
         // Renderiza la vista de la lección actual, pasando los datos y la siguiente lección
         res.render(`lecciones/leccion${leccionId}`, { 
-            leccionData: leccionData, 
+            leccionData, 
             siguienteLeccion: siguienteLeccionId, 
             user: req.user || null 
         });
     });
 });
 
-
-
+// Ruta para marcar lecciones como completadas
 router.post('/completar-leccion', (req, res) => {
     const { leccionId } = req.body;
     const userId = req.user ? req.user.id : null;
@@ -135,7 +137,6 @@ router.post('/completar-leccion', (req, res) => {
         });
     });
 });
-
 
 // Rutas para los métodos del controlador
 router.post('/login', authController.login);
