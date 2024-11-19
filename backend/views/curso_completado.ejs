@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/frontend/images/icono-web.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/frontend/styles/styles.css">
+    <link rel="stylesheet" href="/frontend/styles/cursoCompletado.css">
+    <script src="/frontend/scripts/index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <title>Curso Completado</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="contenedorCursoCompletado">
+        <div class="cuerpoCursoCompletado">
+            <h1 class="tituloCursoCompletado">¡Felicidades!</h1>
+            <h1>¡Has completado el curso con éxito!</h1>
+    
+            <p>Estamos muy orgullosos de tu esfuerzo y dedicación. Has completado todas las lecciones y juegos interactivos. 
+            <br>
+            Ahora tienes las herramientas para comunicarte con más personas y crear conexiones significativas. ¡El mundo del lenguaje de señas está a tu alcance!"
+            </p>
+            <button id="btnConfeti">COnfetiii</button>
+        </div>
+        <div class="imagenFinal">
+            <img src="/frontend/images/imagenFinal.png" alt="">
+        </div>
+        <div class="contenedorMasRecursos">
+            <div class="masRecursos">
+                <h1>Explora más recursos y expande tu conocimiento.</h1>
+                <p>El conocimiento es un viaje continuo, para poder dominar el lenguaje de señas y seguir aprendiendo te dejamos algunos recursos extras que pueden llegar a ser de utilidad para poder seguir creciendo y seguir adelante: </p>
+    
+                    <div class="recursos-lista">
+                        <div class="recurso">
+                            <h3><a href="https://arasaac.org/lse/search" target="_blank"> Plataforma ARASAAC</a></h3>
+                            <p>Explpra recursos visuales y pictogramas acerca de lenguaje de señas.</p>
+                        </div>
+                        <div class="recurso">
+                            <h3><a href="https://spreadthesign.com" target="_blank">Spread the Sign</a></h3>
+                            <p>Una app internacional con miles de signos de diferentes idiomas.</p>
+                        </div>
+                        <div class="recurso">
+                            <h3><a href="https://cursa.app" target="_blank">Plataforma Cursa</a></h3>
+                            <p>Accede a cursos gratuitos con certificado para aprender lenguaje de señas desde cero.</p>
+                        </div>
+                        <div class="recurso">
+                            <h3><a href="https://www.fundacioncnse.org" target="_blank">Cursos de CNSE</a></h3>
+                            <p>Inscríbete en cursos para profundizar tus conocimientos sobre señas y cultura sorda.</p>
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+        </div>
+        
+        <div class="fraseMotivacional">
+            <h2> <em>"La inclusión comienza contigo, ¡gracias por ser parte del cambio!"</em></h2>
+        </div>
+    </div>
+</body>
+<footer>
+    <div class="derechos">
+        <p>2024 All rights reserved</p>
+    </div>
+</footer>
+
+<script>
+    const jsConfetti = new JSConfetti()
+    const btnConfeti= document.getElementById("btnConfeti");
+
+    function EjecutarConfeti(){
+        jsConfetti.addConfetti()
+    }
+
+    btnConfeti.addEventListener("click", EjecutarConfeti)
+</script>
+</html>

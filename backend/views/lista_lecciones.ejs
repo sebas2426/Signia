@@ -48,67 +48,75 @@
                 <h3>Saludos</h3>
             </a>
         </div>
-        <div class="lecciones leccion4">
+        <div class="lecciones leccion4 <%= leccionesCompletadas.includes(4) ? 'leccion-completada' : '' %>">
             <a href="/leccion/4">
                 <img src="/frontend/images/lista_lecciones_img/dias_semana_portada.png" alt="">
                 <h3>Días de la Semana</h3>
             </a>
         </div>
-        <div class="lecciones leccion5">
+        <div class="lecciones leccion5 <%= leccionesCompletadas.includes(5) ? 'leccion-completada' : '' %>">
             <a href="/leccion/5">
                 <img src="/frontend/images/lista_lecciones_img/meses_del_ano_portada.png" alt="">
                 <h3>Meses del Año</h3>
             </a>
         </div>
-        <div class="lecciones leccion6">
+        <div class="lecciones leccion6 <%= leccionesCompletadas.includes(6) ? 'leccion-completada' : '' %>">
             <a href="/leccion/6">
                 <img src="/frontend/images/lista_lecciones_img/retroalimentacion_portada.png" class="retroalimentacion" alt="">
                 <h3>Retroalimentación</h3>
             </a>
         </div>
-        <div class="lecciones leccion7">
+        <div class="lecciones leccion7 <%= leccionesCompletadas.includes(7) ? 'leccion-completada' : '' %>">
             <a href="/leccion/7">
                 <img src="/frontend/images/lista_lecciones_img/colores_portada.png" alt="">
                 <h3>Colores</h3>
             </a>
         </div>
-        <div class="lecciones leccion8">
+        <div class="lecciones leccion8 <%= leccionesCompletadas.includes(8) ? 'leccion-completada' : '' %>">
             <a href="/leccion/8">
                 <img src="/frontend/images/lista_lecciones_img/familia_portada.png" alt="">
                 <h3>Familia</h3>
             </a>
         </div>
-        <div class="lecciones leccion9">
+        <div class="lecciones leccion9 <%= leccionesCompletadas.includes(9) ? 'leccion-completada' : '' %>">
             <a href="/leccion/9">
                 <img src="/frontend/images/lista_lecciones_img/partes_cuerpo_portada.png" alt="">
                 <h3>Partes del Cuerpo</h3>
             </a>
         </div>
-        <div class="lecciones leccion10">
+        <div class="lecciones leccion10 <%= leccionesCompletadas.includes(10) ? 'leccion-completada' : '' %>">
             <a href="/leccion/10">
                 <img src="/frontend/images/lista_lecciones_img/profesiones_portada.png" alt="">
                 <h3>Profesiones</h3>
             </a>
         </div>
-        <div class="lecciones leccion11">
+        <div class="lecciones leccion11 <%= leccionesCompletadas.includes(11) ? 'leccion-completada' : '' %>">
             <a href="/leccion/11">
                 <img src="/frontend/images/lista_lecciones_img/partes_casa_portada.png" alt="">
                 <h3>Partes de la Casa</h3>
             </a>
         </div>
-        <div class="lecciones leccion12 noDisponible">
-            <a href="">
+        <div class="lecciones leccion12 <%= leccionesCompletadas.includes(12) ? 'leccion-completada' : '' %>">
+            <a href="/leccion/12">
                 <img src="/frontend/images/lista_lecciones_img/retroalimentacion_portada.png" alt="">
                 <h3>Retroalimentación</h3>
             </a>
         </div>
-        <div class="lecciones final leccionFinal noDisponible">
-            <a href="">
+        <div class="lecciones final leccionFinal <%= leccionesCompletadas.includes(13) ? 'leccion-completada' : '' %>">
+            <a href="/leccion/13">
                 <img src="/frontend/images/lista_lecciones_img/examen_final_portada.png" alt="">
                 <h3>Examen Final</h3>
             </a>
         </div>
+
+        <div class="lecciones final leccionFinal">
+            <a href="curso_completado">
+                <img src="/frontend/images/lista_lecciones_img/examen_final_portada.png" alt="">
+                <h3>Completar todo el curso :O</h3>
+            </a>
+        </div>
     </div>
+
 </body>
 
 <footer>

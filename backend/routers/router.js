@@ -44,6 +44,10 @@ router.get('/acceder', (req, res) => {
     res.render('acceder', { alert: false, user: req.user || null });
 });
 
+router.get('/curso_completado', (req, res) => {
+    res.render('curso_completado', { alert: false, user: req.user || null });
+});
+
 router.get('/lista_lecciones', (req, res) => {
     const userId = req.user ? req.user.id : null; // Obtener el ID del usuario
 

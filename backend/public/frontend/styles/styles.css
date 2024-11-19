@@ -199,7 +199,16 @@ header{
     align-items: flex-start;
     text-align: center;
 }
-
+.contenedorDescripcion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ecebeb;
+}
+.dark-mode .contenedorDescripcion{
+    background-color: #161616;
+}
 .descripcionImagenes {
     flex: 1;
     width: calc(33.33% - 20px);
@@ -228,6 +237,28 @@ iframe{
 .descripcionImagenes p {
     font-size: 1em; 
     line-height: 1.5; 
+}
+
+.inicioBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 1.5rem;
+}
+
+.enlaceEmpieza{
+    color: white;
+    padding: 15px 15px;
+  border-radius: 5px;
+  background-color: rgb(69, 100, 121);
+}
+.enlaceEmpieza:hover{
+    color: white;
+    background-color: rgb(56, 82, 99);
+  --tw-bg-opacity: 1;
+  border: 1px solid rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
 footer{
@@ -503,35 +534,6 @@ body.dark-mode {
 }
 .dark-mode i{
     color: #fff;
-}
-
-.lecciones.noDisponible {
-    position: relative;
-    pointer-events: none; /* Desactiva la interacción */
-    opacity: 0.5; /* Reduce la opacidad general */
-}
-.lecciones.noDisponible a {
-    filter: blur(4px); /* Difumina los elementos internos */
-}
-.lecciones.noDisponible::after {
-    content: "Lección no disponible";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 1.2em;
-    background-color: rgba(0, 0, 0, 1);
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    z-index: 1;
-}
-
-/* Asegura que el contenido de adentro esté debajo del overlay */
-.lecciones.noDisponible a {
-    position: relative;
-    z-index: -1;
 }
 /*RESPONSIVE*/
 @media screen and (max-width: 650px) {

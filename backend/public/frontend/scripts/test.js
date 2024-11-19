@@ -108,7 +108,6 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     event.preventDefault(); // Evitar el envío por defecto del formulario
 
     const leccionId = this.leccionId.value;
-    console.log("Lección Id antes de enviar el formulario: " + leccionId);
 
     fetch('/completar-leccion', {
         method: 'POST',

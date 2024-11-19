@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/frontend/images/icono-web.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/frontend/styles/styles.css">
+    <link rel="stylesheet" href="/frontend/styles/lecciones.css">
+    <link rel="stylesheet" href="/frontend/styles/parejas.css">
+    <link rel="stylesheet" href="/frontend/styles/reflejos.css">
+    <link rel="stylesheet" href="/frontend/styles/cajas.css">
+    <link rel="stylesheet" href="/frontend/styles/ahorcado.css">
+    <link rel="stylesheet" href="/frontend/styles/reflejos.css">
+    <link rel="stylesheet" href="/frontend/styles/tarjetasMemoria.css">
+    <script src="/frontend/scripts/unirParejas.js" defer></script>
+    <script src="/frontend/scripts/tarjetasMemoria.js" defer></script>
+    <script src="/frontend/scripts/index.js" defer ></script>
+    <script src="/frontend/scripts/test.js" defer></script>
+    <script src="/frontend/scripts/reflejos.js" defer></script>
+    <script src="/frontend/scripts/cajas.js" defer></script>
+    <script src="/frontend/scripts/ahorcado.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <title>Examen Final</title>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+        }
+      </script>
+</head>
+<body>
+
+    <%- include('../partials/header') %>
+
+    <h1 class="tituloLeccion">Examen Final</h1>
+    <div class="contenedorLeccion">
+        <h2 class="subTitulo">Introducción</h2>
+       <p>¡Llegó el momento de poner a prueba todo lo que has aprendido! En esta lección, realizarás el examen final, donde evaluarás tus conocimientos sobre todas las lecciones anteriores.
+        <br>
+        El examen incluirá preguntas y minijuegos interactivos diseñados para medir tu progreso de manera divertida y efectiva.
+        <br>
+        ¡Prepárate para demostrar cuánto has avanzado en lengua de señas y celebra todo lo que has logrado!</p>
+        <br>
+        <br>
+
+    <h2 class="subTitulo">Juego Interactivo "Une las parejas"</h2>
+    <p>Para el primer juego del examen tendrás que unir cada signo con su pareja correspondiente</p>
+        <!--JUEGO UNIR PAREJAS-->
+        <div class="contenedorParejas">
+            <div class="nivel1" >
+                <div class="imagenesParejas">
+                    <button class="botonParejas" data-pareja2="Domingo"><img src="/frontend/images/dias_semana/Domingo.png" alt=""></button>
+                    <button class="botonParejas" data-pareja2="A"><img src="/frontend/images/abecedario/imagenes-media/A-transformed.png" alt=""></button>
+                    <button class="botonParejas" data-pareja2="1"><img src="/frontend/images/numeros/numeros-media/Uno.png" alt=""></button>
+                </div>
+    
+                <div class="textoParejas">
+                    <div class="opcionesParejas">
+                        <div class="divBlanco" data-pareja2="1"></div>
+                        <div class="divParejas ocho">1</div>
+                    </div>
+                    <div class="opcionesParejas">
+                        <div class="divBlanco" data-pareja2="A"></div>
+                        <div class="divParejas uno">A</div>
+                    </div>
+                    <div class="opcionesParejas">
+                        <div class="divBlanco" data-pareja2="Domingo"></div>
+                        <div class="divParejas dos">Domingo</div>
+                    </div>
+                    <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
+            </div>
+        </div>
+
+
+        <div class="nivel2" style="display: none;">
+        <div class="imagenesParejas">
+            <button class="botonParejas" data-pareja2="10"><img src="/frontend/images/numeros/numeros-media/Diez.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="Hola"><img src="/frontend/images/saludos/saludos-media/Hola.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="D"><img src="/frontend/images/abecedario/imagenes-media/D-transformed.png" alt=""></button>
+        </div>
+            <div class="textoParejas">
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Hola"></div>
+                    <div class="divParejas tres">Hola</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="D"></div>
+                    <div class="divParejas cero">D</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="10"></div>
+                    <div class="divParejas seis">10</div>
+                </div>
+                <button class="siguienteNivel2" style="display: none;">Siguiente Nivel</button>
+            </div>
+        </div>
+
+
+   <div class="nivel3" style="display: none;">
+        <div class="imagenesParejas">
+            <button class="botonParejas" data-pareja2="Buenos Dias"><img src="/frontend/images/saludos/saludos-media/Buen-dia.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="Viernes"><img src="/frontend/images/dias_semana/Viernes.png" alt=""></button>
+            <button class="botonParejas" data-pareja2="9"><img src="/frontend/images/numeros/numeros-media/Nueve.png" alt=""></button>
+           <button class="botonParejas" data-pareja2="S"><img src="/frontend/images/abecedario/imagenes-media/S-transformed.png" alt=""></button>
+        </div>
+            <div class="textoParejas">
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Viernes"></div>
+                    <div class="divParejas cinco">Viernes</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="S"></div>
+                    <div class="divParejas diesyciete">S</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="Buenos Dias"></div>
+                    <div class="divParejas catorce">Buenos Días</div>
+                </div>
+                <div class="opcionesParejas">
+                    <div class="divBlanco" data-pareja2="9"></div>
+                    <div class="divParejas diesyocho">9</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--JUEGO TARJETAS DE MEMORIA-->
+        <h2 class="subTitulo">Juego Interactivo "Tarjetas de Memoria"</h2>
+        <p>En este juego tendrás que unir cada tarjeta correctamente.</p>
+        <div class="contenedor">
+            <!-- Fila de señas -->
+            <div class="fila-senas nivel-1">
+                <div class="tarjeta tarjeta-senas" data-pareja="Buenas Noches">
+                    <div class="cara delante">
+                        <img src="/frontend/images/saludos/saludos-media/Buenas-noches.png" alt="Seña Buenas Noches">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="B">
+                    <div class="cara delante">
+                        <img src="/frontend/images/abecedario/imagenes-media/B-transformed.png" alt="Seña B">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Enero">
+                    <div class="cara delante">
+                        <img src="/frontend/images/meses_ano/Enero.png" alt="Seña Enero">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Fila de letras -->
+            <div class="fila-letras nivel-1">
+                <div class="tarjeta" data-pareja="Buenas Noches">
+                    <div class="cara delante">
+                        <p>Buenas Noches</p>
+                    </div>
+                    <div class="cara atras">
+                    </div>
+                </div>
+                <div class="tarjeta" data-pareja="Enero">
+                    <div class="cara delante">
+                        <p>Enero</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="B">
+                    <div class="cara delante">
+                        <p>B</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+            </div>
+
+            <!-- Fila de señas - Nivel 2 -->
+            <div class="fila-senas nivel-2" style="display: none;">
+                <div class="tarjeta tarjeta-senas" data-pareja="Gracias">
+                    <div class="cara delante">
+                        <img src="/frontend/images/saludos/saludos-media/Gracias.png" alt="Seña Gracias">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Junio">
+                    <div class="cara delante">
+                        <img src="/frontend/images/meses_ano/Junio.png" alt="Seña Junio">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="7">
+                    <div class="cara delante">
+                        <img src="/frontend/images/numeros/numeros-media/Siete.png" alt="Seña 7">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                    
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Miercoles">
+                    <div class="cara delante">
+                        <img src="/frontend/images/dias_semana/Miercoles.png" alt="Seña Miércoles">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fila de letras -->
+            <div class="fila-letras nivel-2" style="display: none;">
+                <div class="tarjeta" data-pareja="Miercoles">
+                    <div class="cara delante">
+                        <p>Miércoles</p>
+                    </div>
+                    <div class="cara atras">
+                    </div>
+                </div>
+                <div class="tarjeta" data-pareja="Junio">
+                    <div class="cara delante">
+                        <p>Junio</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="Gracias">
+                    <div class="cara delante">
+                        <p>Gracias</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="7">
+                    <div class="cara delante">
+                        <p>7</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+            </div>
+            
+            <!-- Fila de señas - Nivel 3 -->
+            <div class="fila-senas nivel-3" style="display: none;">
+                <div class="tarjeta tarjeta-senas" data-pareja="Sabado">
+                    <div class="cara delante">
+                        <img src="/frontend/images/dias_semana/Sabado.png" alt="Seña Sábado">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="X">
+                    <div class="cara delante">
+                        <img src="/frontend/images/abecedario/imagenes-media/X-transformed.png" alt="Seña X">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="15">
+                    <div class="cara delante">
+                        <img src="/frontend/images/numeros/numeros-media/Quince.png" alt="Seña Quince">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                    
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Diciembre">
+                    <div class="cara delante">
+                        <img src="/frontend/images/meses_ano/Diciembre.png" alt="Seña Diciembre">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-senas" data-pareja="Octubre">
+                    <div class="cara delante">
+                        <img src="/frontend/images/meses_ano/Octubre.png" alt="Seña Octubre">
+                    </div>
+                    <div class="cara atras">
+                        <img src="/frontend/images/icono-web.svg" alt="Tarjeta vista desde atras">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fila de letras -->
+            <div class="fila-letras nivel-3" style="display: none;">
+                <div class="tarjeta" data-pareja="Diciembre">
+                    <div class="cara delante">
+                        <p>Diciembre</p>
+                    </div>
+                    <div class="cara atras">
+                    </div>
+                </div>
+                <div class="tarjeta" data-pareja="X">
+                    <div class="cara delante">
+                        <p>X</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="Sabado">
+                    <div class="cara delante">
+                        <p>Sábado</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="15">
+                    <div class="cara delante">
+                        <p>15</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+                <div class="tarjeta" data-pareja="Octubre">
+                    <div class="cara delante">
+                        <p>Octubre</p>
+                    </div>
+                    <div class="cara atras"></div>
+                </div>
+            </div>
+    <p id="resultado"></p>
+    <button id="nivelSiguiente">Siguiente nivel</button>
+        </div>
+
+<!--JUEGO REFLEJOS-->
+<h2>Juego interactivo "Reflejos"</h2>
+<p>Para este juego debes de tener reflejos rápidos. Aparecerán los nombres acerca de conceptos de todas las lecciones de manera aleatoria, y tendrás que indicar que signo representa cada uno</p>
+<div id="juego-reflejos">
+    <div id="palabra-a-identificar-reflejos">Palabra</div>
+    <!-- Nivel 1 -->
+    <div id="contenedor-senas-reflejos-nivel-1" class="contenedor-senas">
+      <button class="sena-reflejos" data-palabra="Cabeza"><img src="/frontend/images/partes_cuerpo/Cabeza.png" alt="Seña de Cabeza"></button>
+      <button class="sena-reflejos" data-palabra="Ojo"><img src="/frontend/images/partes_cuerpo/Ojo.png" alt="Seña de Ojos"></button>
+      <button class="sena-reflejos" data-palabra="Dedo"><img src="/frontend/images/partes_cuerpo/Dedo.png" alt="Seña de Dedos"></button>
+    </div>
+    
+    <!-- Nivel 2-->
+    <div id="contenedor-senas-reflejos-nivel-2" class="contenedor-senas" style="display: none;">
+      <button class="sena-reflejos" data-palabra="Oreja"><img src="/frontend/images/partes_cuerpo/Oreja.png" alt="Seña de Oreja"></button>
+      <button class="sena-reflejos" data-palabra="Boca"><img src="/frontend/images/partes_cuerpo/Boca.png" alt="Seña de Boca"></button>
+      <button class="sena-reflejos" data-palabra="Brazo"><img src="/frontend/images/partes_cuerpo/Brazo.png" alt="Seña de Brazo"></button>
+      <button class="sena-reflejos" data-palabra="Mejilla"><img src="/frontend/images/partes_cuerpo/Mejilla.png" alt="Seña de Mejilla"></button>
+    </div>
+
+    <div id="contenedor-senas-reflejos-nivel-3" class="contenedor-senas" style="display: none;">
+        <!-- Nivel 3-->
+        <button class="sena-reflejos" data-palabra="Pierna"><img src="/frontend/images/partes_cuerpo/Pierna.png" alt="Seña de Pierna"></button>
+        <button class="sena-reflejos" data-palabra="Mano"><img src="/frontend/images/partes_cuerpo/Mano.png" alt="Seña de Mano"></button>
+        <button class="sena-reflejos" data-palabra="Pie"><img src="/frontend/images/partes_cuerpo/Pie.png" alt="Seña de Pie"></button>
+        <button class="sena-reflejos" data-palabra="Rodilla"><img src="/frontend/images/partes_cuerpo/Rodilla.png" alt="Seña de Rodilla"></button>
+        <button class="sena-reflejos" data-palabra="Brazo"><img src="/frontend/images/partes_cuerpo/Brazo.png" alt="Seña de Brazo"></button>
+      </div>
+  
+    <p id="resultado-reflejos"></p>
+    <button id="boton-siguiente-nivel-reflejos" style="display: none;">Siguiente Nivel</button>
+  </div>
+
+
+<!--JUEGO DE CAJAS-->
+<h2 class="subTitulo">Juego Interactivo "Abre las cajas"</h2>
+<p>Para el siguiente juego deberás de abrir cada caja y seleccionar a que concepto sobre las lecciones anteriores corresponde el signo contenido.</p>
+
+<div id="contenedor-juego-cajas">
+    <!-- Caja cerrada inicialmente -->
+    <img id="caja-cerrada-cajas" src="/frontend/images/meses_ano/caja1.png" alt="Caja cerrada">
+    <img id="caja-abierta-cajas" src="/frontend/images/meses_ano/caja2.png" alt="Caja abierta" style="display: none;">
+    
+    <!-- Contenedores de los meses en lenguaje de señas -->
+    <div id="meses-cajas">
+        <!-- Contenedor para Enero -->
+        <div class="mes-caja" data-mes="Enero">
+            <img src="/frontend/images/meses_ano/Enero.png" alt="Mes de Enero en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Enero</button>
+                <button class="opcion-cajas">Febrero</button>
+                <button class="opcion-cajas">Marzo</button>
+            </div>
+        </div>
+        
+        <div class="mes-caja" data-mes="Febrero">
+            <img src="/frontend/images/meses_ano/Febrero.png" alt="Mes de Febrero en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Febrero</button>
+                <button class="opcion-cajas">Abril</button>
+                <button class="opcion-cajas">Mayo</button>
+            </div>
+        </div>
+        
+        <div class="mes-caja" data-mes="Marzo">
+            <img src="/frontend/images/meses_ano/Marzo.png" alt="Mes de Marzo en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Junio</button>
+                <button class="opcion-cajas">Marzo</button>
+                <button class="opcion-cajas">Diciembre</button>
+            </div>
+        </div>
+
+        <div class="mes-caja" data-mes="Mayo">
+            <img src="/frontend/images/meses_ano/Mayo.png" alt="Mes de Mayo en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Diciembre</button>
+                <button class="opcion-cajas">Mayo</button>
+                <button class="opcion-cajas">Junio</button>
+            </div>
+        </div>
+
+    <div class="mes-caja" data-mes="Junio">
+        <img src="/frontend/images/meses_ano/Junio.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Abril</button>
+            <button class="opcion-cajas">Septiembre</button>
+            <button class="opcion-cajas">Junio</button>
+        </div>
+    </div>
+    <div class="mes-caja" data-mes="Octubre">
+        <img src="/frontend/images/meses_ano/Octubre.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Octubre</button>
+            <button class="opcion-cajas">Noviembre</button>
+            <button class="opcion-cajas">Mayo</button>
+        </div>
+    </div>
+    
+    <div class="mes-caja" data-mes="Diciembre">
+        <img src="/frontend/images/meses_ano/Diciembre.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Abril</button>
+            <button class="opcion-cajas">Enero</button>
+            <button class="opcion-cajas">Diciembre</button>
+        </div>
+    </div>
+
+    <div class="mes-caja" data-mes="Septiembre">
+        <img src="/frontend/images/meses_ano/Septiembre.png" alt="Mes de Marzo en lengua de señas">
+        <div class="opciones-cajas">
+            <button class="opcion-cajas">Septiembre</button>
+            <button class="opcion-cajas">Julio</button>
+            <button class="opcion-cajas">Junio</button>
+        </div>
+    </div>
+</div>
+
+    <!-- Mensaje de acierto o error -->
+    <p id="mensaje-cajas"></p>
+</div>
+
+
+ <!-- JUEGO AHORCADO -->
+ <h2 class="subTitulo">Juego Interactivo "Ahorcado"</h2>
+ <p>Para el sigueinte juego tendrás que adivinar las letras que forman una palabra relacionada con cualquier concepto dado en las lecciones anteriores. Cada vez que falles al elegir, se dibujará una parte del ahorcado.</p>
+ <div id="contenedor-juego-ahorcado">
+    <img id="imagen-ahorcado" alt="Ahorcado" src="/frontend/images/dias_semana/ahorcado1.png"/>
+    <img id="imagen-seña-ahorcado" alt="Imagen de seña" src="" />
+    <p id="palabra-mostrada-ahorcado">_ _ _ _ _</p>
+    <div id="teclado-ahorcado">
+            <button data-letra="A"></button>
+            <button data-letra="B"></button>
+            <button data-letra="C"></button>
+            <button data-letra="D"></button>
+            <button data-letra="E"></button>
+            <button data-letra="F"></button>
+            <button data-letra="G"></button>
+            <button data-letra="H"></button>
+            <button data-letra="I"></button>
+            <button data-letra="J"></button>
+            <button data-letra="K"></button>
+            <button data-letra="L"></button>
+            <button data-letra="M"></button>
+            <button data-letra="N"></button>
+            <button data-letra="Ñ"></button>
+            <button data-letra="O"></button>
+            <button data-letra="P"></button>
+            <button data-letra="Q"></button>
+            <button data-letra="R"></button>
+            <button data-letra="S"></button>
+            <button data-letra="T"></button>
+            <button data-letra="U"></button>
+            <button data-letra="V"></button>
+            <button data-letra="X"></button>
+            <button data-letra="Y"></button>
+            <button data-letra="Z"></button>
+    </div>
+    <p>Intentos restantes: <span id="intentos-restantes-ahorcado">6</span></p>
+      <!-- Mensaje dinámico de fin de nivel o de juego -->
+  <div id="mensaje-ahorcado" style="display: none;">
+    <p id="texto-mensaje-ahorcado"></p>
+    <button id="boton-siguiente-nivel" style="display: none;">Siguiente Nivel</button>
+    <button id="boton-reintentar" style="display: none;">Reintentar</button>
+</div>
+<p id="mensaje-victoria" style="display: none;">¡Felicidades, has completado todos los niveles!</p>
+
+  </div>
+
+  <!-- Definición de datos de la lección en data-attributes -->
+  <div id="datos-leccion-ahorcado" style="display: none;">
+    <div data-palabra="DOMINGO" data-imagen-seña="/frontend/images/dias_semana/Domingo.png"></div>
+    <div data-palabra="LUNES" data-imagen-seña="/frontend/images/dias_semana/Lunes.png"></div>
+    <div data-palabra="MARTES" data-imagen-seña="/frontend/images/dias_semana/Martes.png"></div>
+    <div data-palabra="MIERCOLES" data-imagen-seña="/frontend/images/dias_semana/Miercoles.png"></div>
+    <div data-palabra="JUEVES" data-imagen-seña="/frontend/images/dias_semana/Jueves.png"></div>
+    <div data-palabra="VIERNES" data-imagen-seña="/frontend/images/dias_semana/Viernes.png"></div>
+    <div data-palabra="SABADO" data-imagen-seña="/frontend/images/dias_semana/Sabado.png"></div>
+  </div>
+
+    <%- include('../partials/tesT') %>
+
+    <script>
+        const leccionData = <%- JSON.stringify(leccionData) %>;
+    </script>
+</body>
+</html>

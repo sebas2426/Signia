@@ -1,0 +1,21 @@
+[
+    {"letra": "Profesor/a", "imagenUrl": "/frontend/images/profesiones/Profesor.png", "videoUrl": "/frontend/images/profesiones/videos/Profesor.mp4", "descripcion": "Persona que ejerce o enseña una ciencia o arte." },
+
+    {"letra": "Doctor", "imagenUrl": "/frontend/images/profesiones/Doctor.png", "videoUrl": "/frontend/images/profesiones/videos/Doctor.mp4", "descripcion": "Médico u otro profesional especializado en alguna técnica terapéutica, como el dentista, el podólogo, etc." },
+
+    {"letra": "Enfermero/a", "imagenUrl": "/frontend/images/profesiones/Enfermero.png", "videoUrl": "/frontend/images/profesiones/videos/Enfermero.mp4", "descripcion": "Persona dedicada a la asistencia de los enfermos." },
+
+    {"letra": "Dentista", "imagenUrl": "/frontend/images/profesiones/Dentista.png", "videoUrl": "/frontend/images/profesiones/videos/Dentista.mp4", "descripcion": "Especialista en odontología." },
+
+    {"letra": "Abogado", "imagenUrl": "/frontend/images/profesiones/Abogado.png", "videoUrl": "/frontend/images/profesiones/videos/Abogado.mp4", "descripcion": "ofrece profesionalmente asesoramiento jurídico y que ejerce la defensa de las partes en los procesos judiciales o en los procedimientos administrativos." },
+
+    {"letra": "Administrador/a", "imagenUrl": "/frontend/images/profesiones/Administrador.png", "videoUrl": "/frontend/images/profesiones/videos/Administrador.mp4", "descripcion": "Persona que administra bienes ajenos" },
+
+    {"letra": "Arquitecto/a", "imagenUrl": "/frontend/images/profesiones/Arquitecto.png", "videoUrl": "/frontend/images/profesiones/videos/Arquitecto.mp4", "descripcion": "Persona legalmente autorizada para ejercer la arquitectura." },
+
+    {"letra": "Ingeniero/a", "imagenUrl": "/frontend/images/profesiones/Ingeniero.png", "videoUrl": "/frontend/images/profesiones/videos/Ingeniero.mp4", "descripcion": "Persona con titulación universitaria superior que la capacita para ejercer la ingeniería en alguna de sus ramas." },
+
+    {"letra": "Periodista", "imagenUrl": "/frontend/images/profesiones/Periodista.png", "videoUrl": "/frontend/images/profesiones/videos/Periodista.mp4", "descripcion": "Persona que se dedica al periodismo" },
+
+    {"letra": "Farmacéutico/a", "imagenUrl": "/frontend/images/profesiones/Farmaceutico.png", "videoUrl": "/frontend/images/profesiones/videos/Farmaceutico.mp4", "descripcion": "Perteneciente o relativo a la farmacia." }
+]

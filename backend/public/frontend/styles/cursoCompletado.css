@@ -1,0 +1,109 @@
+.contenedorCursoCompletado{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.cuerpoCursoCompletado{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: auto;
+    gap: 1rem;
+    margin: 1.5rem;
+  
+}
+.tituloCursoCompletado{
+    font-size: 3rem;
+}
+
+.imagenFinal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 600px;
+    /*border: 2px solid lightcoral;*/
+}
+
+.imagenFinal img{
+   width: 100%;
+}
+
+.fraseMotivacional{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid lightcoral;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 2rem;
+}
+.contenedorMasRecursos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ecebeb;
+    padding: 1rem;
+}
+.dark-mode .contenedorMasRecursos{
+    background-color: #161616;
+}
+
+
+.masRecursos{
+    width: 80%;
+    height: auto;
+}
+
+.recursos-aprendizaje {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.recursos-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.recurso {
+    flex: 1 1 calc(50% - 20px);
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .recurso{
+    background-color: #161616;
+}
+
+.recurso h3 a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.recurso h3 a:hover {
+    text-decoration: underline;
+}
+div+div{
+    margin-bottom: 0;
+}
+
+
+#btnConfeti{
+    font-weight: 500;
+    color: white;
+    background-color:rgb(207, 60, 60);
+    padding: 1rem;
+}
