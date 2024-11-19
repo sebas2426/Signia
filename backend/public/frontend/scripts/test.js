@@ -1,6 +1,9 @@
 let indicePregunta = 0;
 let puntaje = 10; // Inicializa el puntaje en 10
 let preguntas = [];
+let datosLecciones = {}; // Objeto para almacenar datos de cada lección (intentos y fecha)
+
+
 
 const botonCompletado = document.getElementById('botonCompletado');
 const enlaceCompletado = document.getElementById('enlaceCompletado');
@@ -147,6 +150,16 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
 
 // Función para reiniciar el test
 function reiniciarTest() {
+    // Si la lección ya tiene datos, incrementar el contador de intentos
+    if (!datosLecciones[leccionId]) {
+        datosLecciones[leccionId] = { intentos: 0, fechaUltimoIntento: null }; // Si no existe, crear un nuevo registro
+    }
+    datosLecciones[leccionId].intentos++; // Incrementa el número de intentos para esta lección
+    datosLecciones[leccionId].fechaUltimoIntento = new Date().toISOString(); // Actualiza la fecha del último intento
+
+    // Para comprobar los valores en consola
+    console.log("Intentos para la lección " + leccionId + ": " + datosLecciones[leccionId].intentos);
+    console.log("Fecha del último intento para la lección " + leccionId + ": " + datosLecciones[leccionId].fechaUltimoIntento);
     indicePregunta = 0;
     puntaje = 10;
     document.querySelector('.pregunta').textContent = '';
