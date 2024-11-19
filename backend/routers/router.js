@@ -78,7 +78,7 @@ router.get('/lista_lecciones', (req, res) => {
 });
 
 // Ruta para lecciones
-// Ruta para lecciones
+
 router.get('/leccion/:id', (req, res) => {
     const leccionId = parseInt(req.params.id);
     const siguienteLeccionId = leccionId + 1;
@@ -96,13 +96,17 @@ router.get('/leccion/:id', (req, res) => {
         // Convierte los datos de JSON a un objeto
         const leccionData = JSON.parse(data);
 
-        // Si el tiempo de inicio no está almacenado para esta lección en particular, lo guarda
-        if (!req.session[tipoUsuario].tiempoInicio) {
-            req.session[tipoUsuario].tiempoInicio = {};  // Inicializamos el objeto si no existe
+        // Asegúrate de que la sesión esté inicializada correctamente
+        if (!req.session.tiempoInicio) {
+            req.session.tiempoInicio = {}; // Inicializa el objeto si no existe
         }
-        if (!req.session[tipoUsuario].tiempoInicio[leccionId]) {
-            req.session[tipoUsuario].tiempoInicio[leccionId] = Date.now();  // Guarda el tiempo de inicio de esta lección específica
+
+        // Si no hay un tiempo de inicio registrado para esta lección, lo guarda
+        if (!req.session.tiempoInicio[leccionId]) {
+            req.session.tiempoInicio[leccionId] = Date.now(); // Guarda el tiempo de inicio
         }
+
+        console.log(`Tiempo de inicio registrado para la lección ${leccionId}: ${req.session.tiempoInicio[leccionId]}`);
 
         // Renderiza la vista de la lección actual, pasando los datos y la siguiente lección
         res.render(`lecciones/leccion${leccionId}`, { 
