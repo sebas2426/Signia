@@ -35,12 +35,24 @@
         <% reportes.forEach(reporte => { %>
             <div class="leccionesReporte leccion<%= reporte.leccionId %>">
                 <h3>Lección <%= reporte.leccionId %></h3>
-                <h3>A</h3> <!-- El título ya viene de la consulta -->
+                <h3><%= reporte.tituloLeccion %></h3> <!-- El título ya viene de la consulta -->
                 <ul>
                     <li><p>Lección repetida: <%= reporte.repitio ? 'Sí' : 'No' %></p></li>
                     <li><p>Intentos: <%= reporte.intentos %></p></li>
                     <li><p>Tiempo: <%= reporte.tiempo %> segundos</p></li>
-                    <li><p>Última fecha: <%= reporte.ultimoIntento %></p></li>
+                    <li><p>Última fecha: 
+                        <span class="fecha-formateada">
+                            <%= new Date(reporte.ultimoIntento).toLocaleString('es-MX', {
+                                weekday: 'long',  // Día de la semana
+                                year: 'numeric',  // Año
+                                month: 'long',     // Mes en formato largo
+                                day: 'numeric',    // Día
+                                hour: 'numeric',   // Hora
+                                minute: 'numeric', // Minutos
+                                hour12: false       // 24 horas
+                            }) %>
+                        </span>
+                    </p></li>
                 </ul>
             </div>
         <% }) %>

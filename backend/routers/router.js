@@ -79,6 +79,23 @@ router.get('/reporte', (req, res) => {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
 
+
+     // Mapeo de los números de lección a títulos
+     const lecciones = {
+        1: 'Abecedario',
+        2: 'Números del 1 al 20',
+        3: 'Frases comunes',
+        4: 'Saludos',
+        5: 'Familia',
+        6: 'Colores',
+        7: 'Animales',
+        8: 'Comida',
+        9: 'Objetos de la casa',
+        10: 'Ropa',
+        11: 'Partes del cuerpo',
+        12: 'Frases avanzadas',
+    };
+
     // Obtener los datos de las lecciones desde la base de datos
     conexion.query(
         `SELECT 
@@ -106,6 +123,7 @@ router.get('/reporte', (req, res) => {
             // Mapear los resultados para pasarlos a la vista
             const reportes = results.rows.map(row => ({
                 leccionId: row.numero_leccion,  // Aquí usamos el número de lección obtenido de la tabla niveles_completados
+                tituloLeccion: lecciones[row.numero_leccion] || 'Lección desconocida', // Usamos el mapeo
                 repitio: row.repitio,
                 intentos: row.intentos,
                 tiempo: row.tiempo,
