@@ -78,6 +78,11 @@
   }
 .informacionUsuario p{
     text-align: center;
+    margin: 1rem;
+    margin-top: 0;
+}
+.subtituloReporte{
+    font-weight: 700;
 }
 
 .dark-mode .leccionesReporte{

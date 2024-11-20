@@ -26,7 +26,7 @@
                 <span><%= user.name %></span>
             </h1>
             <p>Aquí puedes ver un resumen detallado de tu avance en el aprendizaje del lenguaje de señas. Nuestros reportes están diseñados para ayudarte a visualizar tu progreso en cada lección g</p>
-            
+
             <h2>Lecciones completadas: <%= leccionesCompletadas.length %>/13</h2>
         </div>
     <% }else{ %>
@@ -40,10 +40,10 @@
                 <h3>Lección <%= reporte.leccionId %></h3>
                 <h3><%= reporte.tituloLeccion %></h3> <!-- El título ya viene de la consulta -->
                 <ul>
-                    <li><p>Lección repetida: <%= reporte.repitio ? 'Sí' : 'No' %></p></li>
-                    <li><p>Intentos: <%= reporte.intentos %></p></li>
-                    <li><p>Tiempo: <%= reporte.tiempo %> segundos</p></li>
-                    <li><p>Última fecha: 
+                    <li><p><span class="subtituloReporte" >Lección repetida:</span> <%= reporte.repitio ? 'Sí' : 'No' %></p></li>
+                    <li><p> <span class="subtituloReporte">Intentos:</span> <%= reporte.intentos %></p></li>
+                    <li><p><span class="subtituloReporte">Tiempo:</span> <%= reporte.tiempo %> segundos</p></li>
+                    <li><p><span class="subtituloReporte">Última fecha:</span> 
                         <span class="fecha-formateada">
                             <%= new Date(reporte.ultimoIntento).toLocaleString('es-MX', {
                                 weekday: 'long',  // Día de la semana
