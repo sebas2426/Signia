@@ -76,3 +76,7 @@
     text-align: center;
     padding: 1rem;
   }
+
+.dark-mode .leccionesReporte{
+    background-color: #252525;
+}

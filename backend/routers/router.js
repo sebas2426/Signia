@@ -84,16 +84,17 @@ router.get('/reporte', (req, res) => {
      const lecciones = {
         1: 'Abecedario',
         2: 'Números del 1 al 20',
-        3: 'Frases comunes',
-        4: 'Saludos',
-        5: 'Familia',
-        6: 'Colores',
-        7: 'Animales',
-        8: 'Comida',
-        9: 'Objetos de la casa',
-        10: 'Ropa',
-        11: 'Partes del cuerpo',
-        12: 'Frases avanzadas',
+        3: 'Saludos',
+        4: 'Días de la Semana',
+        5: 'Meses del Año',
+        6: 'Retroalimentación',
+        7: 'Colores',
+        8: 'Familia',
+        9: 'Partes del Cuerpo',
+        10: 'Profesiones',
+        11: 'Partes de la casa',
+        12: 'Retroalimentación 2',
+        13: 'Examen Final'
     };
 
     // Obtener los datos de las lecciones desde la base de datos
