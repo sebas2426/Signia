@@ -79,9 +79,23 @@ router.get('/reporte', (req, res) => {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
 
-    // Obtener los datos de los reportes de niveles completados
+    // Obtener los datos de las lecciones desde la base de datos
     conexion.query(
-        'SELECT leccion_id, repitio, intentos, tiempo_total_segundos AS tiempo, fecha_ultimo_intento AS ultimoIntento FROM niveles_completados WHERE usuario_id = $1 ORDER BY leccion_id',
+        `SELECT 
+            lr.leccion_id, 
+            lr.repitio, 
+            lr.intentos, 
+            lr.tiempo_total_segundos AS tiempo, 
+            lr.fecha_ultimo_intento AS ultimoIntento,
+            nc.leccion_id AS numero_leccion
+        FROM 
+            leccion_reporte lr
+        JOIN 
+            niveles_completados nc ON lr.leccion_id = nc.id 
+        WHERE 
+            lr.usuario_id = $1
+        ORDER BY 
+            nc.leccion_id`,
         [userId],
         (error, results) => {
             if (error) {
@@ -89,28 +103,9 @@ router.get('/reporte', (req, res) => {
                 return res.status(500).json({ error: 'Error al obtener los datos del reporte' });
             }
 
-            // Mapeo de leccion_id a los títulos de las lecciones
-            const lecciones = {
-                1: 'Abecedario',
-                2: 'Números del 1 al 20',
-                3: 'Frases comunes',
-                4: 'Frases comunes',
-                5: 'Frases comunes',
-                6: 'Frases comunes',
-                7: 'Frases comunes',
-                8: 'Frases comunes',
-                9: 'Frases comunes',
-                10: 'Frases comunes',
-                11: 'Frases comunes',
-                12: 'Frases comunes',
-                13: 'Frases comunes',
-                // Puedes continuar añadiendo más lecciones aquí
-            };
-
-            // Mapear los resultados y añadir el título de la lección
+            // Mapear los resultados para pasarlos a la vista
             const reportes = results.rows.map(row => ({
-                leccionId: row.leccion_id,
-                titulo: lecciones[row.leccion_id] || 'Lección desconocida',  // Usar el título mapeado
+                leccionId: row.numero_leccion,  // Aquí usamos el número de lección obtenido de la tabla niveles_completados
                 repitio: row.repitio,
                 intentos: row.intentos,
                 tiempo: row.tiempo,
@@ -118,11 +113,7 @@ router.get('/reporte', (req, res) => {
             }));
 
             // Renderizar la vista pasando los datos
-            res.render('reporte', {
-                alert: false,
-                user: req.user || null,
-                reportes
-            });
+            res.render('reporte', {alert: false, user: req.user || null, reportes });
         }
     );
 });
