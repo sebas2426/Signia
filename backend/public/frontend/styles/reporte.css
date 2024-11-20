@@ -87,6 +87,7 @@
 }
 .titulosReporte{
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .dark-mode .leccionesReporte{
