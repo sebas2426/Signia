@@ -106,71 +106,64 @@ router.get('/leccion/:id', (req, res) => {
 
 // Ruta para marcar lecciones como completadas
 router.post('/completar-leccion', (req, res) => {
-    const { leccionId, puntaje, repitio, intentos, ultimoIntento, tiempoTotalSegundos } = req.body; // Extraer los datos enviados desde el frontend
+    const { leccionId, puntaje, repitio, intentos, tiempoTotalSegundos, ultimoIntento } = req.body;
     const userId = req.user ? req.user.id : null;
 
-    console.log(`Usuario ID: ${userId}, Lección ID: ${leccionId}`); // Log para depuración
-    console.log('Antes de la inserción:');
-    console.log({ userId, leccionId, intentos, tiempoTotalSegundos, repitio, ultimoIntento });
+    console.log(`Usuario ID: ${userId}, Lección ID: ${leccionId}`);
 
     if (!userId) {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
 
-    // Verificar si la lección ya ha sido completada
-    conexion.query('SELECT id FROM niveles_completados WHERE user_id = $1 AND leccion_id = $2', [userId, leccionId], (error, results) => {
-        if (error) {
-            console.error('Error al verificar la lección completada:', error);
-            return res.status(500).json({ error: 'Error al verificar la lección completada' });
-        }
+    // Verificar si la lección ya ha sido completada en niveles_completados
+    conexion.query(
+        'SELECT id FROM niveles_completados WHERE user_id = $1 AND leccion_id = $2',
+        [userId, leccionId],
+        (error, results) => {
+            if (error) {
+                console.error('Error al verificar niveles_completados:', error);
+                return res.status(500).json({ error: 'Error al verificar niveles_completados' });
+            }
 
-        if (results.rowCount > 0) {
-            const nivelCompletadoId = results.rows[0].id;
+            const nivelCompletadoId = results.rowCount > 0
+                ? results.rows[0].id // Si ya existe, usar su ID
+                : null;
 
-            // Insertar reporte en la tabla leccion_reporte
-            conexion.query(
-                `INSERT INTO leccion_reporte (usuario_id, leccion_id, intentos, tiempo_total_segundos, repitio, fecha_ultimo_intento)
-                VALUES ($1, $2, $3, $4, $5, $6)`,
-                [userId, leccionId, intentos, tiempoTotalSegundos, repitio, ultimoIntento],
-                (error) => {
-                    if (error) {
-                        console.error('Error al guardar el reporte de la lección:', error);
-                        console.error('Datos utilizados en la consulta:', { userId, leccionId, intentos, tiempoTotalSegundos, repitio, ultimoIntento });
-                        return res.status(500).json({ error: 'Error al guardar el reporte de la lección' });
-                    }
-                    res.status(200).json({ message: 'Lección completada y reporte guardado' });
-                }
-            );
-        } else {
-            // Si no está en niveles_completados, insertar y luego guardar el reporte
-            conexion.query(
-                'INSERT INTO niveles_completados (user_id, leccion_id) VALUES ($1, $2) RETURNING id',
-                [userId, leccionId],
-                (error, result) => {
-                    if (error) {
-                        console.error('Error al completar la lección:', error);
-                        return res.status(500).json({ error: 'Error al completar la lección' });
-                    }
-
-                    const nivelCompletadoId = result.rows[0].id;
-
-                    // Insertar reporte en la tabla leccion_reporte
-                    conexion.query(
-                        `INSERT INTO leccion_reporte (usuario_id, leccion_id, intentos, tiempo_total_segundos, repitio, fecha_ultimo_intento)
-                        VALUES ($1, $2, $3, $4, $5, $6)`,
-                        [userId, leccionId, intentos, tiempoTotalSegundos, repitio, ultimoIntento],
-                        (error) => {
-                            if (error) {
-                                console.error('Error al guardar el reporte de la lección:', error);
-                                return res.status(500).json({ error: 'Error al guardar el reporte de la lección' });
-                            }
-                            res.status(200).json({ message: 'Lección completada y reporte guardado' });
+            const insertarReporte = (nivelId) => {
+                // Insertar en leccion_reporte usando el ID correcto
+                conexion.query(
+                    `INSERT INTO leccion_reporte (usuario_id, leccion_id, intentos, tiempo_total_segundos, repitio, fecha_ultimo_intento)
+                    VALUES ($1, $2, $3, $4, $5, $6)`,
+                    [userId, nivelId, intentos, tiempoTotalSegundos, repitio, ultimoIntento],
+                    (error) => {
+                        if (error) {
+                            console.error('Error al guardar el reporte de la lección:', error);
+                            return res.status(500).json({ error: 'Error al guardar el reporte de la lección' });
                         }
-                    );
-                }
-            );
+                        res.status(200).json({ message: 'Lección completada y reporte guardado' });
+                    }
+                );
+            };
+
+            if (nivelCompletadoId) {
+                // Si ya existe el registro en niveles_completados
+                insertarReporte(nivelCompletadoId);
+            } else {
+                // Si no existe, insertar en niveles_completados y usar su nuevo ID
+                conexion.query(
+                    'INSERT INTO niveles_completados (user_id, leccion_id) VALUES ($1, $2) RETURNING id',
+                    [userId, leccionId],
+                    (error, result) => {
+                        if (error) {
+                            console.error('Error al insertar en niveles_completados:', error);
+                            return res.status(500).json({ error: 'Error al insertar en niveles_completados' });
+                        }
+                        insertarReporte(result.rows[0].id);
+                    }
+                );
+            }
         }
-    });
+    );
 });
 
 
