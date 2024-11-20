@@ -76,6 +76,9 @@
     text-align: center;
     padding: 1rem;
   }
+.informacionUsuario p{
+    text-align: center;
+}
 
 .dark-mode .leccionesReporte{
     background-color: #252525;
