@@ -35,7 +35,7 @@
         <% reportes.forEach(reporte => { %>
             <div class="leccionesReporte leccion<%= reporte.leccionId %>">
                 <h3>Lección <%= reporte.leccionId %></h3>
-                <h3><%= getLeccionTitle(reporte.leccionId) %></h3>
+                <h3><%= reporte.titulo %></h3> <!-- El título se obtiene desde el backend -->
                 <ul>
                     <li><p>Lección repetida: <%= reporte.repitio ? 'Sí' : 'No' %></p></li>
                     <li><p>Intentos: <%= reporte.intentos %></p></li>
@@ -45,7 +45,7 @@
             </div>
         <% }) %>
     </div>
-
+    
 </body>
 
 <footer>

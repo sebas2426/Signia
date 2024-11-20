@@ -79,9 +79,9 @@ router.get('/reporte', (req, res) => {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
 
-    // Obtener los datos de las lecciones desde la base de datos
+    // Obtener los datos de los reportes de niveles completados
     conexion.query(
-        'SELECT * FROM leccion_reporte WHERE usuario_id = $1 ORDER BY leccion_id',
+        'SELECT leccion_id, repitio, intentos, tiempo_total_segundos AS tiempo, fecha_ultimo_intento AS ultimoIntento FROM niveles_completados WHERE usuario_id = $1 ORDER BY leccion_id',
         [userId],
         (error, results) => {
             if (error) {
@@ -89,44 +89,39 @@ router.get('/reporte', (req, res) => {
                 return res.status(500).json({ error: 'Error al obtener los datos del reporte' });
             }
 
-            // Mapear los resultados para pasarlos a la vista
-            const reportes = results.rows.map(row => ({
-                leccionId: row.leccion_id,
-                repitio: row.repitio,
-                intentos: row.intentos,
-                tiempo: row.tiempo_total_segundos,
-                ultimoIntento: row.fecha_ultimo_intento
-            }));
-
-            // Función para obtener el título de la lección
-            const getLeccionTitle = (id) => {
-                const lecciones = [
-                    { id: 1, titulo: 'Abecedario' },
-                    { id: 2, titulo: 'Números del 1 al 20' },
-                    { id: 3, titulo: 'Frases comunes' },
-                    { id: 4, titulo: 'Frases comunes' },
-                    { id: 5, titulo: 'Frases comunes' },
-                    { id: 6, titulo: 'Frases comunes' },
-                    { id: 7, titulo: 'Frases comunes' },
-                    { id: 8, titulo: 'Frases comunes' },
-                    { id: 9, titulo: 'Frases comunes' },
-                    { id: 10, titulo: 'Frases comunes' },
-                    { id: 11, titulo: 'Frases comunes' },
-                    { id: 12, titulo: 'Frases comunes' },
-                    { id: 13, titulo: 'Frases comunes' },
-                    // Agrega más lecciones según sea necesario
-                ];
-
-                const leccion = lecciones.find(leccion => leccion.id === id);
-                return leccion ? leccion.titulo : 'Lección desconocida';
+            // Mapeo de leccion_id a los títulos de las lecciones
+            const lecciones = {
+                1: 'Abecedario',
+                2: 'Números del 1 al 20',
+                3: 'Frases comunes',
+                4: 'Frases comunes',
+                5: 'Frases comunes',
+                6: 'Frases comunes',
+                7: 'Frases comunes',
+                8: 'Frases comunes',
+                9: 'Frases comunes',
+                10: 'Frases comunes',
+                11: 'Frases comunes',
+                12: 'Frases comunes',
+                13: 'Frases comunes',
+                // Puedes continuar añadiendo más lecciones aquí
             };
 
-            // Renderizar la vista pasando los datos y la función
+            // Mapear los resultados y añadir el título de la lección
+            const reportes = results.rows.map(row => ({
+                leccionId: row.leccion_id,
+                titulo: lecciones[row.leccion_id] || 'Lección desconocida',  // Usar el título mapeado
+                repitio: row.repitio,
+                intentos: row.intentos,
+                tiempo: row.tiempo,
+                ultimoIntento: row.ultimoIntento
+            }));
+
+            // Renderizar la vista pasando los datos
             res.render('reporte', {
                 alert: false,
                 user: req.user || null,
-                reportes,
-                getLeccionTitle
+                reportes
             });
         }
     );
