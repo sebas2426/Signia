@@ -37,8 +37,11 @@
     <div class="contenedorLeccionesReporte">
         <% reportes.forEach(reporte => { %>
             <div class="leccionesReporte leccion<%= reporte.leccionId %>">
-                <h3>Lección <%= reporte.leccionId %></h3>
+                <div class="titulosReporte">
+                    <h3>Lección <%= reporte.leccionId %></h3>
                 <h3><%= reporte.tituloLeccion %></h3> <!-- El título ya viene de la consulta -->
+                </div>
+                
                 <ul>
                     <li><p><span class="subtituloReporte" >Lección repetida:</span> <%= reporte.repitio ? 'Sí' : 'No' %></p></li>
                     <li><p> <span class="subtituloReporte">Intentos:</span> <%= reporte.intentos %></p></li>

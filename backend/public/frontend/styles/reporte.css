@@ -83,8 +83,15 @@
 }
 .subtituloReporte{
     font-weight: 700;
+    color: #252b36;
+}
+.titulosReporte{
+    margin-bottom: 1rem;
 }
 
 .dark-mode .leccionesReporte{
     background-color: #252525;
+}
+.dark-mode .subtituloReporte{
+    color: rgb(176, 179, 185)
 }
