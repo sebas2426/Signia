@@ -10,6 +10,11 @@
     <script src="/frontend/scripts/index.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <title>Curso Completado</title>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+        }
+      </script>
 </head>
 <body>
     <%- include('partials/header') %>

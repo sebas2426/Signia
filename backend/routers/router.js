@@ -72,6 +72,67 @@ router.get('/curso_completado', (req, res) => {
     res.render('curso_completado', { alert: false, user: req.user || null });
 });
 
+router.get('/reporte', (req, res) => {
+    const userId = req.user ? req.user.id : null;
+
+    if (!userId) {
+        return res.status(401).json({ error: 'Usuario no autenticado' });
+    }
+
+    // Obtener los datos de las lecciones desde la base de datos
+    conexion.query(
+        'SELECT * FROM leccion_reporte WHERE usuario_id = $1 ORDER BY leccion_id',
+        [userId],
+        (error, results) => {
+            if (error) {
+                console.error('Error al obtener los datos del reporte:', error);
+                return res.status(500).json({ error: 'Error al obtener los datos del reporte' });
+            }
+
+            // Mapear los resultados para pasarlos a la vista
+            const reportes = results.rows.map(row => ({
+                leccionId: row.leccion_id,
+                repitio: row.repitio,
+                intentos: row.intentos,
+                tiempo: row.tiempo_total_segundos,
+                ultimoIntento: row.fecha_ultimo_intento
+            }));
+
+            // Función para obtener el título de la lección
+            const getLeccionTitle = (id) => {
+                const lecciones = [
+                    { id: 1, titulo: 'Abecedario' },
+                    { id: 2, titulo: 'Números del 1 al 20' },
+                    { id: 3, titulo: 'Frases comunes' },
+                    { id: 4, titulo: 'Frases comunes' },
+                    { id: 5, titulo: 'Frases comunes' },
+                    { id: 6, titulo: 'Frases comunes' },
+                    { id: 7, titulo: 'Frases comunes' },
+                    { id: 8, titulo: 'Frases comunes' },
+                    { id: 9, titulo: 'Frases comunes' },
+                    { id: 10, titulo: 'Frases comunes' },
+                    { id: 11, titulo: 'Frases comunes' },
+                    { id: 12, titulo: 'Frases comunes' },
+                    { id: 13, titulo: 'Frases comunes' },
+                    // Agrega más lecciones según sea necesario
+                ];
+
+                const leccion = lecciones.find(leccion => leccion.id === id);
+                return leccion ? leccion.titulo : 'Lección desconocida';
+            };
+
+            // Renderizar la vista pasando los datos y la función
+            res.render('reporte', {
+                alert: false,
+                user: req.user || null,
+                reportes,
+                getLeccionTitle
+            });
+        }
+    );
+});
+
+
 router.get('/lista_lecciones', (req, res) => {
     const completada = req.query.completada === 'true'; // Manejar el parámetro
     res.render('lista_lecciones', { user: req.user, completada });

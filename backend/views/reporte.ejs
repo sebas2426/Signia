@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/frontend/images/icono-web.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/frontend/styles/styles.css">
+    <link rel="stylesheet" href="/frontend/styles/reporte.css">
+    <script src="/frontend/scripts/index.js" defer ></script>
+    <title>Reporte</title>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+        }
+      </script>
+</head>
+<body class="bodyLecciones">
+
+   <%- include('partials/header') %>
+
+    <% if(user){ %>
+        <div class="informacionUsuario">
+            <h1 class="tituloLecciones">Reporte de lecciones para:
+                <br>
+                <span><%= user.name %></span>
+            </h1>
+            <h2>Lecciones completadas: <%= leccionesCompletadas.length %>/13</h2>
+        </div>
+    <% }else{ %>
+        <h1 class="tituloLecciones">Reporte</h1>
+    <% } %>
+    
+    <div class="contenedorLeccionesReporte">
+        <% reportes.forEach(reporte => { %>
+            <div class="leccionesReporte leccion<%= reporte.leccionId %>">
+                <h3>Lección <%= reporte.leccionId %></h3>
+                <h3><%= getLeccionTitle(reporte.leccionId) %></h3>
+                <ul>
+                    <li><p>Lección repetida: <%= reporte.repitio ? 'Sí' : 'No' %></p></li>
+                    <li><p>Intentos: <%= reporte.intentos %></p></li>
+                    <li><p>Tiempo: <%= reporte.tiempo %> segundos</p></li>
+                    <li><p>Última fecha: <%= reporte.ultimoIntento %></p></li>
+                </ul>
+            </div>
+        <% }) %>
+    </div>
+
+</body>
+
+<footer>
+    <div class="derechos">
+        <p>2024 All rights reserved</p>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,78 @@
+.bodyLecciones{
+    background-color: #e2e1e1;
+}
+.tituloLecciones{
+    margin-bottom: 2rem;
+}
+
+.contenedorLeccionesReporte{
+    margin: 0 auto;
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+    border-radius: 5px;
+
+}
+
+.leccionesReporte{
+    flex: 1 1 250px;
+    max-width: 250px; 
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgb(240, 235, 235);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.leccionesReporte ul{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align:start;
+    width: 100%;
+    height: auto;
+}
+
+.leccionesReporte ul li{
+    list-style-type: none;
+}
+.leccionesReporte ul li p{
+    font-size: 1.1rem;
+}
+
+.lecciones:hover{
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.tituloLecciones,
+.lecciones{
+    text-align: center;
+}
+
+.lecciones h3{
+    min-height: 2rem;
+    font-size: 1.1rem;
+}
+
+
+
+  .informacionUsuario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
