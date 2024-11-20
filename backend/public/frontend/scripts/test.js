@@ -121,6 +121,7 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     console.log(`Cuántos intentos? ${intentos}`);
     ultimoIntento = new Date().toISOString();
     console.log(`Cuál es la fecha de su último intento? ${ultimoIntento}`);
+    console.log(`Cuál es el ID de la lección? ${leccionId}`);
 
     fetch('/completar-leccion', {
         method: 'POST',

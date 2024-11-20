@@ -110,6 +110,8 @@ router.post('/completar-leccion', (req, res) => {
     const userId = req.user ? req.user.id : null;
 
     console.log(`Usuario ID: ${userId}, Lección ID: ${leccionId}`); // Log para depuración
+    console.log('Antes de la inserción:');
+    console.log({ userId, leccionId, intentos, tiempoTotalSegundos, repitio, ultimoIntento });
 
     if (!userId) {
         return res.status(401).json({ error: 'Usuario no autenticado' });
@@ -133,6 +135,7 @@ router.post('/completar-leccion', (req, res) => {
                 (error) => {
                     if (error) {
                         console.error('Error al guardar el reporte de la lección:', error);
+                        console.error('Datos utilizados en la consulta:', { userId, leccionId, intentos, tiempoTotalSegundos, repitio, ultimoIntento });
                         return res.status(500).json({ error: 'Error al guardar el reporte de la lección' });
                     }
                     res.status(200).json({ message: 'Lección completada y reporte guardado' });
