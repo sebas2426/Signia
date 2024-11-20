@@ -86,7 +86,7 @@ router.get('/reporte', (req, res) => {
             lr.repitio, 
             lr.intentos, 
             lr.tiempo_total_segundos AS tiempo, 
-            lr.fecha_ultimo_intento AS ultimoIntento,
+            lr.fecha_ultimo_intento,
             nc.leccion_id AS numero_leccion
         FROM 
             leccion_reporte lr
@@ -109,7 +109,7 @@ router.get('/reporte', (req, res) => {
                 repitio: row.repitio,
                 intentos: row.intentos,
                 tiempo: row.tiempo,
-                ultimoIntento: row.ultimoIntento
+                ultimoIntento: row.fecha_ultimo_intento
             }));
 
             // Renderizar la vista pasando los datos
