@@ -1,6 +1,12 @@
 let indicePregunta = 0;
 let puntaje = 10; // Inicializa el puntaje en 10
 let preguntas = [];
+let intentos=1;
+let ultimoIntento = new Date().toISOString();
+let repitio= false;
+let tiempoInicio; 
+let tiempoFin;
+let tiempoTotalSegundos = 0;
 
 const botonCompletado = document.getElementById('botonCompletado');
 const enlaceCompletado = document.getElementById('enlaceCompletado');
@@ -108,6 +114,13 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     event.preventDefault(); // Evitar el envío por defecto del formulario
 
     const leccionId = this.leccionId.value;
+    tiempoFin = Date.now(); // Marca el tiempo de finalización
+    tiempoTotalSegundos = Math.round((tiempoFin - tiempoInicio) / 1000); // Calcula los segundos
+    console.log(`Tiempo total: ${tiempoTotalSegundos} segundos`);
+    console.log(`Repitio? ${repitio}`);
+    console.log(`Cuántos intentos? ${intentos}`);
+    ultimoIntento = new Date().toISOString();
+    console.log(`Cuál es la fecha de su último intento? ${ultimoIntento}`);
 
     fetch('/completar-leccion', {
         method: 'POST',
@@ -116,7 +129,11 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         },
         body: JSON.stringify({
             leccionId: leccionId,
-            puntaje: puntaje // Envía el puntaje junto con el ID de la lección
+            puntaje: puntaje,
+            intentos: intentos,
+            tiempoTotalSegundos: tiempoTotalSegundos,
+            repitio: repitio,
+            ultimoIntento: ultimoIntento
         })
     })
     .then(response => {
@@ -147,12 +164,18 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
 
 // Función para reiniciar el test
 function reiniciarTest() {
+    repitio=true;
+    intentos++;
     indicePregunta = 0;
     puntaje = 10;
     document.querySelector('.pregunta').textContent = '';
     document.querySelector('.leccionNumero').textContent = `Pregunta 1/${preguntas.length} | Puntaje: ${puntaje}`;
     cargarPregunta();
     mensajeEvaluacion.innerHTML = '';
+    console.log(`Repitio? ${repitio}`);
+    console.log(`Cuántos intentos? ${intentos}`);
+    ultimoIntento = new Date().toISOString();
+    console.log(`Cuál es la fecha de su último intento? ${ultimoIntento}`);
 }
 
 // Función para cargar la pregunta actual
@@ -243,5 +266,6 @@ function seleccionarOpcion(opcionSeleccionada) {
 
 // Inicia cargando las preguntas cuando la página se haya cargado
 window.onload = function () {
+    tiempoInicio = Date.now(); // Marca el tiempo de inicio
     cargarPreguntasDesdeJSON();
 };
