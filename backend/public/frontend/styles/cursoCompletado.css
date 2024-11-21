@@ -103,9 +103,12 @@ div+div{
 
 #btnConfeti{
     font-weight: 600;
-    color: white;
+    color: #ffffff;
     background-color:rgb(230, 227, 70);
     padding: 1rem;
+}
+.dark-mode #btnConfeti{
+    color: rgb(19, 18, 18);
 }
 
 @media screen and (max-width: 650px) {

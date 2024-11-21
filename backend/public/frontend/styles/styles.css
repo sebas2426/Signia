@@ -583,8 +583,11 @@ body.dark-mode {
     }
 
     .navList{
+        display: flex;
         flex-direction: column;
+        justify-content: flex-start;
         align-items: end;
+        gap: 1.8rem;
     }
 
     /*body*/
