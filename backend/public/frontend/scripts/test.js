@@ -151,8 +151,8 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         if (data.message) {
             console.log('Mensaje de éxito:', data.message); // Log del mensaje de éxito
             mostrarAlerta('Éxito', data.message, 'success').then(() => {
-                let leccionesRequeridas = Array.from({ length: 12 }, (_, i) => i + 1); // [1, 2, 3, ..., 12]
-                let todasCompletadas = leccionesRequeridas.every(leccion => leccionesCompletadas.includes(leccion));
+                let leccionesRequeridas = Array.from({ length: 12 }, (_, i) => i + 1);
+                let todasCompletadas = leccionesRequeridas.every(leccion => leccionesCompletadas.includes(leccion));    
                 if(todasCompletadas){
                     localStorage.setItem('leccion13_completada', 'true'); // Guarda en Local Storage
                     window.location.href = '/curso_completado';
