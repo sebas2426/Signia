@@ -75,11 +75,13 @@
 <script>
     const jsConfetti = new JSConfetti()
     const btnConfeti= document.getElementById("btnConfeti");
+    
+    window.addEventListener("load", EjecutarConfeti);
 
     function EjecutarConfeti(){
-        jsConfetti.addConfetti()
-    }
+        jsConfetti.addConfetti();
+    };
 
-    btnConfeti.addEventListener("click", EjecutarConfeti)
+    btnConfeti.addEventListener("click", EjecutarConfeti);
 </script>
 </html>

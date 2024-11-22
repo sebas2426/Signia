@@ -134,6 +134,7 @@ header{
     background-color:  rgb(56, 82, 99);
     --tw-bg-opacity: 1;
       border:1px solid rgb(209 213 219 / var(--tw-bg-opacity));
+    color: white;
 }
 
 .salirCuenta{
