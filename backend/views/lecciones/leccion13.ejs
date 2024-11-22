@@ -26,6 +26,7 @@
         if (localStorage.getItem('dark-mode') === 'enabled') {
           document.body.classList.add('dark-mode');
         }
+        let leccionesCompletadas = <%= JSON.stringify(leccionesCompletadas) %>;
       </script>
 </head>
 <body>
