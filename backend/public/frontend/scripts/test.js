@@ -154,7 +154,7 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
                 let leccionesRequeridas = Array.from({ length: 12 }, (_, i) => i + 1); // [1, 2, 3, ..., 12]
                 let todasCompletadas = leccionesRequeridas.every(leccion => leccionesCompletadas.includes(leccion));
                 if(todasCompletadas){
-                    window.location.href = '/curso_completado';
+                    window.location.href = '/curso_completado?completada=true';
                 }else{
                     window.location.href = '/lista_lecciones?completada=true';
                 }
