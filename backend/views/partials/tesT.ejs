@@ -26,7 +26,12 @@
                 <input type="hidden" id="leccionId" name="leccionId" value="ID_DE_LA_LECCION">
                 <button type="submit" id="botonCompletado" class="botonFinal Completado" disabled>Completar Lección</button>
             </form>
+
+            <% if(leccionId==13) { %>
+               
+                <% }else{ %>
                 <a href="/leccion/<%= siguienteLeccion %>"  class="botonFinal SiguienteLeccion">Siguiente Lección</a>
+                <% }%>
         </div>
     </div>
 </div>

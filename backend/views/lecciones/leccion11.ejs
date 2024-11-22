@@ -34,10 +34,10 @@
         <h2 class="subTitulo">¡Comencemos!</h2>
         <p>Te presentamos un vídeo en el que podrás ver las partes del casa, y sus correspondientes signos en lenguaje de señas. Míralo las veces que sean necesarias.:</p>
         <div class="contenedorVideo">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/MKRMkSCq6WU?si=LQhYR0AH3i9QbSQW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xIw7WeY6Q3M?si=xSQGgtdkL1k9yjze" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         
-        <h2 class="guiaVisual">Guía Visual de las partes del cuerpo</h2>
+        <h2 class="guiaVisual">Guía Visual de las partes de la casa</h2>
         <p class="guiaVisualp">Esta sección te ayudará a aprender mejor cada parte de la casa en lenguaje de señas de manera especifica. Familiarizate con cada gesto</p>
     
     <div class="media-contenedor">
@@ -106,21 +106,11 @@
 
   <!-- Definición de datos de la lección en data-attributes -->
   <div id="datos-leccion-ahorcado" style="display: none;">
-    <div data-palabra="CABEZA" data-imagen-seña="/frontend/images/partes_cuerpo/Cabeza.png"></div>
-    <div data-palabra="OREJAS" data-imagen-seña="/frontend/images/partes_cuerpo/Oreja.png"></div>
-    <div data-palabra="OJOS" data-imagen-seña="/frontend/images/partes_cuerpo/Ojo.png"></div>
-    <div data-palabra="NARIZ" data-imagen-seña="/frontend/images/partes_cuerpo/Nariz.png"></div>
-    <div data-palabra="BOCA" data-imagen-seña="/frontend/images/partes_cuerpo/Boca.png"></div>
-    <div data-palabra="MENTON" data-imagen-seña="/frontend/images/partes_cuerpo/Menton.png"></div>
-    <div data-palabra="MEJILLA" data-imagen-seña="/frontend/images/partes_cuerpo/Mejilla.png"></div>
-    <div data-palabra="BRAZO" data-imagen-seña="/frontend/images/partes_cuerpo/Brazo.png"></div>
-    <div data-palabra="MANO" data-imagen-seña="/frontend/images/partes_cuerpo/Mano.png"></div>
-    <div data-palabra="DEDOS" data-imagen-seña="/frontend/images/partes_cuerpo/Dedo.png"></div>
-    <div data-palabra="MUSLO" data-imagen-seña="/frontend/images/partes_cuerpo/Muslo.png"></div>
-    <div data-palabra="RODILLA" data-imagen-seña="/frontend/images/partes_cuerpo/Rodilla.png"></div>
-    <div data-palabra="PIERNA" data-imagen-seña="/frontend/images/partes_cuerpo/Pierna.png"></div>
-    <div data-palabra="TOBILLO" data-imagen-seña="/frontend/images/partes_cuerpo/Tobillo.png"></div>
-    <div data-palabra="PIES" data-imagen-seña="/frontend/images/partes_cuerpo/Pie.png"></div>
+    <div data-palabra="SALA" data-imagen-seña="/frontend/images/partes_casa/Sala.png"></div>
+    <div data-palabra="COCINA" data-imagen-seña="/frontend/images/partes_casa/Cocina.png"></div>
+    <div data-palabra="BAÑO" data-imagen-seña="/frontend/images/partes_casa/Bano.png"></div>
+    <div data-palabra="DORMITORIO" data-imagen-seña="/frontend/images/partes_casa/Dormitorio.png"></div>
+    <div data-palabra="PATIO" data-imagen-seña="/frontend/images/partes_casa/Patio.png"></div>
   </div>
 
   <!--JUEGO DE CAJAS-->
@@ -134,76 +124,52 @@
     <!-- Contenedores de los meses en lenguaje de señas -->
     <div id="meses-cajas">
         <!-- Contenedor para Enero -->
-        <div class="mes-caja" data-mes="Enero">
-            <img src="/frontend/images/meses_ano/Enero.png" alt="Mes de Enero en lengua de señas">
+        <div class="mes-caja" data-mes="Baño">
+            <img src="/frontend/images/partes_casa/Bano.png" alt="Baño en lengua de señas">
             <div class="opciones-cajas">
-                <button class="opcion-cajas">Enero</button>
-                <button class="opcion-cajas">Febrero</button>
-                <button class="opcion-cajas">Marzo</button>
+                <button class="opcion-cajas">Sala</button>
+                <button class="opcion-cajas">Baño</button>
+                <button class="opcion-cajas">Dormitorio</button>
+            </div>
+        </div>
+
+        <div class="mes-caja" data-mes="Dormitorio">
+            <img src="/frontend/images/partes_casa/Dormitorio.png" alt="Baño en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Sala</button>
+                <button class="opcion-cajas">Baño</button>
+                <button class="opcion-cajas">Dormitorio</button>
+            </div>
+        </div>
+
+        <div class="mes-caja" data-mes="Sala">
+            <img src="/frontend/images/partes_casa/Sala.png" alt="Sala en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Patio</button>
+                <button class="opcion-cajas">Cocina</button>
+                <button class="opcion-cajas">Sala</button>
+            </div>
+        </div>
+
+        <div class="mes-caja" data-mes="Cocina">
+            <img src="/frontend/images/partes_casa/Cocina.png" alt="Baño en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Baño</button>
+                <button class="opcion-cajas">Cocina</button>
+                <button class="opcion-cajas">Dormitorio</button>
+            </div>
+        </div>
+
+        <div class="mes-caja" data-mes="Patio">
+            <img src="/frontend/images/partes_casa/Patio-colegio.png" alt="Baño en lengua de señas">
+            <div class="opciones-cajas">
+                <button class="opcion-cajas">Patio</button>
+                <button class="opcion-cajas">Sala</button>
+                <button class="opcion-cajas">Dormitorio</button>
             </div>
         </div>
         
-        <div class="mes-caja" data-mes="Febrero">
-            <img src="/frontend/images/meses_ano/Febrero.png" alt="Mes de Febrero en lengua de señas">
-            <div class="opciones-cajas">
-                <button class="opcion-cajas">Febrero</button>
-                <button class="opcion-cajas">Abril</button>
-                <button class="opcion-cajas">Mayo</button>
-            </div>
-        </div>
         
-        <div class="mes-caja" data-mes="Marzo">
-            <img src="/frontend/images/meses_ano/Marzo.png" alt="Mes de Marzo en lengua de señas">
-            <div class="opciones-cajas">
-                <button class="opcion-cajas">Junio</button>
-                <button class="opcion-cajas">Marzo</button>
-                <button class="opcion-cajas">Diciembre</button>
-            </div>
-        </div>
-
-        <div class="mes-caja" data-mes="Mayo">
-            <img src="/frontend/images/meses_ano/Mayo.png" alt="Mes de Mayo en lengua de señas">
-            <div class="opciones-cajas">
-                <button class="opcion-cajas">Diciembre</button>
-                <button class="opcion-cajas">Mayo</button>
-                <button class="opcion-cajas">Junio</button>
-            </div>
-        </div>
-
-    <div class="mes-caja" data-mes="Junio">
-        <img src="/frontend/images/meses_ano/Junio.png" alt="Mes de Marzo en lengua de señas">
-        <div class="opciones-cajas">
-            <button class="opcion-cajas">Abril</button>
-            <button class="opcion-cajas">Septiembre</button>
-            <button class="opcion-cajas">Junio</button>
-        </div>
-    </div>
-    <div class="mes-caja" data-mes="Octubre">
-        <img src="/frontend/images/meses_ano/Octubre.png" alt="Mes de Marzo en lengua de señas">
-        <div class="opciones-cajas">
-            <button class="opcion-cajas">Octubre</button>
-            <button class="opcion-cajas">Noviembre</button>
-            <button class="opcion-cajas">Mayo</button>
-        </div>
-    </div>
-    
-    <div class="mes-caja" data-mes="Diciembre">
-        <img src="/frontend/images/meses_ano/Diciembre.png" alt="Mes de Marzo en lengua de señas">
-        <div class="opciones-cajas">
-            <button class="opcion-cajas">Abril</button>
-            <button class="opcion-cajas">Enero</button>
-            <button class="opcion-cajas">Diciembre</button>
-        </div>
-    </div>
-
-    <div class="mes-caja" data-mes="Septiembre">
-        <img src="/frontend/images/meses_ano/Septiembre.png" alt="Mes de Marzo en lengua de señas">
-        <div class="opciones-cajas">
-            <button class="opcion-cajas">Septiembre</button>
-            <button class="opcion-cajas">Julio</button>
-            <button class="opcion-cajas">Junio</button>
-        </div>
-    </div>
 </div>
 
     <!-- Mensaje de acierto o error -->

@@ -937,6 +937,528 @@
                     "imagen": "/frontend/images/profesiones/Administrador.png"
                 }
             ]
+        },
+
+        {
+            "id": 11,
+            "titulo": "Lección 11: partes de la casa",
+            "preguntas": [
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Sala",
+                        "Dormitorio",
+                        "Patio",
+                        "Baño"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/partes_casa/Sala.png"
+                },
+                
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Sala",
+                        "Cocina",
+                        "Dormitorio",
+                        "Baño"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/partes_casa/Dormitorio.png"
+                },
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Baño",
+                        "Dormitorio",
+                        "Sala",
+                        "Cocina"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/partes_casa/Cocina.png"
+                },
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Baño",
+                        "Patio",
+                        "Dormitorio",
+                        "Cocina"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/partes_casa/Patio-colegio.png"
+                },
+
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Sala",
+                        "Dormitorio",
+                        "Baño",
+                        "Patio"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/partes_casa/Bano.png"
+                }
+            ]
+        },
+
+        {
+            "id": 12,
+            "titulo": "Lección 12: Retroalimentación 2",
+            "preguntas": [
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Sala",
+                        "Dormitorio",
+                        "Patio",
+                        "Baño"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/partes_casa/Sala.png"
+                },
+                
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Ingeniero/a",
+                        "Doctor/a",
+                        "Enfermero/a",
+                        "Dentista"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/profesiones/Enfermero.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Pie",
+                        "Rodilla",
+                        "Cabeza",
+                        "Nariz"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/partes_cuerpo/Rodilla.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Hermano/a",
+                        "Abuelo/a",
+                        "Tío/a",
+                        "Mamá"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/familia/Tio.png"
+                },
+
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": [
+                        "Amarillo",
+                        "Verde",
+                        "Rojo",
+                        "Rosa"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/colores/Rosa.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Primo/a",
+                        "Tío/a",
+                        "Papá",
+                        "Sobrino/a"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/familia/Primo.png"
+                },
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Patio",
+                        "Sala",
+                        "Baño",
+                        "Dormitorio"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/partes_casa/Dormitorio.png"
+                },
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Dentista",
+                        "Administrador/a",
+                        "Ingeniero/a",
+                        "Doctor/a"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/profesiones/Administrador.png"
+                },
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": [
+                        "Blanco",
+                        "Negro",
+                        "Verde",
+                        "Rojo"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/colores/Verde.png"
+                },
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Baño",
+                        "Sala",
+                        "Patio",
+                        "Dormitorio"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/partes_casa/Bano.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Papá",
+                        "Mamá",
+                        "Hermano/a",
+                        "Cuñado/a"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/familia/Cunado.png"
+                },
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Arquitecto/a",
+                        "Doctor/a",
+                        "Enfermero/a",
+                        "Administrador/a"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/profesiones/Arquitecto.png"
+                },
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Farmacéutico/a",
+                        "Enfermero/a",
+                        "Abogado/a",
+                        "Doctor/a"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/profesiones/Abogado.png"
+                },
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Patio",
+                        "Sala",
+                        "Baño",
+                        "Cocina"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/partes_casa/Cocina.png"
+                },
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Ingeniero/a",
+                        "Farmacéutico/a",
+                        "Profesor/a",
+                        "Enfermero/a"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/profesiones/Farmaceutico.png"
+                }
+            ]
+        },
+
+        {
+            "id": 13,
+            "titulo": "Lección 13: Examen Final",
+            "preguntas": [
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Baño",
+                        "Dormitorio",
+                        "Sala",
+                        "Cocina"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/partes_casa/Dormitorio.png"
+                },
+                
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "F",
+                        "G",
+                        "O",
+                        "E"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/abecedario/imagenes-media/O-transformed.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Papá",
+                        "Hermano/a",
+                        "Mamá",
+                        "Primo/a"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/familia/Primo.png"
+                },
+                {
+                    "pregunta": "¿A qué número corresponde este signo?",
+                    "opciones": [
+                        "1",
+                        "19",
+                        "12",
+                        "8"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/numeros/numeros-media/Diecinueve.png"
+                },
+
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": [
+                        "Amarillo",
+                        "Verde",
+                        "Rojo",
+                        "Rosa"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/colores/Rosa.png"
+                },
+                {
+                    "pregunta": "¿A qué mes corresponde este signo?",
+                    "opciones": [
+                        "Febrero",
+                        "Abril",
+                        "Mayo",
+                        "Julio"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/meses_ano/Julio.png"
+                },
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Enfermero/a",
+                        "Administrador/a",
+                        "Ingeniero/a",
+                        "Profesor/a"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/profesiones/Profesor.png"
+                },
+                {
+                    "pregunta": "¿A qué día de la semana corresponde este signo?",
+                    "opciones": [
+                        "Martes",
+                        "Lunes",
+                        "Miércoles",
+                        "Domingo"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/dias_semana/Miercoles.png"
+                },
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": [
+                        "Rosa",
+                        "Negro",
+                        "Verde",
+                        "Rojo"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/colores/Rojo.png"
+                },
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Patio",
+                        "Sala",
+                        "Cocina",
+                        "Baño"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/partes_casa/Patio-colegio.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Papá",
+                        "Cuñado/a",
+                        "Hermano/a",
+                        "Primo/a"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/familia/Cunado.png"
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "L",
+                        "I",
+                        "U",
+                        "R"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/abecedario/imagenes-media/U-transformed.png"
+                },
+                {
+                    "pregunta": "¿A qué saludo corresponde este signo?",
+                    "opciones": [
+                        "Por Favor",
+                        "Hola",
+                        "Buenas Tardes",
+                        "Buenos Días"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/saludos/saludos-media/Buen-dia.png"
+                },
+                {
+                    "pregunta": "¿A qué mes corresponde este signo?",
+                    "opciones": [
+                        "Noviembre",
+                        "Enero",
+                        "Diciembre",
+                        "Marzo"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/meses_ano/Noviembre.png"
+                },
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Ingeniero/a",
+                        "Enfermero/a",
+                        "Profesor/a",
+                        "Administrador/a"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/profesiones/Enfermero.png"
+                },
+                {
+                    "pregunta": "¿A qué letra del abecedario corresponde este signo?",
+                    "opciones": [
+                        "T",
+                        "K",
+                        "O",
+                        "P"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/abecedario/imagenes-media/K-transformed.png"
+                },
+                {
+                    "pregunta": "¿A qué miembro de la familia corresponde este signo?",
+                    "opciones": [
+                        "Mamá",
+                        "Hermano/a",
+                        "Abuelo/a",
+                        "Papá"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/familia/Abuelo.png"
+                },
+                {
+                    "pregunta": "¿A qué color corresponde este signo?",
+                    "opciones": [
+                        "Rojo",
+                        "Negro",
+                        "Azul",
+                        "Celeste"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/colores/Celeste.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Brazo",
+                        "Pie",
+                        "Ojo",
+                        "Dedo"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/partes_cuerpo/Brazo.png"
+                },
+                {
+                    "pregunta": "¿A qué parte de la casa corresponde este signo?",
+                    "opciones": [
+                        "Patio",
+                        "Sala",
+                        "Baño",
+                        "Cocina"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/partes_casa/Cocina.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Ojo",
+                        "Cabeza",
+                        "Dedo",
+                        "Oreja"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/partes_cuerpo/Dedo.png"
+                },
+                {
+                    "pregunta": "¿A qué profesión corresponde este signo?",
+                    "opciones": [
+                        "Abogado/a",
+                        "Administrador/a",
+                        "Enfermero/a",
+                        "Doctor/a"
+                    ],
+                    "respuestaCorrecta": 0,
+                    "imagen": "/frontend/images/profesiones/Abogado.png"
+                },
+                {
+                    "pregunta": "¿A qué parte del cuerpo corresponde este signo?",
+                    "opciones": [
+                        "Cabeza",
+                        "Ojo",
+                        "Rodilla",
+                        "Pie"
+                    ],
+                    "respuestaCorrecta": 1,
+                    "imagen": "/frontend/images/partes_cuerpo/Ojo.png"
+                },
+                {
+                    "pregunta": "¿A qué saludo corresponde este signo?",
+                    "opciones": [
+                        "Adiós",
+                        "Por Favor",
+                        "Gracias",
+                        "Buenas Noches"
+                    ],
+                    "respuestaCorrecta": 2,
+                    "imagen": "/frontend/images/saludos/saludos-media/Gracias.png"
+                },
+                {
+                    "pregunta": "¿A qué saludo corresponde este signo?",
+                    "opciones": [
+                        "Buenos Días",
+                        "Por Favor",
+                        "Buenas Noches",
+                        "Adiós"
+                    ],
+                    "respuestaCorrecta": 3,
+                    "imagen": "/frontend/images/saludos/saludos-media/Adios.png"
+                }
+            ]
         }
     ]
 }

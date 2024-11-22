@@ -164,6 +164,7 @@ router.get('/leccion/:id', (req, res) => {
         // Renderiza la vista de la lección actual, pasando los datos y la siguiente lección
         res.render(`lecciones/leccion${leccionId}`, { 
             leccionData, 
+            leccionId,
             siguienteLeccion: siguienteLeccionId, 
             user: req.user || null 
         });

@@ -255,7 +255,6 @@ footer{
 
 .contenedorBotonesFinales {
   margin-top: auto;
-  width: 100%; 
   display: flex; 
   justify-content: space-between; 
   padding: 10px; 
@@ -272,6 +271,9 @@ footer{
 }
 
 .botonFinal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px 20px;
   border-radius: 10px;
   border: 2px solid #ccc;
@@ -280,8 +282,9 @@ footer{
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  flex: 1; 
   text-align: center; 
+  width: 150px;
+  height: 100px;
 }
 
 .botonFinal a {

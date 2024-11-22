@@ -26,7 +26,7 @@ function iniciarRonda() {
     
     // Si todos los meses han sido acertados, finaliza el juego
     if (mesesDisponibles.length === 0) {
-        mensajeCajas.textContent = "¡Felicidades! Has acertado todos los meses.";
+        mensajeCajas.textContent = "¡Felicidades! Has acertado todas las opciones.";
         mensajeCajas.style.color = "blue";
         juegoTerminado = true;  // Marca que el juego ha terminado
         return;
