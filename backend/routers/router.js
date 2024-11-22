@@ -165,7 +165,7 @@ router.get('/leccion/:id', (req, res) => {
         res.render(`lecciones/leccion${leccionId}`, { 
             leccionData, 
             leccionId,
-            leccionesCompletadas,
+            leccionesCompletadas: res.locals.leccionesCompletadas,
             siguienteLeccion: siguienteLeccionId, 
             user: req.user || null 
         });
