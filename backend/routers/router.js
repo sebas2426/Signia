@@ -69,7 +69,8 @@ router.get('/acceder', (req, res) => {
 });
 
 router.get('/curso_completado', (req, res) => {
-    res.render('curso_completado', { alert: false, user: req.user || null });
+    const completada = req.query.completada === 'true'; // Manejar el parámetro
+    res.render('curso_completado', { alert: false, user: req.user || null, completada });
 });
 
 router.get('/reporte', (req, res) => {
@@ -165,6 +166,7 @@ router.get('/leccion/:id', (req, res) => {
         res.render(`lecciones/leccion${leccionId}`, { 
             leccionData, 
             leccionId,
+            leccionesCompletadas,
             siguienteLeccion: siguienteLeccionId, 
             user: req.user || null 
         });

@@ -139,6 +139,7 @@ header{
 .salirCuenta{
     background-color: #da5050;
     padding: 0.8rem 1rem;
+    color: white;
 }
 
 .salirCuenta a{
