@@ -143,7 +143,9 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
             tiempoTotalSegundos: tiempoTotalSegundos,
             repitio: repitio,
             ultimoIntento: ultimoIntento,
-            datosJuego // Adjuntar los datos del juego
+            juegosIntentos: datosJuego.repeticionesJuegos, // Extraer directamente de datosJuego
+            juegosTiempoPorIntento: datosJuego.tiemposIntentosJuegos, // Extraer directamente de datosJuego
+            juegosRepitio: datosJuego.repitioJuegos // Extraer directamente de datosJuego
         })
     })
     .then(response => {

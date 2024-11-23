@@ -173,7 +173,7 @@ router.get('/leccion/:id', (req, res) => {
 });
 
 // Ruta para marcar lecciones como completadas
-// Ruta para marcar lecciones como completadas
+
 router.post('/completar-leccion', (req, res) => {
     const {
         leccionId,
