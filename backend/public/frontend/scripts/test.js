@@ -116,12 +116,20 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     const leccionId = this.leccionId.value;
     tiempoFin = Date.now(); // Marca el tiempo de finalización
     tiempoTotalSegundos = Math.round((tiempoFin - tiempoInicio) / 1000); // Calcula los segundos
+    const ultimoIntento = new Date().toISOString();
+
     console.log(`Tiempo total: ${tiempoTotalSegundos} segundos`);
     console.log(`Repitio? ${repitio}`);
     console.log(`Cuántos intentos? ${intentos}`);
-    ultimoIntento = new Date().toISOString();
     console.log(`Cuál es la fecha de su último intento? ${ultimoIntento}`);
     console.log(`Cuál es el ID de la lección? ${leccionId}`);
+
+    // Datos del juego
+    const datosJuego = {
+        tiemposIntentosJuegos: datosJuegos.tiemposIntentosJuegos, // Array de tiempos
+        repitioJuegos: datosJuegos.repitioJuegos, // Array de booleanos
+        repeticionesJuegos: datosJuegos.repeticionesJuegos // Número total de repeticiones
+    };
 
     fetch('/completar-leccion', {
         method: 'POST',
@@ -134,11 +142,11 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
             intentos: intentos,
             tiempoTotalSegundos: tiempoTotalSegundos,
             repitio: repitio,
-            ultimoIntento: ultimoIntento
+            ultimoIntento: ultimoIntento,
+            datosJuego // Adjuntar los datos del juego
         })
     })
     .then(response => {
-        // Manejamos el estado de la respuesta
         if (response.ok) {
             return response.json(); // Si es un 200, parsea a JSON
         }
@@ -153,13 +161,12 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
             mostrarAlerta('Éxito', data.message, 'success').then(() => {
                 let leccionesRequeridas = Array.from({ length: 12 }, (_, i) => i + 1);
                 let todasCompletadas = leccionesRequeridas.every(leccion => leccionesCompletadas.includes(leccion));    
-                if(todasCompletadas){
+                if (todasCompletadas) {
                     localStorage.setItem('leccion13_completada', 'true'); // Guarda en Local Storage
                     window.location.href = '/curso_completado';
-                }else{
+                } else {
                     window.location.href = '/lista_lecciones?completada=true';
                 }
-                
             });
         } else {
             console.error('No se recibió un mensaje de éxito'); // Log si no hay mensaje
@@ -168,7 +175,7 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     .catch(error => {
         console.error("Error al enviar la lección completada:", error.message);
         mostrarAlerta('Error', error.message, 'error');
-    });    
+    });
 });
 
 // Función para reiniciar el test

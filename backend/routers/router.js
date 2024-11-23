@@ -173,8 +173,20 @@ router.get('/leccion/:id', (req, res) => {
 });
 
 // Ruta para marcar lecciones como completadas
+// Ruta para marcar lecciones como completadas
 router.post('/completar-leccion', (req, res) => {
-    const { leccionId, puntaje, repitio, intentos, tiempoTotalSegundos, ultimoIntento } = req.body;
+    const {
+        leccionId,
+        puntaje,
+        repitio,
+        intentos,
+        tiempoTotalSegundos,
+        ultimoIntento,
+        juegosIntentos, // Array JSON con intentos por juego
+        juegosTiempoPorIntento, // Array JSON con tiempos por intento
+        juegosRepitio // Array JSON con si se repitió cada juego
+    } = req.body;
+
     const userId = req.user ? req.user.id : null;
 
     console.log(`Usuario ID: ${userId}, Lección ID: ${leccionId}`);
@@ -200,9 +212,28 @@ router.post('/completar-leccion', (req, res) => {
             const insertarReporte = (nivelId) => {
                 // Insertar en leccion_reporte usando el ID correcto
                 conexion.query(
-                    `INSERT INTO leccion_reporte (usuario_id, leccion_id, intentos, tiempo_total_segundos, repitio, fecha_ultimo_intento)
-                    VALUES ($1, $2, $3, $4, $5, $6)`,
-                    [userId, nivelId, intentos, tiempoTotalSegundos, repitio, ultimoIntento],
+                    `INSERT INTO leccion_reporte (
+                        usuario_id,
+                        leccion_id,
+                        intentos,
+                        tiempo_total_segundos,
+                        repitio,
+                        fecha_ultimo_intento,
+                        juegos_intentos,
+                        juegos_tiempo_por_intento,
+                        juegos_repitio
+                    ) VALUES ($1, $2, $3, $4, $5, $6, $7::json, $8::json, $9::json)`,
+                    [
+                        userId,
+                        nivelId,
+                        intentos,
+                        tiempoTotalSegundos,
+                        repitio,
+                        ultimoIntento,
+                        JSON.stringify(juegosIntentos), // Convertir a JSON string si aún no lo es
+                        JSON.stringify(juegosTiempoPorIntento), // Convertir a JSON string
+                        JSON.stringify(juegosRepitio) // Convertir a JSON string
+                    ],
                     (error) => {
                         if (error) {
                             console.error('Error al guardar el reporte de la lección:', error);
@@ -233,6 +264,7 @@ router.post('/completar-leccion', (req, res) => {
         }
     );
 });
+
 
 
 // Rutas para los métodos del controlador
