@@ -72,6 +72,14 @@ router.get('/curso_completado', (req, res) => {
     res.render('curso_completado', { alert: false, user: req.user || null});
 });
 
+const normalizeArray = (data) => {
+    // Si el array no contiene subarreglos, lo envolvemos en uno
+    if (data.length > 0 && !Array.isArray(data[0])) {
+        return [data];
+    }
+    return data;
+};
+
 router.get('/reporte', (req, res) => {
     const userId = req.user ? req.user.id : null;
 
@@ -96,7 +104,6 @@ router.get('/reporte', (req, res) => {
         13: 'Examen Final'
     };
 
-    // Obtener los datos de las lecciones desde la base de datos
     conexion.query(
         `SELECT 
             lr.leccion_id, 
@@ -123,22 +130,28 @@ router.get('/reporte', (req, res) => {
                 return res.status(500).json({ error: 'Error al obtener los datos del reporte' });
             }
 
-            // Mapear los resultados para pasarlos a la vista
-            const reportes = results.rows.map(row => ({
-                leccionId: row.numero_leccion,
-                tituloLeccion: lecciones[row.numero_leccion] || 'Lección desconocida',
-                repitio: row.repitio,
-                intentos: row.intentos,
-                tiempo: row.tiempo,
-                ultimoIntento: row.fecha_ultimo_intento,
-                juegos: {
-                    intentos: row.juegos_intentos,
-                    tiempos: row.juegos_tiempo_por_intento,
-                    repitio: row.juegos_repitio
-                }
-            }));
+            const reportes = results.rows.map(row => {
+                const juegosIntentos = normalizeArray(JSON.parse(row.juegos_intentos));
+                const juegosTiempos = normalizeArray(JSON.parse(row.juegos_tiempo_por_intento));
+                const juegosRepitio = normalizeArray(JSON.parse(row.juegos_repitio));
 
-            // Renderizar la vista pasando los datos
+                const juegos = juegosIntentos.map((intentos, index) => ({
+                    intentos: intentos,
+                    tiempos: juegosTiempos[index] || [],
+                    repitio: juegosRepitio[index] || []
+                }));
+
+                return {
+                    leccionId: row.numero_leccion,
+                    tituloLeccion: lecciones[row.numero_leccion] || 'Lección desconocida',
+                    repitio: row.repitio,
+                    intentos: row.intentos,
+                    tiempo: row.tiempo,
+                    ultimoIntento: row.fecha_ultimo_intento,
+                    juegos
+                };
+            });
+
             res.render('reporte', { alert: false, user: req.user || null, reportes });
         }
     );
