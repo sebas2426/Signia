@@ -105,24 +105,20 @@ router.get('/reporte', (req, res) => {
     };
 
     conexion.query(
-        `SELECT 
-            lr.leccion_id, 
-            lr.repitio, 
-            lr.intentos, 
-            lr.tiempo_total_segundos AS tiempo, 
-            lr.fecha_ultimo_intento,
-            lr.juegos_intentos,
-            lr.juegos_tiempo_por_intento,
-            lr.juegos_repitio,
-            nc.leccion_id AS numero_leccion
-        FROM 
-            leccion_reporte lr
-        JOIN 
-            niveles_completados nc ON lr.leccion_id = nc.id 
-        WHERE 
-            lr.usuario_id = $1
-        ORDER BY 
-            nc.leccion_id`,
+    `SELECT 
+    id,
+    usuario_id,
+    leccion_id,
+    intentos,
+    tiempo_total_segundos,
+    repitio,
+    fecha_ultimo_intento,
+    to_json(juegos_intentos) AS juegos_intentos,
+    to_json(juegos_tiempo_por_intento) AS juegos_tiempo_por_intento,
+    to_json(juegos_repitio) AS juegos_repitio
+    FROM leccion_reporte
+    WHERE usuario_id = $1;`,
+
         [userId],
         (error, results) => {
             if (error) {
@@ -130,16 +126,21 @@ router.get('/reporte', (req, res) => {
                 return res.status(500).json({ error: 'Error al obtener los datos del reporte' });
             }
 
-            const reportes = results.rows.map(row => {
-                const juegosIntentos = normalizeArray(JSON.parse(row.juegos_intentos));
-                const juegosTiempos = normalizeArray(JSON.parse(row.juegos_tiempo_por_intento));
-                const juegosRepitio = normalizeArray(JSON.parse(row.juegos_repitio));
-
-                const juegos = juegosIntentos.map((intentos, index) => ({
+            const reportes = result.rows.map(reporte => ({
+                id: reporte.id,
+                usuarioId: reporte.usuario_id,
+                leccionId: reporte.leccion_id,
+                intentos: reporte.intentos,
+                tiempoTotal: reporte.tiempo_total_segundos,
+                repitio: reporte.repitio,
+                ultimoIntento: reporte.fecha_ultimo_intento,
+                juegos: reporte.juegos_intentos.map((intentos, index) => ({
                     intentos: intentos,
-                    tiempos: juegosTiempos[index] || [],
-                    repitio: juegosRepitio[index] || []
-                }));
+                    tiempos: reporte.juegos_tiempo_por_intento[index],
+                    repitio: reporte.juegos_repitio[index]
+                }))
+            }));
+            
 
                 return {
                     leccionId: row.numero_leccion,
