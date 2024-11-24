@@ -139,8 +139,8 @@ router.get('/reporte', (req, res) => {
                 }));
 
                 return {
-                    leccionId: row.leccion_id,
-                    tituloLeccion: lecciones[row.leccion_id] || 'Lección desconocida',
+                    leccionId: row.numero_leccion,
+                    tituloLeccion: lecciones[row.numero_leccion] || 'Lección desconocida',
                     repitio: row.repitio,
                     intentos: row.intentos,
                     tiempo: row.tiempo_total_segundos,
