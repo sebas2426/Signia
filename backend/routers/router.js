@@ -156,7 +156,6 @@ router.get('/reporte', (req, res) => {
             res.render('reporte', { alert: false, user: req.user || null, reportes });
         }
     );
-});
 
 
 
