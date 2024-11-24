@@ -105,20 +105,21 @@ router.get('/reporte', (req, res) => {
     };
 
     conexion.query(
-    `SELECT 
-    id,
-    usuario_id,
-    leccion_id,
-    intentos,
-    tiempo_total_segundos,
-    repitio,
-    fecha_ultimo_intento,
-    to_json(juegos_intentos) AS juegos_intentos,
-    to_json(juegos_tiempo_por_intento) AS juegos_tiempo_por_intento,
-    to_json(juegos_repitio) AS juegos_repitio
-    FROM leccion_reporte
-    WHERE usuario_id = $1;`,
-
+        `SELECT 
+            lr.id,
+            lr.usuario_id,
+            lr.leccion_id,
+            lr.intentos,
+            lr.tiempo_total_segundos,
+            lr.repitio,
+            lr.fecha_ultimo_intento,
+            to_json(lr.juegos_intentos) AS juegos_intentos,
+            to_json(lr.juegos_tiempo_por_intento) AS juegos_tiempo_por_intento,
+            to_json(lr.juegos_repitio) AS juegos_repitio
+        FROM leccion_reporte lr
+        JOIN niveles_completados nc ON lr.leccion_id = nc.id
+        WHERE lr.usuario_id = $1
+        ORDER BY nc.leccion_id`,
         [userId],
         (error, results) => {
             if (error) {
@@ -126,28 +127,23 @@ router.get('/reporte', (req, res) => {
                 return res.status(500).json({ error: 'Error al obtener los datos del reporte' });
             }
 
-            const reportes = result.rows.map(reporte => ({
-                id: reporte.id,
-                usuarioId: reporte.usuario_id,
-                leccionId: reporte.leccion_id,
-                intentos: reporte.intentos,
-                tiempoTotal: reporte.tiempo_total_segundos,
-                repitio: reporte.repitio,
-                ultimoIntento: reporte.fecha_ultimo_intento,
-                juegos: reporte.juegos_intentos.map((intentos, index) => ({
-                    intentos: intentos,
-                    tiempos: reporte.juegos_tiempo_por_intento[index],
-                    repitio: reporte.juegos_repitio[index]
-                }))
-            }));
-            
+            const reportes = results.rows.map(row => {
+                const juegosIntentos = normalizeArray(row.juegos_intentos);
+                const juegosTiempos = normalizeArray(row.juegos_tiempo_por_intento);
+                const juegosRepitio = normalizeArray(row.juegos_repitio);
+
+                const juegos = juegosIntentos.map((intentos, index) => ({
+                    intentos: intentos || [],
+                    tiempos: juegosTiempos[index] || [],
+                    repitio: juegosRepitio[index] || []
+                }));
 
                 return {
-                    leccionId: row.numero_leccion,
-                    tituloLeccion: lecciones[row.numero_leccion] || 'Lección desconocida',
+                    leccionId: row.leccion_id,
+                    tituloLeccion: lecciones[row.leccion_id] || 'Lección desconocida',
                     repitio: row.repitio,
                     intentos: row.intentos,
-                    tiempo: row.tiempo,
+                    tiempo: row.tiempo_total_segundos,
                     ultimoIntento: row.fecha_ultimo_intento,
                     juegos
                 };
@@ -156,8 +152,7 @@ router.get('/reporte', (req, res) => {
             res.render('reporte', { alert: false, user: req.user || null, reportes });
         }
     );
-
-
+});
 
 router.get('/lista_lecciones', (req, res) => {
     const completada = req.query.completada === 'true'; // Manejar el parámetro
