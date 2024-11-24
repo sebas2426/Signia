@@ -79,9 +79,8 @@ router.get('/reporte', (req, res) => {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
 
-
-     // Mapeo de los números de lección a títulos
-     const lecciones = {
+    // Mapeo de los números de lección a títulos
+    const lecciones = {
         1: 'Abecedario',
         2: 'Números del 1 al 20',
         3: 'Saludos',
@@ -105,6 +104,9 @@ router.get('/reporte', (req, res) => {
             lr.intentos, 
             lr.tiempo_total_segundos AS tiempo, 
             lr.fecha_ultimo_intento,
+            lr.juegos_intentos,
+            lr.juegos_tiempo_por_intento,
+            lr.juegos_repitio,
             nc.leccion_id AS numero_leccion
         FROM 
             leccion_reporte lr
@@ -123,19 +125,25 @@ router.get('/reporte', (req, res) => {
 
             // Mapear los resultados para pasarlos a la vista
             const reportes = results.rows.map(row => ({
-                leccionId: row.numero_leccion,  // Aquí usamos el número de lección obtenido de la tabla niveles_completados
-                tituloLeccion: lecciones[row.numero_leccion] || 'Lección desconocida', // Usamos el mapeo
+                leccionId: row.numero_leccion,
+                tituloLeccion: lecciones[row.numero_leccion] || 'Lección desconocida',
                 repitio: row.repitio,
                 intentos: row.intentos,
                 tiempo: row.tiempo,
-                ultimoIntento: row.fecha_ultimo_intento
+                ultimoIntento: row.fecha_ultimo_intento,
+                juegos: {
+                    intentos: row.juegos_intentos,
+                    tiempos: row.juegos_tiempo_por_intento,
+                    repitio: row.juegos_repitio
+                }
             }));
 
             // Renderizar la vista pasando los datos
-            res.render('reporte', {alert: false, user: req.user || null, reportes });
+            res.render('reporte', { alert: false, user: req.user || null, reportes });
         }
     );
 });
+
 
 
 router.get('/lista_lecciones', (req, res) => {

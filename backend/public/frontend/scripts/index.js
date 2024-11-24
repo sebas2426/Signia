@@ -4,7 +4,7 @@ const cerrar = document.querySelector("#cerrar");
 const toggleButton = document.getElementById('toggle-dark-mode');
 const icon = document.querySelector('#iconNightSun'); // Define el icono aquí
 let datosJuegos = {
-    repeticionesJuegos: [1],
+    repeticionesJuegos: [],
     tiemposIntentosJuegos: [],
     repitioJuegos: []
 };

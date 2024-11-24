@@ -39,31 +39,41 @@
             <div class="leccionesReporte leccion<%= reporte.leccionId %>">
                 <div class="titulosReporte">
                     <h3>Lección <%= reporte.leccionId %></h3>
-                <h3><%= reporte.tituloLeccion %></h3> <!-- El título ya viene de la consulta -->
+                    <h3><%= reporte.tituloLeccion %></h3>
                 </div>
                 
                 <ul>
-                    <li><p><span class="subtituloReporte" >Lección repetida:</span> <%= reporte.repitio ? 'Sí' : 'No' %></p></li>
-                    <li><p> <span class="subtituloReporte">Intentos:</span> <%= reporte.intentos %></p></li>
+                    <li><p><span class="subtituloReporte">Lección repetida:</span> <%= reporte.repitio ? 'Sí' : 'No' %></p></li>
+                    <li><p><span class="subtituloReporte">Intentos:</span> <%= reporte.intentos %></p></li>
                     <li><p><span class="subtituloReporte">Tiempo:</span> <%= reporte.tiempo %> segundos</p></li>
                     <li><p><span class="subtituloReporte">Última fecha:</span> 
-                        <span class="fecha-formateada">
-                            <%= new Date(reporte.ultimoIntento).toLocaleString('es-MX', {
-                                weekday: 'long',  // Día de la semana
-                                year: 'numeric',  // Año
-                                month: 'long',     // Mes en formato largo
-                                day: 'numeric',    // Día
-                                hour: 'numeric',   // Hora
-                                minute: 'numeric', // Minutos
-                                hour12: false,
-                                timeZone: 'America/Asuncion' // Especificar zona horaria
-                            }) %>
-                        </span>
+                        <%= new Date(reporte.ultimoIntento).toLocaleString('es-MX', {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: 'numeric',
+                            minute: 'numeric',
+                            hour12: false,
+                            timeZone: 'America/Asuncion'
+                        }) %>
                     </p></li>
+                </ul>
+    
+                <h4>Detalles de los juegos</h4>
+                <ul>
+                    <% reporte.juegos.intentos.forEach((intento, index) => { %>
+                        <li>
+                            Juego <%= index + 1 %>: 
+                            Intentos: <%= intento %>, 
+                            Tiempo: <%= reporte.juegos.tiempos[index] || 0 %> segundos,
+                            Repetido: <%= reporte.juegos.repitio[index] ? 'Sí' : 'No' %>
+                        </li>
+                    <% }) %>
                 </ul>
             </div>
         <% }) %>
-    </div>
+    </div>    
     
 </body>
 
