@@ -60,16 +60,14 @@
                     </p></li>
                 </ul>
     
-                <h4>Detalles de los juegos</h4>
+                <h3>Detalles de los juegos</h3>
                 <% reporte.juegos.forEach((juego, juegoIndex) => { %>
-                    <h5>Juego <%= juegoIndex + 1 %></h5>
+                    <h4>Juego <%= juegoIndex + 1 %></h4>
                     <ul>
                         <% juego.intentos.forEach((intento, intentoIndex) => { %>
-                            <li>
-                                Intento <%= intentoIndex + 1 %>: 
-                                Tiempo: <%= juego.tiempos[intentoIndex] || 0 %> segundos, 
-                                Repetido: <%= juego.repitio[intentoIndex] ? 'Sí' : 'No' %>
-                            </li>
+                            <h4>Intento <%= intentoIndex + 1 %></h4>
+                            <li><p><span class="subtituloReporte">Juego Repetido:</span><%= juego.repitio[intentoIndex] ? 'Sí' : 'No' %></p></li>
+                            <li><p><span class="subtituloReporte">Tiempo:</span><%= juego.tiempos[intentoIndex] || 0 %> segundos</p></li>
                         <% }) %>
                     </ul>
                 <% }) %>
