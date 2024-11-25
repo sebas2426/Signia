@@ -213,8 +213,8 @@ router.post('/completar-leccion', (req, res) => {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
 
-    if (!leccionId || !puntaje || !intentos || !tiempoTotalSegundos || !ultimoIntento || !repitio || !Array.isArray(datosJuegos)) {
-        return res.status(400).json({ error: 'Datos incompletos o mal formateados' });
+    if (!Array.isArray(datosJuegos)) {
+        return res.status(400).json({ error: 'No es un ARRAYYY' });
     }
     
 

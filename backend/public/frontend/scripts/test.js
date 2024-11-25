@@ -118,12 +118,6 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     tiempoTotalSegundos = Math.round((tiempoFin - tiempoInicio) / 1000); // Calcula los segundos
     const ultimoIntento = new Date().toISOString();
 
-    console.log(`Tiempo total: ${tiempoTotalSegundos} segundos`);
-    console.log(`Repitio? ${repitio}`);
-    console.log(`Cuántos intentos? ${intentos}`);
-    console.log(`Cuál es la fecha de su último intento? ${ultimoIntento}`);
-    console.log(`Cuál es el ID de la lección? ${leccionId}`);
-
     // Datos del juego
     const datosJuego = {
         tiemposIntentosJuegos: datosJuegos.tiemposIntentosJuegos, // Array de tiempos
