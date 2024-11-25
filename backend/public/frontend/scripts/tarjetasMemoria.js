@@ -69,12 +69,7 @@ function desactivarTarjetas() {
             resultado.textContent = `¡Felicidades! Has completado el juego. Lo repetiste ${repeticionesTarjetasMemoria} veces. Y cada intento te llevo ${calcularTiempo()} segundos.`;
             document.getElementById('reiniciarJuego').style.display = 'block'; // Mostrar botón de reinicio
 
-            // Guardar el tiempo del intento en el array de tiempos
-            datosJuegos.tiemposIntentosJuegos.push(tiempoTranscurrido);
-            // Almacenar la cantidad final de repeticiones en el array de repeticiones
-            datosJuegos.repeticionesJuegos.push(repeticionesTarjetasMemoria);
-            // Registrar si se repitió el juego
-            datosJuegos.repitioJuegos.push(repitioTarjetasMemoria);
+            registrarDatosJuego(0, repeticionesTarjetasMemoria, tiempoTranscurrido, repitioTarjetasMemoria); // Para el primer juego
 
             console.log('Los tiempos para cada intento son '+ datosJuegos.tiemposIntentosJuegos);
             console.log('El numero de repeticiones es '+ datosJuegos.repeticionesJuegos);

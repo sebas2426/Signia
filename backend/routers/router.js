@@ -195,13 +195,11 @@ router.post('/completar-leccion', (req, res) => {
     const {
         leccionId,
         puntaje,
-        repitio,
         intentos,
         tiempoTotalSegundos,
         ultimoIntento,
-        juegosIntentos, // Array JSON con intentos por juego
-        juegosTiempoPorIntento, // Array JSON con tiempos por intento
-        juegosRepitio // Array JSON con si se repitió cada juego
+        repitio,
+        datosJuegos // Array de objetos que contienen datos por juego
     } = req.body;
 
     const userId = req.user ? req.user.id : null;
@@ -227,6 +225,11 @@ router.post('/completar-leccion', (req, res) => {
                 : null;
 
             const insertarReporte = (nivelId) => {
+                // Preparar los datos de juegos
+                const juegosIntentos = datosJuegos.map(juego => juego.repeticiones);
+                const juegosTiempoPorIntento = datosJuegos.map(juego => juego.tiempos);
+                const juegosRepitio = datosJuegos.map(juego => juego.repitio);
+
                 // Insertar en leccion_reporte usando el ID correcto
                 conexion.query(
                     `INSERT INTO leccion_reporte (
@@ -247,9 +250,9 @@ router.post('/completar-leccion', (req, res) => {
                         tiempoTotalSegundos,
                         repitio,
                         ultimoIntento,
-                        JSON.stringify(juegosIntentos), // Convertir a JSON string si aún no lo es
-                        JSON.stringify(juegosTiempoPorIntento), // Convertir a JSON string
-                        JSON.stringify(juegosRepitio) // Convertir a JSON string
+                        JSON.stringify(juegosIntentos), // Array JSON de intentos por juego
+                        JSON.stringify(juegosTiempoPorIntento), // Array JSON de tiempos por juego
+                        JSON.stringify(juegosRepitio) // Array JSON de si se repitió cada juego
                     ],
                     (error) => {
                         if (error) {

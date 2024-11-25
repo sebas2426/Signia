@@ -3,11 +3,49 @@ const abrir = document.querySelector("#abrir");
 const cerrar = document.querySelector("#cerrar");
 const toggleButton = document.getElementById('toggle-dark-mode');
 const icon = document.querySelector('#iconNightSun'); // Define el icono aquí
-let datosJuegos = {
-    repeticionesJuegos: [],
-    tiemposIntentosJuegos: [],
-    repitioJuegos: []
-};
+let datosJuegos = [
+    // Cada elemento será un array de datos para un juego específico
+    {
+        repeticiones: [],
+        tiempos: [],
+        repitio: []
+    },
+    {
+        repeticiones: [],
+        tiempos: [],
+        repitio: []
+    },
+    {
+        repeticiones: [],
+        tiempos: [],
+        repitio: []
+    },
+    {
+        repeticiones: [],
+        tiempos: [],
+        repitio: []
+    },
+    {
+        repeticiones: [],
+        tiempos: [],
+        repitio: []
+    }
+];
+
+function registrarDatosJuego(indiceJuego, repeticiones, tiempo, repitio) {
+    if (!datosJuegos[indiceJuego]) {
+        // Si no existe el juego en el índice, inicialízalo
+        datosJuegos[indiceJuego] = {
+            repeticiones: [],
+            tiempos: [],
+            repitio: []
+        };
+    }
+    datosJuegos[indiceJuego].repeticiones.push(repeticiones);
+    datosJuegos[indiceJuego].tiempos.push(tiempo);
+    datosJuegos[indiceJuego].repitio.push(repitio);
+}
+
 
 // Mostrar el menú
 abrir.addEventListener("click", () => {

@@ -113,16 +113,7 @@ const manejarToques = () => {
                             parejasCorrectasNivel3 === 4
                         ) {
 
-                            // Guardar el tiempo del intento en el array de tiempos
-                                datosJuegos.tiemposIntentosJuegos.push(calcularTiempoParejas());
-                                // Almacenar la cantidad final de repeticiones en el array de repeticiones
-                                datosJuegos.repeticionesJuegos.push(repeticionesParejas);
-                                // Registrar si se repitió el juego
-                                datosJuegos.repitioJuegos.push(repitioParejas);
-
-                                console.log('Los tiempos para cada intento son '+ datosJuegos.tiemposIntentosJuegos);
-                                console.log('El numero de repeticiones es '+ datosJuegos.repeticionesJuegos);
-                                console.log('Repitió? '+ datosJuegos.repitioJuegos);
+                            registrarDatosJuego(1, repeticionesParejas, tiempoTranscurridoParejas, repitioParejas); // Para el segundo juego
                             detenerContadorParejas();
                             mostrarVictoria();
                         }                        

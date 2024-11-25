@@ -5,6 +5,8 @@ class JuegoReflejos {
     this.contenedorSenasNivel2 = document.getElementById(contenedorSenasNivel2);
     this.contenedorSenasNivel3 = document.getElementById(contenedorSenasNivel3);
     this.resultadoElemento = document.getElementById(resultadoReflejos);
+    this.botonReiniciarJuego = document.getElementById('reiniciarJuegoReflejos');
+    this.botonReiniciarJuego.addEventListener('click', () => this.reiniciarJuego());
     this.botonSiguienteNivel = document.getElementById('boton-siguiente-nivel-reflejos');
 
     this.palabraCorrecta = "";
@@ -14,6 +16,15 @@ class JuegoReflejos {
     this.contadorAciertosPorPalabra = {};
     this.nivelActual = 1;
     this.totalPreguntasPorNivel = 3;
+
+    // Propiedades de tiempo y repeticiones
+    this.tiempoInicioReflejos = 0;
+    this.tiempoTranscurridoReflejos = 0;
+    this.tiempoIntervaloReflejos = null;
+    this.repeticionesReflejos = 0;
+    this.repitioReflejos = false;
+   
+
     this.cargarNuevaPalabra();
 
     this.botonSiguienteNivel.style.display = 'none';
@@ -29,29 +40,26 @@ class JuegoReflejos {
   }
 
   cargarNuevaPalabra() {
+    if (!this.tiempoInicioReflejos) {
+      this.tiempoInicioReflejos = Date.now();
+      this.iniciarContadorReflejos();
+    }
+
     const botonesSenas = Array.from(this.nivelActual === 1 ? this.contenedorSenasNivel1.children :
                                     this.nivelActual === 2 ? this.contenedorSenasNivel2.children :
                                     this.contenedorSenasNivel3.children);
     const palabras = botonesSenas.map(boton => boton.dataset.palabra);
 
     const palabrasFiltradas = palabras.filter(palabra => {
-      // Si estamos en el nivel 3, no limitamos la cantidad de veces que puede aparecer una palabra
-      if (this.nivelActual === 3) {
-        return true;  // No filtramos por cantidad de aciertos, dejamos todas las palabras disponibles
-      }
-    
-      // En niveles anteriores, limitamos a 2 veces
+      if (this.nivelActual === 3) return true;
       return !this.contadorAciertosPorPalabra[palabra] || this.contadorAciertosPorPalabra[palabra] < 2;
     });
-    
 
     let index = 0;
     const intervalo = setInterval(() => {
       this.contenedorPalabra.textContent = palabrasFiltradas[index];
       index++;
-      if (index >= palabrasFiltradas.length) {
-        index = 0;
-      }
+      if (index >= palabrasFiltradas.length) index = 0;
     }, this.tiempoMostrarPalabras);
 
     setTimeout(() => {
@@ -74,10 +82,7 @@ class JuegoReflejos {
         const palabraSeleccionada = evento.currentTarget.dataset.palabra;
 
         if (palabraSeleccionada === this.palabraCorrecta) {
-          if (!this.contadorAciertosPorPalabra[palabraSeleccionada]) {
-            this.contadorAciertosPorPalabra[palabraSeleccionada] = 0;
-          }
-          this.contadorAciertosPorPalabra[palabraSeleccionada]++;
+          this.contadorAciertosPorPalabra[palabraSeleccionada] = (this.contadorAciertosPorPalabra[palabraSeleccionada] || 0) + 1;
 
           if (!this.palabrasAciertas.includes(palabraSeleccionada)) {
             this.palabrasAciertas.push(palabraSeleccionada);
@@ -85,22 +90,20 @@ class JuegoReflejos {
           }
           this.mostrarResultado("¡Correcto!", "green");
 
-          if (this.aciertos === 3) {
+          if (this.aciertos === this.totalPreguntasPorNivel) {
             if (this.nivelActual === 3) {
-              // Mostrar el mensaje de victoria y agregar la clase exclusiva
-              this.mostrarResultado("¡Felicidades, completaste todos los niveles!");
-          
-              // Añadir la clase 'mensaje-victoria' y la clase 'aparecer' para activar la transición
-              this.resultadoElemento.classList.add("mensaje-victoria", "aparecer");
-              
+              this.detenerContadorReflejos();
+              this.mostrarResultado(
+                `¡Felicidades! Has completado todos los niveles. Lo repetiste ${this.repeticionesReflejos} veces en ${this.calcularTiempoReflejos()} segundos.`,
+                "green");
+                registrarDatosJuego(2, repeticionesReflejos, tiempoTranscurridoReflejos, repitioReflejos); // Para el tercer juego
+              this.botonReiniciarJuego.style.display = 'block';
               this.botonSiguienteNivel.style.display = 'none';
-              return;  // Evitamos limpiar el mensaje final de victoria
+              return;
             } else {
               this.mostrarBotonSiguienteNivel();
             }
           }
-          
-          
         } else {
           this.mostrarResultado("Incorrecto, intenta de nuevo.", "red");
         }
@@ -120,11 +123,6 @@ class JuegoReflejos {
   siguienteNivel() {
     this.aciertos = 0;
     this.palabrasAciertas = [];
-
-    if (this.nivelActual === 3) {
-      return;
-    }
-
     this.botonSiguienteNivel.style.display = 'none';
     this.nivelActual++;
     this.mostrarNivel();
@@ -139,7 +137,41 @@ class JuegoReflejos {
   limpiarResultado() {
     this.resultadoElemento.textContent = "";
   }
+
+  iniciarContadorReflejos() {
+    if (!this.tiempoIntervaloReflejos) {
+      this.tiempoIntervaloReflejos = setInterval(() => {
+        this.tiempoTranscurridoReflejos++;
+      }, 1000);
+    }
+  }
+
+  detenerContadorReflejos() {
+    clearInterval(this.tiempoIntervaloReflejos);
+    this.tiempoIntervaloReflejos = null;
+  }
+
+  calcularTiempoReflejos() {
+    return this.tiempoTranscurridoReflejos;
+  }
+
+  reiniciarJuego() {
+    this.repeticionesReflejos++;
+    this.aciertos = 0;
+    this.palabrasAciertas = [];
+    this.contadorAciertosPorPalabra = {};
+    this.nivelActual = 1;
+    this.tiempoInicioReflejos = 0;
+    this.tiempoTranscurridoReflejos = 0;
+    this.botonReiniciarJuego.style.display = 'none';
+    this.mostrarNivel();
+    this.cargarNuevaPalabra();
+    this.limpiarResultado();
+    console.log("Juego reiniciado");
+  }
+  
 }
+
 
 const juegoReflejos = new JuegoReflejos(
   'palabra-a-identificar-reflejos',
