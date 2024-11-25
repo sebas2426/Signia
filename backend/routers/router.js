@@ -190,7 +190,6 @@ router.get('/leccion/:id', (req, res) => {
 });
 
 // Ruta para marcar lecciones como completadas
-
 router.post('/completar-leccion', (req, res) => {
     const {
         leccionId,
@@ -202,13 +201,22 @@ router.post('/completar-leccion', (req, res) => {
         datosJuegos // Array de objetos que contienen datos por juego
     } = req.body;
 
+
+
     const userId = req.user ? req.user.id : null;
 
-    console.log(`Usuario ID: ${userId}, Lección ID: ${leccionId}`);
+    console.log('Datos recibidos:', req.body);
+    console.log('Datos juegos procesados:', datosJuegos);
+
 
     if (!userId) {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
+
+    if (!leccionId || !puntaje || !intentos || !tiempoTotalSegundos || !ultimoIntento || !repitio || !Array.isArray(datosJuegos)) {
+        return res.status(400).json({ error: 'Datos incompletos o mal formateados' });
+    }
+    
 
     // Verificar si la lección ya ha sido completada en niveles_completados
     conexion.query(
