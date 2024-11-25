@@ -226,9 +226,12 @@ router.post('/completar-leccion', (req, res) => {
 
             const insertarReporte = (nivelId) => {
                 // Preparar los datos de juegos
-                const juegosIntentos = datosJuegos.map(juego => juego.repeticiones);
-                const juegosTiempoPorIntento = datosJuegos.map(juego => juego.tiempos);
-                const juegosRepitio = datosJuegos.map(juego => juego.repitio);
+                const juegosValidos = datosJuegos.filter(juego => Object.keys(juego).length > 0); // Filtra los vacíos
+
+                const juegosIntentos = juegosValidos.map(juego => juego.repeticiones || []);
+                const juegosTiempoPorIntento = juegosValidos.map(juego => juego.tiempos || []);
+                const juegosRepitio = juegosValidos.map(juego => juego.repitio || []);
+
 
                 // Insertar en leccion_reporte usando el ID correcto
                 conexion.query(
