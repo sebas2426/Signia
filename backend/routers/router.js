@@ -115,7 +115,8 @@ router.get('/reporte', (req, res) => {
             lr.fecha_ultimo_intento,
             to_json(lr.juegos_intentos) AS juegos_intentos,
             to_json(lr.juegos_tiempo_por_intento) AS juegos_tiempo_por_intento,
-            to_json(lr.juegos_repitio) AS juegos_repitio
+            to_json(lr.juegos_repitio) AS juegos_repitio,
+            nc.leccion_id AS numero_leccion 
         FROM leccion_reporte lr
         JOIN niveles_completados nc ON lr.leccion_id = nc.id
         WHERE lr.usuario_id = $1
