@@ -1,7 +1,38 @@
+// Variables globales para el tiempo y repeticiones
+let tiempoInicioParejas = 0;
+let tiempoTranscurridoParejas = 0;
+let tiempoIntervaloParejas = null; // Intervalo para el contador
+let repeticionesParejas = 0; // Cantidad de repeticiones
+let repitioParejas = false;
+
+// Función para iniciar el contador
+function iniciarContadorParejas() {
+    if (!tiempoIntervaloParejas) {
+        tiempoIntervaloParejas = setInterval(actualizarContadorParejas, 1000);
+    }
+}
+
+// Función para actualizar el contador de tiempo
+function actualizarContadorParejas() {
+    tiempoTranscurridoParejas++;
+}
+
+// Función para detener el contador
+function detenerContadorParejas() {
+    clearInterval(tiempoIntervaloParejas);
+    tiempoIntervaloParejas = null;
+}
+
+// Función para calcular el tiempo transcurrido
+function calcularTiempoParejas() {
+    return tiempoTranscurridoParejas;
+}
+
 // Seleccionamos todos los botones (las imágenes)
 const botonesParejas = document.querySelectorAll('.botonParejas');
 const espaciosBlancos = document.querySelectorAll('.divBlanco');
 const siguienteNivelBtn = document.querySelectorAll('.siguienteNivel2'); // Botones para pasar al siguiente nivel
+const contenedorJuego = document.querySelector('.contenedorJuego'); // Contenedor principal del juego
 
 // Guardamos las posiciones originales de los botones
 const posicionesOriginales = new Map();
@@ -9,6 +40,8 @@ const posicionesOriginales = new Map();
 // Contadores para verificar cuántas parejas correctas se han colocado
 let parejasCorrectasNivel1 = 0;
 let parejasCorrectasNivel2 = 0;
+let parejasCorrectasNivel3 = 0;
+
 
 // Variable para mantener el botón seleccionado por el toque
 let botonSeleccionado = null;
@@ -20,7 +53,11 @@ const manejarToques = () => {
         posicionesOriginales.set(boton, { top: rect.top, left: rect.left }); // Guardamos la posición
 
         boton.addEventListener('click', () => {
-            // Cuando se toca un botón, lo marcamos como seleccionado
+            if (!tiempoInicioParejas) {
+                tiempoInicioParejas = Date.now(); // Marcamos el tiempo de inicio
+                iniciarContadorParejas(); // Iniciar el contador de tiempo
+            }
+
             if (botonSeleccionado) {
                 botonSeleccionado.classList.remove('selected'); // Deseleccionar si ya hay uno seleccionado
             }
@@ -38,97 +75,98 @@ const manejarToques = () => {
                 // Quitamos el fondo azul (la clase 'selected') antes de mover la imagen
                 botonSeleccionado.classList.remove('selected');
 
-                // Verificamos si la pareja es correcta
                 if (parejaArrastrada === parejaCorrecta) {
-                    // Creamos la animación para mover el botón
-                    const espacioRect = espacio.getBoundingClientRect(); // Coordenadas del espacio blanco
-                    const botonRect = botonSeleccionado.getBoundingClientRect(); // Coordenadas del botón
-
-                    // Calculamos el movimiento (diferencia entre posiciones)
-                    const offsetX = espacioRect.left - botonRect.left;
-                    const offsetY = espacioRect.top - botonRect.top;
-
-                    // Aplicamos animación de transición
-                    botonSeleccionado.style.transition = 'transform 0.5s ease';
-                    botonSeleccionado.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-
-                    // Después de la animación, colocamos el botón en el espacio blanco
-                    setTimeout(() => {
-                        espacio.innerHTML = ''; // Limpiamos el contenido del espacio en blanco
-                        espacio.appendChild(botonSeleccionado); // Añadimos el botón al espacio
-                        botonSeleccionado.style.transform = ''; // Reseteamos la transformación
-                        botonSeleccionado.setAttribute('draggable', false); // Deshabilitamos el arrastre
-                        botonSeleccionado.style.border = '2px solid green'; // Borde verde para indicar éxito
-
-                        // Verificamos el nivel y sumamos al contador de parejas correctas
-                        if (botonSeleccionado.closest('.nivel1')) {
-                            parejasCorrectasNivel1++;
-                        } else if (botonSeleccionado.closest('.nivel2')) {
-                            parejasCorrectasNivel2++;
-                        }
-
-                        // Verificamos si todas las parejas están completas para mostrar el botón de siguiente nivel
-                        if (parejasCorrectasNivel1 === 3) {
-                            siguienteNivelBtn[0].style.display = 'block'; // Muestra el botón para nivel 1
-                        } else if (parejasCorrectasNivel2 === 3) {
-                            siguienteNivelBtn[1].style.display = 'block'; // Muestra el botón para nivel 2
-                        }
-
-                        // Reiniciamos la selección
-                        botonSeleccionado = null;
-                    }, 500); // Tiempo de la transición (0.5 segundos)
-
-                } else {
-                    // Mover el botón a la posición del espacio blanco incorrecto
                     const espacioRect = espacio.getBoundingClientRect();
                     const botonRect = botonSeleccionado.getBoundingClientRect();
                     const offsetX = espacioRect.left - botonRect.left;
                     const offsetY = espacioRect.top - botonRect.top;
 
-                    // Aplicar transición para el movimiento incorrecto
                     botonSeleccionado.style.transition = 'transform 0.5s ease';
                     botonSeleccionado.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 
-                    // Después de la animación, aplicamos el borde rojo
                     setTimeout(() => {
-                        botonSeleccionado.style.border = '2px solid red'; // Borde rojo para indicar error
+                        espacio.innerHTML = '';
+                        espacio.appendChild(botonSeleccionado);
+                        botonSeleccionado.style.transform = '';
+                        botonSeleccionado.setAttribute('draggable', false);
+                        botonSeleccionado.style.border = '2px solid green';
 
-                        // Después de 1 segundo, el botón regresa a su posición original
+                        if (botonSeleccionado.closest('.nivel1')) {
+                            parejasCorrectasNivel1++;
+                        } else if (botonSeleccionado.closest('.nivel2')) {
+                            parejasCorrectasNivel2++;
+                        } else if (botonSeleccionado.closest('.nivel3')) {
+                            parejasCorrectasNivel3++;
+                        }
+                        
+
+                        if (parejasCorrectasNivel1 === 3) {
+                            siguienteNivelBtn[0].style.display = 'block';
+                        } 
+                        if (parejasCorrectasNivel2 === 3) {
+                            siguienteNivelBtn[1].style.display = 'block';
+                        }
+
+                        if (
+                            parejasCorrectasNivel1 === 3 &&
+                            parejasCorrectasNivel2 === 3 &&
+                            parejasCorrectasNivel3 === 4
+                        ) {
+
+                            // Guardar el tiempo del intento en el array de tiempos
+                                datosJuegos.tiemposIntentosJuegos.push(calcularTiempoParejas());
+                                // Almacenar la cantidad final de repeticiones en el array de repeticiones
+                                datosJuegos.repeticionesJuegos.push(repeticionesParejas);
+                                // Registrar si se repitió el juego
+                                datosJuegos.repitioJuegos.push(repitioParejas);
+
+                                console.log('Los tiempos para cada intento son '+ datosJuegos.tiemposIntentosJuegos);
+                                console.log('El numero de repeticiones es '+ datosJuegos.repeticionesJuegos);
+                                console.log('Repitió? '+ datosJuegos.repitioJuegos);
+                            detenerContadorParejas();
+                            mostrarVictoria();
+                        }                        
+
+                        botonSeleccionado = null;
+                    }, 500);
+                } else {
+                    const espacioRect = espacio.getBoundingClientRect();
+                    const botonRect = botonSeleccionado.getBoundingClientRect();
+                    const offsetX = espacioRect.left - botonRect.left;
+                    const offsetY = espacioRect.top - botonRect.top;
+
+                    botonSeleccionado.style.transition = 'transform 0.5s ease';
+                    botonSeleccionado.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+
+                    setTimeout(() => {
+                        botonSeleccionado.style.border = '2px solid red';
                         setTimeout(() => {
-                            const originalPosition = posicionesOriginales.get(botonSeleccionado);
-
-                            // Animación para el regreso
-                            botonSeleccionado.classList.add('returning');
-                            botonSeleccionado.style.transition = 'transform 0.5s ease'; // Añadimos transición
-                            botonSeleccionado.style.transform = `translate(${originalPosition.left - botonSeleccionado.getBoundingClientRect().left}px, ${originalPosition.top - botonSeleccionado.getBoundingClientRect().top}px)`;
-
-                            // Después de la transición, regresamos el botón a su lugar original
-                            botonSeleccionado.addEventListener('transitionend', () => {
-                                botonSeleccionado.style.transform = ''; // Reseteamos el estilo
-                                botonSeleccionado.classList.remove('returning');
-
-                                // Lo devolvemos a su contenedor original (fila de botones)
-                                const imagenesParejas = botonSeleccionado.closest('.nivel1') ? botonSeleccionado.closest('.nivel1').querySelector('.imagenesParejas') :
-                                    botonSeleccionado.closest('.nivel2') ? botonSeleccionado.closest('.nivel2').querySelector('.imagenesParejas') :
-                                    botonSeleccionado.closest('.nivel3').querySelector('.imagenesParejas');
-                                imagenesParejas.appendChild(botonSeleccionado); // Movemos el botón de vuelta a la fila
-
-                                // Limpiamos el borde rojo del botón después de regresar
-                                botonSeleccionado.style.border = '';
-
-                                // Reiniciamos la selección
-                                botonSeleccionado = null;
-                            }, { once: true });
-                        }, 1000); // Esperamos 1 segundo antes de que vuelva
-                    }, 500); // Aplicar el borde rojo después de que llegue al div blanco
+                            const originalPos = posicionesOriginales.get(botonSeleccionado);
+                            botonSeleccionado.style.transition = '';
+                            botonSeleccionado.style.transform = '';
+                            botonSeleccionado.style.left = `${originalPos.left}px`;
+                            botonSeleccionado.style.top = `${originalPos.top}px`;
+                        }, 1000);
+                    }, 500);
                 }
             }
         });
     });
 };
 
-// Inicializamos la lógica de toques
-manejarToques();
+// Mostrar mensaje de victoria y datos en consola
+function mostrarVictoria() {
+    // Mostrar mensaje de victoria en el contenedor mensajeVictoria
+    const mensajeVictoria = document.createElement('p');
+    mensajeVictoria.textContent = `¡Felicidades! Has completado el juego en ${calcularTiempoParejas()} segundos con ${repeticionesParejas} repeticiones.`;
+    mensajeVictoria.style.textAlign = 'center';
+    mensajeVictoria.style.fontSize = '1.5em';
+    mensajeVictoria.style.color = 'green';
+    const contenedorVictoria = document.querySelector('.mensajeVictoria');
+    contenedorVictoria.innerHTML = ''; // Limpiar cualquier contenido anterior
+    contenedorVictoria.appendChild(mensajeVictoria);
+    document.getElementById('reiniciarJuego').style.display = 'block'; // Mostrar botón de reinicio
+}
 
 // Lógica para el botón de siguiente nivel
 siguienteNivelBtn.forEach(btn => {
@@ -141,12 +179,44 @@ siguienteNivelBtn.forEach(btn => {
         // Mostramos el siguiente nivel
         const siguienteNivel = nivelActual.nextElementSibling;
         siguienteNivel.style.display = 'block';
-
-        // Reseteamos el contador de parejas correctas para el siguiente nivel
-        if (nivelActual.classList.contains('nivel1')) {
-            parejasCorrectasNivel1 = 0; // Resetea el contador de nivel 1
-        } else if (nivelActual.classList.contains('nivel2')) {
-            parejasCorrectasNivel2 = 0; // Resetea el contador de nivel 2
-        }
     });
 });
+// Escuchar el evento de clic en el botón de reiniciar
+document.getElementById('reiniciarJuego').addEventListener('click', function () {
+    // Resetear el nivel actual
+    let nivelActual = 1;
+
+    // Restaurar la visibilidad de los niveles
+    document.querySelectorAll('.nivel-1, .nivel-2, .nivel-3').forEach(nivel => nivel.style.display = 'none');
+    document.querySelector(`.nivel${nivelActual}`).style.display = 'flex'; // Mostrar el nivel 1 al inicio
+
+    // Restaurar los botones y las parejas
+    document.querySelectorAll('.botonParejas').forEach(boton => {
+        // Quitar posibles clases de selección o estados anteriores
+        boton.disabled = false; // Habilitar los botones de nuevo
+        boton.classList.remove('seleccionado'); // Eliminar cualquier clase de estilo
+    });
+
+    // Restaurar los divs blancos a su estado inicial
+    document.querySelectorAll('.divBlanco').forEach(divBlanco => {
+        divBlanco.classList.remove('ocupado'); // Eliminar clase que indica que ya fue seleccionado
+        divBlanco.innerHTML = ''; // Limpiar cualquier imagen que esté dentro
+    });
+
+    // Ocultar el mensaje de victoria
+    document.querySelector('.mensajeVictoria').style.display = 'none';
+
+    // Mostrar el botón de reiniciar si está oculto
+    this.style.display = 'none'; // Ocultar el botón de reiniciar
+    document.getElementById('siguienteNivel2').style.display = 'none'; // Asegurar que no esté visible al reiniciar
+
+    // Aquí puedes restablecer cualquier otra variable o estado del juego si es necesario
+});
+
+
+
+// Llamamos a la función para activar los eventos
+document.addEventListener('DOMContentLoaded', () => {
+    manejarToques(); // Llama a tu función principal
+});
+

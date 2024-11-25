@@ -10,7 +10,6 @@
   width: 90%; 
   border: 2px solid #f1f1f1;
   border-radius: 5px;
-  position: relative;
 }
 
 .contenedorParejas h2 {
@@ -41,6 +40,7 @@
   padding: 10px;
   border: 2px solid whitesmoke;
   border-radius: 2px;
+  position: relative;
 }
 
 .opcionesParejas {
