@@ -71,9 +71,7 @@ function desactivarTarjetas() {
 
             registrarDatosJuego(0, repeticionesTarjetasMemoria, tiempoTranscurrido, repitioTarjetasMemoria); // Para el primer juego
 
-            console.log('Los tiempos para cada intento son '+ datosJuegos.tiemposIntentosJuegos);
-            console.log('El numero de repeticiones es '+ datosJuegos.repeticionesJuegos);
-            console.log('Repitió? '+ datosJuegos.repitioJuegos);
+           console.log(datosJuegos);
 
             detenerContador(); // Detener el contador cuando el juego se complete
         } else {
