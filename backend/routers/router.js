@@ -226,6 +226,7 @@ router.post('/completar-leccion', (req, res) => {
 
             const insertarReporte = (nivelId) => {
                 // Preparar los datos de juegos
+                console.log(datosJuegos);
                 const juegosValidos = datosJuegos.filter(juego => Object.keys(juego).length > 0); // Filtra los vacíos
 
                 const juegosIntentos = juegosValidos.map(juego => juego.repeticiones || []);
