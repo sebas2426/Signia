@@ -119,15 +119,6 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     const ultimoIntento = new Date().toISOString();
 
 
-    // Datos del juego
-    const datosJuego = {
-        tiemposIntentosJuegos: datosJuegos.tiemposIntentosJuegos, // Array de tiempos
-        repitioJuegos: datosJuegos.repitioJuegos, // Array de booleanos
-        repeticionesJuegos: datosJuegos.repeticionesJuegos // Número total de repeticiones
-    };
-
-    console.log(`Datos preparados para ser enviados al back  ${datosJuego}`);
-
     fetch('/completar-leccion', {
         method: 'POST',
         headers: {
@@ -140,7 +131,7 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
             tiempoTotalSegundos: tiempoTotalSegundos,
             repitio: repitio,
             ultimoIntento: ultimoIntento,
-            juegos: datosJuego
+            juegos: datosJuegos
         })
     })
     .then(response => {
