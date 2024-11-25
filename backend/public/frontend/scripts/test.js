@@ -118,12 +118,15 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     tiempoTotalSegundos = Math.round((tiempoFin - tiempoInicio) / 1000); // Calcula los segundos
     const ultimoIntento = new Date().toISOString();
 
+
     // Datos del juego
     const datosJuego = {
         tiemposIntentosJuegos: datosJuegos.tiemposIntentosJuegos, // Array de tiempos
         repitioJuegos: datosJuegos.repitioJuegos, // Array de booleanos
         repeticionesJuegos: datosJuegos.repeticionesJuegos // Número total de repeticiones
     };
+
+    console.log(`Datos preparados para ser enviados al back  ${datosJuego}`);
 
     fetch('/completar-leccion', {
         method: 'POST',
