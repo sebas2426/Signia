@@ -9,26 +9,6 @@ let datosJuegos = [
         repeticiones: [],
         tiempos: [],
         repitio: []
-    },
-    {
-        repeticiones: [],
-        tiempos: [],
-        repitio: []
-    },
-    {
-        repeticiones: [],
-        tiempos: [],
-        repitio: []
-    },
-    {
-        repeticiones: [],
-        tiempos: [],
-        repitio: []
-    },
-    {
-        repeticiones: [],
-        tiempos: [],
-        repitio: []
     }
 ];
 

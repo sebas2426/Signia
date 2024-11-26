@@ -203,8 +203,9 @@ router.post('/completar-leccion', (req, res) => {
 
     const userId = req.user ? req.user.id : null;
 
-    console.log('Datos recibidos:', req.body);
-    console.log('Datos juegos procesados:', datosJuegos);
+    console.log('Tipo de datosJuegos:', typeof datosJuegos);
+    console.log('Contenido de datosJuegos:', datosJuegos);
+
 
     if (!userId) {
         return res.status(401).json({ error: 'Usuario no autenticado' });

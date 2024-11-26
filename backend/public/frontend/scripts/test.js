@@ -110,6 +110,7 @@ function mostrarAlerta(titulo, texto, icono) {
     });
 }
 
+//ENVIAR LOS DATOS//
 document.getElementById('formCompletarLeccion').addEventListener('submit', function(event) {
     event.preventDefault(); // Evitar el envío por defecto del formulario
 
@@ -118,20 +119,8 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     tiempoTotalSegundos = Math.round((tiempoFin - tiempoInicio) / 1000); // Calcula los segundos
     const ultimoIntento = new Date().toISOString();
 
-    // Filtrar los juegos para enviar solo los válidos
-    const juegosValidos = datosJuegos.filter(juego => {
-        // Filtrar los objetos vacíos (o cualquier otra condición)
-        return juego.repeticiones && juego.tiempos && juego.repitio;
-    });
-
-    // Si es necesario, puedes mapear los datos para prepararlos
-    const juegos = juegosValidos.map(juego => ({
-        repeticiones: juego.repeticiones,
-        tiempos: juego.tiempos,
-        repitio: juego.repitio
-    }));
-    console.log("Datos a ser enviados", JSON.stringify(juegos));
-
+    console.log('Tipo de datosJuegos:', typeof datosJuegos);
+    console.log('Contenido de datosJuegos:', datosJuegos);
 
 
     fetch('/completar-leccion', {
@@ -146,7 +135,7 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
             tiempoTotalSegundos: tiempoTotalSegundos,
             repitio: repitio,
             ultimoIntento: ultimoIntento,
-            juegos: juegos
+            datosJuegos: datosJuegos
         })
     })
     .then(response => {
@@ -180,6 +169,8 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         mostrarAlerta('Error', error.message, 'error');
     });
 });
+
+
 
 // Función para reiniciar el test
 function reiniciarTest() {
