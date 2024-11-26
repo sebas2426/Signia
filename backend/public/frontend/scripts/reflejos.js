@@ -162,6 +162,7 @@ class JuegoReflejos {
 
 
   reiniciarJuego() {
+    this.repitioReflejos=true;
     this.repeticionesReflejos++;
     this.aciertos = 0;
     this.palabrasAciertas = [];
@@ -170,6 +171,7 @@ class JuegoReflejos {
     this.tiempoInicioReflejos = 0;
     this.tiempoTranscurridoReflejos = 0;
     this.botonReiniciarJuego.style.display = 'none';
+    this.botonSiguienteNivel.style.display = 'none';
     this.datosGuardados=false;
     this.mostrarNivel();
     this.cargarNuevaPalabra();
