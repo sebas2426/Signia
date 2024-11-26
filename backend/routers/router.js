@@ -137,17 +137,26 @@ router.get('/reporte', (req, res) => {
             }
 
             const reportes = results.rows.map(row => {
-                const juegosIntentos = normalizeArray(row.juegos_intentos);
-                const juegosTiempos = normalizeArray(row.juegos_tiempo_por_intento);
-                const juegosRepitio = normalizeArray(row.juegos_repitio);
-
-                const juegos = juegosIntentos.map((intentos, index) => ({
-                    tituloJuego: juegosTitulos[index] || `Juego ${index + 1}`, // Agregar el título del juego
-                    intentos: intentos || [],
-                    tiempos: juegosTiempos[index] || [],
-                    repitio: juegosRepitio[index] || []
-                }));
-
+                const juegosIntentos = normalizeArray(row.juegos_intentos); // Normaliza los intentos
+                const juegosTiempos = normalizeArray(row.juegos_tiempo_por_intento); // Normaliza tiempos
+                const juegosRepitio = normalizeArray(row.juegos_repitio); // Normaliza repitió
+            
+                // Crear juegos asegurando que cada índice corresponda a un juego válido
+                const juegos = juegosIntentos.map((intentos, index) => {
+                    // Verificar si hay datos para este índice
+                    const tieneDatos = intentos && intentos.length > 0;
+            
+                    if (!tieneDatos) return null; // Si no hay datos, no incluir el juego
+            
+                    return {
+                        tituloJuego: juegosTitulos[index] || `Juego ${index + 1}`, // Título del juego
+                        intentos: intentos || [], // Intentos para este juego
+                        tiempos: juegosTiempos[index] || [], // Tiempos para este juego
+                        repitio: juegosRepitio[index] || [] // Veces que repitió este juego
+                    };
+                }).filter(juego => juego !== null); // Filtrar juegos nulos
+            
+                // Crear reporte completo
                 return {
                     leccionId: row.numero_leccion,
                     tituloLeccion: lecciones[row.numero_leccion] || 'Lección desconocida',
@@ -158,6 +167,7 @@ router.get('/reporte', (req, res) => {
                     juegos
                 };
             });
+            
             res.render('reporte', { alert: false, user: req.user || null, reportes });
         }
     );

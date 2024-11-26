@@ -96,7 +96,9 @@
 .subtituloReporte{
     font-weight: 700;
     color: #252b36;
+    margin: 0.2rem 0;
 }
+
 .titulosReporte{
     margin-bottom: 1rem;
     text-align: center;

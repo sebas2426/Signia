@@ -69,7 +69,7 @@ function iniciarRonda() {
        /* console.log(
             `repeticiones: ${repeticionesCajas}  tiempo: ${tiempoTranscurridoCajas} segundos  repitio?: ${repitioCajas}`
         );*/
-        registrarDatosJuego(4, repeticionesAhorcado, tiempoTranscurridoAhorcado, repitioAhorcado);
+        registrarDatosJuego(4, repeticionesCajas, tiempoTranscurridoCajas, repitioCajas);
         console.log(datosJuegos)
         // Mostrar el botón de reinicio
         botonReiniciar.style.display = "block";
