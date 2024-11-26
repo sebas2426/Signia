@@ -113,9 +113,12 @@ class JuegoReflejos {
         }, 1500);
       });
     });
-    
+    console.log('Aciertos:', this.aciertos, 'Total preguntas por nivel:', this.totalPreguntasPorNivel);
+    console.log('Nivel actual:', this.nivelActual);
+
     if((this.aciertos===this.totalPreguntasPorNivel) && this.nivelActual===3){
       registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos); // Para el tercer juego
+      console.log('Datos del juego de reflejos registrados '+datosJuegos);
     }
   }
 
