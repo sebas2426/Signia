@@ -144,7 +144,7 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
             tiempoTotalSegundos: tiempoTotalSegundos,
             repitio: repitio,
             ultimoIntento: ultimoIntento,
-            juegos: datosJuegos
+            juegos: juegos
         })
     })
     .then(response => {
