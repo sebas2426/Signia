@@ -92,6 +92,11 @@ class JuegoReflejos {
 
           if (this.aciertos === this.totalPreguntasPorNivel) {
             if (this.nivelActual === 3) {
+
+              if((this.aciertos===this.totalPreguntasPorNivel) && this.nivelActual===3){
+                registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos); // Para el tercer juego
+                console.log('Datos del juego de reflejos registrados '+datosJuegos);
+              }
               this.detenerContadorReflejos();
               this.mostrarResultado(
                 `¡Felicidades! Has completado todos los niveles. Lo repetiste ${this.repeticionesReflejos} veces en ${this.calcularTiempoReflejos()} segundos.`,
@@ -116,10 +121,7 @@ class JuegoReflejos {
     console.log('Aciertos:', this.aciertos, 'Total preguntas por nivel:', this.totalPreguntasPorNivel);
     console.log('Nivel actual:', this.nivelActual);
 
-    if((this.aciertos===this.totalPreguntasPorNivel) && this.nivelActual===3){
-      registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos); // Para el tercer juego
-      console.log('Datos del juego de reflejos registrados '+datosJuegos);
-    }
+   
   }
 
   mostrarBotonSiguienteNivel() {
