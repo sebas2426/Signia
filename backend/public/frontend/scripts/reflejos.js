@@ -23,6 +23,7 @@ class JuegoReflejos {
     this.tiempoIntervaloReflejos = null;
     this.repeticionesReflejos = 0;
     this.repitioReflejos = false;
+    this.datosGuardados=false;
    
 
     this.cargarNuevaPalabra();
@@ -91,18 +92,16 @@ class JuegoReflejos {
           this.mostrarResultado("¡Correcto!", "green");
 
           if (this.aciertos === this.totalPreguntasPorNivel) {
-            if (this.nivelActual === 3) {
-
-              if((this.aciertos===this.totalPreguntasPorNivel) && this.nivelActual===3){
-                registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos); // Para el tercer juego
-                console.log('Datos del juego de reflejos registrados '+datosJuegos);
-              }
+            if (this.nivelActual === 3 && !this.datosGuardados) {
               this.detenerContadorReflejos();
               this.mostrarResultado(
                 `¡Felicidades! Has completado todos los niveles. Lo repetiste ${this.repeticionesReflejos} veces en ${this.calcularTiempoReflejos()} segundos.`,
                 "green");
               this.botonReiniciarJuego.style.display = 'block';
               this.botonSiguienteNivel.style.display = 'none';
+              // Guardar los datos una sola vez
+            registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos);
+            datosGuardados = true; // Marcar que ya se guardaron los datos
               return;
             } else {
               this.mostrarBotonSiguienteNivel();
@@ -162,6 +161,7 @@ class JuegoReflejos {
   calcularTiempoReflejos() {
     return this.tiempoTranscurridoReflejos;
   }
+
 
   reiniciarJuego() {
     this.repeticionesReflejos++;
