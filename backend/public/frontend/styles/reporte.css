@@ -51,6 +51,10 @@
     height: auto;
 }
 
+.tituloLecciones .tituloJuegos{
+    margin-top: 1.5rem;
+}
+
 .leccionesReporte ul li{
     list-style-type: none;
 }

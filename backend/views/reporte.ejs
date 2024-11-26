@@ -68,13 +68,14 @@
                     </li>
                 </ul>
     
-                <h3 class="tituloLecciones">Reporte de Juegos</h3>
+                <h3 class="tituloLecciones tituloJuegos">Reporte de Juegos</h3>
                 <% reporte.juegos.forEach((juego, juegoIndex) => { %>
                     <div class="juegoReporte">
                         <h4 class="subtituloReporte"><%= juego.tituloJuego %></h4> <!-- Mostrar el título del juego -->
+
                         <% juego.intentos.forEach((intento, intentoIndex) => { %>
                             <div class="intentoReporte">
-                                <h5 class="subtituloReporte">Intento <%= intentoIndex + 1 %></h5>
+                                <h4 class="subtituloReporte">Intento <%= intentoIndex + 1 %></h4>
                                 <ul>
                                     <li>
                                         <p><span class="subtituloReporte">Juego Repetido:</span>
