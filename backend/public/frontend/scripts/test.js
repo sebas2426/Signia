@@ -130,6 +130,8 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
         tiempos: juego.tiempos,
         repitio: juego.repitio
     }));
+    console.log("Datos a ser enviados", JSON.stringify(juegos));
+
 
 
     fetch('/completar-leccion', {
