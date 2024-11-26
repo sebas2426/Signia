@@ -156,7 +156,7 @@ function mostrarVictoria() {
     const contenedorVictoria = document.querySelector('.mensajeVictoria');
     contenedorVictoria.innerHTML = ''; // Limpiar cualquier contenido anterior
     contenedorVictoria.appendChild(mensajeVictoria);
-    document.getElementById('reiniciarJuego').style.display = 'block'; // Mostrar botón de reinicio
+    document.getElementById('reiniciarJuegoParejas').style.display = 'block'; // Mostrar botón de reinicio
 }
 
 // Lógica para el botón de siguiente nivel

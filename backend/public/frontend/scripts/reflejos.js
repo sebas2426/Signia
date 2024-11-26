@@ -95,7 +95,7 @@ class JuegoReflejos {
             if (this.nivelActual === 3 && !this.datosGuardados) {
               this.detenerContadorReflejos();
               this.mostrarResultado(
-                `¡Felicidades! Has completado todos los niveles. Lo repetiste ${this.repeticionesReflejos} veces en ${this.calcularTiempoReflejos()} segundos.`,
+                `¡Felicidades! Has completado todos los niveles`,
                 "green");
               this.botonReiniciarJuego.style.display = 'block';
               this.botonSiguienteNivel.style.display = 'none';

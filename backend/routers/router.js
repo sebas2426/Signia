@@ -104,6 +104,14 @@ router.get('/reporte', (req, res) => {
         13: 'Examen Final'
     };
 
+    const juegosTitulos={
+        0: 'Tarjetas de Memoria',
+        1: 'Unir las Parejas',
+        2: 'Reflejos',
+        3: 'Ahorcado',
+        4: 'Cajas'
+    }
+
     conexion.query(
         `SELECT 
             lr.id,
@@ -134,6 +142,7 @@ router.get('/reporte', (req, res) => {
                 const juegosRepitio = normalizeArray(row.juegos_repitio);
 
                 const juegos = juegosIntentos.map((intentos, index) => ({
+                    tituloJuego: juegosTitulos[index] || `Juego ${index + 1}`, // Agregar el título del juego
                     intentos: intentos || [],
                     tiempos: juegosTiempos[index] || [],
                     repitio: juegosRepitio[index] || []
@@ -149,7 +158,6 @@ router.get('/reporte', (req, res) => {
                     juegos
                 };
             });
-
             res.render('reporte', { alert: false, user: req.user || null, reportes });
         }
     );
