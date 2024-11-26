@@ -101,7 +101,8 @@ class JuegoReflejos {
               this.botonSiguienteNivel.style.display = 'none';
               // Guardar los datos una sola vez
             registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos);
-            datosGuardados = true; // Marcar que ya se guardaron los datos
+            console.log('Datos guardados: '+datosJuegos);
+            this.datosGuardados = true; // Marcar que ya se guardaron los datos
               return;
             } else {
               this.mostrarBotonSiguienteNivel();
