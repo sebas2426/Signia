@@ -101,7 +101,7 @@ class JuegoReflejos {
               this.botonSiguienteNivel.style.display = 'none';
               // Guardar los datos una sola vez
             registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos);
-            console.log('Datos guardados: '+datosJuegos);
+            console.log(datosJuegos);
             this.datosGuardados = true; // Marcar que ya se guardaron los datos
               return;
             } else {
@@ -118,10 +118,7 @@ class JuegoReflejos {
         }, 1500);
       });
     });
-    console.log('Aciertos:', this.aciertos, 'Total preguntas por nivel:', this.totalPreguntasPorNivel);
-    console.log('Nivel actual:', this.nivelActual);
 
-   
   }
 
   mostrarBotonSiguienteNivel() {
@@ -173,6 +170,7 @@ class JuegoReflejos {
     this.tiempoInicioReflejos = 0;
     this.tiempoTranscurridoReflejos = 0;
     this.botonReiniciarJuego.style.display = 'none';
+    this.datosGuardados=false;
     this.mostrarNivel();
     this.cargarNuevaPalabra();
     this.limpiarResultado();
