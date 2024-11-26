@@ -173,7 +173,7 @@ siguienteNivelBtn.forEach(btn => {
     });
 });
 // Escuchar el evento de clic en el botón de reiniciar
-document.getElementById('reiniciarJuego').addEventListener('click', function () {
+document.getElementById('reiniciarJuegoParejas').addEventListener('click', function () {
     // Resetear el nivel actual
     let nivelActual = 1;
 

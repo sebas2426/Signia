@@ -4,7 +4,15 @@ let datosPalabraActualAhorcado;
 let letrasAdivinadasAhorcado = [];
 let erroresAhorcado = 0;
 const maxIntentosAhorcado = 6;
-const maxNivelesAhorcado = 4; // Límite de niveles
+const maxNivelesAhorcado = 4;
+const mensajeVictoriaAhorcado = document.getElementById("mensaje-victoria");
+
+// Propiedades de tiempo y repeticiones
+let tiempoInicioAhorcado = 0;
+let tiempoTranscurridoAhorcado = 0;
+let tiempoIntervaloAhorcado = null;
+let repeticionesAhorcado = 0;
+let repitioAhorcado = false;
 
 // Variable para seguir el nivel actual
 let nivelActualAhorcado = 1;
@@ -29,6 +37,14 @@ function iniciarJuegoAhorcado() {
         return;
     }
 
+    // Iniciar el tiempo
+    tiempoInicioAhorcado = Date.now();
+    if (tiempoIntervaloAhorcado !== null) {
+        clearInterval(tiempoIntervaloAhorcado);
+    }
+
+    tiempoIntervaloAhorcado = setInterval(actualizarTiempoAhorcado, 1000); // Actualizar cada segundo
+
     datosPalabraActualAhorcado = datosLeccionAhorcado[Math.floor(Math.random() * datosLeccionAhorcado.length)];
     letrasAdivinadasAhorcado = [];
     erroresAhorcado = 0;
@@ -36,6 +52,11 @@ function iniciarJuegoAhorcado() {
     document.getElementById("imagen-seña-ahorcado").src = datosPalabraActualAhorcado.imagenSeña;
     actualizarPantallaJuegoAhorcado();
     ocultarMensajeAhorcado();
+}
+
+// Función para actualizar el tiempo transcurrido
+function actualizarTiempoAhorcado() {
+    tiempoTranscurridoAhorcado = Math.floor((Date.now() - tiempoInicioAhorcado) / 1000); // en segundos
 }
 
 // Función para actualizar la pantalla del juego
@@ -124,23 +145,44 @@ function siguientePalabraAhorcado() {
     }
 
     nivelActualAhorcado++;  
-    iniciarJuegoAhorcado();
-}
-
-// Función para reiniciar el juego
-function reiniciarJuegoAhorcado() {
-    nivelActualAhorcado = 1;
+    repitioAhorcado = true;
     iniciarJuegoAhorcado();
 }
 
 // Función para mostrar el mensaje de victoria
 function mostrarMensajeVictoriaAhorcado() {
-    const mensajeVictoriaAhorcado = document.getElementById("mensaje-victoria");
     mensajeVictoriaAhorcado.style.display = "block";
-
+    registrarDatosJuego(3, repeticionesAhorcado, tiempoTranscurridoAhorcado, repitioAhorcado);
+    console.log(datosJuegos);
+    /*console.log(`repeticiones: ${repeticionesAhorcado}  tiempo: ${tiempoTranscurridoAhorcado}  repitio?: ${repitioAhorcado}`);*/
     document.getElementById("mensaje-ahorcado").style.display = "none";
     document.getElementById("boton-siguiente-nivel").style.display = "none";
     document.getElementById("boton-reintentar").style.display = "none";
+    document.getElementById("reiniciarJuegoAhorcado").style.display = "block";
+}
+
+function reiniciarJuegoAhorcado() {
+    // Restablecer todas las variables
+    repeticionesAhorcado++;
+    nivelActualAhorcado = 1;
+    repitioAhorcado = false;
+    letrasAdivinadasAhorcado = []; // Reiniciar las letras adivinadas
+    erroresAhorcado = 0; // Reiniciar los errores
+    tiempoTranscurridoAhorcado = 0; // Reiniciar el tiempo
+    mensajeVictoriaAhorcado.style.display = "none";
+    if (tiempoIntervaloAhorcado !== null) {
+        clearInterval(tiempoIntervaloAhorcado); // Detener el intervalo
+    }
+    
+    // Restablecer la imagen del ahorcado y la palabra mostrada
+    document.getElementById("imagen-ahorcado").src = "/frontend/images/dias_semana/ahorcado1.png"; // Imagen del ahorcado en el primer estado
+    document.getElementById("palabra-mostrada-ahorcado").textContent = ""; // Restablecer la palabra mostrada
+
+    // Llamar a la función que comienza el juego desde el nivel 1
+    iniciarJuegoAhorcado();
+    
+    // Mostrar el botón para reiniciar el juego
+    document.getElementById("reiniciarJuegoAhorcado").style.display = "none"; // Asegurarse de que el botón de reiniciar esté oculto al empezar un nuevo juego
 }
 
 // Eventos para los botones en el mensaje
@@ -149,7 +191,7 @@ document.getElementById("boton-siguiente-nivel").addEventListener("click", () =>
     ocultarMensajeAhorcado();
 });
 
-document.getElementById("boton-reintentar").addEventListener("click", () => {
+document.getElementById("reiniciarJuegoAhorcado").addEventListener("click", () => {
     reiniciarJuegoAhorcado();
     ocultarMensajeAhorcado();
 });
