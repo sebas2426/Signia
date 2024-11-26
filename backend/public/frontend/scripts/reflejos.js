@@ -96,7 +96,7 @@ class JuegoReflejos {
               this.mostrarResultado(
                 `¡Felicidades! Has completado todos los niveles. Lo repetiste ${this.repeticionesReflejos} veces en ${this.calcularTiempoReflejos()} segundos.`,
                 "green");
-                registrarDatosJuego(2, repeticionesReflejos, tiempoTranscurridoReflejos, repitioReflejos); // Para el tercer juego
+                registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos); // Para el tercer juego
               this.botonReiniciarJuego.style.display = 'block';
               this.botonSiguienteNivel.style.display = 'none';
               return;
