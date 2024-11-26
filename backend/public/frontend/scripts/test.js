@@ -118,6 +118,19 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     tiempoTotalSegundos = Math.round((tiempoFin - tiempoInicio) / 1000); // Calcula los segundos
     const ultimoIntento = new Date().toISOString();
 
+    // Filtrar los juegos para enviar solo los válidos
+    const juegosValidos = datosJuegos.filter(juego => {
+        // Filtrar los objetos vacíos (o cualquier otra condición)
+        return juego.repeticiones && juego.tiempos && juego.repitio;
+    });
+
+    // Si es necesario, puedes mapear los datos para prepararlos
+    const juegos = juegosValidos.map(juego => ({
+        repeticiones: juego.repeticiones,
+        tiempos: juego.tiempos,
+        repitio: juego.repitio
+    }));
+
 
     fetch('/completar-leccion', {
         method: 'POST',

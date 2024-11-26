@@ -201,19 +201,15 @@ router.post('/completar-leccion', (req, res) => {
         datosJuegos // Array de objetos que contienen datos por juego
     } = req.body;
 
-
-
     const userId = req.user ? req.user.id : null;
 
     console.log('Datos recibidos:', req.body);
     console.log('Datos juegos procesados:', datosJuegos);
 
-
     if (!userId) {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
     
-
     // Verificar si la lección ya ha sido completada en niveles_completados
     conexion.query(
         'SELECT id FROM niveles_completados WHERE user_id = $1 AND leccion_id = $2',
@@ -227,15 +223,13 @@ router.post('/completar-leccion', (req, res) => {
             const nivelCompletadoId = results.rowCount > 0
                 ? results.rows[0].id // Si ya existe, usar su ID
                 : null;
+
             const insertarReporte = (nivelId) => {
-                // Preparar los datos de juegos
-                console.log(datosJuegos);
-                const juegosValidos = datosJuegos.filter(juego => Object.keys(juego).length > 0); // Filtra los vacíos
-
-                const juegosIntentos = juegosValidos.map(juego => juego.repeticiones || []);
-                const juegosTiempoPorIntento = juegosValidos.map(juego => juego.tiempos || []);
-                const juegosRepitio = juegosValidos.map(juego => juego.repitio || []);
-
+                // Aquí ya asumimos que los juegos han sido filtrados en el frontend
+                // Si deseas hacer una validación adicional:
+                if (!Array.isArray(datosJuegos) || datosJuegos.length === 0) {
+                    return res.status(400).json({ error: 'No se recibieron juegos válidos' });
+                }
 
                 // Insertar en leccion_reporte usando el ID correcto
                 conexion.query(
@@ -257,9 +251,9 @@ router.post('/completar-leccion', (req, res) => {
                         tiempoTotalSegundos,
                         repitio,
                         ultimoIntento,
-                        JSON.stringify(juegosIntentos), // Array JSON de intentos por juego
-                        JSON.stringify(juegosTiempoPorIntento), // Array JSON de tiempos por juego
-                        JSON.stringify(juegosRepitio) // Array JSON de si se repitió cada juego
+                        JSON.stringify(datosJuegos.map(juego => juego.repeticiones || [])),
+                        JSON.stringify(datosJuegos.map(juego => juego.tiempos || [])),
+                        JSON.stringify(datosJuegos.map(juego => juego.repitio || []))
                     ],
                     (error) => {
                         if (error) {
