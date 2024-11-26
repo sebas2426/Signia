@@ -212,10 +212,6 @@ router.post('/completar-leccion', (req, res) => {
     if (!userId) {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
-
-    if (!Array.isArray(datosJuegos)) {
-        return res.status(400).json({ error: 'No es un ARRAYYY' });
-    }
     
 
     // Verificar si la lección ya ha sido completada en niveles_completados
@@ -231,7 +227,7 @@ router.post('/completar-leccion', (req, res) => {
             const nivelCompletadoId = results.rowCount > 0
                 ? results.rows[0].id // Si ya existe, usar su ID
                 : null;
-
+gi
             const insertarReporte = (nivelId) => {
                 // Preparar los datos de juegos
                 console.log(datosJuegos);
