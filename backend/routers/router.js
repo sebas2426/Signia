@@ -106,10 +106,10 @@ router.get('/reporte', (req, res) => {
 
     const juegosTitulos={
         0: '"Tarjetas de Memoria"',
-        1: 'Unir las Parejas',
-        2: 'Reflejos',
-        3: 'Ahorcado',
-        4: 'Cajas'
+        1: '"Unir las Parejas"',
+        2: '"Reflejos"',
+        3: '"Ahorcado"',
+        4: '"Cajas"'
     }
 
     conexion.query(

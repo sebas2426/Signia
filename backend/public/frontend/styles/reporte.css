@@ -51,7 +51,7 @@
     height: auto;
 }
 
-.tituloLecciones .tituloJuegos{
+.tituloLecciones.tituloJuegos{
     margin-top: 1.5rem;
 }
 
