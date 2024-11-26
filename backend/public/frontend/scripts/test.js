@@ -119,9 +119,9 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
     tiempoTotalSegundos = Math.round((tiempoFin - tiempoInicio) / 1000); // Calcula los segundos
     const ultimoIntento = new Date().toISOString();
 
-    console.log('Tipo de datosJuegos:', typeof datosJuegos);
-    console.log('Contenido de datosJuegos:', datosJuegos);
-
+    console.log('Contenido de datosJuegos antes de filtrar:', datosJuegos);
+    datosJuegos = datosJuegos.filter(juego => juego !== undefined && juego !== null);
+    console.log('Contenido de datosJuegos después de filtrar:', datosJuegos);
 
     fetch('/completar-leccion', {
         method: 'POST',

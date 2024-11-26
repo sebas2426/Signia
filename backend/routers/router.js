@@ -252,9 +252,10 @@ router.post('/completar-leccion', (req, res) => {
                         tiempoTotalSegundos,
                         repitio,
                         ultimoIntento,
-                        JSON.stringify(datosJuegos.map(juego => juego.repeticiones || [])),
-                        JSON.stringify(datosJuegos.map(juego => juego.tiempos || [])),
-                        JSON.stringify(datosJuegos.map(juego => juego.repitio || []))
+                        JSON.stringify(datosJuegos.map(juego => juego?.repeticiones || [])),
+                        JSON.stringify(datosJuegos.map(juego => juego?.tiempos || [])),
+                        JSON.stringify(datosJuegos.map(juego => juego?.repitio || []))
+
                     ],
                     (error) => {
                         if (error) {
