@@ -96,7 +96,6 @@ class JuegoReflejos {
               this.mostrarResultado(
                 `¡Felicidades! Has completado todos los niveles. Lo repetiste ${this.repeticionesReflejos} veces en ${this.calcularTiempoReflejos()} segundos.`,
                 "green");
-                registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos); // Para el tercer juego
               this.botonReiniciarJuego.style.display = 'block';
               this.botonSiguienteNivel.style.display = 'none';
               return;
@@ -114,6 +113,10 @@ class JuegoReflejos {
         }, 1500);
       });
     });
+    
+    if((this.aciertos===this.totalPreguntasPorNivel) && this.nivelActual===3){
+      registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos); // Para el tercer juego
+    }
   }
 
   mostrarBotonSiguienteNivel() {
