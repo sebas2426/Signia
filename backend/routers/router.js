@@ -227,7 +227,6 @@ router.post('/completar-leccion', (req, res) => {
             const nivelCompletadoId = results.rowCount > 0
                 ? results.rows[0].id // Si ya existe, usar su ID
                 : null;
-gi
             const insertarReporte = (nivelId) => {
                 // Preparar los datos de juegos
                 console.log(datosJuegos);
