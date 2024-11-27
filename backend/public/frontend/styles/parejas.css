@@ -114,13 +114,13 @@
   cursor: grabbing;
 }
 
-.siguienteNivel2 {
+#siguienteNivelParejas{
   background-color: rgb(69, 100, 121);
   padding: 10px;
   border-radius: 5px;
 }
 
-.siguienteNivel2:hover {
+#siguienteNivelParejas:hover {
   color: white;
   transform: scale(1.05);
   transition: 0.2s;
@@ -156,7 +156,7 @@
     font-size: 1rem;
   }
 
-  .siguienteNivel2 {
+  #siguienteNivelParejas{
     padding: 0.8rem;
     font-size: 0.9rem;
   }

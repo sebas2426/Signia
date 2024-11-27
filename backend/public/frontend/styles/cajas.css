@@ -7,6 +7,7 @@
     text-align: center;
     gap: 1rem;
     border: 2px solid rgb(236, 230, 230);
+    padding: 0.5rem;
 }
 #caja-cerrada-cajas, #caja-abierta-cajas {
     width: 150px;
@@ -37,6 +38,9 @@
     font-size: 16px;
     cursor: pointer;
     border: 1px solid rgb(236, 230, 230);
+}
+#reiniciarJuegoCajas{
+    margin: 0 auto;
 }
 
 .dark-mode #contenedor-juego-cajas{

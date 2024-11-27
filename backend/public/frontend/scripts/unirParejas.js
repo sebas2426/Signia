@@ -31,7 +31,7 @@ function calcularTiempoParejas() {
 // Seleccionamos todos los botones (las imágenes)
 const botonesParejas = document.querySelectorAll('.botonParejas');
 const espaciosBlancos = document.querySelectorAll('.divBlanco');
-const siguienteNivelBtn = document.querySelectorAll('.siguienteNivel2'); // Botones para pasar al siguiente nivel
+const siguienteNivelBtn = document.querySelectorAll('#siguienteNivelParejas'); // Botones para pasar al siguiente nivel
 const contenedorJuego = document.querySelector('.contenedorJuego'); // Contenedor principal del juego
 
 // Guardamos las posiciones originales de los botones
@@ -172,39 +172,66 @@ siguienteNivelBtn.forEach(btn => {
         siguienteNivel.style.display = 'block';
     });
 });
-// Escuchar el evento de clic en el botón de reiniciar
+
 document.getElementById('reiniciarJuegoParejas').addEventListener('click', function () {
-    // Resetear el nivel actual
-    let nivelActual = 1;
+    // Resetear variables globales
+    tiempoInicioParejas = 0;
+    tiempoTranscurridoParejas = 0;
+    repeticionesParejas++;
+    repitioParejas = true;
+    parejasCorrectasNivel1 = 0;
+    parejasCorrectasNivel2 = 0;
+    parejasCorrectasNivel3 = 0;
+    siguienteNivelBtn[0].style.display = 'none';
+    siguienteNivelBtn[1].style.display = 'none';
 
-    // Restaurar la visibilidad de los niveles
-    document.querySelectorAll('.nivel-1, .nivel-2, .nivel-3').forEach(nivel => nivel.style.display = 'none');
-    document.querySelector(`.nivel${nivelActual}`).style.display = 'flex'; // Mostrar el nivel 1 al inicio
+    // Detener el contador si está activo
+    detenerContadorParejas();
 
-    // Restaurar los botones y las parejas
+    // Ocultar mensaje de victoria y botón de reinicio
+    document.querySelector('.mensajeVictoria').innerHTML = '';
+    this.style.display = 'none';
+
+    // Mostrar únicamente el nivel 1 y ocultar los demás niveles
+    document.querySelector('.nivel1').style.display = 'block';
+    document.querySelector('.nivel2').style.display = 'none';
+    document.querySelector('.nivel3').style.display = 'none';
+
+    // Restaurar imágenes del nivel 1
+    const imagenesNivel1 = document.querySelectorAll('.nivel1 .botonParejas');
+    const contenedorNivel1 = document.querySelector('.nivel1 .imagenesParejas');
+    imagenesNivel1.forEach(boton => {
+        contenedorNivel1.appendChild(boton); // Volver a colocar los botones en el contenedor
+        boton.style.display = 'inline-block'; // Asegurarse de que sean visibles
+    });
+
+    // Ocultar imágenes de otros niveles
+    const imagenesNivel2 = document.querySelectorAll('.nivel2 .botonParejas');
+    const contenedorNivel2 = document.querySelector('.nivel2 .imagenesParejas');
+    imagenesNivel2.forEach(boton => {
+        contenedorNivel2.appendChild(boton); // Volver a colocar los botones en el contenedor
+        boton.style.display = 'inline-block'; // Asegurarse de que sean visibles
+    });
+
+
+    const imagenesNivel3 = document.querySelectorAll('.nivel3 .botonParejas');
+    const contenedorNivel3 = document.querySelector('.nivel3 .imagenesParejas');
+    imagenesNivel3.forEach(boton => {
+        contenedorNivel3.appendChild(boton); // Volver a colocar los botones en el contenedor
+        boton.style.display = 'inline-block'; // Asegurarse de que sean visibles
+    });
+
+
+    // Vaciar los espacios blancos de todos los niveles
+    document.querySelectorAll('.divBlanco').forEach(espacio => {
+        espacio.innerHTML = '';
+    });
+
+    // Reiniciar estilos de botones y espacios blancos
     document.querySelectorAll('.botonParejas').forEach(boton => {
-        // Quitar posibles clases de selección o estados anteriores
-        boton.disabled = false; // Habilitar los botones de nuevo
-        boton.classList.remove('seleccionado'); // Eliminar cualquier clase de estilo
+        boton.style.border = ''; // Eliminar bordes personalizados
     });
-
-    // Restaurar los divs blancos a su estado inicial
-    document.querySelectorAll('.divBlanco').forEach(divBlanco => {
-        divBlanco.classList.remove('ocupado'); // Eliminar clase que indica que ya fue seleccionado
-        divBlanco.innerHTML = ''; // Limpiar cualquier imagen que esté dentro
-    });
-
-    // Ocultar el mensaje de victoria
-    document.querySelector('.mensajeVictoria').style.display = 'none';
-
-    // Mostrar el botón de reiniciar si está oculto
-    this.style.display = 'none'; // Ocultar el botón de reiniciar
-    document.getElementById('siguienteNivel2').style.display = 'none'; // Asegurar que no esté visible al reiniciar
-
-    // Aquí puedes restablecer cualquier otra variable o estado del juego si es necesario
 });
-
-
 
 // Llamamos a la función para activar los eventos
 document.addEventListener('DOMContentLoaded', () => {

@@ -112,6 +112,41 @@ footer{
 
 /*MEDIA PARA CADA LECCIÓN*/
 /* Estilo para el contenedor de la letra */
+
+#reiniciarJuego,
+#reiniciarJuegoParejas,
+#reiniciarJuegoReflejos,
+#reiniciarJuegoAhorcado,
+#reiniciarJuegoCajas{
+  background-color: rgb(189, 190, 87);
+}
+
+#reiniciarJuego:hover {
+  color: white;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+#reiniciarJuegoParejas:hover {
+  color: white;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+#reiniciarReflejos:hover {
+  color: white;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+#reiniciarJuegoAhorcado:hover {
+  color: white;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+#reiniciarJuegoCajas:hover {
+  color: white;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
 .media-contenedor {
   display: flex;
   flex-direction: column;
