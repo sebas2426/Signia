@@ -20,11 +20,11 @@
                     <li><a href="/lista_lecciones" class="headerEnlaces">Lecciones</a></li>
 
                 <% if (user) { %>
+                    <% if (user.tipo_usuario === 'P') { %>
+                      <li><a href="/reporte_Profesor" class="headerEnlaces">Panel de Profesor</a></li>
+                    <% } %>
                     <li><a href="/reporte" class="headerEnlaces">Reporte</a></li>
                     <li><a href="logout" class="salirCuenta headerEnlaces" >Salir</a></li>
-                        <% if (user.tipo_usuario === 'P') { %>
-                          <li><a href="/reporte_Profesor" class="headerEnlaces">Panel de Profesor</a></li>
-                        <% } %>
                 <% } else { %>
                     <li><a href="/acceder" class="headerEnlaces">Acceder</a></li>
                     <li><a href="/login" class="crearCuenta headerEnlaces">Crear Cuenta</a></li>

@@ -32,7 +32,21 @@
     <% } %>
     
 
-    <h1>HOLAAAAAAAAAAAAAAAAAA</h1>
+    <div class="contenedorLeccionesReporte">
+        <% alumnos.forEach(alumno => { %>
+            <div class="leccionesReporte leccion<%= reporte.leccionId %>">
+                <div class="titulosReporte">
+                    <h3>Alumno: <%= alumno.nombre %></h3>
+                    <h3>ID: <%= alumno.id %></h3>
+                </div>
+    
+                <ul>
+                    <li>
+                        <p><span class="subtituloReporte">Hola :</span></p>
+                    </li>
+                </ul>
+            </div>
+            <% }) %>
 
 </body>
 
