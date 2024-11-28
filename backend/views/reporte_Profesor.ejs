@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/frontend/styles/styles.css">
     <link rel="stylesheet" href="/frontend/styles/reporte.css">
     <script src="/frontend/scripts/index.js" defer ></script>
-    <title>Reporte</title>
+    <title>Panel de Profesor</title>
     <script>
         if (localStorage.getItem('dark-mode') === 'enabled') {
           document.body.classList.add('dark-mode');
@@ -27,12 +27,12 @@
             </h1>
             <p>Aquí puedes ver un resumen detallado de tu avance en el aprendizaje del lenguaje de señas. Nuestros reportes están diseñados para ayudarte a visualizar tu progreso en cada lección.</p>
 
-            <h2>Cantidad de alumnos: <%= leccionesCompletadas.length %>/13</h2>
+            <h2>Cantidad de alumnos: <%=cantidadAlumnos%></h2>
         </div>
     <% } %>
     
     
-    <div class="contenedorLeccionesReporte">
+    <!--<div class="contenedorLeccionesReporte">
         <% reportes.forEach(reporte => { %>
             <div class="leccionesReporte leccion<%= reporte.leccionId %>">
                 <div class="titulosReporte">
@@ -69,7 +69,7 @@
                 <h3 class="tituloLecciones tituloJuegos">Reporte de Juegos</h3>
                 <% reporte.juegos.forEach((juego, juegoIndex) => { %>
                     <div class="juegoReporte">
-                        <h4 class="subtituloReporte"><%= juego.tituloJuego %></h4> <!-- Mostrar el título del juego -->
+                        <h4 class="subtituloReporte"><%= juego.tituloJuego %></h4>
 
                         <% juego.intentos.forEach((intento, intentoIndex) => { %>
                             <div class="intentoReporte">
@@ -92,7 +92,7 @@
                 <% }) %>
             </div>
         <% }) %>
-    </div>
+    </div>-->
     
 </body>
 
