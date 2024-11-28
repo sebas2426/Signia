@@ -33,27 +33,27 @@
     
 
     <div class="contenedorLeccionesReporte">
-        <% alumnos.forEach(alumno => { %>
-            <div class="leccionesReporte">
-                <div class="titulosReporte">
-                    <h3>Alumno: <%= alumno.nombre %></h3>
-                    <h3>ID: <%= alumno.id %></h3>
-                    <pre><%= JSON.stringify(alumnos, null, 2) %></pre>
+        <% if (alumnos && alumnos.length > 0) { %>
+            <% alumnos.forEach(alumno => { %>
+                <div class="leccionesReporte">
+                    <div class="titulosReporte">
+                        <h3>Alumno: <%= alumno.nombre %></h3>
+                        <h3>ID: <%= alumno.id %></h3>
+                    </div>
+                    <ul>
+                        <li>
+                            <p><span class="subtituloReporte">Hola :</span></p>
+                        </li>
+                    </ul>
                 </div>
-    
-                <ul>
-                    <li>
-                        <p><span class="subtituloReporte">Hola :</span></p>
-                    </li>
-                </ul>
-            </div>
-            </div>
-
-            <% console.log(results.rows);
-            console.log(alumnos);%>
-
             <% }) %>
-
+    
+            <!-- Renderizar el JSON completo para depuración -->
+            <pre><%= JSON.stringify(alumnos, null, 2) %></pre>
+        <% } else { %>
+            <p>No hay alumnos disponibles.</p>
+        <% } %>
+    </div>    
 </body>
 
 <footer>
