@@ -92,6 +92,9 @@ router.get('/reporte_Profesor', (req, res) => {
             id: row.id,
             nombre: row.nombreAlumno
         }));
+        console.log(results.rows);
+        console.log(alumnos);
+
 
         // Renderizar la vista o enviar los datos al frontend
         res.render('reporte_Profesor', {
