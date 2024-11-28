@@ -83,7 +83,7 @@ router.get('/reporte_Profesor', (req, res) => {
         }
 
         // Extraer el total del resultado
-        const cantidadAlumnos = results[0]?.COUNT(id) || 0;
+        const cantidadAlumnos = results.rows[0]?.total || 0;
 
         // Renderizar la vista con los datos
         res.render('reporte_Profesor', {
