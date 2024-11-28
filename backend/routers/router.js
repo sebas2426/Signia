@@ -77,7 +77,7 @@ router.get('/reporte_Profesor', (req, res) => {
         SELECT 
     COUNT(U.id) OVER () AS total, 
     U.id, 
-    U.name AS nombreAlumno, 
+    U.name AS nombrealumno, 
     COUNT(NC.leccion_id) AS lecciones
 FROM 
     users U
