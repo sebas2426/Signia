@@ -74,7 +74,7 @@ router.get('/curso_completado', (req, res) => {
 
 router.get('/reporte_Profesor', (req, res) => {
     const query = `
-        SELECT COUNT(id) OVER () AS total, id, name AS nombreAlumno
+        SELECT COUNT(id) OVER () AS total, id, name AS nombrealumno
         FROM users
         WHERE tipo_usuario = 'A';
     `;
@@ -90,10 +90,8 @@ router.get('/reporte_Profesor', (req, res) => {
         const cantidadAlumnos = results.rows.length > 0 ? results.rows[0].total : 0; // El total está en cada fila
         const alumnos = results.rows.map(row => ({
             id: row.id,
-            nombre: row.nombreAlumno
+            nombre: row.nombrealumno
         }));
-        console.log(results.rows);
-        console.log(alumnos);
 
 
         // Renderizar la vista o enviar los datos al frontend
