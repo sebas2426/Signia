@@ -72,6 +72,10 @@ router.get('/curso_completado', (req, res) => {
     res.render('curso_completado', { alert: false, user: req.user || null});
 });
 
+router.get('/reporte_Profesor', (req, res) => {
+    res.render('reporte_Profesor', { alert: false, user: req.user || null});
+});
+
 const normalizeArray = (data) => {
     // Si el array no contiene subarreglos, lo envolvemos en uno
     if (data.length > 0 && !Array.isArray(data[0])) {
