@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/frontend/images/icono-web.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/frontend/styles/styles.css">
+    <link rel="stylesheet" href="/frontend/styles/reporte.css">
+    <script src="/frontend/scripts/index.js" defer ></script>
+    <title>Reporte</title>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+        }
+      </script>
+</head>
+<body class="bodyLecciones">
+
+   <%- include('partials/header') %>
+
+    <% if(user){ %>
+        <div class="informacionUsuario">
+            <h1 class="tituloLecciones">Bienvenido, Prof. :
+                <br>
+                <span><%= user.name %></span>
+            </h1>
+            <p>Aquí puedes ver un resumen detallado de tu avance en el aprendizaje del lenguaje de señas. Nuestros reportes están diseñados para ayudarte a visualizar tu progreso en cada lección.</p>
+
+            <h2>Cantidad de alumnos: <%= leccionesCompletadas.length %>/13</h2>
+        </div>
+    <% } %>
+    
+    
+    <div class="contenedorLeccionesReporte">
+        <% reportes.forEach(reporte => { %>
+            <div class="leccionesReporte leccion<%= reporte.leccionId %>">
+                <div class="titulosReporte">
+                    <h3>Lección <%= reporte.leccionId %></h3>
+                    <h3><%= reporte.tituloLeccion %></h3>
+                </div>
+    
+                <ul>
+                    <li>
+                        <p><span class="subtituloReporte">Lección repetida:</span> <%= reporte.repitio ? 'Sí' : 'No' %></p>
+                    </li>
+                    <li>
+                        <p><span class="subtituloReporte">Intentos totales:</span> <%= reporte.intentos %></p>
+                    </li>
+                    <li>
+                        <p><span class="subtituloReporte">Tiempo total:</span> <%= reporte.tiempo %> segundos</p>
+                    </li>
+                    <li>
+                        <p><span class="subtituloReporte">Última fecha:</span>
+                            <%= new Date(reporte.ultimoIntento).toLocaleString('es-MX', {
+                                weekday: 'long',
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                                hour: 'numeric',
+                                minute: 'numeric',
+                                hour12: false,
+                                timeZone: 'America/Asuncion'
+                            }) %>
+                        </p>
+                    </li>
+                </ul>
+    
+                <h3 class="tituloLecciones tituloJuegos">Reporte de Juegos</h3>
+                <% reporte.juegos.forEach((juego, juegoIndex) => { %>
+                    <div class="juegoReporte">
+                        <h4 class="subtituloReporte"><%= juego.tituloJuego %></h4> <!-- Mostrar el título del juego -->
+
+                        <% juego.intentos.forEach((intento, intentoIndex) => { %>
+                            <div class="intentoReporte">
+                                <h4 class="subtituloReporte">Intento <%= intentoIndex + 1 %></h4>
+                                <ul>
+                                    <li>
+                                        <p><span class="subtituloReporte">Juego Repetido:</span>
+                                            <%= juego.repitio[intentoIndex] ? 'Sí' : 'No' %>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p><span class="subtituloReporte">Tiempo:</span>
+                                            <%= juego.tiempos[intentoIndex] || 0 %> segundos
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% }) %>
+            </div>
+        <% }) %>
+    </div>
+    
+</body>
+
+<footer>
+    <div class="derechos">
+        <p>2024 All rights reserved</p>
+    </div>
+</footer>
+</html>

@@ -19,6 +19,13 @@
 
     <h1 class="tituloLoginRegistro" >Accede a tu cuenta</h1>
     <form class="contenedorLoginAcceder" action="/acceder" method="POST">
+        <h3>Tipo de Usuario</h3>
+        <select id="tipoUsuario" name="tipoUsuario" class="form-control">
+            <option disabled>--Seleccione una opción--</option>
+            <option value="A">Alumno</option>
+            <option value="P">Profesor</option>
+        </select>
+
         <h3>Usuario</h3>
         <input type="text" class="form-control" name="user" id="user">
         <h3>Contraseña</h3>
