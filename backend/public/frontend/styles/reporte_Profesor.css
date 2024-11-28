@@ -24,20 +24,6 @@
     border-radius: 5px;
 }
 
-.contenedorLeccionesReporteProfesor{
-    margin: 0 auto;
-    display: flex;
-    width: 60%;
-    height: 250px;
-    overflow: scroll;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem;
-    flex-wrap: wrap;
-    border-radius: 5px;
-}
-
 .leccionesReporte{
     flex: 1 1 250px;
     max-width: 250px; 
