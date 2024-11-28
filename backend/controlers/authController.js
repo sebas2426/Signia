@@ -10,6 +10,7 @@ exports.login = async (req, res) => {
         const name = req.body.name;
         const user = req.body.user;
         const pass = req.body.pass;
+        let tipo_usuario= 'A';
         let passHash = await bcryptjs.hash(pass, 8);
 
         if (!user || !pass) {
