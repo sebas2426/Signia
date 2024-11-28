@@ -37,12 +37,12 @@
             <% alumnos.forEach(alumno => { %>
                 <div class="leccionesReporte">
                     <div class="titulosReporte">
-                        <h3>Alumno: <%= alumno.nombre %></h3>
-                        <h4>ID: <%= alumno.id %></h4>
+                        <h3>Alumno: <p><%= alumno.nombre %></p></h3>
+                        <h4>ID: <p><%= alumno.id %></p></h4>
                     </div>
                     <ul>
                         <li>
-                            <p><span class="subtituloReporte">Lecciones completadas <%= alumno.lecciones %>/13:</span></p>
+                            <p><span class="subtituloReporte">Lecciones completadas:</span><%= alumno.lecciones %>/13</p>
                         </li>
                     </ul>
                 </div>
