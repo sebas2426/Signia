@@ -111,8 +111,7 @@ GROUP BY
             alert: false,
             user: req.user || null,
             cantidadAlumnos,
-            alumnos,
-            lecciones
+            alumnos
         });
     });
 });
