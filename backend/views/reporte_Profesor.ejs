@@ -31,69 +31,9 @@
         </div>
     <% } %>
     
-    
-    <!--<div class="contenedorLeccionesReporte">
-        <% reportes.forEach(reporte => { %>
-            <div class="leccionesReporte leccion<%= reporte.leccionId %>">
-                <div class="titulosReporte">
-                    <h3>Lección <%= reporte.leccionId %></h3>
-                    <h3><%= reporte.tituloLeccion %></h3>
-                </div>
-    
-                <ul>
-                    <li>
-                        <p><span class="subtituloReporte">Lección repetida:</span> <%= reporte.repitio ? 'Sí' : 'No' %></p>
-                    </li>
-                    <li>
-                        <p><span class="subtituloReporte">Intentos totales:</span> <%= reporte.intentos %></p>
-                    </li>
-                    <li>
-                        <p><span class="subtituloReporte">Tiempo total:</span> <%= reporte.tiempo %> segundos</p>
-                    </li>
-                    <li>
-                        <p><span class="subtituloReporte">Última fecha:</span>
-                            <%= new Date(reporte.ultimoIntento).toLocaleString('es-MX', {
-                                weekday: 'long',
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric',
-                                hour: 'numeric',
-                                minute: 'numeric',
-                                hour12: false,
-                                timeZone: 'America/Asuncion'
-                            }) %>
-                        </p>
-                    </li>
-                </ul>
-    
-                <h3 class="tituloLecciones tituloJuegos">Reporte de Juegos</h3>
-                <% reporte.juegos.forEach((juego, juegoIndex) => { %>
-                    <div class="juegoReporte">
-                        <h4 class="subtituloReporte"><%= juego.tituloJuego %></h4>
 
-                        <% juego.intentos.forEach((intento, intentoIndex) => { %>
-                            <div class="intentoReporte">
-                                <h4 class="subtituloReporte">Intento <%= intentoIndex + 1 %></h4>
-                                <ul>
-                                    <li>
-                                        <p><span class="subtituloReporte">Juego Repetido:</span>
-                                            <%= juego.repitio[intentoIndex] ? 'Sí' : 'No' %>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p><span class="subtituloReporte">Tiempo:</span>
-                                            <%= juego.tiempos[intentoIndex] || 0 %> segundos
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                        <% }) %>
-                    </div>
-                <% }) %>
-            </div>
-        <% }) %>
-    </div>-->
-    
+    <h1>HOLAAAAAAAAAAAAAAAAAA</h1>
+
 </body>
 
 <footer>

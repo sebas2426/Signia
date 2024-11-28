@@ -73,20 +73,27 @@ router.get('/curso_completado', (req, res) => {
 });
 
 router.get('/reporte_Profesor', (req, res) => {
-    // Obtener la cantidad de alumnos
-    conexion.query('SELECT COUNT(id) AS total FROM users', (error, results) => {
+    // Consulta para contar usuarios de tipo 'A'
+    const query = "SELECT COUNT(id) AS total FROM users WHERE tipo_usuario = 'A'";
+
+    conexion.query(query, (error, results) => {
         if (error) {
             console.error('Error al obtener la cantidad de alumnos:', error);
             return res.status(500).json({ error: 'Error al obtener la cantidad de alumnos' });
         }
 
-        // Extraer la cantidad de alumnos del resultado
+        // Extraer el total del resultado
         const cantidadAlumnos = results[0]?.total || 0;
 
-        // Renderizar la vista con los datos obtenidos
-        res.render('reporte_Profesor', { alert: false, user: req.user || null, cantidadAlumnos });
+        // Renderizar la vista con los datos
+        res.render('reporte_Profesor', {
+            alert: false,
+            user: req.user || null,
+            cantidadAlumnos: cantidadAlumnos,
+        });
     });
 });
+
 
 
 const normalizeArray = (data) => {
