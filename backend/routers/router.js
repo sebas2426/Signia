@@ -74,10 +74,21 @@ router.get('/curso_completado', (req, res) => {
 
 router.get('/reporte_Profesor', (req, res) => {
     const query = `
-        SELECT COUNT(id) OVER () AS total, id, name AS nombrealumno
-        FROM users
-        WHERE tipo_usuario = 'A';
-    `;
+        SELECT 
+    COUNT(U.id) OVER () AS total, 
+    U.id, 
+    U.name AS nombreAlumno, 
+    COUNT(NC.leccion_id) AS lecciones
+FROM 
+    users U
+LEFT JOIN 
+    niveles_completados NC
+ON 
+    U.id = NC.user_id
+WHERE 
+    U.tipo_usuario = 'A'
+GROUP BY 
+    U.id, U.name;`;
 
     // Ejecutar la consulta
     conexion.query(query, (error, results) => {
@@ -90,7 +101,8 @@ router.get('/reporte_Profesor', (req, res) => {
         const cantidadAlumnos = results.rows.length > 0 ? results.rows[0].total : 0; // El total está en cada fila
         const alumnos = results.rows.map(row => ({
             id: row.id,
-            nombre: row.nombrealumno
+            nombre: row.nombrealumno,
+            lecciones: row.lecciones
         }));
 
 
@@ -99,7 +111,8 @@ router.get('/reporte_Profesor', (req, res) => {
             alert: false,
             user: req.user || null,
             cantidadAlumnos,
-            alumnos
+            alumnos,
+            lecciones
         });
     });
 });
