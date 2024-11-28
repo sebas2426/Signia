@@ -38,6 +38,7 @@
                 <div class="titulosReporte">
                     <h3>Alumno: <%= alumno.nombre %></h3>
                     <h3>ID: <%= alumno.id %></h3>
+                    <pre><%= JSON.stringify(alumnos, null, 2) %></pre>
                 </div>
     
                 <ul>
@@ -47,6 +48,10 @@
                 </ul>
             </div>
             </div>
+
+            <% console.log(results.rows);
+            console.log(alumnos);%>
+
             <% }) %>
 
 </body>
