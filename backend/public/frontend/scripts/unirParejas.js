@@ -149,7 +149,7 @@ const manejarToques = () => {
 function mostrarVictoria() {
     // Mostrar mensaje de victoria en el contenedor mensajeVictoria
     const mensajeVictoria = document.createElement('p');
-    mensajeVictoria.textContent = `¡Felicidades! Has completado el juego en ${calcularTiempoParejas()} segundos con ${repeticionesParejas} repeticiones.`;
+    mensajeVictoria.textContent = `¡Felicidades! Has completado el juego.`;
     mensajeVictoria.style.textAlign = 'center';
     mensajeVictoria.style.fontSize = '1.5em';
     mensajeVictoria.style.color = 'green';

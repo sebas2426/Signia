@@ -40,6 +40,11 @@
                     </div>
                     <ul>
                         <li>
+                            <% 
+                            let porcentaje = (alumno.lecciones / 13) * 100;
+                            porcentaje = porcentaje.toFixed(2); // Redondear a 2 decimales
+                             %>
+                            <p><span class="subtituloReporte">Progreso:</span><%= porcentaje %>%</p>
                             <p><span class="subtituloReporte">Lecciones completadas:</span><%= alumno.lecciones %>/13</p>
                         </li>
                     </ul>
