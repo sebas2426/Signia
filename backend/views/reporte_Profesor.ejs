@@ -32,13 +32,13 @@
     <% } %>
     
 
-    <div class="contenedorLeccionesReporteProfesor">
+    <div class="contenedorLeccionesReporte">
         <% if (alumnos && alumnos.length > 0) { %>
             <% alumnos.forEach(alumno => { %>
-                <div class="leccionesReporte">
+                <div class="leccionesReporteProfesor">
                     <div class="titulosReporte">
-                        <h3>Alumno: <span style="color: #374151;"><%= alumno.nombre %></span></h3>
-                        <h4>ID: <span style="color: #374151;"><%= alumno.id %></span></h4>
+                        <h3>Alumno:<p><%= alumno.nombre %></p></h3>
+                        <h4>ID: <p style="margin: 0;"><%= alumno.id %></p></h4>
                     </div>
                     <ul>
                         <li>

@@ -14,8 +14,7 @@
     margin: 0 auto;
     display: flex;
     width: 60%;
-    height: 500px;
-    overflow: scroll;
+    height: auto;
     justify-content: center;
     align-items: flex-start;
     gap: 1rem;
@@ -24,24 +23,11 @@
     border-radius: 5px;
 }
 
-.contenedorLeccionesReporteProfesor{
-    margin: 0 auto;
-    display: flex;
-    width: 60%;
-    height: 250px;
-    overflow: scroll;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem;
-    flex-wrap: wrap;
-    border-radius: 5px;
-}
 
 .leccionesReporte{
     flex: 1 1 250px;
     max-width: 250px; 
-    height: auto;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -50,7 +36,25 @@
     background-color: rgb(240, 235, 235);
     border-radius: 5px;
     margin-bottom: 1rem;
+    overflow: auto;
 }
+
+
+.leccionesReporteProfesor{
+    flex: 1 1 250px;
+    max-width: 250px; 
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgb(240, 235, 235);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    overflow: auto;
+}
+
 .leccionesReporte h3,h4{
     margin: 0 auto;
 }
