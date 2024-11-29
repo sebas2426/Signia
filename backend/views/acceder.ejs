@@ -29,7 +29,12 @@
         <h3>Usuario</h3>
         <input type="text" class="form-control" name="user" id="user">
         <h3>Contraseña</h3>
-        <input type="password" class="form-control" name="pass" id="pass">
+        <div class="password-container">
+            <input type="password" class="form-control" name="pass" id="pass">
+            <span id="toggle-password" class="eye-icon">
+                <i class="bi bi-eye"></i> <!-- Icono de ojo -->
+            </span>
+        </div>
         <button type="submit">Acceder</button>
     </form>
 
@@ -65,5 +70,20 @@
         <p>2024 All rights reserved</p>
     </div>
 </footer>
+<script>
+    document.getElementById('toggle-password').addEventListener('click', function() {
+        var passwordField = document.getElementById('pass');
+        var icon = this.querySelector('i');
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text'; // Mostrar la contraseña
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash'); // Cambiar el icono a "ojo cerrado"
+        } else {
+            passwordField.type = 'password'; // Ocultar la contraseña
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye'); // Cambiar el icono a "ojo abierto"
+        }
+    });
+</script>
 </body>
 </html>

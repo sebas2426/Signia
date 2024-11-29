@@ -358,6 +358,25 @@ input:focus{
     color: #ffff;
 }
 
+.password-container {
+    position: relative;
+    width: 100%; /* Asegurarse de que el contenedor ocupe todo el ancho disponible */
+}
+
+.password-container .form-control {
+    width: 100%;
+    padding-right: 35px; /* Espacio para el icono dentro del input */
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+}
+
 
 /*leccionesLista.html*/
 
