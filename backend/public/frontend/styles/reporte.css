@@ -86,10 +86,10 @@
     font-size: 1.1rem;
 }
 
-.leccionesReporteProfesores ul li{
+.leccionesReporteProfesor ul li{
     list-style-type: none;
 }
-.leccionesReporteProfesores ul li p{
+.leccionesReporteProfesor ul li p{
     font-size: 1.1rem;
 }
 
@@ -139,7 +139,7 @@
     background-color: #252525;
 }
 
-.dark-mode .leccionesReporteProfesorg{
+.dark-mode .leccionesReporteProfesor{
     background-color: #252525;
 }
 .dark-mode .subtituloReporte{

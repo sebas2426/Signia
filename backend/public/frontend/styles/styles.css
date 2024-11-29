@@ -142,6 +142,9 @@ header{
     padding: 0.8rem 1rem;
     color: white;
 }
+.salirCuenta:hover{
+    color: white;
+}
 
 .salirCuenta a{
     color: rgb(240, 240, 240);
