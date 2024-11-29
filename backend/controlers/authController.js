@@ -91,13 +91,14 @@ exports.login = async (req, res) => {
 exports.acceder = async (req, res) => {
     try {
         const user = req.body.user;
-        const pass = req.body.pass; 
+        const pass = req.body.pass;
+        const tipoUsuario = req.body.tipoUsuario;  // Capturamos el tipo de usuario seleccionado
 
-        if (!user || !pass) {
-            res.render('acceder', {
+        if (!user || !pass || !tipoUsuario) {
+            return res.render('acceder', {
                 alert: true,
                 alertTitle: "Advertencia",
-                alertMessage: "Ingrese un usuario y contraseña",
+                alertMessage: "Ingrese un usuario, contraseña y tipo de usuario",
                 alertIcon: "info",
                 showConfirmButton: true,
                 timer: false,
@@ -105,7 +106,7 @@ exports.acceder = async (req, res) => {
                 ruta: 'acceder'
             });
         } else {
-            // Realizar la consulta en la base de datos
+            // Realizar la consulta en la base de datos para verificar el usuario
             conexion.query('SELECT * FROM users WHERE username = $1', [user], async (error, results) => {
                 if (error) {
                     console.error("Error en la consulta de usuario:", error);
@@ -120,10 +121,10 @@ exports.acceder = async (req, res) => {
                         ruta: 'acceder'
                     });
                 }
-                
+
                 // Validar si el usuario no existe o la contraseña es incorrecta
                 if (results.rows.length === 0 || !(await bcryptjs.compare(pass, results.rows[0].user_pass))) {
-                    res.render('acceder', {
+                    return res.render('acceder', {
                         alert: true,
                         alertTitle: "Error",
                         alertMessage: "Usuario y/o contraseña incorrectos",
@@ -133,28 +134,43 @@ exports.acceder = async (req, res) => {
                         user: req.user || null,
                         ruta: 'acceder'
                     });
-                } else {
-                    // Inicio de sesión correcto
-                    const id = results.rows[0].id;
-                    const token = jwt.sign({ id: id }, process.env.JWT_SECRETO, {
-                        expiresIn: process.env.JWT_TIEMPO_EXPIRA
-                    });
-
-                    const cookiesOptions = {
-                        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 1000),
-                        httpOnly: true
-                    };
-                    res.cookie('jwt', token, cookiesOptions);
-                    req.user = results.rows[0];
-                    return res.redirect('/lista_lecciones');
                 }
+
+                // Verificar si el tipo de usuario coincide con el tipo de la base de datos
+                const tipoUsuarioEnDB = results.rows[0].tipo_usuario;  // Suponemos que el campo en la base de datos es `tipo_usuario`
+
+                if (tipoUsuario !== tipoUsuarioEnDB) {
+                    return res.render('acceder', {
+                        alert: true,
+                        alertTitle: "Error",
+                        alertMessage: "El tipo de usuario no coincide con el de la base de datos",
+                        alertIcon: "error",
+                        showConfirmButton: true,
+                        timer: false,
+                        user: req.user || null,
+                        ruta: 'acceder'
+                    });
+                }
+
+                // Si la validación es exitosa
+                const id = results.rows[0].id;
+                const token = jwt.sign({ id: id }, process.env.JWT_SECRETO, {
+                    expiresIn: process.env.JWT_TIEMPO_EXPIRA
+                });
+
+                const cookiesOptions = {
+                    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 1000),
+                    httpOnly: true
+                };
+                res.cookie('jwt', token, cookiesOptions);
+                req.user = results.rows[0];
+                return res.redirect('/lista_lecciones');
             });
         }
     } catch (error) {
         console.error("Error en el acceso: " + error);
     }
 };
-
 
 exports.logout = (req,res)=>{
     res.clearCookie('jwt')

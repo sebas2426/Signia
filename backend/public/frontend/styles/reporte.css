@@ -96,6 +96,12 @@
     font-size: 1.1rem;
 }
 
+.dark-mode h4{
+    color: rgb(229 231 235);;
+}
+.dark-mode .idProfesor{
+    color: rgb(183, 188, 197);;
+}
 .leccionesReporteProfesor ul li{
     list-style-type: none;
 }
