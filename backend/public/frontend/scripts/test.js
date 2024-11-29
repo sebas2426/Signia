@@ -154,7 +154,8 @@ document.getElementById('formCompletarLeccion').addEventListener('submit', funct
                 let leccionesRequeridas = Array.from({ length: 12 }, (_, i) => i + 1);
                 let todasCompletadas = leccionesRequeridas.every(leccion => leccionesCompletadas.includes(leccion));    
                 if (todasCompletadas) {
-                    localStorage.setItem('leccion13_completada', 'true'); // Guarda en Local Storage
+                     // Actualiza la URL de la página actual sin redirigir
+                     history.pushState(null, '', '/lista_lecciones?completada=true');
                     window.location.href = '/curso_completado';
                 } else {
                     window.location.href = '/lista_lecciones?completada=true';

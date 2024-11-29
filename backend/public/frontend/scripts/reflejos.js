@@ -8,6 +8,8 @@ class JuegoReflejos {
     this.botonReiniciarJuego = document.getElementById('reiniciarJuegoReflejos');
     this.botonReiniciarJuego.addEventListener('click', () => this.reiniciarJuego());
     this.botonSiguienteNivel = document.getElementById('boton-siguiente-nivel-reflejos');
+    this.juegoCompletado= document.getElementById('contenedorVictoria');
+    this.contenedorJuego= document.getElementById('juego-reflejos');
 
     this.palabraCorrecta = "";
     this.tiempoMostrarPalabras = 300;
@@ -93,12 +95,11 @@ class JuegoReflejos {
 
           if (this.aciertos === this.totalPreguntasPorNivel) {
             if (this.nivelActual === 3 && !this.datosGuardados) {
-              this.detenerContadorReflejos();
-              this.mostrarResultado(
-                `¡Felicidades! Has completado todos los niveles`,
-                "green");
-              this.botonReiniciarJuego.style.display = 'block';
               this.botonSiguienteNivel.style.display = 'none';
+              this.detenerContadorReflejos();
+              this.juegoCompletado.style.display='block';
+                this.contenedorPalabra.style.display = 'none'; // Ocultar la palabra a identificar
+              this.botonReiniciarJuego.style.display = 'block';
               // Guardar los datos una sola vez
             registrarDatosJuego(2, this.repeticionesReflejos, this.tiempoTranscurridoReflejos, this.repitioReflejos);
             console.log(datosJuegos);
@@ -172,7 +173,9 @@ class JuegoReflejos {
     this.tiempoTranscurridoReflejos = 0;
     this.botonReiniciarJuego.style.display = 'none';
     this.botonSiguienteNivel.style.display = 'none';
+    this.juegoCompletado.textContent='';
     this.datosGuardados=false;
+    this.contenedorPalabra.style.display = 'block'; 
     this.mostrarNivel();
     this.cargarNuevaPalabra();
     this.limpiarResultado();

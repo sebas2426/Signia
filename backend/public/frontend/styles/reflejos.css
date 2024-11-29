@@ -17,22 +17,14 @@
     font-weight: bold;
     margin-bottom: 40px;
   }
+
 .mensaje-victoria {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  color: white; /* Color blanco */
   padding: 15px;
   border-radius: 8px;
   margin-top: 10px;
-  
-  /* Configuración de la transición */
-  opacity: 0; /* Inicialmente oculto */
-  transition: opacity 0.5s ease-in-out; /* Transición suave para la opacidad */
-}
-
-.mensaje-victoria.aparecer {
-  opacity: 1; /* Cuando se agregue la clase 'aparecer', el mensaje será visible */
 }
 
   

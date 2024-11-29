@@ -12,16 +12,6 @@
         if (localStorage.getItem('dark-mode') === 'enabled') {
           document.body.classList.add('dark-mode');
         }
-        document.addEventListener('DOMContentLoaded', () => {
-        const leccion13Completada = localStorage.getItem('leccion13_completada') === 'true';
-        if (leccion13Completada) {
-            const divLeccionFinal = document.querySelector('.lecciones.final.leccionFinal');
-            if (divLeccionFinal) {
-                divLeccionFinal.classList.add('leccion-completada');
-            }
-        }
-    });
-
       </script>
 </head>
 <body class="bodyLecciones">
