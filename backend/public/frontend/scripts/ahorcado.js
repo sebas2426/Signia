@@ -5,7 +5,7 @@ let letrasAdivinadasAhorcado = [];
 let erroresAhorcado = 0;
 const maxIntentosAhorcado = 6;
 const maxNivelesAhorcado = 4;
-const mensajeVictoriaAhorcado = document.getElementById("mensaje-victoria");
+const mensajeVictoriaAhorcado = document.getElementById("mensaje-victoria-ahorcado");
 
 // Propiedades de tiempo y repeticiones
 let tiempoInicioAhorcado = 0;
