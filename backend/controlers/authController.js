@@ -143,7 +143,7 @@ exports.acceder = async (req, res) => {
                     return res.render('acceder', {
                         alert: true,
                         alertTitle: "Error",
-                        alertMessage: "El tipo de usuario no coincide con el de la base de datos",
+                        alertMessage: "El tipo de usuario es incorrecto",
                         alertIcon: "error",
                         showConfirmButton: true,
                         timer: false,
