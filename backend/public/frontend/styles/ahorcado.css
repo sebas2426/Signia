@@ -23,7 +23,6 @@
   padding: 10px;
 }
 
-/* Imagen de la seña */
 #imagen-seña-ahorcado {
   width: 60%;
   max-width: 250px;
@@ -33,7 +32,6 @@
   padding: 5px;
 }
 
-/* Palabra mostrada */
 #palabra-mostrada-ahorcado {
   font-size: 24px;
   letter-spacing: 5px;
@@ -65,32 +63,23 @@
   transition: background-color 0.3s ease;
 }
 
-/* Botón hover */
+
 #teclado-ahorcado button:hover {
   background-color: #4f46e5;
 }
 
-/* Botón deshabilitado */
 #teclado-ahorcado button:disabled {
   background-color: #e5e7eb;
   color: #9ca3af;
   cursor: not-allowed;
 }
 
-/* Texto de intentos restantes */
 #intentos-restantes-ahorcado {
   font-size: 18px;
   font-weight: bold;
   color: #ef4444;
 }
 
-/* Estilo del texto de "Intentos restantes" */
-#contenedor-juego-ahorcado p {
-  font-size: 16px;
-  color: #374151;
-}
-
-/* Estilos para el mensaje final */
 #mensaje-ahorcado {
   display: flex;
   flex-direction: column;
@@ -150,24 +139,25 @@
   background-color: rgb(240, 245, 255);
 }
 
-#mensaje-victoria {
+#mensaje-victoria-ahorcado{
   font-size: 1.5rem;
+  font-weight: bold;
+  color: green;
 }
 
-/* Media query para dispositivos móviles */
 @media screen and (max-width: 650px) {
   #contenedor-juego-ahorcado {
     width: 100%;
     text-align: center;
   }
 
-  /* Ajusta el teclado para móviles */
+  
   #teclado-ahorcado {
     grid-template-columns: repeat(3, 1fr); /* Reduce a 3 columnas para que los botones no hagan overflow */
     gap: 5px;
   }
 
-  /* Ajusta el tamaño de los botones en pantallas pequeñas */
+  
   #teclado-ahorcado button {
     padding: 8px;
     font-size: 14px;

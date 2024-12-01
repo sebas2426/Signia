@@ -66,14 +66,16 @@ function desactivarTarjetas() {
         const resultado = document.getElementById('resultado');
         if (nivelActual === 3) {
             // Mensaje de victoria final
-            resultado.textContent = `¡Felicidades! Has completado el juego. Lo repetiste ${repeticionesTarjetasMemoria} veces. Y cada intento te llevo ${calcularTiempo()} segundos.`;
-            document.getElementById('reiniciarJuego').style.display = 'block'; // Mostrar botón de reinicio
+            resultado.textContent = `¡Felicidades! Has completado el juego.`;
+            resultado.style.fontWeight='bold';
+            resultado.style.fontSize='1.1rem';
+            resultado.style.margin='8px';
+            resultado.style.color='green';
+            document.getElementById('reiniciarJuego').style.display = 'block'; 
 
-            registrarDatosJuego(0, repeticionesTarjetasMemoria, tiempoTranscurrido, repitioTarjetasMemoria); // Para el primer juego
+            registrarDatosJuego(0, repeticionesTarjetasMemoria, tiempoTranscurrido, repitioTarjetasMemoria); 
 
-           console.log(datosJuegos);
-
-            detenerContador(); // Detener el contador cuando el juego se complete
+            detenerContador(); 
         } else {
             resultado.textContent = '¡Nivel completado! Presiona el botón para continuar.';
         }

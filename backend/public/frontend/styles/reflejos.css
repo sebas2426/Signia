@@ -18,13 +18,14 @@
     margin-bottom: 40px;
   }
 
-.mensaje-victoria {
-  font-size: 24px;
+.mensaje-victoria{
+  font-size: 1.1rem;
   font-weight: bold;
-  text-align: center;
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 10px;
+  color: green;
+}
+
+#reiniciarJuegoReflejos:hover{
+color: white;
 }
 
   

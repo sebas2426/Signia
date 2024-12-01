@@ -153,10 +153,13 @@ function mostrarVictoria() {
     mensajeVictoria.style.textAlign = 'center';
     mensajeVictoria.style.fontSize = '1.5em';
     mensajeVictoria.style.color = 'green';
+    mensajeVictoria.style.marginRight = '1rem';
+    mensajeVictoria.style.fontWeight = 'bold';
     const contenedorVictoria = document.querySelector('.mensajeVictoria');
     contenedorVictoria.innerHTML = ''; // Limpiar cualquier contenido anterior
     contenedorVictoria.appendChild(mensajeVictoria);
-    document.getElementById('reiniciarJuegoParejas').style.display = 'block'; // Mostrar botón de reinicio
+    document.getElementById('reiniciarJuegoParejas').style.display = 'block';
+    document.getElementById('reiniciarJuegoParejas').style.margin = '0 auto';
 }
 
 // Lógica para el botón de siguiente nivel

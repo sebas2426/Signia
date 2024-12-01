@@ -64,7 +64,9 @@ function iniciarRonda() {
     if (mesesDisponibles.length === 0) {
         clearInterval(tiempoIntervaloCajas); // Detiene el intervalo
         mensajeCajas.textContent = `¡Felicidades! Has acertado todas las opciones`;
-        mensajeCajas.style.color = "blue";
+        mensajeCajas.style.color = "green";
+        mensajeCajas.style.fontSize = "1.1rem";
+        mensajeCajas.style.fontWeight = "bold";
         juegoTerminado = true; // Marca que el juego ha terminado
        /* console.log(
             `repeticiones: ${repeticionesCajas}  tiempo: ${tiempoTranscurridoCajas} segundos  repitio?: ${repitioCajas}`
