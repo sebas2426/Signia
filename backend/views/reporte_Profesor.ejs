@@ -21,7 +21,7 @@
 
     <% if(user){ %>
         <div class="informacionUsuario">
-            <h1 class="tituloLecciones">Bienvenido Prof. <span><%= user.name %></span>
+            <h1 class="tituloLecciones">Bienvenido/a Prof. <span><%= user.name %></span>
             </h1>
             <p>Bienvenido al panel de control de profesores, aquí podrás ver información clave sobre los alumnos y el progreso general de cada uno de ellos en el curso.</p>
 
@@ -98,7 +98,7 @@
                                                 <ul>
                                                     <li>
                                                         <p><span class="subtituloReporte">Juego Repetido:</span>
-                                                            <%= juego.repitio[intentoIndex] ? 'Sí' : 'No' %>
+                                                            <%= juego.repitido[intentoIndex] ? 'Sí' : 'No' %>
                                                         </p>
                                                     </li>
                                                     <li>
