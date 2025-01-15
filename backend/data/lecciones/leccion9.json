@@ -27,5 +27,5 @@
 
     {"letra": "Tobillo", "imagenUrl": "/frontend/images/partes_cuerpo/Tobillo.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Tobillo.mp4", "descripcion": "Parte del cuerpo humano en donde se articula el pie con la pierna. Protuberancia de la tibia y del peroné que sobresalen respectivamente en el lado interno y externo del tobillo." },
 
-    {"letra": "Pies", "imagenUrl": "/frontend/images/partes_cuerpo/Pies.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Pies.mp4", "descripcion": "Extremidad de cada uno de los dos miembros inferiores del cuerpo humano." }
+    {"letra": "Pies", "imagenUrl": "/frontend/images/partes_cuerpo/Pie.png", "videoUrl": "/frontend/images/partes_cuerpo/videos/Pie.mp4", "descripcion": "Extremidad de cada uno de los dos miembros inferiores del cuerpo humano." }
 ]

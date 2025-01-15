@@ -51,7 +51,9 @@
                 <button id="prev" disabled><i class="bi bi-arrow-left flecha"></i></button>
             <div class="media-imagen">
                 <img id="media-image" src="<%= leccionData[0].imagenUrl %>" alt="Imagen de <%= leccionData[0].letra %>">
+               
             </div>
+            <br>
             <div class="media-video">
                 <video id="media-video" title="Video de <%= leccionData[0].letra %>" controls>
                     <source src="<%= leccionData[0].videoUrl %>" type="video/mp4">
@@ -60,7 +62,8 @@
             </div>
             <button id="next"><i class="bi bi-arrow-right flecha"></i></button>
             </div>
-            <p> <%= leccionData[0].descripcion %></p>
+            <p><%= leccionData[0].descripcion %></p>
+            <p> <br> <br><em>App Diccionario de la Lengua de Signos Española (CNSE, s.f.)</em></p>
     </div>
         
         <!--JUEGO-->
