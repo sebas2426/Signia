@@ -573,6 +573,9 @@ body.dark-mode {
 .dark-mode i{
     color: #fff;
 }
+.textoDebajoVideo{
+    margin: 0 1.5rem;
+}
 /*RESPONSIVE*/
 @media screen and (max-width: 650px) {
     /*header*/
@@ -650,7 +653,9 @@ body.dark-mode {
         margin-bottom: 20px;
     }
 
-
+    .textoDebajoVideo{
+        margin: auto;
+    }
     .imagenBody img{
         width: 100%;
         height: auto;
